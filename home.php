@@ -72,19 +72,21 @@
 <body style="background-color: #F4F3EF;">
 
     <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top d-flex align-items-center" style="background-color: #F4F3EF;">
+    <header id="header" class="header fixed-top d-flex align-items-center w-100"
+        style="background-color: #F4F3EF; padding: 0">
 
-        <div class="d-flex align-items-center justify-content-between">
-            <a href="home.php" class="logo d-flex align-items-center">
-                <img src="assets/img/devs/carl.jpg" alt="">
+        <div class="d-flex align-items-center justify-content-between h-100 p-2">
+            <a href="home.php" class="logo d-flex align-items-center justify-content-center">
                 <span class="d-none d-lg-block">ACI-BT</span>
             </a>
-            <i class="bi bi-list toggle-sidebar-btn"></i>
         </div>
 
-        <div class="title">
-            <!-- <h4 class="text-dark ">Automated Credential Issuance: Barangay Tiniguiban</h4> -->
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+
+        <div class="title h-100 d-flex align-items-center" style="padding-left: 20px; padding-top: 8px;">
+            <h4 class="text-dark ">Automated Credential Issuance for Barangay Tiniguiban</h4>
         </div>
+
     </header><!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
@@ -105,7 +107,8 @@
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#" style="background-color: #174793;">
+                <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse"
+                    href="#" style="background-color: #174793;">
                     <i class="bi bi-menu-button-wide"></i><span>Officials</span><i
                         class="bi bi-chevron-down ms-auto"></i>
                 </a>
