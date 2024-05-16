@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+    if (!isset($_SESSION['username'])) {
+        header("Location: index.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -138,7 +146,7 @@
                 </a>
             </li><!-- End F.A.Q Page Nav -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="login.php" style="background-color: #F4F3EF;">
+                <a class="nav-link collapsed" href="logout.php" style="background-color: #F4F3EF;">
                     <i class="bi bi-question-circle"></i>
                     <span>Logout</span>
                 </a>
