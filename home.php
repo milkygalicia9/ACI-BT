@@ -91,9 +91,10 @@
 
         <i class="bi bi-list toggle-sidebar-btn"></i>
 
-        <div class="title h-100 d-flex align-items-center" style="padding-left: 20px; padding-top: 8px;">
-            <h4 class="text-dark ">Automated Credential Issuance for Barangay Tiniguiban</h4>
-        </div>
+        <div class="title h-100 pl-5 w-100 d-flex align-items-center justify-content-between" style="padding-left: 20px; padding-top: 8px;">
+    <h4 class="text-dark">Automated Credential Issuance for Barangay Tiniguiban</h4>
+    <div class="text-end ms-auto m-3" id="datetimes">sdadas</div>
+</div>
 
     </header><!-- End Header -->
 
@@ -203,7 +204,7 @@
                     if(nmin<=9) nmin="0"+nmin;
                     if(nsec<=9) nsec="0"+nsec;
 
-                    document.getElementById('datetime').innerHTML=""+nhour+":"+nmin+":"+nsec+ap+" , "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+tday[nday]+"";
+                    document.getElementById('datetimes').innerHTML=""+nhour+":"+nmin+":"+nsec+ap+" , "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+tday[nday]+"";
                     }
                     window.onload=function(){
                     GetClock();

@@ -84,7 +84,6 @@ function numberToWords(number) {
       var certificateType = document.getElementById('certificateType').value;
       var forms = document.getElementsByClassName('certificates')[0].children;
       
-      
       for (var i = 0; i < forms.length; i++) {
         if (forms[i].id === certificateType) {
             forms[i].classList.add('active');
@@ -115,8 +114,7 @@ function numberToWords(number) {
             input.setAttribute('onchange', 'select()');
           });
 
-
-         
+          
       iframe.src = doc;  
   }
 
@@ -295,18 +293,7 @@ if (certificateType.value == 'indigency') {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  const currentDate = new Date();
-
-    const day = currentDate.getDate();
-    const month = currentDate.getMonth() ; 
-    const year = currentDate.getFullYear();
-
-    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const monthName = monthNames[month];
-  document.getElementById('days').innerText = day;
-  document.getElementById('months').innerText = monthName;
-  document.getElementById('sups').innerText = getOrdinalSuffix(day);
-  document.getElementById('years').innerText =year;
+ 
 });
 // document.addEventListener('DOMContentLoaded', function() {
 //   const selectElement = document.getElementById('mySelect');
