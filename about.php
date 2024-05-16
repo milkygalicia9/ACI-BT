@@ -75,7 +75,9 @@
 
         <div class="barangay-logo h-50 w-100" style="background-color: #729ED9; margin-bottom: 2px;">
             <div class="barangay-logo h-100 d-flex align-items-center justify-content-center">
-                <img src="assets/img/cap-log.png" height="250" alt="">
+                <a href="home.php">
+                    <img src="assets/img/cap-log.png" height="250" alt="">
+                </a>
             </div>
         </div>
 
