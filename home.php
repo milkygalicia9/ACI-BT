@@ -173,7 +173,7 @@
                         </button>
                     </div>
                 </form>
-                <form action="view_trans.html">
+                <form action="view_transactions.php">
                     <div class="col-md-12"> <button class="card">
                             <div class="card-document">
                                 <h6 class="card-title">View Transactions</h6>
