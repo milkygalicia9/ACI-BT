@@ -106,12 +106,7 @@ function numberToWords(number) {
         input.setAttribute('class','form-control p-2 w-45');
 
         });
-        document.getElementById(certificateType).querySelectorAll('select').forEach(function(select) {
-          select.setAttribute('onchange', 'select()');
-          // select.setAttribute('style','width: 50% !important');
-          // console.log(select);
-      });
-      
+        
         document.getElementById(certificateType).querySelectorAll('input[type=checkbox]').forEach(function(input) {
           input.setAttribute('onclick', 'updateText()');
           });
@@ -121,7 +116,10 @@ function numberToWords(number) {
   }
 
 
+function select(){
+console.log('select')
 
+}
 
 
   
@@ -276,20 +274,53 @@ function update() {
 }
 
 
+// document.addEventListener('DOMContentLoaded', function() {
+//   const currentDate = new Date();
+
+//     const day = currentDate.getDate();
+//     const month = currentDate.getMonth() ; 
+//     const year = currentDate.getFullYear();
+
+//     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+//     const monthName = monthNames[month];
+//   document.getElementById('days').innerText = day;
+//   document.getElementById('months').innerText = monthName;
+//   document.getElementById('sups').innerText = getOrdinalSuffix(day);
+//   document.getElementById('years').innerText =year;
+// });
 document.addEventListener('DOMContentLoaded', function() {
-  const currentDate = new Date();
+  const selectElement = document.getElementById('mySelect');
 
-    const day = currentDate.getDate();
-    const month = currentDate.getMonth() ; 
-    const year = currentDate.getFullYear();
-
-    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const monthName = monthNames[month];
-  document.getElementById('days').innerText = day;
-  document.getElementById('months').innerText = monthName;
-  document.getElementById('sups').innerText = getOrdinalSuffix(day);
-  document.getElementById('years').innerText =year;
+  selectElement.addEventListener('change', function() {
+      const inputContainer = document.getElementById('certificates');
+      const inputs = inputContainer.querySelectorAll('input[type="  text"]');
+      
+      inputs.forEach(function(input) {
+          input.value = '';
+      });
+  });
 });
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const certificateType = 'inputContainer'; // Ensure this is the correct ID of the container
+
+  const container = document.getElementById(certificateType);
+  if (container) {
+      container.querySelectorAll('select').forEach(function(selectElement) {
+          selectElement.setAttribute('onchange', 'updateSelect()');
+          // Optionally add styles or other attributes
+          // selectElement.setAttribute('style', 'width: 50% !important');
+      });
+  }
+});
+
+function updateSelect() {
+  // Define your updateSelect function here
+  console.log('Select changed!');
+}
+
+
 console.log('tset');
 
 console.log(numberToWords(10000)); // Output: "Ten Thousand"

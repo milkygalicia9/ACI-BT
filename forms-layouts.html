@@ -818,6 +818,25 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <script>
+    // Select all input elements of type "text"
+    const inputs = document.querySelectorAll('input[type="text"]');
+
+    // Add an event listener for input events to each input element
+    inputs.forEach(input => {
+        input.addEventListener('input', function() {
+            let value = input.value;
+            // Replace all characters that are not letters or spaces
+            value = value.replace(/[^a-zA-Z\s]/g, '');
+            // Limit the length of the value to 50 characters
+            value = value.substring(0, 25);
+            input.value = value;
+        });
+    });
+    
+    
+</script>
+
 </body>
 
 </html>
