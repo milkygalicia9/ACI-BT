@@ -63,7 +63,7 @@
         </div>
 
         <i class="bi bi-list toggle-sidebar-btn"></i>
-        
+
         <div class="title h-100 d-flex align-items-center" style="padding-left: 20px; padding-top: 8px;">
             <h4 class="text-dark ">Automated Credential Issuance for Barangay Tiniguiban</h4>
         </div>
@@ -193,7 +193,7 @@
                                 <div class="card-body p-4 text-center">
                                     <img src="assets/img/devs/carl.jpg" alt="" class="rounded-circle mb-3" width="80"
                                         height="80">
-                                    <h6 class="text-info-emphasis">Carl Vincent Alabastro</h6>
+                                    <h6 class="text-info-emphasis">Carl Vincent <br> Alabastro</h6>
                                 </div>
                             </div>
                         </div>
@@ -202,7 +202,7 @@
                                 <div class="card-body p-4 text-center">
                                     <img src="assets/img/devs/philip.jpg" alt="" class="rounded-circle mb-3" width="80"
                                         height="80">
-                                    <h6 class="text-info-emphasis">Philip Arland Alili</h6>
+                                    <h6 class="text-info-emphasis">Philip Arland <br> Alili</h6>
                                 </div>
                             </div>
                         </div>
@@ -211,7 +211,7 @@
                                 <div class="card-body p-4 text-center">
                                     <img src="assets/img/devs/zoe.jpg" alt="" class="rounded-circle mb-3" width="80"
                                         height="80">
-                                    <h6 class="text-info-emphasis">Zoe Ayessa Buesa</h6>
+                                    <h6 class="text-info-emphasis">Zoe Ayessa <br> Buesa</h6>
                                 </div>
                             </div>
                         </div>
@@ -220,7 +220,7 @@
                                 <div class="card-body p-4 text-center">
                                     <img src="assets/img/devs/carl.jpg" alt="" class="rounded-circle mb-3" width="80"
                                         height="80">
-                                    <h6 class="text-info-emphasis">Michael Joshua Calan</h6>
+                                    <h6 class="text-info-emphasis">Michael Joshua <br> Calan</h6>
                                 </div>
                             </div>
                         </div>
@@ -238,7 +238,7 @@
                                 <div class="card-body p-4 text-center">
                                     <img src="assets/img/devs/charls.jpg" alt="" class="rounded-circle mb-3" width="80"
                                         height="80">
-                                    <h6 class="text-info-emphasis">Charls Brent Cayabyab</h6>
+                                    <h6 class="text-info-emphasis">Charls Brent <br> Cayabyab</h6>
                                 </div>
                             </div>
                         </div>
@@ -247,7 +247,7 @@
                                 <div class="card-body p-4 text-center">
                                     <img src="assets/img/devs/troy.jpg" alt="" class="rounded-circle mb-3" width="80"
                                         height="80">
-                                    <h6 class="text-info-emphasis">Obrien Troy Dangan</h6>
+                                    <h6 class="text-info-emphasis">Obrien Troy <br> Dangan</h6>
                                 </div>
                             </div>
                         </div>
@@ -256,7 +256,7 @@
                                 <div class="card-body p-4 text-center">
                                     <img src="assets/img/devs/lyrah.jpg" alt="" class="rounded-circle mb-3" width="80"
                                         height="80">
-                                    <h6 class="text-info-emphasis">Lyrah Rohi Fernandez</h6>
+                                    <h6 class="text-info-emphasis">Lyrah Rohi <br> Fernandez</h6>
                                 </div>
                             </div>
                         </div>
@@ -274,7 +274,7 @@
                                 <div class="card-body p-4 text-center">
                                     <img src="assets/img/devs/marco.jpg" alt="" class="rounded-circle mb-3" width="80"
                                         height="80">
-                                    <h6 class="text-info-emphasis">Kristian Marc Anthony Ng</h6>
+                                    <h6 class="text-info-emphasis">Kristian Marc <br> Anthony Ng</h6>
                                 </div>
                             </div>
                         </div>
@@ -292,7 +292,7 @@
                                 <div class="card-body p-4 text-center">
                                     <img src="assets/img/devs/franz.jpg" alt="" class="rounded-circle mb-3" width="80"
                                         height="80">
-                                    <h6 class="text-info-emphasis">Franz Miguel Valonda</h6>
+                                    <h6 class="text-info-emphasis">Franz Miguel <br> Valonda</h6>
                                 </div>
                             </div>
                         </div>
