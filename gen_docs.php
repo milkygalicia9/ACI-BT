@@ -178,12 +178,7 @@
 
                 <label for="certificateType"> Select Certificate</label><br>
                 <div class="col-md-6">
-<<<<<<< HEAD
                 <select class="  p-2 text-left" id="certificateType" onchange="toggleFields()" style="cursor: pointer;">
-=======
-                  <select class=" form-control p-2 text-center" id="certificateType" onchange="toggleFields()"
-                    style="cursor: pointer;">
->>>>>>> 8d78131249e70238ad5774807bc327751ebd03dd
                     <option value="">--select certificates--</option>
                     <option value="barangay_clearance">Barangay Clearance</option>
                     <option value="business_permit_new">Barangay Business Permit New</option>
