@@ -99,20 +99,45 @@
         </div>
 
         <ul class="sidebar-nav" id="sidebar-nav" style="padding: 15px;">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
                     <i class="bi bi-grid text-light"></i>
-                    <span>Home</span>
+                    <span>Dashboard</span>
                 </a>
-            </li><!-- End Dashboard Nav -->
+            </li> -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse"
+                <a class="nav-link collapsed text-light" data-bs-target="#dashboard-nav" data-bs-toggle="collapse"
+                    href="#" style="background-color: #174793;">
+                    <i class="bi bi-menu-button-wide"></i><span>Dashboard</span><i
+                        class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="dashboard-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="gen_docs.php">
+                            <i class="bi bi-circle text-light"></i><span class="text-light">Generate Documents</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="view_transactions.php">
+                            <i class="bi bi-circle text-light"></i><span class="text-light">View Transactions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="view_reports.php">
+                            <i class="bi bi-circle text-light"></i><span class="text-light">View Reports</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed text-light" data-bs-target="#officials-nav" data-bs-toggle="collapse"
                     href="#" style="background-color: #174793;">
                     <i class="bi bi-menu-button-wide"></i><span>Officials</span><i
                         class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <ul id="officials-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="officials.php">
                             <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Officials</span>
@@ -129,7 +154,7 @@
                         </a>
                     </li>
                 </ul>
-            </li><!-- End Components Nav -->
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed text-light" href="about.php" style="background-color: #174793;">
@@ -138,7 +163,7 @@
                 </a>
             </li><!-- End F.A.Q Page Nav -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="login.php" style="background-color: #F4F3EF;">
+                <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
                     <i class="bi bi-question-circle"></i>
                     <span>Logout</span>
                 </a>
