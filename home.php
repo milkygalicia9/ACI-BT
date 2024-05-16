@@ -1,3 +1,11 @@
+<?php
+    session_start();
+
+    if (!isset($_SESSION['username'])) {
+        header("Location: index.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,20 +107,45 @@
         </div>
 
         <ul class="sidebar-nav" id="sidebar-nav" style="padding: 15px;">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
                     <i class="bi bi-grid text-light"></i>
-                    <span>Home</span>
+                    <span>Dashboard</span>
                 </a>
-            </li><!-- End Dashboard Nav -->
+            </li> -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse"
+                <a class="nav-link collapsed text-light" data-bs-target="#dashboard-nav" data-bs-toggle="collapse"
+                    href="#" style="background-color: #174793;">
+                    <i class="bi bi-menu-button-wide"></i><span>Dashboard</span><i
+                        class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="dashboard-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="gen_docs.php">
+                            <i class="bi bi-circle text-light"></i><span class="text-light">Generate Documents</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="view_transactions.php">
+                            <i class="bi bi-circle text-light"></i><span class="text-light">View Transactions</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="view_reports.php">
+                            <i class="bi bi-circle text-light"></i><span class="text-light">View Reports</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed text-light" data-bs-target="#officials-nav" data-bs-toggle="collapse"
                     href="#" style="background-color: #174793;">
                     <i class="bi bi-menu-button-wide"></i><span>Officials</span><i
                         class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <ul id="officials-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="officials.php">
                             <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Officials</span>
@@ -129,7 +162,7 @@
                         </a>
                     </li>
                 </ul>
-            </li><!-- End Components Nav -->
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed text-light" href="about.php" style="background-color: #174793;">
@@ -138,7 +171,7 @@
                 </a>
             </li><!-- End F.A.Q Page Nav -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="login.php" style="background-color: #F4F3EF;">
+                <a class="nav-link collapsed" href="logout.php" style="background-color: #F4F3EF;">
                     <i class="bi bi-question-circle"></i>
                     <span>Logout</span>
                 </a>
@@ -152,8 +185,32 @@
         <div class="pagetitle mb-5 mt-3">
             <div class="col-md-11">
                 <div class="welcome-card d-flex align-items-center justify-content-between">
-                    <h3>Welcome, User</h3>
-                    <h6 class="">12/02/2024 10:59am</h6>
+                <h3>Welcome, <?php echo $_SESSION['username'] ?>!</h3>
+                <script type="text/javascript">
+                    tday=new Array	("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+                    tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+
+                    function GetClock(){
+                    var d=new Date();
+                    var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getFullYear();
+                    var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
+
+                    if(nhour==0){ap=" AM";nhour=12;}
+                    else if(nhour<12){ap=" AM";}
+                    else if(nhour==12){ap=" PM";}
+                    else if(nhour>12){ap=" PM";nhour-=12;}
+
+                    if(nmin<=9) nmin="0"+nmin;
+                    if(nsec<=9) nsec="0"+nsec;
+
+                    document.getElementById('datetime').innerHTML=""+nhour+":"+nmin+":"+nsec+ap+" , "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+tday[nday]+"";
+                    }
+                    window.onload=function(){
+                    GetClock();
+                    setInterval(GetClock,1000);
+                    }
+                </script>
+                <h6 class="" id="datetime"></h6>
                 </div>
             </div>
         </div>
@@ -192,7 +249,7 @@
                         </button>
                     </div>
                 </form>
-                <form action="view_reports.html">
+                <form action="view_reports.php">
                     <div class="col-md-12"> <button class="card">
                             <div class="card-document">
                                 <h6 class="card-title">View Reports</h6>
