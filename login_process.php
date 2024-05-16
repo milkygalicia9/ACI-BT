@@ -16,6 +16,12 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     if ($count == 1) {
         $_SESSION['username'] = ucfirst($username);
+
+        $query = "INSERT INTO `user_logs` (admin_name, status, datetime) VALUES (?, 'IN', NOW())";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+
         header("Location: home.php");
         exit();
     } else {

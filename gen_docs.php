@@ -212,15 +212,11 @@
                     <label for="">Middle Initial:</label>
                     <input type="text" class="form-control" name="middle_name" placeholder="Ex. J"><br>
 
-<<<<<<< HEAD
                     <label for="">Last Name:</label>
                     <input type="text" class="form-control" name="middle_name" placeholder="Ex. J"><br>
 
 
                       <label for="">Suffix:</label>
-=======
-                    <<<<<<< HEAD <label for="">Suffix:</label>
->>>>>>> 07cae7d13150b24bac45c96262569f10ed1cae70
                       <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
                       <select class=" text-left" style="width: 8%;" name="" id="suffix">
                         <option value="">N/A</option>
@@ -231,7 +227,6 @@
                         <option value="">III</option>
                       </select><br><br>
                       <label for="">Purok:</label>
-<<<<<<< HEAD
                      <select class=" p-2 w-25 text-left" name="" id="purok">
                       <option value="Centro">Centro</option>
                       <option value="Kaakbayan">Kaakbayan</option>
@@ -244,42 +239,11 @@
                     </select>
                     <br>
                     <br>
-=======
-                      <select class=" p-2 w-25 text-left" name="" id="purok">
-                        =======
-                        <label for="">Last Name:</label>
-                        <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
-
-                        <label for="">Suffix:</label>
-                        <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
-                        <select class="form-control text-center" style="width: 8%;" name="" id="">
-                          <option value="">Jr</option>
-                          <option value="">Sr</option>
-                          <option value="">I</option>
-                          <option value="">II</option>
-                          <option value="">III</option>
-                        </select><br>
-                        <label for="">Purok:</label><br>
-                        <select class="form-control p-2 w-25 text-left" name="" id="">
-                          >>>>>>> 8d78131249e70238ad5774807bc327751ebd03dd
-                          <option value="Centro">Centro</option>
-                          <option value="Kaakbayan">Kaakbayan</option>
-                          <option value="New Princesa"> New Princesa</option>
-                          <option value="San Franciso I">San Franciso I</option>
-                          <option value="San Franciso II">San Franciso II</option>
-                          <option value="Sandiwa">Sandiwa</option>
-                          <option value="Trece">Trece</option>
-                          <option value="Uha">UHA</option>
-                        </select>
-                        <br>
-                        <br>
->>>>>>> 07cae7d13150b24bac45c96262569f10ed1cae70
 
                         <label for="">Birthplace:</label>
                         <input type="text" class="form-control" name="birthplace"
                           placeholder="Ex. Puerto Princesa City"><br>
 
-<<<<<<< HEAD
                       <label for="">Birthday:</label>
                       <input type="date" class="form-control" name="birthday">
                       <br>
@@ -292,36 +256,6 @@
                       <br>
                       <label for="">Period of Residency:</label>
                       <input type="number" class="form-control" name="residency_period" placeholder="Ex. 3 years"><br>
-=======
-                        <<<<<<< HEAD <label for="">Birthday:</label>
-                          <input type="date" class="form-control" name="birthday">
-                          <br>
-                          <label for="">Civil Status:</label>
-                          <select class="form-control" onchange="update()" name="" id="stats">
-                            <option value="Maried">Married</option>
-                            <option value="Widow">Window</option>
-                            <option value="Single">Single</option>
-                          </select>
-                          <br>
-                          <label for="">Period of Residency:</label>
-                          <input type="number" class="form-control" name="residency_period"
-                            placeholder="Ex. 3 years"><br>
-                          =======
-                          <label for="">Birthday:</label>
-                          <input type="date" class="form-control" name="birthday">
-                          <br>
-                          <label for="">Civil Status:</label>
-                          <select class="form-control" onchange="update()" name="" id="gg">
-                            <option value="Maried">Marriied</option>
-                            <option value="Widow">window</option>
-                            <option value="Single">singol</option>
-                          </select>
-                          <br>
-                          <label for="">Period of Residency:</label>
-                          <input type="number" class="form-control" name="residency_period"
-                            placeholder="Ex. 3 years"><br>
-                          >>>>>>> 8d78131249e70238ad5774807bc327751ebd03dd
->>>>>>> 07cae7d13150b24bac45c96262569f10ed1cae70
 
                           <label for="">Purpose:</label>
                           <!-- <input type="text" class="form-control" name="purpose"> -->
@@ -339,7 +273,6 @@
                       <input type="text" class="form-control" name="business_name"><br>
 
                       <label for="">Purok:</label><br>
-<<<<<<< HEAD
                      <select name="" id="" onchange="">
                       <option value="Centro">Centro</option>
                       <option value="Kaakbayan">Kaakbayan</option>
@@ -354,36 +287,6 @@
 <br>
                       <label for="">Manager / Operator</label>
                       <input type="text" class="form-control" name="manager_operator">
-=======
-                      <<<<<<< HEAD <select name="" id="" onchange="">
-                        <option value="Centro">Centro</option>
-                        <option value="Kaakbayan">Kaakbayan</option>
-                        <option value="New Princesa"> New Princesa</option>
-                        <option value="San Franciso I">San Franciso I</option>
-                        <option value="San Franciso II">San Franciso II</option>
-                        <option value="Sandiwa">Sandiwa</option>
-                        <option value="Trece">Trece</option>
-                        <option value="Uha">UHA</option>
-                        </select>
-                        <br>
-                        <br>
-                        =======
-                        <select name="" id="">
-                          <option value="Centro">Centro</option>
-                          <option value="Kaakbayan">Kaakbayan</option>
-                          <option value="New Princesa"> New Princesa</option>
-                          <option value="San Franciso I">San Franciso I</option>
-                          <option value="San Franciso II">San Franciso II</option>
-                          <option value="Sandiwa">Sandiwa</option>
-                          <option value="Trece">Trece</option>
-                          <option value="Uha">UHA</option>
-                        </select>
-                        <br>
-                        <br>
-                        >>>>>>> 8d78131249e70238ad5774807bc327751ebd03dd
-                        <label for="">Manager / Operator</label>
-                        <input type="text" class="form-control" name="manager_operator">
->>>>>>> 07cae7d13150b24bac45c96262569f10ed1cae70
 
                         <label for="">Address(Manager / Operator)</label>
                         <input type="text" class="form-control" name="manager_operator_address">

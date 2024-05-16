@@ -206,7 +206,6 @@ if (!isset($_SESSION['username'])) {
                             if (nmin <= 9) nmin = "0" + nmin;
                             if (nsec <= 9) nsec = "0" + nsec;
 
-<<<<<<< HEAD
                     document.getElementById('datetimes').innerHTML=""+nhour+":"+nmin+":"+nsec+ap+" , "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+tday[nday]+"";
                     }
                     window.onload=function(){
@@ -215,16 +214,6 @@ if (!isset($_SESSION['username'])) {
                     }
                 </script>
                 <h6 class="" id="datetime"></h6>
-=======
-                            document.getElementById('datetime').innerHTML = "" + nhour + ":" + nmin + ":" + nsec + ap + " , " + tmonth[nmonth] + " " + ndate + ", " + nyear + " " + tday[nday] + "";
-                        }
-                        window.onload = function () {
-                            GetClock();
-                            setInterval(GetClock, 1000);
-                        }
-                    </script>
-                    <h6 class="" id="datetime"></h6>
->>>>>>> 07cae7d13150b24bac45c96262569f10ed1cae70
                 </div>
             </div>
         </div>
