@@ -567,7 +567,7 @@
              
                 <label for="certificateType"> Select Certificate</label><br>
                 <div class="col-md-6">
-                <select class=" form-control p-2 text-center" id="certificateType" onchange="toggleFields()" style="cursor: pointer;">
+                <select class="  p-2 text-left" id="certificateType" onchange="toggleFields()" style="cursor: pointer;">
                     <option value="">--select certificates--</option>
                     <option value="barangay_clearance" >Barangay Clearance</option>
                     <option value="business_permit_new">Barangay Business Permit New</option>
@@ -601,15 +601,16 @@
 
                       <label for="">Suffix:</label>
                       <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
-                      <select class="form-control text-center" style="width: 8%;" name="" id="">
-                          <option value="">Jr</option>
-                          <option value="">Sr</option>
-                          <option value="">I</option>
-                          <option value="">II</option>
+                      <select class=" text-left" style="width: 8%;" name="" id="suffix" >
+                          <option value="">N/A</option>
+                          <option value="Jr">Jr</option>
+                          <option value="Sr">Sr</option>
+                          <option value="I">I</option>
+                          <option value="II">II</option>
                           <option value="">III</option>
-                      </select><br>
-                      <label for="">Purok:</label><br>
-                     <select class="form-control p-2 w-25 text-left" name="" id="">
+                      </select><br><br>
+                      <label for="">Purok:</label>
+                     <select class=" p-2 w-25 text-left" name="" id="purok">
                       <option value="Centro">Centro</option>
                       <option value="Kaakbayan">Kaakbayan</option>
                       <option value="New Princesa"> New Princesa</option>
@@ -629,10 +630,10 @@
                       <input type="date" class="form-control" name="birthday">
                       <br>
                       <label for="">Civil Status:</label>
-                      <select class="form-control" onchange="update()" name="" id="gg">
-                          <option value="Maried">Marriied</option>
-                          <option value="Widow">window</option>
-                          <option value="Single">singol</option>
+                      <select class="form-control" onchange="update()" name="" id="stats">
+                          <option value="Maried">Married</option>
+                          <option value="Widow">Window</option>
+                          <option value="Single">Single</option>
                       </select>
                       <br>
                       <label for="">Period of Residency:</label>
@@ -653,7 +654,7 @@
                       <input type="text" class="form-control" name="business_name"><br>
 
                       <label for="">Purok:</label><br>
-                     <select name="" id="">
+                     <select name="" id="" onchange="">
                       <option value="Centro">Centro</option>
                       <option value="Kaakbayan">Kaakbayan</option>
                       <option value="New Princesa"> New Princesa</option>

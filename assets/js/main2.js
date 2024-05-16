@@ -93,6 +93,7 @@ function numberToWords(number) {
             forms[i].classList.remove('active');
         }
     }
+
     var iframe = document.getElementById('myIframe');
     doc ="certificates/"+certificateType + ".html"
 
@@ -110,16 +111,36 @@ function numberToWords(number) {
         document.getElementById(certificateType).querySelectorAll('input[type=checkbox]').forEach(function(input) {
           input.setAttribute('onclick', 'updateText()');
           });
+           document.getElementById(certificateType).querySelectorAll('select').forEach(function(input) {
+            input.setAttribute('onchange', 'select()');
+          });
 
-      // console.log(doc);
+
+         
       iframe.src = doc;  
   }
 
 
 function select(){
-console.log('select')
+  var iframe = document.getElementById('myIframe');
+  var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+  var purok = iframeDocument.getElementById('purok');
+  var suffix = iframeDocument.getElementById('suffix');
+  var stats = iframeDocument.getElementById('stats');
 
-}
+  if (purok)
+    purok.innerText = document.getElementById('purok').value;
+    else console.log('purok not found')
+    
+  if (suffix)
+    suffix.innerText = document.getElementById('suffix').value;
+    else console.log('suffix not found')
+
+    if (stats)
+      stats.innerText = document.getElementById('stats').value;
+      else console.log('stats not found')
+  
+  }
 
 
   
@@ -261,59 +282,58 @@ if (certificateType.value == 'indigency') {
 
 }}
 
-function update() {
+// function update() {
   
-  var iframe = document.getElementById('myIframe');          
-  var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+//   var iframe = document.getElementById('myIframe');          
+//   var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
 
-  var stat = iframeDocument.getElementById('stats');
+//   var stat = iframeDocument.getElementById('stats');
 
-  stat.innerText =  document.getElementById('gg').value;
-  console.log(document.getElementById('gg').value);
+//   stat.innerText =  document.getElementById('gg').value;
   
-}
+// }
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const currentDate = new Date();
+
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() ; 
+    const year = currentDate.getFullYear();
+
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const monthName = monthNames[month];
+  document.getElementById('days').innerText = day;
+  document.getElementById('months').innerText = monthName;
+  document.getElementById('sups').innerText = getOrdinalSuffix(day);
+  document.getElementById('years').innerText =year;
+});
+// document.addEventListener('DOMContentLoaded', function() {
+//   const selectElement = document.getElementById('mySelect');
+
+//   selectElement.addEventListener('change', function() {
+//       const inputContainer = document.getElementById('certificates');
+//       const inputs = inputContainer.querySelectorAll('input[type="  text"]');
+      
+//       inputs.forEach(function(input) {
+//           input.value = '';
+//       });
+//   });
+// });
 
 
 // document.addEventListener('DOMContentLoaded', function() {
-//   const currentDate = new Date();
+//   const certificateType = 'inputContainer'; // Ensure this is the correct ID of the container
 
-//     const day = currentDate.getDate();
-//     const month = currentDate.getMonth() ; 
-//     const year = currentDate.getFullYear();
-
-//     const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-//     const monthName = monthNames[month];
-//   document.getElementById('days').innerText = day;
-//   document.getElementById('months').innerText = monthName;
-//   document.getElementById('sups').innerText = getOrdinalSuffix(day);
-//   document.getElementById('years').innerText =year;
+//   const container = document.getElementById(certificateType);
+//   if (container) {
+//       container.querySelectorAll('select').forEach(function(selectElement) {
+//           selectElement.setAttribute('onchange', 'updateSelect()');
+//           // Optionally add styles or other attributes
+//           // selectElement.setAttribute('style', 'width: 50% !important');
+//       });
+//   }
 // });
-document.addEventListener('DOMContentLoaded', function() {
-  const selectElement = document.getElementById('mySelect');
-
-  selectElement.addEventListener('change', function() {
-      const inputContainer = document.getElementById('certificates');
-      const inputs = inputContainer.querySelectorAll('input[type="  text"]');
-      
-      inputs.forEach(function(input) {
-          input.value = '';
-      });
-  });
-});
-
-
-document.addEventListener('DOMContentLoaded', function() {
-  const certificateType = 'inputContainer'; // Ensure this is the correct ID of the container
-
-  const container = document.getElementById(certificateType);
-  if (container) {
-      container.querySelectorAll('select').forEach(function(selectElement) {
-          selectElement.setAttribute('onchange', 'updateSelect()');
-          // Optionally add styles or other attributes
-          // selectElement.setAttribute('style', 'width: 50% !important');
-      });
-  }
-});
 
 function updateSelect() {
   // Define your updateSelect function here
