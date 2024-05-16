@@ -59,8 +59,6 @@
         /* Set height to 100% of the viewport height */
     }
 
-
-
     .card {
         height: 350px;
         width: 350px;
@@ -170,7 +168,7 @@
                 </a>
             </li><!-- End F.A.Q Page Nav -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="login.php" style="background-color: #F4F3EF;">
+                <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
                     <i class="bi bi-question-circle"></i>
                     <span>Logout</span>
                 </a>
