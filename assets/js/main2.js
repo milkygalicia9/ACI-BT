@@ -293,6 +293,27 @@ if (certificateType.value == 'indigency') {
 
 
 document.addEventListener('DOMContentLoaded', function() {
+  var iframe = document.getElementById('myIframe');
+  var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+ 
+  var days = iframeDocument.getElementById('days');
+  var months = iframeDocument.getElementById('months');
+  var sups = iframeDocument.getElementById('sups');
+  var years = iframeDocument.getElementById('years');
+
+  const currentDate = new Date();
+  
+  const day = currentDate.getDate();
+  const month = currentDate.getMonth() ; 
+  const year = currentDate.getFullYear();
+
+  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const monthName = monthNames[month];
+  console.log(days,months,sups,years);
+  if (days) days.innerText = day;
+  if (months) months.innerText = monthName;
+  if (sups) sups.innerText = getOrdinalSuffix(day);
+  if (years) years.innerText =year;
  
 });
 // document.addEventListener('DOMContentLoaded', function() {
