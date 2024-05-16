@@ -152,8 +152,32 @@
         <div class="pagetitle mb-5 mt-3">
             <div class="col-md-11">
                 <div class="welcome-card d-flex align-items-center justify-content-between">
-                    <h3>Welcome, User</h3>
-                    <h6 class="">12/02/2024 10:59am</h6>
+                <h3>Welcome, <?php echo $_SESSION['username'] ?>!</h3>
+                <script type="text/javascript">
+                    tday=new Array	("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+                    tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+
+                    function GetClock(){
+                    var d=new Date();
+                    var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getFullYear();
+                    var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
+
+                    if(nhour==0){ap=" AM";nhour=12;}
+                    else if(nhour<12){ap=" AM";}
+                    else if(nhour==12){ap=" PM";}
+                    else if(nhour>12){ap=" PM";nhour-=12;}
+
+                    if(nmin<=9) nmin="0"+nmin;
+                    if(nsec<=9) nsec="0"+nsec;
+
+                    document.getElementById('datetime').innerHTML=""+nhour+":"+nmin+":"+nsec+ap+" , "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+tday[nday]+"";
+                    }
+                    window.onload=function(){
+                    GetClock();
+                    setInterval(GetClock,1000);
+                    }
+                </script>
+                <h6 class="" id="datetime"></h6>
                 </div>
             </div>
         </div>
