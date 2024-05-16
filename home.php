@@ -75,7 +75,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center" style="background-color: #F4F3EF;">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="home.php" class="logo d-flex align-items-center">
                 <img src="assets/img/devs/carl.jpg" alt="">
                 <span class="d-none d-lg-block">ACI-BT</span>
             </a>
@@ -98,7 +98,7 @@
 
         <ul class="sidebar-nav" id="sidebar-nav" style="padding: 15px;">
             <li class="nav-item">
-                <a class="nav-link text-light" href="index2.html" style="background-color: #174793;">
+                <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
                     <i class="bi bi-grid text-light"></i>
                     <span>Home</span>
                 </a>
@@ -111,17 +111,17 @@
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="components-alerts.html">
+                        <a href="officials.php">
                             <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Officials</span>
                         </a>
                     </li>
                     <li>
-                        <a href="components-accordion.html">
+                        <a href="sk.php">
                             <i class="bi bi-circle text-light"></i><span class="text-light">SK Officials</span>
                         </a>
                     </li>
                     <li>
-                        <a href="components-badges.html">
+                        <a href="staffs.php">
                             <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Staffs</span>
                         </a>
                     </li>
@@ -129,13 +129,13 @@
             </li><!-- End Components Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed text-light" href="about.html" style="background-color: #174793;">
+                <a class="nav-link collapsed text-light" href="about.php" style="background-color: #174793;">
                     <i class="bi bi-question-circle"></i>
                     <span>About</span>
                 </a>
             </li><!-- End F.A.Q Page Nav -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="login.html" style="background-color: #F4F3EF;">
+                <a class="nav-link collapsed" href="login.php" style="background-color: #F4F3EF;">
                     <i class="bi bi-question-circle"></i>
                     <span>Logout</span>
                 </a>
