@@ -160,7 +160,7 @@
 
         <section class="section dashboard">
             <div class="col-md-12 d-flex align-items-center justify-content-around mt-4">
-                <form action="gen_docs.html" class="row">
+                <form action="gen_docs.php" class="row">
                     <div class="col-md-12"> <button class="card">
                             <div class="card-document">
                                 <h6 class="card-title">Generate Documents</h6>
