@@ -1,10 +1,10 @@
 <?php
-    session_start();
+session_start();
 
-    if (!isset($_SESSION['username'])) {
-        header("Location: index.php");
-        exit();
-    }
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,7 +103,9 @@
 
         <div class="barangay-logo h-50 w-100" style="background-color: #729ED9; margin-bottom: 2px;">
             <div class="barangay-logo h-100 d-flex align-items-center justify-content-center">
-                <img src="assets/img/cap-log.png" height="250" alt="">
+                <a href="home.php">
+                    <img src="assets/img/cap-log.png" height="250" alt="">
+                </a>
             </div>
         </div>
 
@@ -186,24 +188,25 @@
         <div class="pagetitle mb-5 mt-3">
             <div class="col-md-11">
                 <div class="welcome-card d-flex align-items-center justify-content-between">
-                <h3>Welcome, <?php echo $_SESSION['username'] ?>!</h3>
-                <script type="text/javascript">
-                    tday=new Array	("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
-                    tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+                    <h3>Welcome, <?php echo $_SESSION['username'] ?>!</h3>
+                    <script type="text/javascript">
+                        tday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+                        tmonth = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 
-                    function GetClock(){
-                    var d=new Date();
-                    var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getFullYear();
-                    var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds(),ap;
+                        function GetClock() {
+                            var d = new Date();
+                            var nday = d.getDay(), nmonth = d.getMonth(), ndate = d.getDate(), nyear = d.getFullYear();
+                            var nhour = d.getHours(), nmin = d.getMinutes(), nsec = d.getSeconds(), ap;
 
-                    if(nhour==0){ap=" AM";nhour=12;}
-                    else if(nhour<12){ap=" AM";}
-                    else if(nhour==12){ap=" PM";}
-                    else if(nhour>12){ap=" PM";nhour-=12;}
+                            if (nhour == 0) { ap = " AM"; nhour = 12; }
+                            else if (nhour < 12) { ap = " AM"; }
+                            else if (nhour == 12) { ap = " PM"; }
+                            else if (nhour > 12) { ap = " PM"; nhour -= 12; }
 
-                    if(nmin<=9) nmin="0"+nmin;
-                    if(nsec<=9) nsec="0"+nsec;
+                            if (nmin <= 9) nmin = "0" + nmin;
+                            if (nsec <= 9) nsec = "0" + nsec;
 
+<<<<<<< HEAD
                     document.getElementById('datetimes').innerHTML=""+nhour+":"+nmin+":"+nsec+ap+" , "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+tday[nday]+"";
                     }
                     window.onload=function(){
@@ -212,6 +215,16 @@
                     }
                 </script>
                 <h6 class="" id="datetime"></h6>
+=======
+                            document.getElementById('datetime').innerHTML = "" + nhour + ":" + nmin + ":" + nsec + ap + " , " + tmonth[nmonth] + " " + ndate + ", " + nyear + " " + tday[nday] + "";
+                        }
+                        window.onload = function () {
+                            GetClock();
+                            setInterval(GetClock, 1000);
+                        }
+                    </script>
+                    <h6 class="" id="datetime"></h6>
+>>>>>>> 07cae7d13150b24bac45c96262569f10ed1cae70
                 </div>
             </div>
         </div>
