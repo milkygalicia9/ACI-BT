@@ -16,7 +16,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     if ($count == 1) {
         $_SESSION['username'] = ucfirst($username);
-        header("Location: index.php");
+        header("Location: home.php");
         exit();
     } else {
         echo "Invalid Login Credentials.";
