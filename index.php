@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Pages / Login - NiceAdmin Bootstrap Template</title>
+    <title>ACI-BT | Login</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -32,212 +32,77 @@
     <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<style>
+    .logo-overlap {
+        height: 150px;
+        margin-top: -60px;
+        /* Adjust this value as needed */
+        border: 5px solid white;
+        /* Optional: adds a border to make the logo stand out */
+    }
+</style>
 
+
+<body style="background-color: #F4F3EF;">
     <main>
-        <div class="container">
-
-            <section
-                class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container p-0">
+            <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center">
                 <div class="container">
-                    <div class="row justify-content-center">
+                    <div class="row d-flex align-items-center justify-content-center">
                         <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-
-                            <div class="d-flex justify-content-center py-4">
-                                <a href="index.html" class="logo d-flex align-items-center w-auto">
-                                    <img src="assets/img/logo.png" alt="">
-                                    <span class="d-none d-lg-block">ACI-BT</span>
-                                </a>
-                            </div>
-
-                            <div class="card mb-3">
-
-                                <div class="card-body">
-
-<<<<<<< Updated upstream
-                                    <div class="pt-4 pb-2">
-                                        <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                                        <p class="text-center small">Enter your username & password to login</p>
+                            <div class="card">
+                                <!-- <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+                                        <p class="text-center small">Enter your username & password to login</p> -->
+                                <div class="pb-0">
+                                    <div class="image">
+                                        <img src="./assets/img/tiniguiban.jpg" alt="..." class="img-fluid"
+                                            style="height: 160px; width: 100%;">
                                     </div>
-=======
-        <div class="d-flex align-items-center justify-content-between">
-            <a href="index.php" class="logo d-flex align-items-center">
-                <img src="assets/img/devs/carl.jpg" alt="">
-                <span class="d-none d-lg-block">ACI-BT</span>
-            </a>
-            <i class="bi bi-list toggle-sidebar-btn"></i>
-        </div>
->>>>>>> Stashed changes
-
-                                    <form class="row g-3 needs-validation" action="login_process.php" method="post"
-                                        novalidate>
-
-                                        <div class="col-12">
-                                            <label for="yourUsername" class="form-label">Username</label>
-                                            <div class="input-group has-validation">
-                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                                <input type="text" name="username" class="form-control"
-                                                    id="yourUsername" required>
-                                                <div class="invalid-feedback">Please enter your username.</div>
-                                            </div>
+                                    <div class="card-body">
+                                        <div class="author logo-overlap d-flex flex-column align-items-center">
+                                            <img class="avatar border-gray m-2 rounded-circle"
+                                                src="./assets/img/logo.jpg" alt="..."
+                                                style="height: 100px; margin: 20;">
+                                            <h5 class="title" style="color: #729ED9;">Welcome to ACI-BT!</h5>
+                                            <label for="">Login</label>
                                         </div>
-
-                                        <div class="col-12">
-                                            <label for="yourPassword" class="form-label">Password</label>
-                                            <input type="password" name="password" class="form-control"
-                                                id="yourPassword" required>
-                                            <div class="invalid-feedback">Please enter your password!</div>
-                                        </div>
-
-<<<<<<< Updated upstream
-                                        <div class="col-12">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="remember"
-                                                    value="true" id="rememberMe">
-                                                <label class="form-check-label" for="rememberMe">Remember me</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <button class="btn btn-primary w-100" type="submit">Login</button>
-                                        </div>
-                                        <div class="col-12">
-                                            <p class="small mb-0">Don't have account? <a
-                                                    href="pages-register.html">Create an account</a></p>
-                                        </div>
-                                    </form>
-
+                                    </div>
                                 </div>
+
+                                <form class="row g-3 needs-validation p-3 pt-0" action="login_process.php" method="post"
+                                    novalidate>
+                                    <div class="col-12">
+                                        <label for="yourUsername" class="form-label">Username</label>
+                                        <div class="input-group has-validation">
+                                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                            <input type="text" name="username" class="form-control" id="yourUsername"
+                                                required>
+                                            <div class="invalid-feedback">Please enter your username.</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <label for="yourPassword" class="form-label">Password</label>
+                                        <input type="password" name="password" class="form-control" id="yourPassword"
+                                            required>
+                                        <div class="invalid-feedback">Please enter your password!</div>
+                                    </div>
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100" type="submit">Login</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="small mb-0">Don't have account? <a href="pages-register.html">Create
+                                                an account</a></p>
+                                    </div>
+                                </form>
                             </div>
-
-                            <div class="credits">
-                                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                            </div>
-=======
-        <ul class="sidebar-nav" id="sidebar-nav" style="padding: 15px;">
-            <li class="nav-item">
-                <a class="nav-link text-light" href="index.php" style="background-color: #174793;">
-                    <i class="bi bi-grid text-light"></i>
-                    <span>Home</span>
-                </a>
-            </li><!-- End Dashboard Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#" style="background-color: #174793;">
-                    <i class="bi bi-menu-button-wide"></i><span>Officials</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="components-alerts.php">
-                            <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Officials</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-accordion.php">
-                            <i class="bi bi-circle text-light"></i><span class="text-light">SK Officials</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="components-badges.php">
-                            <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Staffs</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Components Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed text-light" href="about.php" style="background-color: #174793;">
-                    <i class="bi bi-question-circle"></i>
-                    <span>About</span>
-                </a>
-            </li><!-- End F.A.Q Page Nav -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="login.php" style="background-color: #F4F3EF;">
-                    <i class="bi bi-question-circle"></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-        </ul>
->>>>>>> Stashed changes
-
+                        </div>
+                        <div class="credits text-center">
+                            Designed by <a href="about.html">&copy; Cayabyabers</a>
                         </div>
                     </div>
-                </div>
-
             </section>
-
         </div>
-<<<<<<< Updated upstream
     </main>
-=======
-
-        <section class="section dashboard">
-            <div class="col-md-12 d-flex align-items-center justify-content-around mt-4">
-                <form action="gen_docs.php" class="row">
-                    <div class="col-md-12"> <button class="card">
-                            <div class="card-document">
-                                <h6 class="card-title">Generate Documents</h6>
-                            </div>
-                            <div class="card-body">
-                                <img height="250" width="280" src="./assets/img/certs.png" alt="">
-                            </div>
-                            <div class="card-document">
-                                <hr>
-                                <div class="stats">
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </form>
-                <form action="view_trans.php">
-                    <div class="col-md-12"> <button class="card">
-                            <div class="card-document">
-                                <h6 class="card-title">View Transactions</h6>
-                            </div>
-                            <div class="card-body">
-                                <img height="250" width="280" src="./assets/img/list.png" alt="">
-                            </div>
-                            <div class="card-document">
-                                <hr>
-                                <div class="stats">
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </form>
-                <form action="view_reports.php">
-                    <div class="col-md-12"> <button class="card">
-                            <div class="card-document">
-                                <h6 class="card-title">View Reports</h6>
-                            </div>
-                            <div class="card-body">
-                                <img height="250" width="280" src="./assets/img/reports.png" alt="">
-                            </div>
-                            <div class="card-document">
-                                <hr>
-                                <div class="stats">
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </section>
-
-    </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            Designed by <a href="about.php">&copy; Cayabyabers</a>
-        </div>
-    </footer><!-- End Footer -->
->>>>>>> Stashed changes
-
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
