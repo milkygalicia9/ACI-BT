@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>ACI-BT | Home</title>
+    <title>ACI-BT | Transactions</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -40,34 +40,11 @@
 </head>
 
 <style>
-    .navbar-wrapper button {
-        width: 100px;
-        background-color: #729ED9;
-    }
-
-    .card {
-        color: #fff;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: none;
-        position: relative;
-        display: inline-block;
-        border-radius: 10px;
-        background: #efefef;
-        box-shadow: 5px 5px 4px #c8d0e7, -1px -1px 3px #fff;
-        color: #585858;
-    }
-
-    .card:active {
-        box-shadow: inset 1px 1px 3px #c8d0e7, inset -1px -1px 3px #fff;
-    }
-
-    .card:hover {
-        transform: scale(1.1);
-        background-color: rgb(255, 230, 91);
+    .hover-img {
+        border-bottom: 10px solid #F1F04B;
     }
 </style>
+
 
 <body style="background-color: #F4F3EF;">
 
@@ -148,69 +125,62 @@
     </aside>
 
     <main id="main" class="main">
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
 
-        <div class="pagetitle mb-5 mt-3">
-            <div class="col-md-11">
-                <div class="welcome-card d-flex align-items-center justify-content-between">
-                    <h3>Welcome, User</h3>
-                    <h6 class="">12/02/2024 10:59am</h6>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Transaction Table</h5>
+                            <!-- Table with stripped rows -->
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Transacted by</th>
+                                        <th>Document Name</th>
+                                        <th>Client Transaction ID</th>
+                                        <th>Created At</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    require 'db.php';
+
+                                    $sql = "SELECT * FROM transactions";
+                                    // $sql = "SELECT t.id, a.username AS transact_by_name, dt.doc_name, t.client_trans_id, t.created_at
+                                    //                                     FROM transactions t
+                                    //                                     INNER JOIN admin a ON t.transact_by = a.id
+                                    //                                     INNER JOIN doctype dt ON t.doc_id = dt.id";
+                                    
+                                    $result = $conn->query($sql);
+
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo "<tr>";
+                                            echo "<td>" . $row["id"] . "</td>";
+                                            echo "<td>" . $row["transact_by"] . "</td>";
+                                            echo "<td>" . $row["doc_id"] . "</td>";
+                                            echo "<td>" . $row["client_trans_id"] . "</td>";
+                                            echo "<td>" . $row["created_at"] . "</td>";
+                                            echo "<td><a href=" . "show_client_trans.php?id=" . $row["id"] . "&doc_name=" . str_replace(" ", "_", $row["doc_id"]) . "><button type=" . "submit" . ">VIEW</button></a></td>";
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='5'><center>No transactions found</center></td></tr>";
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                            <!-- End Table with stripped rows -->
+
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
-
-        <section class="section dashboard">
-            <div class="col-md-12 d-flex align-items-center justify-content-around mt-4">
-                <form action="gen_docs.php" class="row">
-                    <div class="col-md-12"> <button class="card">
-                            <div class="card-document">
-                                <h6 class="card-title">Generate Documents</h6>
-                            </div>
-                            <div class="card-body">
-                                <img height="250" width="280" src="./assets/img/certs.png" alt="">
-                            </div>
-                            <div class="card-document">
-                                <hr>
-                                <div class="stats">
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </form>
-                <form action="view_transactions.php">
-                    <div class="col-md-12"> <button class="card">
-                            <div class="card-document">
-                                <h6 class="card-title">View Transactions</h6>
-                            </div>
-                            <div class="card-body">
-                                <img height="250" width="280" src="./assets/img/list.png" alt="">
-                            </div>
-                            <div class="card-document">
-                                <hr>
-                                <div class="stats">
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </form>
-                <form action="view_reports.php">
-                    <div class="col-md-12"> <button class="card">
-                            <div class="card-document">
-                                <h6 class="card-title">View Reports</h6>
-                            </div>
-                            <div class="card-body">
-                                <img height="250" width="280" src="./assets/img/reports.png" alt="">
-                            </div>
-                            <div class="card-document">
-                                <hr>
-                                <div class="stats">
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </form>
-            </div>
         </section>
-
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
