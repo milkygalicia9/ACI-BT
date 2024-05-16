@@ -127,97 +127,48 @@
     <main id="main" class="main">
         <div class="content">
             <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
             <div class="container">
                 <div class="card overflow-hidden">
                     <div class="card-body p-0">
-                        <img src="assets/img/brgy_sk.png" alt="" class="img-fluid">
-                        <div class="row align-items-center">
-                            <div class="col-lg-4 order-lg-1 order-2"> <!--Pang gitna-->
-                            </div>
-                            <div class="col-lg-4 mt-n3 order-lg-2 order-1">
-                                <div class="mt-n4">
-                                    <div class="d-flex align-items-center justify-content-center mb-2">
-                                        <div class="border border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
-                                            style="width: 125px; height: 125px;">
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt=""
-                                                class="w-100 h-100">
-                                        </div>
-                                    </div>
-                                    <div class="text-center">
-                                        <h6 class="text-primary">ELDRED JEROME M. AYUNTING </h6>
-                                        <span class="text-dark fs-4">SK Chairman</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <ul
-                            class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
-                        </ul>
+                        <img src="assets/img/brgy_staffs.png" alt="" class="img-fluid">
                     </div>
                 </div>
                 <div class="tab-pane fade show active" id="pills-friends" role="tabpanel"
                     aria-labelledby="pills-friends-tab" tabindex="0">
                     <div class="row d-flex align-items-center justify-content-center">
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="card hover-img">
-                                <div class="card-body p-4 text-center border-bottom">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
-                                        class="rounded-circle mb-3" width="80" height="80">
-                                    <h6 class="text-primary">ZYRA ASHLEE DUMARAN</h6>
-                                    <span class="text-dark fs-4">SK Kagawad</span>
-                                </div>
-                                <ul
-                                    class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="card hover-img">
-                                <div class="card-body p-4 text-center border-bottom">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""
-                                        class="rounded-circle mb-3" width="80" height="80">
-                                    <h6 class="text-primary">MILKY MAE GALICIA</h6>
-                                    <span class="text-dark fs-4">SK Kagawad</span>
-                                </div>
-                                <ul
-                                    class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4">
-                            <div class="card hover-img">
-                                <div class="card-body p-4 text-center border-bottom">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt=""
-                                        class="rounded-circle mb-3" width="80" height="80">
-                                    <h6 class="text-primary">JERICHO PEREZ</h6>
-                                    <span class="text-dark fs-4">SK Kagawad</span>
-                                </div>
-                                <ul
-                                    class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-4">
+                        <div class="col-lg-4">
                             <div class="card hover-img">
                                 <div class="card-body p-4 text-center border-bottom">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
-                                    <h6 class="text-primary">TRISHA MAE QUINTERO</h6>
-                                    <span class="text-dark fs-4">SK Kagawad</span>
+                                    <h6 class="text-primary">EVELYN G. COMAHIG</h6>
+                                    <span class="text-dark fs-4">Accounting Clerk</span>
                                 </div>
                                 <ul
                                     class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-lg-4">
+                        <div class="col-lg-4">
+                            <div class="card hover-img">
+                                <div class="card-body p-4 text-center border-bottom">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt=""
+                                        class="rounded-circle mb-3" width="80" height="80">
+                                    <h6 class="text-primary">ZANGELICA B. NEPOMUCENO</h6>
+                                    <span class="text-dark fs-4">Clerk</span>
+                                </div>
+                                <ul
+                                    class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
                             <div class="card hover-img">
                                 <div class="card-body p-4 text-center border-bottom">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
-                                    <h6 class="text-primary">PAMELA BASANES</h6>
-                                    <span class="text-dark fs-4">SK Kagawad</span>
+                                    <h6 class="text-primary">MINERVA IGNACIO</h6>
+                                    <span class="text-dark fs-4">VAWC</span>
                                 </div>
                                 <ul
                                     class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
@@ -229,8 +180,8 @@
                                 <div class="card-body p-4 text-center border-bottom">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
-                                    <h6 class="text-primary">SYMON CARLOS</h6>
-                                    <span class="text-dark fs-4">SK Kagawad</span>
+                                    <h6 class="text-primary">APRIL ESVER</h6>
+                                    <span class="text-dark fs-4">BCWPC</span>
                                 </div>
                                 <ul
                                     class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
@@ -242,8 +193,21 @@
                                 <div class="card-body p-4 text-center border-bottom">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
-                                    <h6 class="text-primary">TRICIA MAE BAGONA</h6>
-                                    <span class="text-dark fs-4"> SK Kagawad</span>
+                                    <h6 class="text-primary">GEMMA ANZA</h6>
+                                    <span class="text-dark fs-4">Utility</span>
+                                </div>
+                                <ul
+                                    class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4">
+                            <div class="card hover-img">
+                                <div class="card-body p-4 text-center border-bottom">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""
+                                        class="rounded-circle mb-3" width="80" height="80">
+                                    <h6 class="text-primary">ESTELITA MAGBANUA</h6>
+                                    <span class="text-dark fs-4">Utility</span>
                                 </div>
                                 <ul
                                     class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
