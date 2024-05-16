@@ -171,11 +171,7 @@
                 </a>
             </li><!-- End F.A.Q Page Nav -->
             <li class="nav-item">
-<<<<<<< HEAD
                 <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
-=======
-                <a class="nav-link collapsed" href="logout.php" style="background-color: #F4F3EF;">
->>>>>>> 971947c7fbe6410291ab9f14aa219851f72d7ec7
                     <i class="bi bi-question-circle"></i>
                     <span>Logout</span>
                 </a>
