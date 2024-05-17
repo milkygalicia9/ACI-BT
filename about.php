@@ -92,7 +92,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse"
                     href="#" style="background-color: #174793;">
-                    <i class="bi bi-menu-button-wide"></i><span>Officials</span><i
+                    <i class="bi bi-people"></i><span>Officials</span><i
                         class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -122,7 +122,7 @@
             </li><!-- End F.A.Q Page Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
-                    <i class="bi bi-question-circle"></i>
+                    <i class="bi bi-power text-dark"></i>
                     <span>Logout</span>
                 </a>
             </li>
@@ -145,6 +145,12 @@
                                 </div>
                                 <div class="carousel-item">
                                     <img src="assets/img/cap-log.png" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/img/psu-logo.jpg" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="assets/img/devs/carl.jpg" class="d-block w-100 rounded-circle" alt="...">
                                 </div>
                             </div>
                         </div>
@@ -179,10 +185,10 @@
                         </div>
                     </div>
                 </div>
-
+<!-- 
                 <section style="height: 400px;">
                     <div class="blank"></div>
-                </section>
+                </section> -->
 
                 <section class="tab-pane fade show active" id="developers" role="tabpanel"
                     aria-labelledby="pills-friends-tab" tabindex="0">

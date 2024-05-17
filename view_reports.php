@@ -210,7 +210,7 @@ if (!isset($_SESSION['username'])) {
             const Sales_Transfer_of_Residency = <?php echo $count_transfer_of_residency; ?>;
         </script>
 
-        <div class="container content bg-white  border rounded  py-3"
+        <div class="container content bg-light  border rounded  py-3"
             style="width: 97%;  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); overflow-x: hidden;">
             <div id="myCarousel" class="carousel slide" data-ride="carousel" data-bs-ride="carousel"
                 data-bs-interval="3000">
