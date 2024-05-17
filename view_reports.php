@@ -659,14 +659,12 @@ if (!isset($_SESSION['username'])) {
                     <!-- Add more carousel-items with three images each as needed -->
                 </div>
                 <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"
-                    style="position:  absolute; left: -90px;">
+                    style="position:  absolute; left: -70px;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only ">Previous</span>
                 </a>
                 <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"
-                    style="position:  absolute; right: -90px; ">
+                    style="position:  absolute; right: -70px;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
                 </a>
             </div>
         </div>
@@ -866,14 +864,12 @@ if (!isset($_SESSION['username'])) {
                 <!--Carousel End-->
 
                 <a class="carousel-control-prev" href="#chartCarousel" role="button" data-slide="prev"
-                    style="position: absolute; left: -90px;">
+                    style="position: absolute; left: -70px;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
                 </a>
                 <a class="carousel-control-next" href="#chartCarousel" role="button" data-slide="next"
-                    style="position: absolute; right: -90px;">
+                    style="position: absolute; right: -70px;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
                 </a>
             </div>
         </div>
