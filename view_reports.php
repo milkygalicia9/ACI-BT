@@ -210,7 +210,7 @@ if (!isset($_SESSION['username'])) {
             const Sales_Transfer_of_Residency = <?php echo $count_transfer_of_residency; ?>;
         </script>
 
-        <div class="container content bg-white  border rounded  py-3"
+        <div class="container content bg-light  border rounded  py-3"
             style="width: 97%;  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); overflow-x: hidden;">
             <div id="myCarousel" class="carousel slide" data-ride="carousel" data-bs-ride="carousel"
                 data-bs-interval="3000">
@@ -659,14 +659,12 @@ if (!isset($_SESSION['username'])) {
                     <!-- Add more carousel-items with three images each as needed -->
                 </div>
                 <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"
-                    style="position:  absolute; left: -90px;">
+                    style="position:  absolute; left: -70px;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only ">Previous</span>
                 </a>
                 <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"
-                    style="position:  absolute; right: -90px; ">
+                    style="position:  absolute; right: -70px;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
                 </a>
             </div>
         </div>
@@ -866,14 +864,12 @@ if (!isset($_SESSION['username'])) {
                 <!--Carousel End-->
 
                 <a class="carousel-control-prev" href="#chartCarousel" role="button" data-slide="prev"
-                    style="position: absolute; left: -90px;">
+                    style="position: absolute; left: -70px;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
                 </a>
                 <a class="carousel-control-next" href="#chartCarousel" role="button" data-slide="next"
-                    style="position: absolute; right: -90px;">
+                    style="position: absolute; right: -70px;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
                 </a>
             </div>
         </div>
