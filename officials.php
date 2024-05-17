@@ -163,6 +163,11 @@ if (!isset($_SESSION['username'])) {
                         </div>
                         <ul
                             class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
+                            <li>
+                                <a href="edit-profile.php">
+                                    <i class="bi bi-person-fill text-secondary fs-4"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
