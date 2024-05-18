@@ -39,6 +39,66 @@
 ======================================================= -->
 </head>
 
+<style>
+    .iframe-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    .iframe-container iframe {
+        width: 21.05cm;
+        height: 30cm;
+        border: none;
+        box-sizing: border-box;
+    }
+
+    @media print {
+        iframe {
+            border: none;
+            width: 21cm !important;
+            height: 29.7cm !important;
+        }
+    }
+
+    p {
+        color: white;
+        font-size: 12px;
+    }
+
+    .certificates div {
+        display: none;
+    }
+
+    .certificates div.active {
+        display: block;
+    }
+
+    form {
+        font-size: .9em;
+    }
+
+    select {
+        width: 100%
+    }
+
+    /* .certificates select {
+                                    width: 100px;
+                                    padding: 10px;
+                                } */
+
+    .card {
+        border: none;
+        position: relative;
+        border-radius: 10px;
+        background: #efefef;
+        box-shadow: 5px 5px 4px #c8d0e7, -1px -1px 3px #fff;
+    }
+</style>
+
 <body style="background-color: #F4F3EF;">
 
     <!-- ======= Header ======= -->
@@ -120,7 +180,7 @@
     </aside>
 
 
-    <main id="main" class="main">
+    <main id="main" class="main p-3">
 
         <!-- <div class="pagetitle">
             <h1>Form Elements</h1>
@@ -140,65 +200,6 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Fillup Certificate</h5>
-                            <style>
-                                .iframe-container {
-                                    width: 100%;
-                                    height: 100%;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    box-sizing: border-box;
-                                }
-
-                                .iframe-container iframe {
-                                    width: 21.05cm;
-                                    height: 32cm;
-                                    border: none;
-                                    box-sizing: border-box;
-                                }
-
-                                @media print {
-                                    iframe {
-                                        border: none;
-                                        width: 21cm !important;
-                                        height: 29.7cm !important;
-                                    }
-                                }
-
-                                p {
-                                    color: white;
-                                    font-size: 12px;
-                                }
-
-                                .certificates div {
-                                    display: none;
-                                }
-
-                                .certificates div.active {
-                                    display: block;
-                                }
-
-                                form {
-                                    font-size: .9em;
-                                }
-
-                                select {
-                                    width: 100%
-                                }
-
-                                /* .certificates select {
-                                    width: 100px;
-                                    padding: 10px;
-                                } */
-
-                                .card {
-                                    border: none;
-                                    position: relative;
-                                    border-radius: 10px;
-                                    background: #efefef;
-                                    box-shadow: 5px 5px 4px #c8d0e7, -1px -1px 3px #fff;
-                                }
-                            </style>
 
                             <!-- General Form Elements -->
                             <form>
