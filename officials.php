@@ -147,6 +147,13 @@ if (!isset($_SESSION['username'])) {
                             </div>
                             <div class="col-lg-4 mt-n3 order-lg-2 order-1">
                                 <div class="mt-n4">
+                                    <div class="d-flex justify-content-end">
+                                        <a href="edit-profile.php">
+                                            <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                                title="Edit Profile"><i class="bi bi-list text-secondary"></i>
+                                            </button>
+                                        </a>
+                                    </div>
                                     <div class="d-flex align-items-center justify-content-center mb-2">
                                         <div class="border border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
                                             style="width: 125px; height: 125px;">
@@ -172,14 +179,23 @@ if (!isset($_SESSION['username'])) {
                     <div class="row d-flex align-items-center justify-content-center">
                         <div class="col-sm-6 col-lg-4">
                             <div class="card hover-img">
-                                <div class="card-body p-4 text-center border-bottom">
+
+                                <a href="edit-profile.php" class="d-flex justify-content-end">
+                                    <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
+                                        title="Edit Profile"><i class="bi bi-list text-secondary"></i>
+                                    </button>
+                                </a>    
+
+                                <div class="card-body text-center border-bottom">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
                                     <h6 class="text-primary">HON. ELMER D. BONBON</h6>
                                     <span class="text-dark fs-4">Kagawad</span>
                                 </div>
-                                <ul
-                                    class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
+                                <ul class="bg-light list-unstyled d-flex align-items-center justify-content-endmb-0">
+                                    <li>
+
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -192,7 +208,7 @@ if (!isset($_SESSION['username'])) {
                                     <span class="text-dark fs-4">Kagawad</span>
                                 </div>
                                 <ul
-                                    class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
+                                    class="p-2 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
                                 </ul>
                             </div>
                         </div>
@@ -205,7 +221,7 @@ if (!isset($_SESSION['username'])) {
                                     <span class="text-dark fs-4">Kagawad</span>
                                 </div>
                                 <ul
-                                    class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
+                                    class="p-2 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
                                 </ul>
                             </div>
                         </div>
@@ -218,7 +234,7 @@ if (!isset($_SESSION['username'])) {
                                     <span class="text-dark fs-4">Kagawad</span>
                                 </div>
                                 <ul
-                                    class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
+                                    class="p-2 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
                                 </ul>
                             </div>
                         </div>
@@ -231,7 +247,7 @@ if (!isset($_SESSION['username'])) {
                                     <span class="text-dark fs-4">Kagawad</span>
                                 </div>
                                 <ul
-                                    class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
+                                    class="p-2 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
                                 </ul>
                             </div>
                         </div>
@@ -244,7 +260,7 @@ if (!isset($_SESSION['username'])) {
                                     <span class="text-dark fs-4">Kagawad</span>
                                 </div>
                                 <ul
-                                    class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
+                                    class="p-2 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
                                 </ul>
                             </div>
                         </div>
@@ -257,7 +273,7 @@ if (!isset($_SESSION['username'])) {
                                     <span class="text-dark fs-4">Kagawad</span>
                                 </div>
                                 <ul
-                                    class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
+                                    class="p-2 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
                                 </ul>
                             </div>
                         </div>
@@ -270,7 +286,7 @@ if (!isset($_SESSION['username'])) {
                                     <span class="text-dark fs-4">Secretary</span>
                                 </div>
                                 <ul
-                                    class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
+                                    class="p-2 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
                                 </ul>
                             </div>
                         </div>
@@ -283,7 +299,7 @@ if (!isset($_SESSION['username'])) {
                                     <span class="text-dark fs-4">Treasurer</span>
                                 </div>
                                 <ul
-                                    class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
+                                    class="p-2 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
                                 </ul>
                             </div>
                         </div>
@@ -320,6 +336,13 @@ if (!isset($_SESSION['username'])) {
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <script>
+        $(function () {
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
 
 </body>
 
