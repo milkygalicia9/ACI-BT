@@ -206,6 +206,7 @@
                                 <div class="col-md-8 col-lg-9">
                                     <img src="assets/img/profile-img.jpg" alt="Profile">
                                     <div class="pt-2">
+                                        <input class="form-control" type="file" id="formFile">
                                         <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i
                                                 class="bi bi-upload"></i></a>
                                         <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i
@@ -263,7 +264,8 @@
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary p-2">Save Changes</button>
+                                <!-- <button type="submit" class="btn btn-primary p-2">Save Changes</button> -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">Confirm Changes</button>
                             </div>
                         </form><!-- End Profile Edit Form -->
                     </div>
@@ -271,6 +273,31 @@
             </div>
         </section>
     </main><!-- End #main -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="basicModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Superuser Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="superuserPassword" class="form-label">Enter Superuser Password</label>
+                            <input type="password" class="form-control" id="superuserPassword" placeholder="Password">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
