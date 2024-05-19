@@ -34,6 +34,8 @@ if (!isset($_SESSION['username'])) {
     <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
     <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
     <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
 
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet">
@@ -135,6 +137,7 @@ if (!isset($_SESSION['username'])) {
                 <a href="home.php">
                     <img src="assets/img/cap-log.png" height="250" alt="">
                 </a>
+                x
             </div>
         </div>
 
@@ -212,7 +215,7 @@ if (!isset($_SESSION['username'])) {
 
         <div class="container content bg-light  border rounded  py-3"
             style="width: 97%;  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); overflow-x: hidden;">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-bs-ride="carousel"
+            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-ride="carousel"
                 data-bs-interval="3000">
                 <div class="carousel-inner">
 
@@ -222,13 +225,13 @@ if (!isset($_SESSION['username'])) {
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgba(94, 180, 239);">
-                                    <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">Business
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Business
                                         Permit (New)</div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-5">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
                                                 <?php echo $count_business_permit_new ?>
                                             </div>
                                         </div>
@@ -251,14 +254,14 @@ if (!isset($_SESSION['username'])) {
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(255, 215, 119)">
-                                    <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">Business
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Business
                                         Permit (Renew)
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-5">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
                                                 <?php echo $count_business_permit_renew ?>
                                             </div>
                                         </div>
@@ -280,13 +283,13 @@ if (!isset($_SESSION['username'])) {
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(188, 70, 70)">
-                                    <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">First
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">First
                                         Time Job Seeker</div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-5">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
                                                 <?php echo $count_first_time_job_seeker ?>
                                             </div>
                                         </div>
@@ -314,13 +317,13 @@ if (!isset($_SESSION['username'])) {
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(255, 70, 70)">
-                                    <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">Barangay
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Barangay
                                         Clearance</div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-5">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
                                                 <?php echo $count_clearance ?>
                                             </div>
                                         </div>
@@ -343,14 +346,14 @@ if (!isset($_SESSION['username'])) {
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(255, 183, 50)">
-                                    <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
                                         Certificate of Cohabitation
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-5">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
                                                 <?php echo $count_cohabitation ?>
                                             </div>
                                         </div>
@@ -371,14 +374,14 @@ if (!isset($_SESSION['username'])) {
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(110, 204, 204)">
-                                    <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
                                         Certificate of Employability
                                     </div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-5">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
                                                 <?php echo $count_certificate_of_employability ?>
                                             </div>
                                         </div>
@@ -408,13 +411,13 @@ if (!isset($_SESSION['username'])) {
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(183, 147, 255)">
-                                    <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
                                         Certificate of Income</div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-5">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
                                                 <?php echo $count_certificate_of_income ?>
                                             </div>
                                         </div>
@@ -435,13 +438,13 @@ if (!isset($_SESSION['username'])) {
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(90, 123, 156)">
-                                    <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
                                         Complaint Certificate</div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-5">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
                                                 <?php echo $count_complaint_certificate ?>
                                             </div>
                                         </div>
@@ -461,13 +464,13 @@ if (!isset($_SESSION['username'])) {
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(76, 166, 76)">
-                                    <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">Death
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Death
                                         Certificate</div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-5">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
                                                 <?php echo $count_death_certificate; ?>
                                             </div>
                                         </div>
@@ -493,13 +496,13 @@ if (!isset($_SESSION['username'])) {
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color:  rgb(120, 120, 120)">
-                                    <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
                                         Indigency (AICS)</div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-5">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
                                                 <?php echo $count_indigency_aics; ?>
                                             </div>
                                         </div>
@@ -520,13 +523,13 @@ if (!isset($_SESSION['username'])) {
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(140, 90, 140)">
-                                    <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
                                         Indigency</div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-5">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
                                                 <?php echo $count_indigency; ?>
                                             </div>
                                         </div>
@@ -547,13 +550,13 @@ if (!isset($_SESSION['username'])) {
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(173, 90, 90)">
-                                    <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">Lot
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Lot
                                         Ownership</div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-5">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
                                                 <?php echo $count_lot_ownership; ?>
                                             </div>
                                         </div>
@@ -580,13 +583,13 @@ if (!isset($_SESSION['username'])) {
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(188, 188, 88)">
-                                    <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">Transfer
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Transfer
                                         of Residency</div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-5">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
                                                 <?php echo $count_transfer_of_residency; ?>
                                             </div>
                                         </div>
@@ -603,17 +606,41 @@ if (!isset($_SESSION['username'])) {
                                 </div>
                             </div>
 
+                            <div class="col-md">
+                                <div class="card-body border rounded my-1 shadow-sm">
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Carl Vincent
+                                        Alabastro</div>
+                                    <img src="assets/img/devs/carl.jpg" height="100" width="100" alt="">
+                                </div>
+                                <div class="row px-3">
+                                    <div class="col text-black">More Info</div>
+                                    <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                </div>
+                            </div>
 
                             <div class="col-md">
+                                <div class="card-body border rounded my-1 shadow-sm">
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Charls Cayabyab</div>
+                                    <img src="assets/img/devs/charls.jpg" height="100" width="100" alt="">
+                                </div>
+                                <div class="row px-3">
+                                    <div class="col text-black">More Info</div>
+                                    <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                </div>
+                            </div>
+
+
+
+                            <!-- <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(54, 162, 235); opacity: 0;">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Barangay
+                                    <div class="text-xs fw-bold text-primary text-uppercase mb-1 pt-3">Barangay
                                         Clearance</div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-5">145</div>
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">145</div>
                                         </div>
                                         <div class="background-border"></div>
                                         <div class="cert mt-2" style="background-color: rgb(54, 162, 235);">
@@ -626,43 +653,21 @@ if (!isset($_SESSION['username'])) {
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
 
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(54, 162, 235); opacity: 0;">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Barangay
-                                        Clearance</div>
 
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800 ml-5">145</div>
-                                        </div>
-                                        <div class="background-border"></div>
-                                        <div class="cert mt-2" style="background-color: rgb(54, 162, 235);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3">
-                                        <div class="col text-white">More Info</div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
-                                    </div>
-                                </div>
-                            </div>
 
                         </div>
                     </div>
 
                     <!-- Add more carousel-items with three images each as needed -->
                 </div>
-                <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev"
+                <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev"
                     style="position:  absolute; left: -70px;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </a>
-                <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next"
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next"
                     style="position:  absolute; right: -70px;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </a>
@@ -675,10 +680,10 @@ if (!isset($_SESSION['username'])) {
 
         <div class="container content bg-white border rounded py-2 mt-2"
             style="width: 97%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); overflow: hidden;">
-            <div id="chartCarousel" class="carousel slide " data-ride="carousel" data-bs-ride="carousel">
+            <div id="chartCarousel" class="carousel slide " data-bs-ride="carousel" data-bs-ride="carousel">
                 <div class="carousel-inner">
 
-                    <div class="carousel-item active">
+                    <div class="carousel-item active px-5">
                         <div class="row">
                             <div class="col-lg">
                                 <canvas id="myChart" style="width: 800px; height: 240px;"></canvas>
@@ -863,11 +868,11 @@ if (!isset($_SESSION['username'])) {
                 </div>
                 <!--Carousel End-->
 
-                <a class="carousel-control-prev" href="#chartCarousel" role="button" data-slide="prev"
+                <a class="carousel-control-prev" href="#chartCarousel" role="button" data-bs-slide="prev"
                     style="position: absolute; left: -70px;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </a>
-                <a class="carousel-control-next" href="#chartCarousel" role="button" data-slide="next"
+                <a class="carousel-control-next" href="#chartCarousel" role="button" data-bs-slide="next"
                     style="position: absolute; right: -70px;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </a>
