@@ -620,7 +620,8 @@ if (!isset($_SESSION['username'])) {
 
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Charls Cayabyab</div>
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Charls Cayabyab
+                                    </div>
                                     <img src="assets/img/devs/charls.jpg" height="100" width="100" alt="">
                                 </div>
                                 <div class="row px-3">
@@ -676,7 +677,7 @@ if (!isset($_SESSION['username'])) {
 
         <!--End of Carousel -->
 
-        <!--Start of Charts-->
+        <!-- Start of Charts -->
 
         <div class="container content bg-white border rounded py-2 mt-2"
             style="width: 97%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); overflow: hidden;">
@@ -696,7 +697,6 @@ if (!isset($_SESSION['username'])) {
                                         datasets: [{
                                             label: 'Number of Issued Certificates',
                                             backgroundColor: [
-
                                                 'rgba(54, 162, 235, 0.2)', // Business Permit (New)
                                                 'rgba(255, 206, 86, 0.2)', // Business Permit (Renew)
                                                 'rgba(153, 0, 0, 0.2)', // First Time Job Seeker
@@ -712,16 +712,15 @@ if (!isset($_SESSION['username'])) {
                                                 'rgba(153, 153, 0, 0.2)' // Transfer of Residency
                                             ],
                                             borderColor: [
-
                                                 'rgba(54, 162, 235, 1)', // Business Permit (New)
                                                 'rgba(255, 206, 86, 1)', // Business Permit (Renew)
                                                 'rgba(153, 0, 0, 1)', // First Time Job Seeker
                                                 'rgba(255, 0, 0, 1)', // Clearance
                                                 'rgba(255, 165, 0, 1)', // Cohabitation
                                                 'rgba(75, 192, 192, 1)', // Certificate of Employability
-                                                'rgba(153, 102, 255, 1)', // ertificate of Income                         
+                                                'rgba(153, 102, 255, 1)', // Certificate of Income                         
                                                 'rgba(0, 51, 102, 1)', // Complaint Certificate
-                                                'rgba(0, 128, 0,, 1)', // Death Certificate
+                                                'rgba(0, 128, 0, 1)', // Death Certificate
                                                 'rgba(16, 16, 16, 1)', // Indigency (AICS)
                                                 'rgba(77, 0, 77, 1)', // Indigency
                                                 'rgba(128, 0, 0, 1)', // Lot Ownership
@@ -745,7 +744,6 @@ if (!isset($_SESSION['username'])) {
                                         }
                                     };
 
-
                                     // Function to update chart dimensions based on window size
                                     function updateChartDimensions(chart) {
                                         var chartCanvas = chart.canvas;
@@ -763,121 +761,20 @@ if (!isset($_SESSION['username'])) {
 
                                     // Update chart dimensions when the window is resized
                                     window.addEventListener('resize', function () {
-                                        updateChartDimensions(chartMeatvsSeafood);
+                                        updateChartDimensions(myChart);
                                     });
 
                                     // Initial call to update chart dimensions
-                                    updateChartDimensions(chartMeatvsSeafood);
-
-
-                                </script>
-
-
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="carousel-item">
-                        <div class="row d-flex justify-content-center">
-                            <div class="col-md">
-
-                                <canvas id="chartTop3" style="width: 800px; height: 210px;"></canvas>
-
-
-                                <script>
-                                    // <!-- setup block -->
-                                    const Top1_Count = [100, 90, 80, 10, 100, 60, 23, 56, 76, 80, 12, 45];
-                                    const Top2_Count = [150, 10, 40, 90, 120, 20, 23, 56, 76, 23, 45, 6];
-                                    const Top3_Count = [80, 70, 30, 50, 80, 23, 45, 67, 83, 12, 45, 100];
-                                    const label_1 = ['Death Certificate'];
-                                    const label_2 = ['Death Certificate'];
-                                    const label_3 = ['Death Certificate'];
-
-                                    const monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-                                    // <!-- config block -->
-                                    const lineChartData = {
-                                        labels: monthLabels,
-                                        datasets: [{
-                                            label: label_1,
-                                            data: Top1_Count,
-                                            fill: false,
-                                            backgroundColor: 'rgb(255, 99, 132)',
-                                            borderColor: 'rgb(255, 99, 132)',
-                                            tension: 0.1
-                                        },
-                                        {
-                                            label: label_2,
-                                            data: Top2_Count,
-                                            fill: false,
-                                            backgroundColor: 'rgb(54, 162, 235)',
-                                            borderColor: 'rgb(54, 162, 235)',
-                                            tension: 0.1
-                                        },
-                                        {
-                                            label: label_3,
-                                            data: Top3_Count,
-                                            fill: false,
-                                            backgroundColor: 'rgb(255,165,0)',
-                                            borderColor: 'rgb(255,165,0)',
-                                            tension: 0.1
-                                        }]
-                                    };
-
-
-
-                                    // <!-- config block -->
-                                    const lineChartConfig = {
-                                        type: 'line',
-                                        data: lineChartData
-                                    };
-
-
-                                    // <!-- render block -->
-                                    const chartTop3 = new Chart(document.getElementById('chartTop3').getContext('2d'), lineChartConfig);
-
-
-                                    // Function to update chart dimensions based on window size
-                                    function updateChartDimensions(chart) {
-                                        var chartCanvas = chart.canvas;
-                                        var parent = chartCanvas.parentNode;
-                                        var containerWidth = parent.offsetWidth;
-                                        var containerHeight = parent.offsetHeight;
-
-                                        chartCanvas.style.width = containerWidth + 'px';
-                                        chartCanvas.style.height = containerHeight + 'px';
-                                        chart.resize(); // Resize the chart
-                                    }
-                                    // Update chart dimensions when the window is resized
-                                    window.addEventListener('resize', function () {
-                                        updateChartDimensions(chartTop3);
-                                    });
-
-                                    // Initial call to update chart dimensions
-                                    updateChartDimensions(chartTop3);
-
+                                    updateChartDimensions(myChart);
                                 </script>
                             </div>
                         </div>
                     </div>
-
-
-
 
                 </div>
-                <!--Carousel End-->
-
-                <a class="carousel-control-prev" href="#chartCarousel" role="button" data-bs-slide="prev"
-                    style="position: absolute; left: -70px;">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </a>
-                <a class="carousel-control-next" href="#chartCarousel" role="button" data-bs-slide="next"
-                    style="position: absolute; right: -70px;">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </a>
             </div>
         </div>
+
 
     </main><!-- End #main -->
 

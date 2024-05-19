@@ -5,6 +5,29 @@
 //     header("Location: index.php");
 //     exit();
 // }
+
+if (isset($_POST["sumbit"])) {
+  $first_name = $_POST["first_name"];
+  $middle_inital = $_POST["middle_initial"];
+  $last_name = $_POST["last_name"];
+  $suffix = $_POST["suffix"];
+  $purok = $_POST["purok"];
+  $birthplace = $_POST["birthplace"];
+  $birthdate = $_POST["birthday"];
+  $civil_status = $_POST["civil_status"];
+  $period_of_residency = $_POST["residency_period"];
+  $issued_date = $_POST["issued_date"];
+  $purpose = $_POST["purpose"];
+  $duty_officer_name = $_POST["duty_officer_full_name"];
+
+  $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name' , ' ' , '$middle_inital' , ' ' , '$last_name' , ' ' , '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
+
+  $result = $conn->query($sql);
+  
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -211,7 +234,7 @@
                  
                 </div>
                 <br>
-              <form id="myForm">
+              <form action="#" method="POST" id="myForm">
 
                 
                 <div class="certificates">
@@ -222,15 +245,15 @@
                     <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
                     <label for="">Middle Initial:</label>
-                    <input type="text" class="form-control" name="middle_name" placeholder="Ex. J"><br>
+                    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
 
                     <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="middle_name" placeholder="Ex. J"><br>
+                    <input type="text" class="form-control" name="last_name" placeholder="Ex. J"><br>
 
 
                       <label for="">Suffix:</label>
                       <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
-                      <select class=" text-left" style="width: 8%;" name="" id="suffix">
+                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffix">
                         <option value="">N/A</option>
                         <option value="Jr">Jr</option>
                         <option value="Sr">Sr</option>
@@ -239,7 +262,7 @@
                         <option value="III">III</option>
                       </select><br><br>
                       <label for="">Purok:</label>
-                     <select class=" p-2 w-25 text-left" name="" id="purok">
+                     <select class=" p-2 w-25 text-left" name="purok" id="purok">
                       <option value="Centro">Centro</option>
                       <option value="Hurawan">Huwaran</option>
                       <option value="Kaakbayan">Kaakbayan</option>
@@ -261,7 +284,7 @@
                       <input type="date" class="form-control" name="birthday">
                       <br>
                       <label for="">Civil Status:</label>
-                      <select class="form-control" onchange="update()" name="" id="stats">
+                      <select class="form-control" onchange="update()" name="civil_status" id="stats">
                           <option value="Maried">Married</option>
                           <option value="Widow">Window</option>
                           <option value="Single">Single</option>
