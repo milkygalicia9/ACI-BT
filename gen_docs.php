@@ -8,6 +8,7 @@
 // Include database connection file
 include ("db.php");
 
+<<<<<<< HEAD
 // Check if form is submitted
 if (isset($_POST["submit"])) {
   echo ("<input type='hidden' name='");
@@ -27,6 +28,27 @@ if (isset($_POST["submit"])) {
 
     // Define SQL query
     $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name', ' ', '$middle_initial', ' ', '$last_name', ' ', '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
+=======
+require_once "db.php";
+
+if (isset($_POST["sumbit"])) {
+  $first_name = $_POST["first_name"];
+  $middle_inital = $_POST["middle_initial"];
+  $last_name = $_POST["last_name"];
+  $suffix = $_POST["suffix"];
+  $purok = $_POST["purok"];
+  $birthplace = $_POST["birthplace"];
+  $birthdate = $_POST["birthday"];
+  $civil_status = $_POST["civil_status"];
+  $period_of_residency = $_POST["residency_period"];
+  $issued_date = $_POST["issued_date"];
+  $purpose = $_POST["purpose"];
+  $duty_officer_name = $_POST["duty_officer_full_name"];
+
+  $full_name = $first_name . " " . $middle_inital . " " . $last_name . " " . $suffix;
+
+  $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES ('$full_name', '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
+>>>>>>> 41acdf250372838e345705a2bbf1796cbfd5240f
 
     // Execute SQL query
     if ($conn->query($sql) === TRUE) {
