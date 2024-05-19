@@ -226,7 +226,7 @@ if (!isset($_SESSION['username'])) {
                 <div class="carousel-inner">
 
                     <div class="carousel-item active">
-                        <div class="row">
+                        <div class="row p-2">
 
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
@@ -237,7 +237,7 @@ if (!isset($_SESSION['username'])) {
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 px-5">
+                                            <div class="h5 mb-0 fw-bold text-gray-800">
                                                 <?php echo $count_business_permit_new ?>
                                             </div>
                                         </div>
@@ -251,8 +251,7 @@ if (!isset($_SESSION['username'])) {
                                     </div>
                                     <div class="row px-3" onclick="viewTransactions('Business Permit (New)')"
                                         style="cursor: pointer;">
-                                        <div class="col text-black" style="margin-left: 115px;">MORE INFO</div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO</div>
                                     </div>
 
                                 </div>
@@ -280,7 +279,7 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-black">More Info</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -308,7 +307,7 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-black">More Info</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -320,7 +319,7 @@ if (!isset($_SESSION['username'])) {
 
 
                     <div class="carousel-item">
-                        <div class="row">
+                        <div class="row p-2">
 
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
@@ -342,7 +341,7 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-black">More Info</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -372,7 +371,7 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-black">More Info</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -400,7 +399,7 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-black">More Info</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -411,11 +410,7 @@ if (!isset($_SESSION['username'])) {
 
 
                     <div class="carousel-item">
-                        <div class="row">
-
-
-
-
+                        <div class="row p-2">
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(183, 147, 255)">
@@ -436,7 +431,7 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-black">More Info</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -463,7 +458,7 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-black">More Info</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -489,7 +484,7 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-black">More Info</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -499,7 +494,7 @@ if (!isset($_SESSION['username'])) {
                     </div>
 
                     <div class="carousel-item">
-                        <div class="row">
+                        <div class="row p-2">
 
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
@@ -521,7 +516,7 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-black">More Info</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -548,7 +543,7 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-black">More Info</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -575,7 +570,7 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-black">More Info</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -585,9 +580,7 @@ if (!isset($_SESSION['username'])) {
                     </div>
 
                     <div class="carousel-item">
-                        <div class="row">
-
-
+                        <div class="row p-2">
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(188, 188, 88)">
@@ -608,7 +601,7 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-black">More Info</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -621,19 +614,19 @@ if (!isset($_SESSION['username'])) {
                                     <img src="assets/img/devs/carl.jpg" height="100" width="100" alt="">
                                 </div>
                                 <div class="row px-3">
-                                    <div class="col text-black">More Info</div>
+                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
                                     <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                 </div>
                             </div>
 
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Charls Cayabyab
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3 rounded-circle">Charls Cayabyab
                                     </div>
                                     <img src="assets/img/devs/charls.jpg" height="100" width="100" alt="">
                                 </div>
                                 <div class="row px-3">
-                                    <div class="col text-black">More Info</div>
+                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
                                     <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                 </div>
                             </div>
@@ -658,7 +651,7 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-white">More Info</div>
+                                        <div class="col text-white">MORE INFO</div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -673,11 +666,11 @@ if (!isset($_SESSION['username'])) {
                     <!-- Add more carousel-items with three images each as needed -->
                 </div>
                 <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev"
-                    style="position:  absolute; left: -70px;">
+                    style="position:  absolute; left: -85px;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </a>
                 <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next"
-                    style="position:  absolute; right: -70px;">
+                    style="position:  absolute; right: -85px;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </a>
             </div>
