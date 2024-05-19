@@ -280,75 +280,22 @@ if (certificateType.value == 'indigency') {
 
 }}
 
-// function update() {
-  
-//   var iframe = document.getElementById('myIframe');          
-//   var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+var days = document.getElementById('days');
+var months = document.getElementById('months');
+var sups = document.getElementById('sups');
+var years = document.getElementById('years');
 
-//   var stat = iframeDocument.getElementById('stats');
+const currentDate = new Date();
 
-//   stat.innerText =  document.getElementById('gg').value;
-  
-// }
+const day = currentDate.getDate();
+const month = currentDate.getMonth() ; 
+const year = currentDate.getFullYear();
 
-
-document.addEventListener('DOMContentLoaded', function() {
-  var iframe = document.getElementById('myIframe');
-  var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
- 
-  var days = iframeDocument.getElementById('days');
-  var months = iframeDocument.getElementById('months');
-  var sups = iframeDocument.getElementById('sups');
-  var years = iframeDocument.getElementById('years');
-
-  const currentDate = new Date();
-  
-  const day = currentDate.getDate();
-  const month = currentDate.getMonth() ; 
-  const year = currentDate.getFullYear();
-
-  const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  const monthName = monthNames[month];
-  console.log(days,months,sups,years);
-  if (days) days.innerText = day;
-  if (months) months.innerText = monthName;
-  if (sups) sups.innerText = getOrdinalSuffix(day);
-  if (years) years.innerText =year;
- 
-});
-// document.addEventListener('DOMContentLoaded', function() {
-//   const selectElement = document.getElementById('mySelect');
-
-//   selectElement.addEventListener('change', function() {
-//       const inputContainer = document.getElementById('certificates');
-//       const inputs = inputContainer.querySelectorAll('input[type="  text"]');
-      
-//       inputs.forEach(function(input) {
-//           input.value = '';
-//       });
-//   });
-// });
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//   const certificateType = 'inputContainer'; // Ensure this is the correct ID of the container
-
-//   const container = document.getElementById(certificateType);
-//   if (container) {
-//       container.querySelectorAll('select').forEach(function(selectElement) {
-//           selectElement.setAttribute('onchange', 'updateSelect()');
-//           // Optionally add styles or other attributes
-//           // selectElement.setAttribute('style', 'width: 50% !important');
-//       });
-//   }
-// });
-
-function updateSelect() {
-  // Define your updateSelect function here
-  console.log('Select changed!');
-}
-
-
-console.log('tset');
-
-console.log(numberToWords(10000)); // Output: "Ten Thousand"
+const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const monthName = monthNames[month];
+console.log(days,months,sups,years);
+if (days) days.innerText = day;
+if (months) months.innerText = monthName;
+if (sups) sups.innerText = getOrdinalSuffix(day);
+if (years) years.innerText =year;
+else console.log("not ok");

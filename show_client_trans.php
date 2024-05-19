@@ -142,44 +142,73 @@
                             <h5 class="card-title">Transaction Table</h5>
                             <!-- Table with stripped rows -->
                             <table class="table datatable">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Transacted by</th>
-                                        <th>Document Name</th>
-                                        <th>Client Transaction ID</th>
-                                        <th>Created At</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    require 'db.php';
+                                <?php
 
-                                    $sql = "SELECT * FROM transactions";
-                                    // $sql = "SELECT t.id, a.username AS transact_by_name, dt.doc_name, t.client_trans_id, t.created_at
-                                    //                                     FROM transactions t
-                                    //                                     INNER JOIN admin a ON t.transact_by = a.id
-                                    //                                     INNER JOIN doctype dt ON t.doc_id = dt.id";
-                                    
+                                    require('db.php');
+
+                                    $id = $_GET['id'];
+                                    $table = strtolower($_GET['doc_id']);
+
+                                    $sql = "SELECT * FROM $table WHERE id = $id";
+
                                     $result = $conn->query($sql);
 
+                                    // Check if there are rows returned
                                     if ($result->num_rows > 0) {
+                                        // Output data of each row
                                         while ($row = $result->fetch_assoc()) {
-                                            echo "<tr>";
-                                            echo "<td>" . $row["id"] . "</td>";
-                                            echo "<td>" . $row["transact_by"] . "</td>";
-                                            echo "<td>" . $row["doc_id"] . "</td>";
-                                            echo "<td>" . $row["client_trans_id"] . "</td>";
-                                            echo "<td>" . $row["created_at"] . "</td>";
-                                            echo "<td><a href=" . "show_client_trans.php?id=" . $row["id"] . "&doc_name=" . str_replace(" ", "_", $row["doc_id"]) . "><button type=" . "submit" . ">VIEW</button></a></td>";
-                                            echo "</tr>";
+                                            // For Barangay Certification
+                                            if ($table == "barangay_clearance") {
+                                                echo "<thead>";
+                                                    echo "<tr>";
+                                                        // echo "<th>ID</th>";
+                                                        echo "<th>Full Name</th>";
+                                                        echo "<th>Address</th>";
+                                                        echo "<th>Birthplace</th>";
+                                                        echo "<th>Birthdate</th>";
+                                                        echo "<th>Civil Status</th>";
+                                                        echo "<th>Period of Residency</th>";
+                                                        echo "<th>Issued Date</th>";
+                                                        echo "<th>Duty Officer Name</th>";
+                                                    echo "</tr>";
+                                                echo "</thead>";
+                                                echo "<tbody>";
+                                                    echo "<tr>";
+                                                    // echo "<td>" . $row["id"] . "</td>";
+                                                    echo "<td>" . $row["fullname"] . "</td>";
+                                                    echo "<td>" . $row["address"] . "</td>";
+                                                    echo "<td>" . $row["birthplace"] . "</td>";
+                                                    echo "<td>" . $row["birthdate"] . "</td>";
+                                                    echo "<td>" . $row["civil_status"] . "</td>";
+                                                    echo "<td>" . $row["period_of_residency"] . "</td>";
+                                                    echo "<td>" . $row["issued_date"] . "</td>";
+                                                    echo "<td>" . $row["duty_officer_name"] . "</td>";
+                                                    echo "</tr>";
+                                                echo "</tbody>";
+                                                
+                                            }
+                                            
+                                            // For Cohabitation
+                                            // echo "<tr>";
+                                            // echo "<td>" . $row["id"] . "</td>";
+                                            // echo "<td>" . $row["fullname_male"] . "</td>";
+                                            // echo "<td>" . $row["birthdate_male"] . "</td>";
+                                            // echo "<td>" . $row["fullname_female"] . "</td>";
+                                            // echo "<td>" . $row["birthdate_female"] . "</td>";
+                                            // echo "<td>" . $row["address"] . "</td>";
+                                            // echo "<td>" . $row["date_of_marriage"] . "</td>";
+                                            // echo "<td>" . $row["years_married"] . "</td>";
+                                            // echo "<td>" . $row["issued_date"] . "</td>";
+                                            // echo "<td>" . $row["duty_officer_name"] . "</td>";
+                                            // echo "</tr>";
                                         }
                                     } else {
                                         echo "<tr><td colspan='5'><center>No transactions found</center></td></tr>";
                                     }
-                                    ?>
-                                </tbody>
+        
+                                    // Close the database connection
+                                    $conn->close();
+                                ?>
                             </table>
                             <!-- End Table with stripped rows -->
 
