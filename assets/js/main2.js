@@ -79,44 +79,42 @@ function numberToWords(number) {
 }
 
 
- 
-    function toggleFields() {
-      var certificateType = document.getElementById('certificateType').value;
-      var forms = document.getElementsByClassName('certificates')[0].children;
-      
-      for (var i = 0; i < forms.length; i++) {
-        if (forms[i].id === certificateType) {
-            forms[i].classList.add('active');
-   
-        } else {
-            forms[i].classList.remove('active');
-        }
-    }
+function toggleFields() {
+  var certificateType = document.getElementById('certificateType').value;
+  var forms = document.getElementsByClassName('certificates')[0].children;
 
-    var iframe = document.getElementById('myIframe');
-    doc ="certificates/"+certificateType + ".html"
-
-        document.getElementById(certificateType).querySelectorAll('input[type=text], input[type=number]').forEach(function(input) {
-        input.setAttribute('oninput', 'updateText()');
-        input.setAttribute('style','width: 50% !important');
-        // console.log(input);
-        });
-        document.getElementById(certificateType).querySelectorAll('input[type=date], input[type=time]').forEach(function(input) {
-        input.setAttribute('onchange', 'updateText()');
-        input.setAttribute('class','form-control p-2 w-45');
-
-        });
-        
-        document.getElementById(certificateType).querySelectorAll('input[type=checkbox]').forEach(function(input) {
-          input.setAttribute('onclick', 'updateText()');
-          });
-           document.getElementById(certificateType).querySelectorAll('select').forEach(function(input) {
-            input.setAttribute('onchange', 'select()');
-          });
-
-          
-      iframe.src = doc;  
+  for (var i = 0; i < forms.length; i++) {
+      if (forms[i].id === certificateType) {
+          forms[i].classList.add('active');
+      } else {
+          forms[i].classList.remove('active');
+      }
   }
+
+  var iframe = document.getElementById('myIframe');
+  var doc = "certificates/" + certificateType + ".html";
+  
+  var currentForm = document.getElementById(certificateType);
+  if (currentForm) {
+      currentForm.querySelectorAll('input[type=text], input[type=number]').forEach(function(input) {
+          input.setAttribute('oninput', 'updateText()');
+          input.setAttribute('style','width: 50% !important');
+      });
+      currentForm.querySelectorAll('input[type=date], input[type=time]').forEach(function(input) {
+          input.setAttribute('onchange', 'updateText()');
+          input.setAttribute('class','form-control p-2 w-45');
+      });
+      currentForm.querySelectorAll('input[type=checkbox]').forEach(function(input) {
+          input.setAttribute('onclick', 'updateText()');
+      });
+      currentForm.querySelectorAll('select').forEach(function(input) {
+          input.setAttribute('onchange', 'select()');
+      });
+  }
+
+  iframe.src = doc;
+}
+
 
 
 function select(){
@@ -280,6 +278,20 @@ if (certificateType.value == 'indigency') {
 
 }}
 
+
+
+
+const inputs = document.querySelectorAll('input[type="text"]');
+
+    inputs.forEach(input => {
+      input.addEventListener('input', function () {
+        let value = input.value;
+        value = value.replace(/[^a-zA-Z\s]/g, '');
+        value = value.substring(0, 25);
+        input.value = value;
+      });
+    });
+    
 var days = document.getElementById('days');
 var months = document.getElementById('months');
 var sups = document.getElementById('sups');
