@@ -233,7 +233,7 @@ if (isset($_POST["sumbit"])) {
                  
                 </div>
                 <br>
-              <form id="myForm">
+              <form action="#" method="POST" id="myForm">
 
                 
                 <div class="certificates">
@@ -297,8 +297,8 @@ if (isset($_POST["sumbit"])) {
                           <input type="text" name="purpose" class="form-control" id="" cols="30" rows="10"
                             placeholder="Ex. Undecided"></input><br>
 
-                          <!-- <label for="">Duty Officer Full Name:</label>
-                  <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel"> -->
+                          <label for="">Duty Officer Full Name:</label>
+                  <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel">
                   <button onclick="printIframe()" name="submit">Print</button>
                   </div>
 
