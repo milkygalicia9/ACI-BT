@@ -98,7 +98,7 @@ function toggleFields() {
   if (currentForm) {
       currentForm.querySelectorAll('input[type=text], input[type=number]').forEach(function(input) {
           input.setAttribute('oninput', 'updateText()');
-          input.setAttribute('style','width: 50% !important');
+          // input.setAttribute('style','width: 50% !important');
       });
       currentForm.querySelectorAll('input[type=date], input[type=time]').forEach(function(input) {
           input.setAttribute('onchange', 'updateText()');
