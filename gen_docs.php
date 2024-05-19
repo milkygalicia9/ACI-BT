@@ -6,6 +6,8 @@
 //     exit();
 // }
 
+require_once "db.php";
+
 if (isset($_POST["sumbit"])) {
   $first_name = $_POST["first_name"];
   $middle_inital = $_POST["middle_initial"];
@@ -20,7 +22,9 @@ if (isset($_POST["sumbit"])) {
   $purpose = $_POST["purpose"];
   $duty_officer_name = $_POST["duty_officer_full_name"];
 
-  $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name' , ' ' , '$middle_inital' , ' ' , '$last_name' , ' ' , '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
+  $full_name = $first_name . " " . $middle_inital . " " . $last_name . " " . $suffix;
+
+  $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES ('$full_name', '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
 
   $result = $conn->query($sql);
   
