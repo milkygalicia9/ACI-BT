@@ -8,32 +8,12 @@
 // Include database connection file
 include ("db.php");
 
-<<<<<<< HEAD
 // Check if form is submitted
 if (isset($_POST["submit"])) {
   echo ("<input type='hidden' name='");
-    // Assign form data to variables
-    $first_name = $_POST["first_name"];
-    $middle_initial = $_POST["middle_initial"];
-    $last_name = $_POST["last_name"];
-    $suffix = $_POST["suffix"];
-    $purok = $_POST["purok"];
-    $birthplace = $_POST["birthplace"];
-    $birthdate = $_POST["birthday"];
-    $civil_status = $_POST["civil_status"];
-    $period_of_residency = $_POST["residency_period"];
-    $issued_date = $_POST["issued_date"];
-    $purpose = $_POST["purpose"];
-    $duty_officer_name = $_POST["duty_officer_full_name"];
-
-    // Define SQL query
-    $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name', ' ', '$middle_initial', ' ', '$last_name', ' ', '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
-=======
-require_once "db.php";
-
-if (isset($_POST["sumbit"])) {
+  // Assign form data to variables
   $first_name = $_POST["first_name"];
-  $middle_inital = $_POST["middle_initial"];
+  $middle_initial = $_POST["middle_initial"];
   $last_name = $_POST["last_name"];
   $suffix = $_POST["suffix"];
   $purok = $_POST["purok"];
@@ -45,21 +25,19 @@ if (isset($_POST["sumbit"])) {
   $purpose = $_POST["purpose"];
   $duty_officer_name = $_POST["duty_officer_full_name"];
 
-  $full_name = $first_name . " " . $middle_inital . " " . $last_name . " " . $suffix;
+  // Define SQL query
+  $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name', ' ', '$middle_initial', ' ', '$last_name', ' ', '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
 
-  $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES ('$full_name', '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
->>>>>>> 41acdf250372838e345705a2bbf1796cbfd5240f
+  // Execute SQL query
+  if ($conn->query($sql) === TRUE) {
+    echo "New record inserted successfully";
 
-    // Execute SQL query
-    if ($conn->query($sql) === TRUE) {
-        echo "New record inserted successfully";
-        
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
 
-    // Close database connection
-    $conn->close();
+  // Close database connection
+  $conn->close();
 }
 ?>
 
@@ -213,7 +191,7 @@ if (isset($_POST["sumbit"])) {
                   }
                 }
 
-              
+
                 iFrame {
                   top: 50%;
                   /* position: fixed !important; */
@@ -243,46 +221,46 @@ if (isset($_POST["sumbit"])) {
 
               <!-- General Form Elements -->
               <label for="certificateType"> Select Certificate</label><br>
-                <div class="col-md-6">
-                  <select class="  p-2 text-left" id="certificateType" onchange="toggleFields()" onclick ="resetForm()"
-                    style="cursor: pointer;">
-                    <option value="">--select certificates--</option>
-                    <option value="barangay_clearance">Barangay Clearance</option>
-                    <option value="business_permit_new">Barangay Business Permit New</option>
-                    <option value="business_permit_renew">Barangay Business Permit Renew</option>
-                    <option value="certificate_of_employability">Certificate Of Employability
-                    </option>
-                    <option value="certificate_of_income">Certificate of Income</option>
-                    <option value="cohabitation">Certificate of Cohabitation</option>
-                    <option value="complaint_certificate">Complaint Certificate</option>
-                    <option value="death_certificate">Death Certificate</option>
-                    <option value="first_time_job_seeker">Barangay Certification (First time Job
-                      Seeker)</option>
-                    <option value="indigency">Indigency</option>
-                    <option value="indigency_aics">Indigency (AICS)</option>
-                    <option value="lot_ownership">Lot Ownership</option>
-                    <option value="Oathtaking">Oathtaking</option>
-                    <option value="transfer_of_residency">Certificate of Transfer</option>
+              <div class="col-md-6">
+                <select class="  p-2 text-left" id="certificateType" onchange="toggleFields()" onclick="resetForm()"
+                  style="cursor: pointer;">
+                  <option value="">--select certificates--</option>
+                  <option value="barangay_clearance">Barangay Clearance</option>
+                  <option value="business_permit_new">Barangay Business Permit New</option>
+                  <option value="business_permit_renew">Barangay Business Permit Renew</option>
+                  <option value="certificate_of_employability">Certificate Of Employability
+                  </option>
+                  <option value="certificate_of_income">Certificate of Income</option>
+                  <option value="cohabitation">Certificate of Cohabitation</option>
+                  <option value="complaint_certificate">Complaint Certificate</option>
+                  <option value="death_certificate">Death Certificate</option>
+                  <option value="first_time_job_seeker">Barangay Certification (First time Job
+                    Seeker)</option>
+                  <option value="indigency">Indigency</option>
+                  <option value="indigency_aics">Indigency (AICS)</option>
+                  <option value="lot_ownership">Lot Ownership</option>
+                  <option value="Oathtaking">Oathtaking</option>
+                  <option value="transfer_of_residency">Certificate of Transfer</option>
 
-                  </select>
-                 
-                </div>
-                <br>
+                </select>
+
+              </div>
+              <br>
               <form action="" method="POST" id="myForm">
 
-                
+
                 <div class="certificates">
                   <div id="barangay_clearance">
-                  <form action="#" method="post">
+                    <form action="#" method="post">
 
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
+                      <label for="">First Name:</label>
+                      <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
-                    <label for="">Middle Initial:</label>
-                    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
+                      <label for="">Middle Initial:</label>
+                      <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="last_name" placeholder="Ex. J"><br>
+                      <label for="">Last Name:</label>
+                      <input type="text" class="form-control" name="last_name" placeholder="Ex. J"><br>
 
 
                       <label for="">Suffix:</label>
@@ -296,209 +274,209 @@ if (isset($_POST["sumbit"])) {
                         <option value="III">III</option>
                       </select><br><br>
                       <label for="">Purok:</label>
-                     <select class=" p-2 w-25 text-left" name="purok" id="purok">
-                      <option value="Centro">Centro</option>
-                      <option value="Hurawan">Huwaran</option>
-                      <option value="Kaakbayan">Kaakbayan</option>
-                      <option value="New Princesa"> New Princesa</option>
-                      <option value="San Franciso I">San Franciso I</option>
-                      <option value="San Franciso II">San Franciso II</option>
-                      <option value="Sandiwa">Sandiwa</option>
-                      <option value="Trece">Trece</option>
-                      <option value="Uha">UHA</option>
-                    </select>
-                    <br>
-                    <br>
+                      <select class=" p-2 w-25 text-left" name="purok" id="purok">
+                        <option value="Centro">Centro</option>
+                        <option value="Hurawan">Huwaran</option>
+                        <option value="Kaakbayan">Kaakbayan</option>
+                        <option value="New Princesa"> New Princesa</option>
+                        <option value="San Franciso I">San Franciso I</option>
+                        <option value="San Franciso II">San Franciso II</option>
+                        <option value="Sandiwa">Sandiwa</option>
+                        <option value="Trece">Trece</option>
+                        <option value="Uha">UHA</option>
+                      </select>
+                      <br>
+                      <br>
 
-                        <label for="">Birthplace:</label>
-                        <input type="text" class="form-control" name="birthplace"
-                          placeholder="Ex. Puerto Princesa City"><br>
+                      <label for="">Birthplace:</label>
+                      <input type="text" class="form-control" name="birthplace"
+                        placeholder="Ex. Puerto Princesa City"><br>
 
                       <label for="">Birthday:</label>
                       <input type="date" class="form-control" name="birthday">
                       <br>
                       <label for="">Civil Status:</label>
                       <select class="form-control" onchange="update()" name="civil_status" id="stats">
-                          <option value="Maried">Married</option>
-                          <option value="Widow">Window</option>
-                          <option value="Single">Single</option>
+                        <option value="Maried">Married</option>
+                        <option value="Widow">Window</option>
+                        <option value="Single">Single</option>
                       </select>
                       <br>
                       <label for="">Period of Residency:</label>
                       <input type="number" class="form-control" name="residency_period" placeholder="Ex. 3 years"><br>
 
-                          <label for="">Purpose:</label>
-                          <!-- <input type="text" class="form-control" name="purpose"> -->
-                          <input type="text" name="purpose" class="form-control" id="" cols="30" rows="10"
-                            placeholder="Ex. Undecided"></input><br>
+                      <label for="">Purpose:</label>
+                      <!-- <input type="text" class="form-control" name="purpose"> -->
+                      <input type="text" name="purpose" class="form-control" id="" cols="30" rows="10"
+                        placeholder="Ex. Undecided"></input><br>
 
-                          <!-- <label for="">Duty Officer Full Name:</label>
+                      <!-- <label for="">Duty Officer Full Name:</label>
                   <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel"> -->
-                  <button name="submit" onclick="printIframe()"  type="submit">Print</button>
-                  </form>  
-                </div>
+                      <button name="submit" onclick="printIframe()" type="submit">Print</button>
+                    </form>
+                  </div>
 
                   <div id="business_permit_new">
-                  <form action="#">
+                    <form action="#">
 
                       <label for="businessName">Business name/ Trade Activity:</label>
                       <input type="text" class="form-control" name="business_name"><br>
 
                       <label for="">Purok:</label><br>
-                     <select name="" id="" onchange="">
-                      <option value="Centro">Centro</option>
-                      <option value="Hurawan">Huwaran</option>
-                      <option value="Kaakbayan">Kaakbayan</option>
-                      <option value="New Princesa"> New Princesa</option>
-                      <option value="San Franciso I">San Franciso I</option>
-                      <option value="San Franciso II">San Franciso II</option>
-                      <option value="Sandiwa">Sandiwa</option>
-                      <option value="Trece">Trece</option>
-                      <option value="Uha">UHA</option>
-                     </select>
-                     <br>
-<br>
+                      <select name="" id="" onchange="">
+                        <option value="Centro">Centro</option>
+                        <option value="Hurawan">Huwaran</option>
+                        <option value="Kaakbayan">Kaakbayan</option>
+                        <option value="New Princesa"> New Princesa</option>
+                        <option value="San Franciso I">San Franciso I</option>
+                        <option value="San Franciso II">San Franciso II</option>
+                        <option value="Sandiwa">Sandiwa</option>
+                        <option value="Trece">Trece</option>
+                        <option value="Uha">UHA</option>
+                      </select>
+                      <br>
+                      <br>
                       <label for="">Manager / Operator</label>
                       <input type="text" class="form-control" name="manager_operator">
 
-                        <label for="">Address(Manager / Operator)</label>
-                        <input type="text" class="form-control" name="manager_operator_address">
+                      <label for="">Address(Manager / Operator)</label>
+                      <input type="text" class="form-control" name="manager_operator_address">
                     </form>
                   </div>
 
                   <div id="business_permit_renew">
                     <form action="">
-                    <label for="businessName">Business name/ Trade Activity:</label>
-                    <input type="text" class="form-control" name="business_name"><br>
+                      <label for="businessName">Business name/ Trade Activity:</label>
+                      <input type="text" class="form-control" name="business_name"><br>
 
-                    <label for="">Purok:</label><br>
-                    <select name="" id="">
-                      <option value="Centro">Centro</option>
-                      <option value="Kaakbayan">Kaakbayan</option>
-                      <option value="New Princesa"> New Princesa</option>
-                      <option value="San Franciso I">San Franciso I</option>
-                      <option value="San Franciso II">San Franciso II</option>
-                      <option value="Sandiwa">Sandiwa</option>
-                      <option value="Trece">Trece</option>
-                      <option value="Uha">UHA</option>
-                    </select>
+                      <label for="">Purok:</label><br>
+                      <select name="" id="">
+                        <option value="Centro">Centro</option>
+                        <option value="Kaakbayan">Kaakbayan</option>
+                        <option value="New Princesa"> New Princesa</option>
+                        <option value="San Franciso I">San Franciso I</option>
+                        <option value="San Franciso II">San Franciso II</option>
+                        <option value="Sandiwa">Sandiwa</option>
+                        <option value="Trece">Trece</option>
+                        <option value="Uha">UHA</option>
+                      </select>
 
-                    <br>
-                    <br>
+                      <br>
+                      <br>
 
-                    <label for="">Manager / Operator</label>
-                    <input type="text" class="form-control" name="manager_operator">
+                      <label for="">Manager / Operator</label>
+                      <input type="text" class="form-control" name="manager_operator">
 
-                    <label for="">Address(Manager / Operator)</label>
-                    <input type="text" class="form-control" name="manager_operator_address">
+                      <label for="">Address(Manager / Operator)</label>
+                      <input type="text" class="form-control" name="manager_operator_address">
 
-                    <!-- <label for="businessIssuedDate">Issued Date:</label>
+                      <!-- <label for="businessIssuedDate">Issued Date:</label>
                   <input type="date" class="form-control" name="business_issued_date"><br> -->
-                  </form>
+                    </form>
                   </div>
 
                   <div id="certificate_of_employability">
-                  <form action="#">
+                    <form action="#">
 
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" placeholder="Ex. Juan"><br>
+                      <label for="">First Name:</label>
+                      <input type="text" class="form-control" placeholder="Ex. Juan"><br>
 
-                    <label for="">Middle Name:</label>
-                    <input type="text" class="form-control" placeholder="Ex.Dela"><br>
+                      <label for="">Middle Name:</label>
+                      <input type="text" class="form-control" placeholder="Ex.Dela"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" placeholder="Ex. Cruz"><br>
+                      <label for="">Last Name:</label>
+                      <input type="text" class="form-control" placeholder="Ex. Cruz"><br>
 
-                    <label for="">Suffix:</label>
-                    <input type="text" class="form-control" placeholder="Ex. Jr"><br>
+                      <label for="">Suffix:</label>
+                      <input type="text" class="form-control" placeholder="Ex. Jr"><br>
 
-                    <label for="">Age</label>
-                    <input type="number" class="form-control" placeholder="Ex. 20">
+                      <label for="">Age</label>
+                      <input type="number" class="form-control" placeholder="Ex. 20">
 
-                    <label for="">Purok:</label>
-                    <input type="text" class="form-control"><br>
+                      <label for="">Purok:</label>
+                      <input type="text" class="form-control"><br>
 
-                    <!-- <label for="">Issued Date:</label>
+                      <!-- <label for="">Issued Date:</label>
                   <input type="date" class="form-control"> -->
 
-                    <label for="">Duty Officer Full Name:</label>
-                    <input type="text" class="form-control">
+                      <label for="">Duty Officer Full Name:</label>
+                      <input type="text" class="form-control">
                     </form>
                   </div>
 
                   <div id="certificate_of_income">
 
-                  <form action="#">
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="first_name"><br>
+                    <form action="#">
+                      <label for="">First Name:</label>
+                      <input type="text" class="form-control" name="first_name"><br>
 
-                    <label for="">Middle Name:</label>
-                    <input type="text" class="form-control" name="middle_name"><br>
+                      <label for="">Middle Name:</label>
+                      <input type="text" class="form-control" name="middle_name"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="last_name"><br>
+                      <label for="">Last Name:</label>
+                      <input type="text" class="form-control" name="last_name"><br>
 
-                    <label for="">Suffix:</label>
-                    <input type="text" class="form-control"><br>
+                      <label for="">Suffix:</label>
+                      <input type="text" class="form-control"><br>
 
-                    <label for="">Purok:</label>
-                    <input type="text" class="form-control"><br>
+                      <label for="">Purok:</label>
+                      <input type="text" class="form-control"><br>
 
-                    <label for="">Amount (In Numeric Form)</label>
-                    <input type="number" class="form-control"><br>
+                      <label for="">Amount (In Numeric Form)</label>
+                      <input type="number" class="form-control"><br>
 
-                    <!-- <label for="">Issued Date:</label>
+                      <!-- <label for="">Issued Date:</label>
                   <input type="date" class="form-control"> -->
 
-                    <label for="">Duty Officer Full Name:</label>
-                    <input type="text" class="form-control">
+                      <label for="">Duty Officer Full Name:</label>
+                      <input type="text" class="form-control">
                     </form>
                   </div>
-                 
+
                   <div id="cohabitation">
                     <form action="">
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="first_name"><br>
+                      <label for="">First Name:</label>
+                      <input type="text" class="form-control" name="first_name"><br>
 
-                    <label for="">Middle Name:</label>
-                    <input type="text" class="form-control" name="middle_name"><br>
+                      <label for="">Middle Name:</label>
+                      <input type="text" class="form-control" name="middle_name"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="last_name"><br>
+                      <label for="">Last Name:</label>
+                      <input type="text" class="form-control" name="last_name"><br>
 
-                    <label for="">Suffix:</label>
-                    <input type="text" class="form-control" name="suffix"><br>
+                      <label for="">Suffix:</label>
+                      <input type="text" class="form-control" name="suffix"><br>
 
-                    <label for="cohabitant1Birthdate">Birthdate:</label>
-                    <input type="date" class="form-control" name="birth_date"><br>
+                      <label for="cohabitant1Birthdate">Birthdate:</label>
+                      <input type="date" class="form-control" name="birth_date"><br>
 
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="cohabitant_first_name"><br>
+                      <label for="">First Name:</label>
+                      <input type="text" class="form-control" name="cohabitant_first_name"><br>
 
-                    <label for="">Middle Name:</label>
-                    <input type="text" class="form-control" name="cohabitant_middle_name"><br>
+                      <label for="">Middle Name:</label>
+                      <input type="text" class="form-control" name="cohabitant_middle_name"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="cohabitant_last_name"><br>
+                      <label for="">Last Name:</label>
+                      <input type="text" class="form-control" name="cohabitant_last_name"><br>
 
-                    <label for="cohabitant1Birthdate">Birthdate:</label>
-                    <input type="date" class="form-control" name="cohabitant_birth_date"><br>
+                      <label for="cohabitant1Birthdate">Birthdate:</label>
+                      <input type="date" class="form-control" name="cohabitant_birth_date"><br>
 
-                    <label for="cohabitationPurok">Purok:</label>
-                    <input type="text" class="form-control" name="purok"><br>
+                      <label for="cohabitationPurok">Purok:</label>
+                      <input type="text" class="form-control" name="purok"><br>
 
-                    <!--Month and Year daw-->
-                    <label for="dateOfMarriage">Date of Marriage:</label>
-                    <input type="date" class="form-control" name="date_of_marriage"><br>
+                      <!--Month and Year daw-->
+                      <label for="dateOfMarriage">Date of Marriage:</label>
+                      <input type="date" class="form-control" name="date_of_marriage"><br>
 
-                    <label for="periodOfMarriage">Period of marriage:</label>
-                    <input type="number" class="form-control" name="period_of_marriage"><br>
+                      <label for="periodOfMarriage">Period of marriage:</label>
+                      <input type="number" class="form-control" name="period_of_marriage"><br>
 
-                    <!-- <label for="cohabitationIssuedDate">Issued Date:</label>
+                      <!-- <label for="cohabitationIssuedDate">Issued Date:</label>
                   <input type="date" class="form-control" name="issued_date"><br> -->
 
-                    <label for="">Duty Officer Full Name</label>
-                    <input type="text" class="form-control" name="duty_officer_full_name">
+                      <label for="">Duty Officer Full Name</label>
+                      <input type="text" class="form-control" name="duty_officer_full_name">
                     </form>
                   </div>
 
@@ -551,308 +529,309 @@ if (isset($_POST["sumbit"])) {
 
                   <div id="death_certificate">
                     <form action="">
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="dead_first_name"
-                      placeholder="Name of Dead Person"><br>
+                      <label for="">First Name:</label>
+                      <input type="text" class="form-control" name="dead_first_name"
+                        placeholder="Name of Dead Person"><br>
 
-                    <label for="">Middle Initial:</label>
-                    <input type="text" class="form-control" name="dead_middle_initial"><br>
+                      <label for="">Middle Initial:</label>
+                      <input type="text" class="form-control" name="dead_middle_initial"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="dead_last_name"><br>
+                      <label for="">Last Name:</label>
+                      <input type="text" class="form-control" name="dead_last_name"><br>
 
-                    <label for="">Suffix</label>
-                    <input type="text" class="form-control" name="dead_suffix"><br>
+                      <label for="">Suffix</label>
+                      <input type="text" class="form-control" name="dead_suffix"><br>
 
-                    <label for="deathAge">Age:</label>
-                    <input type="number" class="form-control" name="dead_age"><br>
+                      <label for="deathAge">Age:</label>
+                      <input type="number" class="form-control" name="dead_age"><br>
 
-                    <label for="">Purok:</label>
-                    <input type="text" class="form-control" name="dead_purok"><br>
+                      <label for="">Purok:</label>
+                      <input type="text" class="form-control" name="dead_purok"><br>
 
-                    <label for="dateOfDeath">Date of death:</label>
-                    <input type="date" class="form-control" name="date_of_death"><br>
+                      <label for="dateOfDeath">Date of death:</label>
+                      <input type="date" class="form-control" name="date_of_death"><br>
 
-                    <label for="timeOfDeath">Time of death:</label>
-                    <input type="time" class="form-control" name="time_of_death"><br>
+                      <label for="timeOfDeath">Time of death:</label>
+                      <input type="time" class="form-control" name="time_of_death"><br>
 
-                    <label for="causeOfDeath">Cause of death:</label>
-                    <input type="text" class="form-control" name="cause_of_death"><br>
+                      <label for="causeOfDeath">Cause of death:</label>
+                      <input type="text" class="form-control" name="cause_of_death"><br>
 
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="requesting_first_name"
-                      placeholder="Name of Requesting Person"><br>
+                      <label for="">First Name:</label>
+                      <input type="text" class="form-control" name="requesting_first_name"
+                        placeholder="Name of Requesting Person"><br>
 
-                    <label for="">Middle Name:</label>
-                    <input type="text" class="form-control" name="requesting_middle_name"><br>
+                      <label for="">Middle Name:</label>
+                      <input type="text" class="form-control" name="requesting_middle_name"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="requesting_last_name"><br>
+                      <label for="">Last Name:</label>
+                      <input type="text" class="form-control" name="requesting_last_name"><br>
 
-                    <label for="">Suffix:</label>
-                    <input type="text" class="form-control" name="requesting_suffix"><br>
+                      <label for="">Suffix:</label>
+                      <input type="text" class="form-control" name="requesting_suffix"><br>
 
-                    <label for="relationshipToDeadPerson">Relationship to the dead person:</label>
-                    <input type="text" class="form-control" name="relationship_to_dead_person"><br>
+                      <label for="relationshipToDeadPerson">Relationship to the dead person:</label>
+                      <input type="text" class="form-control" name="relationship_to_dead_person"><br>
 
-                    <label for="dateRequested">Date requested:</label>
-                    <input type="date" class="form-control" name="date_requested"><br>
+                      <label for="dateRequested">Date requested:</label>
+                      <input type="date" class="form-control" name="date_requested"><br>
                     </form>
                   </div>
 
                   <div id="first_time_job_seeker">
-                  <form action="#">
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="first_name"><br>
+                    <form action="#">
+                      <label for="">First Name:</label>
+                      <input type="text" class="form-control" name="first_name"><br>
 
-                    <label for="">Middle Name:</label>
-                    <input type="text" class="form-control" name="middle_name"><br>
+                      <label for="">Middle Name:</label>
+                      <input type="text" class="form-control" name="middle_name"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="last_name"><br>
+                      <label for="">Last Name:</label>
+                      <input type="text" class="form-control" name="last_name"><br>
 
-                    <label for="">Suffix:</label>
-                    <input type="text" class="form-control" name="suffix"><br>
+                      <label for="">Suffix:</label>
+                      <input type="text" class="form-control" name="suffix"><br>
 
-                    <label for="jobSeekerPurok">Purok:</label>
-                    <input type="text" class="form-control" name="purok"><br>
+                      <label for="jobSeekerPurok">Purok:</label>
+                      <input type="text" class="form-control" name="purok"><br>
 
-                    <label for="residencyPeriod">Period of Residency:</label>
-                    <input type="text" class="form-control" name="residency_period"><br>
+                      <label for="residencyPeriod">Period of Residency:</label>
+                      <input type="text" class="form-control" name="residency_period"><br>
 
-                    <!--(Day/Month/Year daw)-->
-                    <label for="certificationSignedDate">Signed date:</label>
-                    <input type="date" class="form-control" name="signed_date"><br>
+                      <!--(Day/Month/Year daw)-->
+                      <label for="certificationSignedDate">Signed date:</label>
+                      <input type="date" class="form-control" name="signed_date"><br>
 
-                    <!--(Month and Year daw)-->
-                    <label for="certificationValidationDate">Validation date:</label>
-                    <input type="date" class="form-control" name="validation_date"><br>
+                      <!--(Month and Year daw)-->
+                      <label for="certificationValidationDate">Validation date:</label>
+                      <input type="date" class="form-control" name="validation_date"><br>
 
-                    <!--(Full name daw)-->
-                    <label for="">Witness</label>
-                    <input type="text" class="form-control" name="witness">
+                      <!--(Full name daw)-->
+                      <label for="">Witness</label>
+                      <input type="text" class="form-control" name="witness">
                   </div>
-                  </form>
-               
-                  <div id="indigency_aics">
-                  <form action="#">
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="first_name"><br>
+              </form>
 
-                    <label for="">Middle Initial:</label>
-                    <input type="text" class="form-control" name="middle_initial"><br>
+              <div id="indigency_aics">
+                <form action="#">
+                  <label for="">First Name:</label>
+                  <input type="text" class="form-control" name="first_name"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="last_name"><br>
+                  <label for="">Middle Initial:</label>
+                  <input type="text" class="form-control" name="middle_initial"><br>
 
-                    <!-- <label for="">Last Name:</label>
+                  <label for="">Last Name:</label>
+                  <input type="text" class="form-control" name="last_name"><br>
+
+                  <!-- <label for="">Last Name:</label>
                   <input type="text"  class="form-control" ><br>
                -->
-                    <label for="">Suffix</label>
-                    <input type="text" class="form-control" name="suffix"><br>
+                  <label for="">Suffix</label>
+                  <input type="text" class="form-control" name="suffix"><br>
 
-                    <label for="">Purok</label>
-                    <input type="text" class="form-control" name="purok"><br>
+                  <label for="">Purok</label>
+                  <input type="text" class="form-control" name="purok"><br>
 
-                    <!-- <label for="">Purpose</label>
+                  <!-- <label for="">Purpose</label>
                   <input type="text"  class="form-control"  placeholder="Ex. Food Assistance"><br>
                -->
-                    <!-- <label for="">Purpose</label>
+                  <!-- <label for="">Purpose</label>
                   <input type="text"  class="form-control"  placeholder="Ex. Purpose Reason"><br>
                -->
-                    <label for="indigencyIssuedDate">Issued Date:</label>
-                    <input type="date" class="form-control" name="issued_date"><br>
-                    </form>
-                  </div>
+                  <label for="indigencyIssuedDate">Issued Date:</label>
+                  <input type="date" class="form-control" name="issued_date"><br>
+                </form>
+              </div>
 
-                  <div id="indigency">
-                  <form action="#">
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="first_name"><br>
+              <div id="indigency">
+                <form action="#">
+                  <label for="">First Name:</label>
+                  <input type="text" class="form-control" name="first_name"><br>
 
-                    <label for="">Middle Name:</label>
-                    <input type="text" class="form-control" name="middle_name"><br>
+                  <label for="">Middle Name:</label>
+                  <input type="text" class="form-control" name="middle_name"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="last_name"><br>
+                  <label for="">Last Name:</label>
+                  <input type="text" class="form-control" name="last_name"><br>
 
-                    <label for="">Suffix:</label>
-                    <input type="text" class="form-control" name="suffix"><br>
+                  <label for="">Suffix:</label>
+                  <input type="text" class="form-control" name="suffix"><br>
 
-                    <label for="">Age</label>
-                    <input type="number" class="form-control" name="age">
+                  <label for="">Age</label>
+                  <input type="number" class="form-control" name="age">
 
-                    <label for="">Civil Status</label>
-                    <select name="" id="civil" onchange="updateText()" class="form-control">
-                      <option value="">Select Civil Status</option>
-                      <option value="m">Married</option>
-                      <option value="s">Single</option>
-                      <option value="w">Widow</option>
-                    </select>
+                  <label for="">Civil Status</label>
+                  <select name="" id="civil" onchange="updateText()" class="form-control">
+                    <option value="">Select Civil Status</option>
+                    <option value="m">Married</option>
+                    <option value="s">Single</option>
+                    <option value="w">Widow</option>
+                  </select>
 
-                    <label for="">Purok:</label>
-                    <input type="text" class="form-control" name="purok"><br>
+                  <label for="">Purok:</label>
+                  <input type="text" class="form-control" name="purok"><br>
 
-                    <!-- <label for="">Purpose:</label>
+                  <!-- <label for="">Purpose:</label>
                   <input type="text" class="form-control"><br> -->
 
-                  </form>
-                  </div>
+                </form>
+              </div>
 
-                  <div id="lot_ownership">
-                  <form action="#">
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="lot_first_name"><br>
+              <div id="lot_ownership">
+                <form action="#">
+                  <label for="">First Name:</label>
+                  <input type="text" class="form-control" name="lot_first_name"><br>
 
-                    <label for="">Middle Name:</label>
-                    <input type="text" class="form-control" name="lot_middle_name"><br>
+                  <label for="">Middle Name:</label>
+                  <input type="text" class="form-control" name="lot_middle_name"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="lot_last_name"><br>
+                  <label for="">Last Name:</label>
+                  <input type="text" class="form-control" name="lot_last_name"><br>
 
-                    <label for="">Suffix:</label>
-                    <input type="text" class="form-control" name="lot_suffix"><br>
+                  <label for="">Suffix:</label>
+                  <input type="text" class="form-control" name="lot_suffix"><br>
 
-                    <label for="">Purok:</label>
-                    <input type="text" class="form-control" name="lot_purok"><br>
+                  <label for="">Purok:</label>
+                  <input type="text" class="form-control" name="lot_purok"><br>
 
-                    <ul style="list-style: none;">
-                      <li>
-                        <input type="checkbox">
-                        <label for="">Claimant</label>
-                      </li>
-                      <li>
-                        <input type="checkbox">
-                        <label for="">Beneficiary</label>
-                      </li>
-                      <li>
-                        <input type="checkbox">
-                        <label for="">Actual Occupant</label>
-                      </li>
-                    </ul>
+                  <ul style="list-style: none;">
+                    <li>
+                      <input type="checkbox">
+                      <label for="">Claimant</label>
+                    </li>
+                    <li>
+                      <input type="checkbox">
+                      <label for="">Beneficiary</label>
+                    </li>
+                    <li>
+                      <input type="checkbox">
+                      <label for="">Actual Occupant</label>
+                    </li>
+                  </ul>
 
-                    <label for="lotNumber">Lot Number:</label>
-                    <input type="number" class="form-control" name="lot_number" placeholder="Lot No. 123"><br>
+                  <label for="lotNumber">Lot Number:</label>
+                  <input type="number" class="form-control" name="lot_number" placeholder="Lot No. 123"><br>
 
-                    <label for="lotAreaNumerical">Area Measurement (Numerical Form):</label>
-                    <input type="number" class="form-control" name="lot_area_numerical"><br>
+                  <label for="lotAreaNumerical">Area Measurement (Numerical Form):</label>
+                  <input type="number" class="form-control" name="lot_area_numerical"><br>
 
-                    <!-- <label for="lotAreaWord">Area Measurement (Word Form):</label>
+                  <!-- <label for="lotAreaWord">Area Measurement (Word Form):</label>
                   <input type="text" class="form-control"  disabled><br>
                -->
-                    <label for="lotLocationAddress">Location Address:</label>
-                    <input type="text" class="form-control" name="lot_location_address"><br>
-                    </form>
+                  <label for="lotLocationAddress">Location Address:</label>
+                  <input type="text" class="form-control" name="lot_location_address"><br>
+                </form>
 
-                  </div>
+              </div>
 
-                  <div id="Oathtaking"> ⁡⁢⁣⁢<!-- ‍wala sa database table -->⁡⁡
-                  <form action="#">
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="first_name"><br>
+              <div id="Oathtaking"> ⁡⁢⁣⁢
+                <!-- ‍wala sa database table -->⁡⁡
+                <form action="#">
+                  <label for="">First Name:</label>
+                  <input type="text" class="form-control" name="first_name"><br>
 
-                    <label for="">Middle Name:</label>
-                    <input type="text" class="form-control" name="middle_name"><br>
+                  <label for="">Middle Name:</label>
+                  <input type="text" class="form-control" name="middle_name"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="last_name"><br>
+                  <label for="">Last Name:</label>
+                  <input type="text" class="form-control" name="last_name"><br>
 
-                    <label for="">Suffix:</label>
-                    <input type="text" class="form-control" name="suffix"><br>
+                  <label for="">Suffix:</label>
+                  <input type="text" class="form-control" name="suffix"><br>
 
-                    <label for="applicantAge">Age:</label>
-                    <input type="number" class="form-control" name="age"><br>
+                  <label for="applicantAge">Age:</label>
+                  <input type="number" class="form-control" name="age"><br>
 
-                    <label for="applicantResidencyPeriod">Period of Residency:</label>
-                    <input type="number" class="form-control" name="residency_period"><br>
+                  <label for="applicantResidencyPeriod">Period of Residency:</label>
+                  <input type="number" class="form-control" name="residency_period"><br>
 
-                    <label for="applicantSignedDate">Signed date:</label>
-                    <input type="date" class="form-control" name="signed_date"><br>
+                  <label for="applicantSignedDate">Signed date:</label>
+                  <input type="date" class="form-control" name="signed_date"><br>
 
-                    <!--For Guardian-->
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="guardian_first_name"><br>
+                  <!--For Guardian-->
+                  <label for="">First Name:</label>
+                  <input type="text" class="form-control" name="guardian_first_name"><br>
 
-                    <label for="">Middle Name:</label>
-                    <input type="text" class="form-control" name="guardian_middle_name"><br>
+                  <label for="">Middle Name:</label>
+                  <input type="text" class="form-control" name="guardian_middle_name"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="guardian_last_name"><br>
+                  <label for="">Last Name:</label>
+                  <input type="text" class="form-control" name="guardian_last_name"><br>
 
-                    <label for="">Suffix:</label>
-                    <input type="text" class="form-control" name="guardian_suffix"><br>
+                  <label for="">Suffix:</label>
+                  <input type="text" class="form-control" name="guardian_suffix"><br>
 
-                    <label for="guardianAge">Guardian Age:</label>
-                    <input type="number" class="form-control" name="guardian_age"><br>
+                  <label for="guardianAge">Guardian Age:</label>
+                  <input type="number" class="form-control" name="guardian_age"><br>
 
-                    <!-- <label for="guardianOption">Option (Parent/ Guardian):</label>
+                  <!-- <label for="guardianOption">Option (Parent/ Guardian):</label>
                   <input type="text" class="form-control" ><br> -->
 
-                    <!-- <label for="applicantName">Name of Applicant:</label>
+                  <!-- <label for="applicantName">Name of Applicant:</label>
                   <input type="text" class="form-control" ><br> -->
 
-                    <label for="applicantPurok">Purok:</label>
-                    <input type="text" class="form-control" name="purok"><br>
+                  <label for="applicantPurok">Purok:</label>
+                  <input type="text" class="form-control" name="purok"><br>
 
-                    <label for="applicantResidencyPeriod2">Period of Residency:</label>
-                    <input type="number" class="form-control" name="residency_period"><br>
+                  <label for="applicantResidencyPeriod2">Period of Residency:</label>
+                  <input type="number" class="form-control" name="residency_period"><br>
 
-                    <!-- <label for="guardianFullName2">Guardian Full Name:</label>
+                  <!-- <label for="guardianFullName2">Guardian Full Name:</label>
                   <input type="text" class="form-control" ><br> -->
-                  </form>  
-                </div>
+                </form>
+              </div>
 
-                  <div id="transfer_of_residency">
-                  <form action="#">
+              <div id="transfer_of_residency">
+                <form action="#">
 
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="first_name"><br>
+                  <label for="">First Name:</label>
+                  <input type="text" class="form-control" name="first_name"><br>
 
-                    <label for="">Middle Name:</label>
-                    <input type="text" class="form-control" name="middle_name"><br>
+                  <label for="">Middle Name:</label>
+                  <input type="text" class="form-control" name="middle_name"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="last_name"><br>
+                  <label for="">Last Name:</label>
+                  <input type="text" class="form-control" name="last_name"><br>
 
-                    <label for="">Suffix:</label>
-                    <input type="text" class="form-control" name="suffix"><br>
+                  <label for="">Suffix:</label>
+                  <input type="text" class="form-control" name="suffix"><br>
 
-                    <label for="">Purok:</label>
-                    <input type="text" class="form-control" name="purok"><br>
+                  <label for="">Purok:</label>
+                  <input type="text" class="form-control" name="purok"><br>
 
-                    <!-- <label for="">Nationality:</label>
+                  <!-- <label for="">Nationality:</label>
                   <input type="text" class="form-control"><br>
                -->
-                    <!-- <label for="">Civil Status:</label>
+                  <!-- <label for="">Civil Status:</label>
                   <input type="text" class="form-control"><br> -->
 
-                    <label for="">Previous Address:</label>
-                    <input type="text" class="form-control" name="previous_address"><br>
+                  <label for="">Previous Address:</label>
+                  <input type="text" class="form-control" name="previous_address"><br>
 
-                    <label for="">Current Address:</label>
-                    <input type="text" class="form-control" name="current_address"><br>
-                    </form>
+                  <label for="">Current Address:</label>
+                  <input type="text" class="form-control" name="current_address"><br>
+                </form>
 
-                  </div>
-                </div>
-              </form><!-- End General Form Elements -->
-              </form>
+              </div>
             </div>
+            </form><!-- End General Form Elements -->
+            </form>
           </div>
-
         </div>
-        <div class="col-lg-6">
+
+      </div>
+      <div class="col-lg-6">
 
         <div class="card bg-light">
-    <div class="card-body d-flex justify-content-center align-items-center">
-        <h5 class="card-title">View Certificate</h5>
-    </div>
-    <div class="card-body d-flex justify-content-center align-items-center">
-        <iframe id="myIframe" class="col-lg-12" width="100%" height="100%" style="border: none;"></iframe>
-    </div>
-</div>
-
+          <div class="card-body d-flex justify-content-center align-items-center">
+            <h5 class="card-title">View Certificate</h5>
+          </div>
+          <div class="card-body d-flex justify-content-center align-items-center">
+            <iframe id="myIframe" class="col-lg-12" width="100%" height="100%" style="border: none;"></iframe>
+          </div>
         </div>
+
+      </div>
       </div>
       </div>
 
@@ -886,16 +865,16 @@ if (isset($_POST["sumbit"])) {
 
   <!-- Template Main JS File -->
   <script>
-       function resetForm() {
-        var form = document.getElementById("myForm");
-        form.reset();
+    function resetForm() {
+      var form = document.getElementById("myForm");
+      form.reset();
     }
   </script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/main2.js"></script>
   <script>
     // Select all input elements of type "text"
-    
+
 
   </script>
 </body>
