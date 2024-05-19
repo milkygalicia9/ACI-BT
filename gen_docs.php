@@ -4,31 +4,43 @@
 // if (!isset($_SESSION['username'])) {
 //     header("Location: index.php");
 //     exit();
-// }
+// }<?php
+// Include database connection file
+include ("db.php");
 
-if (isset($_POST["sumbit"])) {
-  $first_name = $_POST["first_name"];
-  $middle_inital = $_POST["middle_initial"];
-  $last_name = $_POST["last_name"];
-  $suffix = $_POST["suffix"];
-  $purok = $_POST["purok"];
-  $birthplace = $_POST["birthplace"];
-  $birthdate = $_POST["birthday"];
-  $civil_status = $_POST["civil_status"];
-  $period_of_residency = $_POST["residency_period"];
-  $issued_date = $_POST["issued_date"];
-  $purpose = $_POST["purpose"];
-  $duty_officer_name = $_POST["duty_officer_full_name"];
+// Check if form is submitted
+if (isset($_POST["submit"])) {
+  echo ("<input type='hidden' name='");
+    // Assign form data to variables
+    $first_name = $_POST["first_name"];
+    $middle_initial = $_POST["middle_initial"];
+    $last_name = $_POST["last_name"];
+    $suffix = $_POST["suffix"];
+    $purok = $_POST["purok"];
+    $birthplace = $_POST["birthplace"];
+    $birthdate = $_POST["birthday"];
+    $civil_status = $_POST["civil_status"];
+    $period_of_residency = $_POST["residency_period"];
+    $issued_date = $_POST["issued_date"];
+    $purpose = $_POST["purpose"];
+    $duty_officer_name = $_POST["duty_officer_full_name"];
 
-  $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name' , ' ' , '$middle_inital' , ' ' , '$last_name' , ' ' , '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
+    // Define SQL query
+    $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name', ' ', '$middle_initial', ' ', '$last_name', ' ', '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
 
-  $result = $conn->query($sql);
-  
+    // Execute SQL query
+    if ($conn->query($sql) === TRUE) {
+        echo "New record inserted successfully";
+        
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+
+    // Close database connection
+    $conn->close();
 }
-
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -234,12 +246,12 @@ if (isset($_POST["sumbit"])) {
                  
                 </div>
                 <br>
-              <form action="#" method="POST" id="myForm">
+              <form action="" method="POST" id="myForm">
 
                 
                 <div class="certificates">
                   <div id="barangay_clearance">
-                  <form action="#">
+                  <form action="#" method="post">
 
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
@@ -300,7 +312,7 @@ if (isset($_POST["sumbit"])) {
 
                           <!-- <label for="">Duty Officer Full Name:</label>
                   <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel"> -->
-                  <button onclick="printIframe()" type="submit">Print</button>
+                  <button name="submit" onclick="printIframe()"  type="submit">Print</button>
                   </form>  
                 </div>
 
@@ -418,8 +430,9 @@ if (isset($_POST["sumbit"])) {
 
                     <label for="">Duty Officer Full Name:</label>
                     <input type="text" class="form-control">
+                    </form>
                   </div>
-                  </form>
+                 
                   <div id="cohabitation">
                     <form action="">
                     <label for="">First Name:</label>
