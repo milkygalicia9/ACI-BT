@@ -181,10 +181,10 @@ if (!isset($_SESSION['username'])) {
                             <div class="card hover-img">
 
                                 <a href="edit-profile.php" class="d-flex justify-content-end">
-                                    <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
-                                        title="Edit Profile"><i class="bi bi-list text-secondary"></i>
+                                    <button type="button" class="btn" title="Edit Profile"><i
+                                            class="bi bi-list text-secondary"></i>
                                     </button>
-                                </a>    
+                                </a>
 
                                 <div class="card-body text-center border-bottom">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt=""
