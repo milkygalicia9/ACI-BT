@@ -299,7 +299,7 @@ if (isset($_POST["sumbit"])) {
 
                           <label for="">Duty Officer Full Name:</label>
                   <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel">
-                  <button onclick="printIframe()" name="submit">Print</button>
+                  <button onclick="printIframe()" type="submit" name="submit">Print</button>
                   </div>
 
                   <div id="business_permit_new">
