@@ -1,10 +1,10 @@
 <?php
-session_start();
+// session_start();
 
-if (!isset($_SESSION['username'])) {
-    header("Location: index.php");
-    exit();
-}
+// if (!isset($_SESSION['username'])) {
+//     header("Location: index.php");
+//     exit();
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -156,17 +156,18 @@ if (!isset($_SESSION['username'])) {
                   }
                 }
 
+              
                 iFrame {
                   top: 50%;
                   /* position: fixed !important; */
                   left: 50%;
-                  width: 21.05cm;
+                  /* width: 21.05cm; */
                   height: 32cm;
                   border: none;
                   overflow: hidden !important;
-                  transform: scale(0.8);
+                  transform: scale(1);
                   transform-origin: 0 0;
-                  border: 2px solid black;
+                  /* border: 2px solid black; */
                 }
 
                 p {
@@ -214,8 +215,8 @@ if (!isset($_SESSION['username'])) {
 
                 
                 <div class="certificates">
-
                   <div id="barangay_clearance">
+                  <form action="#">
 
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
@@ -235,7 +236,7 @@ if (!isset($_SESSION['username'])) {
                         <option value="Sr">Sr</option>
                         <option value="I">I</option>
                         <option value="II">II</option>
-                        <option value="">III</option>
+                        <option value="III">III</option>
                       </select><br><br>
                       <label for="">Purok:</label>
                      <select class=" p-2 w-25 text-left" name="" id="purok">
@@ -276,11 +277,13 @@ if (!isset($_SESSION['username'])) {
 
                           <!-- <label for="">Duty Officer Full Name:</label>
                   <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel"> -->
-                  <button onclick="printIframe()">Print</button>
-                  </div>
+                  <button onclick="printIframe()" type="submit">Print</button>
+                  </form>  
+                </div>
 
                   <div id="business_permit_new">
-                    <form action="">
+                  <form action="#">
+
                       <label for="businessName">Business name/ Trade Activity:</label>
                       <input type="text" class="form-control" name="business_name"><br>
 
@@ -307,6 +310,7 @@ if (!isset($_SESSION['username'])) {
                   </div>
 
                   <div id="business_permit_renew">
+                    <form action="">
                     <label for="businessName">Business name/ Trade Activity:</label>
                     <input type="text" class="form-control" name="business_name"><br>
 
@@ -321,6 +325,7 @@ if (!isset($_SESSION['username'])) {
                       <option value="Trece">Trece</option>
                       <option value="Uha">UHA</option>
                     </select>
+
                     <br>
                     <br>
 
@@ -332,9 +337,12 @@ if (!isset($_SESSION['username'])) {
 
                     <!-- <label for="businessIssuedDate">Issued Date:</label>
                   <input type="date" class="form-control" name="business_issued_date"><br> -->
+                  </form>
                   </div>
 
                   <div id="certificate_of_employability">
+                  <form action="#">
+
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" placeholder="Ex. Juan"><br>
 
@@ -358,9 +366,12 @@ if (!isset($_SESSION['username'])) {
 
                     <label for="">Duty Officer Full Name:</label>
                     <input type="text" class="form-control">
+                    </form>
                   </div>
 
                   <div id="certificate_of_income">
+
+                  <form action="#">
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name"><br>
 
@@ -385,8 +396,9 @@ if (!isset($_SESSION['username'])) {
                     <label for="">Duty Officer Full Name:</label>
                     <input type="text" class="form-control">
                   </div>
-
+                  </form>
                   <div id="cohabitation">
+                    <form action="">
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name"><br>
 
@@ -429,9 +441,11 @@ if (!isset($_SESSION['username'])) {
 
                     <label for="">Duty Officer Full Name</label>
                     <input type="text" class="form-control" name="duty_officer_full_name">
+                    </form>
                   </div>
 
                   <div id="complaint_certificate">
+                    <form action=""></form>
                     <!--With honorifics-->
                     <label for="">First Name:</label>
                     <input type="text" class="form-control"><br>
@@ -478,6 +492,7 @@ if (!isset($_SESSION['username'])) {
                   </div>
 
                   <div id="death_certificate">
+                    <form action="">
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="dead_first_name"
                       placeholder="Name of Dead Person"><br>
@@ -524,9 +539,11 @@ if (!isset($_SESSION['username'])) {
 
                     <label for="dateRequested">Date requested:</label>
                     <input type="date" class="form-control" name="date_requested"><br>
+                    </form>
                   </div>
 
                   <div id="first_time_job_seeker">
+                  <form action="#">
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name"><br>
 
@@ -557,8 +574,10 @@ if (!isset($_SESSION['username'])) {
                     <label for="">Witness</label>
                     <input type="text" class="form-control" name="witness">
                   </div>
-
+                  </form>
+               
                   <div id="indigency_aics">
+                  <form action="#">
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name"><br>
 
@@ -585,9 +604,11 @@ if (!isset($_SESSION['username'])) {
                -->
                     <label for="indigencyIssuedDate">Issued Date:</label>
                     <input type="date" class="form-control" name="issued_date"><br>
+                    </form>
                   </div>
 
                   <div id="indigency">
+                  <form action="#">
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name"><br>
 
@@ -617,10 +638,11 @@ if (!isset($_SESSION['username'])) {
                     <!-- <label for="">Purpose:</label>
                   <input type="text" class="form-control"><br> -->
 
-
+                  </form>
                   </div>
 
                   <div id="lot_ownership">
+                  <form action="#">
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="lot_first_name"><br>
 
@@ -662,11 +684,12 @@ if (!isset($_SESSION['username'])) {
                -->
                     <label for="lotLocationAddress">Location Address:</label>
                     <input type="text" class="form-control" name="lot_location_address"><br>
-
+                    </form>
 
                   </div>
 
                   <div id="Oathtaking"> ⁡⁢⁣⁢<!-- ‍wala sa database table -->⁡⁡
+                  <form action="#">
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name"><br>
 
@@ -718,9 +741,12 @@ if (!isset($_SESSION['username'])) {
 
                     <!-- <label for="guardianFullName2">Guardian Full Name:</label>
                   <input type="text" class="form-control" ><br> -->
-                  </div>
+                  </form>  
+                </div>
 
                   <div id="transfer_of_residency">
+                  <form action="#">
+
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name"><br>
 
@@ -747,26 +773,27 @@ if (!isset($_SESSION['username'])) {
 
                     <label for="">Current Address:</label>
                     <input type="text" class="form-control" name="current_address"><br>
-
+                    </form>
 
                   </div>
                 </div>
               </form><!-- End General Form Elements -->
-
+              </form>
             </div>
           </div>
 
         </div>
         <div class="col-lg-6">
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">View Certificate</h5>
-              <iframe id="myIframe" width="100%" height="100%"></iframe>
+        <div class="card bg-light">
+    <div class="card-body d-flex justify-content-center align-items-center">
+        <h5 class="card-title">View Certificate</h5>
+    </div>
+    <div class="card-body d-flex justify-content-center align-items-center">
+        <iframe id="myIframe" class="col-lg-12" width="100%" height="100%" style="border: none;"></iframe>
+    </div>
+</div>
 
-
-            </div>
-          </div>
         </div>
       </div>
       </div>
