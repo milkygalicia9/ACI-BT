@@ -211,6 +211,12 @@ if (!isset($_SESSION['username'])) {
             const Sales_Indigency_AICS = <?php echo $count_indigency_aics; ?>;
             const Sales_Lot_Ownership = <?php echo $count_lot_ownership; ?>;
             const Sales_Transfer_of_Residency = <?php echo $count_transfer_of_residency; ?>;
+
+            // Function to redirect to view_transactions page with document type parameter
+            function viewTransactions(docType) {
+                window.location.href = 'view_transactions.php?docType=' + encodeURIComponent(docType);
+            }
+
         </script>
 
         <div class="container content bg-light  border rounded  py-3"
@@ -231,7 +237,7 @@ if (!isset($_SESSION['username'])) {
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 px-5">
                                                 <?php echo $count_business_permit_new ?>
                                             </div>
                                         </div>
@@ -243,10 +249,12 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-black">More Info</div>
+                                    <div class="row px-3" onclick="viewTransactions('Business Permit (New)')"
+                                        style="cursor: pointer;">
+                                        <div class="col text-black" style="margin-left: 115px;">MORE INFO</div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
+
                                 </div>
                             </div>
 
