@@ -207,11 +207,9 @@ if (isset($_POST["sumbit"])) {
               </style>
 
               <!-- General Form Elements -->
-              <form>
-
-                <label for="certificateType"> Select Certificate</label><br>
+              <label for="certificateType"> Select Certificate</label><br>
                 <div class="col-md-6">
-                  <select class="  p-2 text-left" id="certificateType" onchange="toggleFields()"
+                  <select class="  p-2 text-left" id="certificateType" onchange="toggleFields()" onclick ="resetForm()"
                     style="cursor: pointer;">
                     <option value="">--select certificates--</option>
                     <option value="barangay_clearance">Barangay Clearance</option>
@@ -230,9 +228,14 @@ if (isset($_POST["sumbit"])) {
                     <option value="lot_ownership">Lot Ownership</option>
                     <option value="Oathtaking">Oathtaking</option>
                     <option value="transfer_of_residency">Certificate of Transfer</option>
+
                   </select>
+                 
                 </div>
                 <br>
+              <form id="myForm">
+
+                
                 <div class="certificates">
 
                   <div id="barangay_clearance">
@@ -260,6 +263,7 @@ if (isset($_POST["sumbit"])) {
                       <label for="">Purok:</label>
                      <select class=" p-2 w-25 text-left" name="purok" id="purok">
                       <option value="Centro">Centro</option>
+                      <option value="Hurawan">Huwaran</option>
                       <option value="Kaakbayan">Kaakbayan</option>
                       <option value="New Princesa"> New Princesa</option>
                       <option value="San Franciso I">San Franciso I</option>
@@ -306,6 +310,7 @@ if (isset($_POST["sumbit"])) {
                       <label for="">Purok:</label><br>
                      <select name="" id="" onchange="">
                       <option value="Centro">Centro</option>
+                      <option value="Hurawan">Huwaran</option>
                       <option value="Kaakbayan">Kaakbayan</option>
                       <option value="New Princesa"> New Princesa</option>
                       <option value="San Franciso I">San Franciso I</option>
@@ -321,9 +326,6 @@ if (isset($_POST["sumbit"])) {
 
                         <label for="">Address(Manager / Operator)</label>
                         <input type="text" class="form-control" name="manager_operator_address">
-
-                        <!-- <label for="businessIssuedDate">Issued Date:</label>
-                  <input type="date" class="form-control" name="business_issued_date"><br> -->
                     </form>
                   </div>
 
@@ -771,7 +773,6 @@ if (isset($_POST["sumbit"])) {
 
 
                   </div>
-
                 </div>
               </form><!-- End General Form Elements -->
 
@@ -822,24 +823,17 @@ if (isset($_POST["sumbit"])) {
   <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
+  <script>
+       function resetForm() {
+        var form = document.getElementById("myForm");
+        form.reset();
+    }
+  </script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/main2.js"></script>
   <script>
     // Select all input elements of type "text"
-    const inputs = document.querySelectorAll('input[type="text"]');
-
-    // Add an event listener for input events to each input element
-    inputs.forEach(input => {
-      input.addEventListener('input', function () {
-        let value = input.value;
-        // Replace all characters that are not letters or spaces
-        value = value.replace(/[^a-zA-Z\s]/g, '');
-        // Limit the length of the value to 50 characters
-        value = value.substring(0, 25);
-        input.value = value;
-      });
-    });
-
+    
 
   </script>
 </body>
