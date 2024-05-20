@@ -214,6 +214,10 @@ if (!isset($_SESSION['username'])) {
 
             // Function to redirect to view_transactions page with document type parameter
             function viewTransactions(docType) {
+                let sqlQuery = '';
+                if (docType === 'Business Permit (New)') {
+                    sqlQuery = "SELECT * FROM freedb_aci-bt.transactions WHERE doc_id = 1";
+                }
                 window.location.href = 'view_transactions.php?docType=' + encodeURIComponent(docType);
             }
 
@@ -251,7 +255,8 @@ if (!isset($_SESSION['username'])) {
                                     </div>
                                     <div class="row px-3" onclick="viewTransactions('Business Permit (New)')"
                                         style="cursor: pointer;">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
+                                        </div>
                                     </div>
 
                                 </div>
@@ -279,7 +284,8 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                        </div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -307,7 +313,8 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                        </div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -341,7 +348,8 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                        </div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -371,7 +379,8 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                        </div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -399,7 +408,8 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                        </div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -431,7 +441,8 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                        </div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -458,7 +469,8 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                        </div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -484,7 +496,8 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                        </div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -516,7 +529,8 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                        </div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -543,7 +557,8 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                        </div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -570,7 +585,8 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                        </div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -601,7 +617,8 @@ if (!isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                     <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                        </div>
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
@@ -614,19 +631,22 @@ if (!isset($_SESSION['username'])) {
                                     <img src="assets/img/devs/carl.jpg" height="100" width="100" alt="">
                                 </div>
                                 <div class="row px-3">
-                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
+                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    </div>
                                     <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                 </div>
                             </div>
 
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3 rounded-circle">Charls Cayabyab
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3 rounded-circle">
+                                        Charls Cayabyab
                                     </div>
                                     <img src="assets/img/devs/charls.jpg" height="100" width="100" alt="">
                                 </div>
                                 <div class="row px-3">
-                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO</div>
+                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    </div>
                                     <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                 </div>
                             </div>
