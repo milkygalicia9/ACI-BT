@@ -1,3 +1,4 @@
+use function mysqli_fetch_assoc;
 <?php
 session_start();
 
@@ -40,23 +41,24 @@ if (isset($_POST["submit"])) {
         $admin_stmt->bind_param('s', $_SESSION['username']);
         $admin_stmt->execute();
         $admin_result = $admin_stmt->get_result();
-
+        // Add missing import statement
         if ($admin_result->num_rows > 0) {
-            $row = $admin_result->fetch_assoc();
-            $admin_id = $row['id'];
+          $row = mysqli_fetch_assoc($admin_result);
+          $admin_id = $row['id'];
 
-            // Insert into transactions
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, client_trans_id, created_at) VALUES (?, 1, LAST_INSERT_ID(), NOW())");
-            $trans_stmt->bind_param('i', $admin_id);
+          // Modify SQL query to use COUNT function correctly
+          $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, client_trans_id, created_at) VALUES (?, 1, (SELECT COUNT(*) FROM barangay_clearance) + 1, NOW())");
+          $trans_stmt->bind_param('i', $admin_id);
 
-            if ($trans_stmt->execute()) {
-                echo "Transaction record inserted successfully";
-            } else {
-                echo "Error: " . $trans_stmt->error;
-            }
+          if ($trans_stmt->execute()) {
+            echo "Transaction record inserted successfully";
+          } else {
+            echo "Error: " . $trans_stmt->error;
+          }
 
-            $trans_stmt->close();
+          $trans_stmt->close();
         } else {
+          echo "Error: Admin user not found.";
             echo "Error: Admin user not found.";
         }
 
