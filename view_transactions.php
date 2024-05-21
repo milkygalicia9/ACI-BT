@@ -185,7 +185,7 @@ if (!isset($_SESSION['username'])) {
                       echo "<td>" . $row["doc_name"] . "</td>";
                       echo "<td>" . $row["client_trans_id"] . "</td>";
                       echo "<td>" . $row["created_at"] . "</td>";
-                      echo "<td><a href=" . "show_client_trans.php?id=" . $row["id"] . "&doc_name=" . str_replace(" ", "_", $row["doc_name"]) . "><button type=" . "submit" . ">VIEW</button></a></td>";
+                      echo "<td><a href=" . "show_client_trans.php?id=" . $row["client_trans_id"] . "&doc_name=" . str_replace(" ", "_", $row["doc_name"]) . "><button type=" . "submit" . ">VIEW</button></a></td>";
                       echo "</tr>";
                     }
                   } else {
