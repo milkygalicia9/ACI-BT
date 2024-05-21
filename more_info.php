@@ -168,7 +168,7 @@ if (!isset($_SESSION['username'])) {
                                         while ($row = $result->fetch_assoc()) {
                                             echo "<tr>";
                                             echo "<td>" . $row["id"] . "</td>";
-                                            echo "<td>" . $row["transact_by_name"] . "</td>";
+                                            echo "<td>" . $row["transact_by"] . "</td>";
                                             echo "<td>" . $row["doc_id"] . "</td>";
                                             echo "<td>" . $row["client_trans_id"] . "</td>";
                                             echo "<td>" . $row["created_at"] . "</td>";

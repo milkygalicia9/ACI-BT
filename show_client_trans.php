@@ -147,7 +147,7 @@
                                     require('db.php');
 
                                     $id = $_GET['id'];
-                                    $table = strtolower($_GET['doc_id']);
+                                    $table = strtolower($_GET['doc_name']);
 
                                     $sql = "SELECT * FROM $table WHERE id = $id";
 
