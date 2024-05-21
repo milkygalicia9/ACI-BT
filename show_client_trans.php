@@ -189,7 +189,31 @@
                                             }
 
                                             // For Business Permit New
-                                            
+                                            if ($table == "business_permit_new") {
+                                                echo "<thead>";
+                                                    echo "<tr>";
+                                                        // echo "<th>ID</th>";
+                                                        echo "<th>Business Name</th>";
+                                                        echo "<th>Business Address</th>";
+                                                        echo "<th>Business Owner</th>";
+                                                        echo "<th>Business Type</th>";
+                                                        echo "<th>Issued Date</th>";
+                                                        echo "<th>Duty Officer Name</th>";
+                                                    echo "</tr>";
+                                                echo "</thead>";
+                                                echo "<tbody>";
+                                                    echo "<tr>";
+                                                    // echo "<td>" . $row["id"] . "</td>";
+                                                    echo "<td>" . $row["business_name"] . "</td>";
+                                                    echo "<td>" . $row["business_address"] . "</td>";
+                                                    echo "<td>" . $row["business_owner"] . "</td>";
+                                                    echo "<td>" . $row["business_type"] . "</td>";
+                                                    echo "<td>" . $row["issued_date"] . "</td>";
+                                                    echo "<td>" . $row["duty_officer_name"] . "</td>";
+                                                    echo "</tr>";
+                                                echo "</tbody>";
+                                            }
+                                            // test
                                             // For Cohabitation
                                             // echo "<tr>";
                                             // echo "<td>" . $row["id"] . "</td>";
