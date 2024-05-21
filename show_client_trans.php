@@ -187,6 +187,8 @@
                                                 echo "</tbody>";
                                                 
                                             }
+
+                                            // For Business Permit New
                                             
                                             // For Cohabitation
                                             // echo "<tr>";
