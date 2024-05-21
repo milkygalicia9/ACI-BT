@@ -213,12 +213,8 @@ if (!isset($_SESSION['username'])) {
             const Sales_Transfer_of_Residency = <?php echo $count_transfer_of_residency; ?>;
 
             // Function to redirect to view_transactions page with document type parameter
-            function viewTransactions(docType) {
-                let sqlQuery = '';
-                if (docType === 'Business Permit (New)') {
-                    sqlQuery = "SELECT * FROM freedb_aci-bt.transactions WHERE doc_id = 1";
-                }
-                window.location.href = 'view_transactions.php?docType=' + encodeURIComponent(docType);
+            function moreInfo(docType, docId) {
+                window.location.href = 'more_info.php?docType=' + encodeURIComponent(docType) + '&docId=' + encodeURIComponent(docId);
             }
 
         </script>
@@ -253,7 +249,7 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3" onclick="viewTransactions('Business Permit (New)')"
+                                    <div class="row px-3" onclick="moreInfo('Business Permit (New)', 1)"
                                         style="cursor: pointer;">
                                         <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
@@ -283,10 +279,10 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    <div class="row px-3" onclick="moreInfo('Business Permit (Renew)', 2)"
+                                        style="cursor: pointer;">
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
                             </div>
@@ -312,10 +308,10 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    <div class="row px-3" onclick="moreInfo('First Time Job Seeker', 4)"
+                                        style="cursor: pointer;">
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
                             </div>
@@ -407,10 +403,10 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    <div class="row px-3" onclick="moreInfo('Certificate of Employability', 3)"
+                                        style="cursor: pointer;">
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
                             </div>
