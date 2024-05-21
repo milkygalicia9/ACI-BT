@@ -139,13 +139,14 @@ if (!isset($_SESSION['username'])) {
       <div class="d-flex pb-2">
         <a href="home.php" class="d-flex">
           <div class="icon">
-            <i class="bi-caret-left-square fs-2 p-2 text-primary"></i>
+            <i class="bi-caret-left-square fs-4 p-2 text-primary"></i>
           </div>
           <div class="back d-flex text-primary align-items-center fs-5">
             Back
           </div>
         </a>
       </div>
+      
       <div class="row">
         <div class="col-lg-12">
 
