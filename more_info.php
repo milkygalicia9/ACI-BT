@@ -160,7 +160,11 @@ if (!isset($_SESSION['username'])) {
                                     // Get doc_id from the URL
                                     $doc_id = isset($_GET['docId']) ? intval($_GET['docId']) : 0;
 
-                                    $sql = "SELECT * FROM `freedb_aci-bt`.transactions where doc_id=$doc_id";
+                                    $sql = "SELECT t.id, a.username AS transact_by, dt.doc_name, t.client_trans_id, t.created_at
+                                            FROM transactions t
+                                            INNER JOIN admin a ON t.transact_by = a.id
+                                            INNER JOIN doctype dt ON t.doc_id = dt.id
+                                            WHERE t.doc_id = $doc_id";
 
                                     $result = $conn->query($sql);
 
@@ -169,15 +173,16 @@ if (!isset($_SESSION['username'])) {
                                             echo "<tr>";
                                             echo "<td>" . $row["id"] . "</td>";
                                             echo "<td>" . $row["transact_by"] . "</td>";
-                                            echo "<td>" . $row["doc_id"] . "</td>";
+                                            echo "<td>" . $row["doc_name"] . "</td>";
                                             echo "<td>" . $row["client_trans_id"] . "</td>";
                                             echo "<td>" . $row["created_at"] . "</td>";
-                                            echo "<td><a href='show_client_trans.php?id=" . $row["id"] . "&doc_id=" . $row["doc_id"] . "'><button type='submit'>VIEW</button></a></td>";
+                                            echo "<td><a href='show_client_trans.php?id=" . $row["id"] . "&doc_name=" . str_replace(" ", "_", $row["doc_name"]) . "'><button type='submit'>VIEW</button></a></td>";
                                             echo "</tr>";
                                         }
                                     } else {
                                         echo "<tr><td colspan='6'><center>No transactions found</center></td></tr>";
                                     }
+
                                     ?>
                                 </tbody>
                             </table>

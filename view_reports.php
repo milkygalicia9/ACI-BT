@@ -279,7 +279,7 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3" onclick="moreInfo('Business Permit (Renew)', 2)"
+                                    <div class="row px-3" onclick="moreInfo('Business Permit (Renew)', 3)"
                                         style="cursor: pointer;">
                                         <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
@@ -308,7 +308,7 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3" onclick="moreInfo('First Time Job Seeker', 4)"
+                                    <div class="row px-3" onclick="moreInfo('First Time Job Seeker', 9)"
                                         style="cursor: pointer;">
                                         <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
@@ -343,10 +343,10 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    <div class="row px-3" onclick="moreInfo('Barangay Clearance', 1)"
+                                        style="cursor: pointer;">
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
                             </div>
@@ -374,253 +374,253 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
-                                        </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(110, 204, 204)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
-                                        Certificate of Employability
-                                    </div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_certificate_of_employability ?>
-                                            </div>
-                                        </div>
-                                        <div class="background-border"></div>
-                                        <div class="cert mt-2" style="background-color: rgb(110, 204, 204);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3" onclick="moreInfo('Certificate of Employability', 3)"
+                                    <<div class="row px-3" onclick="moreInfo('Certificate of Cohabitation', 6)"
                                         style="cursor: pointer;">
                                         <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
-                                    </div>
                                 </div>
                             </div>
-
                         </div>
-                    </div>
 
 
-                    <div class="carousel-item">
-                        <div class="row p-2">
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(183, 147, 255)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
-                                        Certificate of Income</div>
+                        <div class="col-md">
+                            <div class="card-body border rounded my-1 shadow-sm"
+                                style="background-color: rgb(110, 204, 204)">
+                                <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
+                                    Certificate of Employability
+                                </div>
 
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_certificate_of_income ?>
-                                            </div>
-                                        </div>
-                                        <div class="background-border"></div>
-                                        <div class="cert mt-2" style="background-color: rgb(183, 147, 255);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
+                                <div class="d-flex align-items-center justify-content-between mb-1"
+                                    style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+                                    <div class="card-icon">
+                                        <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
+                                            <?php echo $count_certificate_of_employability ?>
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
-                                        </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                    <div class="background-border"></div>
+                                    <div class="cert mt-2" style="background-color: rgb(110, 204, 204);">
+                                        <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
+                                            height="70" alt="">
+                                    </div>
+                                </div>
+                                <div class="row px-3" onclick="moreInfo('Certificate of Employability', 4)"
+                                    style="cursor: pointer;">
+                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(90, 123, 156)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
-                                        Complaint Certificate</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_complaint_certificate ?>
-                                            </div>
-                                        </div>
-                                        <div class="background-border"></div>
-                                        <div class="cert mt-2" style="background-color: rgb(90, 123, 156);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
-                                        </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(76, 166, 76)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Death
-                                        Certificate</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_death_certificate; ?>
-                                            </div>
-                                        </div>
-                                        <div class="background-border"></div>
-                                        <div class="cert mt-2" style="background-color: rgb(76, 166, 76);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
-                                        </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
+
                     </div>
+                </div>
 
-                    <div class="carousel-item">
-                        <div class="row p-2">
 
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color:  rgb(120, 120, 120)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
-                                        Certificate of Indigency (AICS)</div>
+                <div class="carousel-item">
+                    <div class="row p-2">
+                        <div class="col-md">
+                            <div class="card-body border rounded my-1 shadow-sm"
+                                style="background-color: rgb(183, 147, 255)">
+                                <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
+                                    Certificate of Income</div>
 
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_indigency_aics; ?>
-                                            </div>
-                                        </div>
-                                        <div class="background-border"></div>
-                                        <div class="cert mt-2" style="background-color: rgb(120, 120, 120);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
+                                <div class="d-flex align-items-center justify-content-between mb-1"
+                                    style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+                                    <div class="card-icon">
+                                        <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
+                                            <?php echo $count_certificate_of_income ?>
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
-                                        </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                    <div class="background-border"></div>
+                                    <div class="cert mt-2" style="background-color: rgb(183, 147, 255);">
+                                        <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
+                                            height="70" alt="">
                                     </div>
                                 </div>
-                            </div>
-
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(140, 90, 140)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
-                                        Certificate of Indigency</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_indigency; ?>
-                                            </div>
-                                        </div>
-                                        <div class="background-border"></div>
-                                        <div class="cert mt-2" style="background-color: rgb(140, 90, 140);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
+                                <div class="row px-3">
+                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
-                                        </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
-                                    </div>
+                                    <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                 </div>
                             </div>
-
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(173, 90, 90)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Lot
-                                        Ownership</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_lot_ownership; ?>
-                                            </div>
-                                        </div>
-                                        <div class="background-border"></div>
-                                        <div class="cert mt-2" style="background-color: rgb(173, 90, 90);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
-                                        </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
-                    </div>
 
-                    <div class="carousel-item">
-                        <div class="row p-2">
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(188, 188, 88)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Transfer
-                                        of Residency</div>
 
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_transfer_of_residency; ?>
-                                            </div>
-                                        </div>
-                                        <div class="background-border"></div>
-                                        <div class="cert mt-2" style="background-color: rgb(188, 188, 88);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
+                        <div class="col-md">
+                            <div class="card-body border rounded my-1 shadow-sm"
+                                style="background-color: rgb(90, 123, 156)">
+                                <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
+                                    Complaint Certificate</div>
+
+                                <div class="d-flex align-items-center justify-content-between mb-1"
+                                    style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+                                    <div class="card-icon">
+                                        <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
+                                            <?php echo $count_complaint_certificate ?>
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
-                                        </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                    <div class="background-border"></div>
+                                    <div class="cert mt-2" style="background-color: rgb(90, 123, 156);">
+                                        <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
+                                            height="70" alt="">
                                     </div>
                                 </div>
+                                <div class="row px-3">
+                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    </div>
+                                    <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                </div>
                             </div>
+                        </div>
 
-                            <!-- <div class="col-md">
+                        <div class="col-md">
+                            <div class="card-body border rounded my-1 shadow-sm"
+                                style="background-color: rgb(76, 166, 76)">
+                                <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Death
+                                    Certificate</div>
+
+                                <div class="d-flex align-items-center justify-content-between mb-1"
+                                    style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+                                    <div class="card-icon">
+                                        <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
+                                            <?php echo $count_death_certificate; ?>
+                                        </div>
+                                    </div>
+                                    <div class="background-border"></div>
+                                    <div class="cert mt-2" style="background-color: rgb(76, 166, 76);">
+                                        <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
+                                            height="70" alt="">
+                                    </div>
+                                </div>
+                                <div class="row px-3">
+                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    </div>
+                                    <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="row p-2">
+
+                        <div class="col-md">
+                            <div class="card-body border rounded my-1 shadow-sm"
+                                style="background-color:  rgb(120, 120, 120)">
+                                <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
+                                    Certificate of Indigency (AICS)</div>
+
+                                <div class="d-flex align-items-center justify-content-between mb-1"
+                                    style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+                                    <div class="card-icon">
+                                        <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
+                                            <?php echo $count_indigency_aics; ?>
+                                        </div>
+                                    </div>
+                                    <div class="background-border"></div>
+                                    <div class="cert mt-2" style="background-color: rgb(120, 120, 120);">
+                                        <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
+                                            height="70" alt="">
+                                    </div>
+                                </div>
+                                <div class="row px-3">
+                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    </div>
+                                    <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md">
+                            <div class="card-body border rounded my-1 shadow-sm"
+                                style="background-color: rgb(140, 90, 140)">
+                                <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
+                                    Certificate of Indigency</div>
+
+                                <div class="d-flex align-items-center justify-content-between mb-1"
+                                    style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+                                    <div class="card-icon">
+                                        <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
+                                            <?php echo $count_indigency; ?>
+                                        </div>
+                                    </div>
+                                    <div class="background-border"></div>
+                                    <div class="cert mt-2" style="background-color: rgb(140, 90, 140);">
+                                        <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
+                                            height="70" alt="">
+                                    </div>
+                                </div>
+                                <div class="row px-3">
+                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    </div>
+                                    <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md">
+                            <div class="card-body border rounded my-1 shadow-sm"
+                                style="background-color: rgb(173, 90, 90)">
+                                <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Lot
+                                    Ownership</div>
+
+                                <div class="d-flex align-items-center justify-content-between mb-1"
+                                    style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+                                    <div class="card-icon">
+                                        <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
+                                            <?php echo $count_lot_ownership; ?>
+                                        </div>
+                                    </div>
+                                    <div class="background-border"></div>
+                                    <div class="cert mt-2" style="background-color: rgb(173, 90, 90);">
+                                        <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
+                                            height="70" alt="">
+                                    </div>
+                                </div>
+                                <div class="row px-3">
+                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    </div>
+                                    <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="row p-2">
+                        <div class="col-md">
+                            <div class="card-body border rounded my-1 shadow-sm"
+                                style="background-color: rgb(188, 188, 88)">
+                                <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Transfer
+                                    of Residency</div>
+
+                                <div class="d-flex align-items-center justify-content-between mb-1"
+                                    style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+                                    <div class="card-icon">
+                                        <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
+                                            <?php echo $count_transfer_of_residency; ?>
+                                        </div>
+                                    </div>
+                                    <div class="background-border"></div>
+                                    <div class="cert mt-2" style="background-color: rgb(188, 188, 88);">
+                                        <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
+                                            height="70" alt="">
+                                    </div>
+                                </div>
+                                <div class="row px-3">
+                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    </div>
+                                    <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm">
                                     <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Carl Vincent
                                         Alabastro</div>
@@ -647,70 +647,70 @@ if (!isset($_SESSION['username'])) {
                                 </div>
                             </div> -->
 
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(54, 162, 235); opacity: 0;">
-                                    <div class="text-xs fw-bold text-primary text-uppercase mb-1 pt-3">Barangay
-                                        Clearance</div>
+                        <div class="col-md">
+                            <div class="card-body border rounded my-1 shadow-sm"
+                                style="background-color: rgb(54, 162, 235); opacity: 0;">
+                                <div class="text-xs fw-bold text-primary text-uppercase mb-1 pt-3">Barangay
+                                    Clearance</div>
 
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">145</div>
-                                        </div>
-                                        <div class="background-border"></div>
-                                        <div class="cert mt-2" style="background-color: rgb(54, 162, 235);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
+                                <div class="d-flex align-items-center justify-content-between mb-1"
+                                    style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+                                    <div class="card-icon">
+                                        <div class="h5 mb-0 fw-bold text-gray-800 ml-5">145</div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-white">MORE INFO</div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                    <div class="background-border"></div>
+                                    <div class="cert mt-2" style="background-color: rgb(54, 162, 235);">
+                                        <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
+                                            height="70" alt="">
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(54, 162, 235); opacity: 0;">
-                                    <div class="text-xs fw-bold text-primary text-uppercase mb-1 pt-3">Barangay
-                                        Clearance</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">145</div>
-                                        </div>
-                                        <div class="background-border"></div>
-                                        <div class="cert mt-2" style="background-color: rgb(54, 162, 235);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3">
-                                        <div class="col text-white">MORE INFO</div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
-                                    </div>
+                                <div class="row px-3">
+                                    <div class="col text-white">MORE INFO</div>
+                                    <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                 </div>
                             </div>
-
-
-
                         </div>
-                    </div>
 
-                    <!-- Add more carousel-items with three images each as needed -->
+                        <div class="col-md">
+                            <div class="card-body border rounded my-1 shadow-sm"
+                                style="background-color: rgb(54, 162, 235); opacity: 0;">
+                                <div class="text-xs fw-bold text-primary text-uppercase mb-1 pt-3">Barangay
+                                    Clearance</div>
+
+                                <div class="d-flex align-items-center justify-content-between mb-1"
+                                    style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+                                    <div class="card-icon">
+                                        <div class="h5 mb-0 fw-bold text-gray-800 ml-5">145</div>
+                                    </div>
+                                    <div class="background-border"></div>
+                                    <div class="cert mt-2" style="background-color: rgb(54, 162, 235);">
+                                        <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
+                                            height="70" alt="">
+                                    </div>
+                                </div>
+                                <div class="row px-3">
+                                    <div class="col text-white">MORE INFO</div>
+                                    <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
                 </div>
-                <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev"
-                    style="position:  absolute; left: -102px;">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </a>
-                <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next"
-                    style="position:  absolute; right: -102px;">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </a>
+
+                <!-- Add more carousel-items with three images each as needed -->
             </div>
+            <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev"
+                style="position:  absolute; left: -85px;">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next"
+                style="position:  absolute; right: -85px;">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
         </div>
 
         <!--End of Carousel -->
