@@ -157,11 +157,11 @@ if (!isset($_SESSION['username'])) {
                   <?php
                   require 'db.php';
 
-                  $sql = "SELECT * FROM transactions";
-                  // $sql = "SELECT t.id, a.username AS transact_by_name, dt.doc_name, t.client_trans_id, t.created_at
-                  //                                     FROM transactions t
-                  //                                     INNER JOIN admin a ON t.transact_by = a.id
-                  //                                     INNER JOIN doctype dt ON t.doc_id = dt.id";
+                  // $sql = "SELECT * FROM transactions";
+                  $sql = "SELECT t.id, a.username AS transact_by, dt.doc_name, t.client_trans_id, t.created_at
+                                                      FROM transactions t
+                                                      INNER JOIN admin a ON t.transact_by = a.id
+                                                      INNER JOIN doctype dt ON t.doc_id = dt.id";
                   
                   $result = $conn->query($sql);
 
@@ -170,10 +170,10 @@ if (!isset($_SESSION['username'])) {
                       echo "<tr>";
                       echo "<td>" . $row["id"] . "</td>";
                       echo "<td>" . $row["transact_by"] . "</td>";
-                      echo "<td>" . $row["doc_id"] . "</td>";
+                      echo "<td>" . $row["doc_name"] . "</td>";
                       echo "<td>" . $row["client_trans_id"] . "</td>";
                       echo "<td>" . $row["created_at"] . "</td>";
-                      echo "<td><a href=" . "show_client_trans.php?id=" . $row["id"] . "&doc_id=" . str_replace(" ", "_", $row["doc_id"]) . "><button type=" . "submit" . ">VIEW</button></a></td>";
+                      echo "<td><a href=" . "show_client_trans.php?id=" . $row["id"] . "&doc_name=" . str_replace(" ", "_", $row["doc_name"]) . "><button type=" . "submit" . ">VIEW</button></a></td>";
                       echo "</tr>";
                     }
                   } else {
