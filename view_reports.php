@@ -94,14 +94,6 @@ if (!isset($_SESSION['username'])) {
         cursor: pointer;
     }
 
-    .background-border {
-        height: 70px;
-        width: 70px;
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        position: absolute;
-        top: 50px;
-        right: 45px;
-    }
 
     .cert {
         z-index: 1;
@@ -208,7 +200,6 @@ if (!isset($_SESSION['username'])) {
         // Include your PHP code here
         include 'db.php';
         ?>
-
         <script>
             // Use PHP variables in JavaScript
             const Sales_Clearance = <?php echo $count_clearance; ?>;
@@ -234,7 +225,7 @@ if (!isset($_SESSION['username'])) {
 
         <div class="container content bg-light  border rounded  py-3"
             style="width: 97%;  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); overflow-x: hidden;">
-            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-ride="carousel"
+            <div id="myCarousel" class="carousel" data-bs-ride="carousel" data-bs-ride="carousel"
                 data-bs-interval="3000">
                 <div class="carousel-inner">
 
@@ -255,7 +246,7 @@ if (!isset($_SESSION['username'])) {
                                             </div>
                                         </div>
 
-                                        <div class="background-border"></div>
+                                        
                                         <div class="cert mt-2" style="background-color: rgba(94, 180, 239);">
 
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
@@ -286,7 +277,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_business_permit_renew ?>
                                             </div>
                                         </div>
-                                        <div class="background-border"></div>
+                                       
                                         <div class="cert mt-2" style="background-color: rgb(255, 215, 119);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -315,7 +306,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_first_time_job_seeker ?>
                                             </div>
                                         </div>
-                                        <div class="background-border"></div>
+                                        
                                         <div class="cert mt-2" style="background-color: rgb(188, 70, 70);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -350,7 +341,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_clearance ?>
                                             </div>
                                         </div>
-                                        <div class="background-border"></div>
+                                        
                                         <div class="cert mt-2" style="background-color: rgb(255, 70, 70);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -381,7 +372,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_cohabitation ?>
                                             </div>
                                         </div>
-                                        <div class="background-border"></div>
+                                        
                                         <div class="cert mt-2" style="background-color: rgb(255, 183, 50);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -410,7 +401,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_certificate_of_employability ?>
                                             </div>
                                         </div>
-                                        <div class="background-border"></div>
+                                        
                                         <div class="cert mt-2" style="background-color: rgb(110, 204, 204);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -443,7 +434,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_certificate_of_income ?>
                                             </div>
                                         </div>
-                                        <div class="background-border"></div>
+                                        
                                         <div class="cert mt-2" style="background-color: rgb(183, 147, 255);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -471,7 +462,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_complaint_certificate ?>
                                             </div>
                                         </div>
-                                        <div class="background-border"></div>
+                                        
                                         <div class="cert mt-2" style="background-color: rgb(90, 123, 156);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -498,7 +489,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_death_certificate; ?>
                                             </div>
                                         </div>
-                                        <div class="background-border"></div>
+                                        
                                         <div class="cert mt-2" style="background-color: rgb(76, 166, 76);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -531,7 +522,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_indigency_aics; ?>
                                             </div>
                                         </div>
-                                        <div class="background-border"></div>
+                                       
                                         <div class="cert mt-2" style="background-color: rgb(120, 120, 120);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -559,7 +550,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_indigency; ?>
                                             </div>
                                         </div>
-                                        <div class="background-border"></div>
+                                        
                                         <div class="cert mt-2" style="background-color: rgb(140, 90, 140);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -587,7 +578,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_lot_ownership; ?>
                                             </div>
                                         </div>
-                                        <div class="background-border"></div>
+                                
                                         <div class="cert mt-2" style="background-color: rgb(173, 90, 90);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -619,7 +610,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_transfer_of_residency; ?>
                                             </div>
                                         </div>
-                                        <div class="background-border"></div>
+                                      
                                         <div class="cert mt-2" style="background-color: rgb(188, 188, 88);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -671,7 +662,7 @@ if (!isset($_SESSION['username'])) {
                                         <div class="card-icon">
                                             <div class="h5 mb-0 fw-bold text-gray-800 ml-5">145</div>
                                         </div>
-                                        <div class="background-border"></div>
+                               
                                         <div class="cert mt-2" style="background-color: rgb(54, 162, 235);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -695,7 +686,7 @@ if (!isset($_SESSION['username'])) {
                                         <div class="card-icon">
                                             <div class="h5 mb-0 fw-bold text-gray-800 ml-5">145</div>
                                         </div>
-                                        <div class="background-border"></div>
+                                     
                                         <div class="cert mt-2" style="background-color: rgb(54, 162, 235);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
