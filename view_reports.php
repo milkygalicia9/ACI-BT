@@ -509,7 +509,7 @@ if (!isset($_SESSION['username'])) {
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color:  rgb(120, 120, 120)">
                                     <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
-                                        Indigency (AICS)</div>
+                                        Certificate of Indigency (AICS)</div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
@@ -537,7 +537,7 @@ if (!isset($_SESSION['username'])) {
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(140, 90, 140)">
                                     <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
-                                        Indigency</div>
+                                        Certificate of Indigency</div>
 
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
@@ -703,11 +703,11 @@ if (!isset($_SESSION['username'])) {
                     <!-- Add more carousel-items with three images each as needed -->
                 </div>
                 <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev"
-                    style="position:  absolute; left: -85px;">
+                    style="position:  absolute; left: -102px;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </a>
                 <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next"
-                    style="position:  absolute; right: -85px;">
+                    style="position:  absolute; right: -102px;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </a>
             </div>
@@ -731,7 +731,7 @@ if (!isset($_SESSION['username'])) {
                                 <script>
                                     // Data for the bar chart
                                     const chartData = {
-                                        labels: ['Barangay Clearance', 'Business Permit (New)', 'Business Permit (Renew)', 'Certificate of Employability', 'Certificate of Income', 'Cohabitation', 'Complaint Certificate', 'Death Certificate', 'First Time Job Seeker', 'Indigency', 'Indigency (AICS)', 'Lot Ownership', 'Transfer of Residency'],
+                                        labels: ['Barangay Clearance', 'Business Permit (New)', 'Business Permit (Renew)', 'Certificate of Employability', 'Certificate of Income', 'Certificate of Cohabitation', 'Complaint Certificate', 'Death Certificate', 'First Time Job Seeker', 'Certificate of Indigency', 'Certificate of Indigency (AICS)', 'Lot Ownership', 'Transfer of Residency'],
                                         datasets: [{
                                             label: 'Number of Issued Certificates',
                                             backgroundColor: [
