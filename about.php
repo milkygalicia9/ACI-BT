@@ -149,9 +149,6 @@
                                 <div class="carousel-item">
                                     <img src="assets/img/psu-logo.jpg" class="d-block w-100" alt="...">
                                 </div>
-                                <div class="carousel-item">
-                                    <img src="assets/img/devs/carl.jpg" class="d-block w-100 rounded-circle" alt="...">
-                                </div>
                             </div>
                         </div>
                     </div>

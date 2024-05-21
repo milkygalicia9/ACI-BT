@@ -624,7 +624,7 @@ if (!isset($_SESSION['username'])) {
                                 </div>
                             </div>
 
-                            <div class="col-md">
+                            <!-- <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm">
                                     <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Carl Vincent
                                         Alabastro</div>
@@ -649,11 +649,9 @@ if (!isset($_SESSION['username'])) {
                                     </div>
                                     <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                 </div>
-                            </div>
+                            </div> -->
 
-
-
-                            <!-- <div class="col-md">
+                            <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(54, 162, 235); opacity: 0;">
                                     <div class="text-xs fw-bold text-primary text-uppercase mb-1 pt-3">Barangay
@@ -675,8 +673,31 @@ if (!isset($_SESSION['username'])) {
                                         <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
 
+                            <div class="col-md">
+                                <div class="card-body border rounded my-1 shadow-sm"
+                                    style="background-color: rgb(54, 162, 235); opacity: 0;">
+                                    <div class="text-xs fw-bold text-primary text-uppercase mb-1 pt-3">Barangay
+                                        Clearance</div>
+
+                                    <div class="d-flex align-items-center justify-content-between mb-1"
+                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+                                        <div class="card-icon">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">145</div>
+                                        </div>
+                                        <div class="background-border"></div>
+                                        <div class="cert mt-2" style="background-color: rgb(54, 162, 235);">
+                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
+                                                height="70" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="row px-3">
+                                        <div class="col text-white">MORE INFO</div>
+                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                    </div>
+                                </div>
+                            </div>
 
 
 

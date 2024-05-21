@@ -148,8 +148,8 @@
                     <div class="card">
                         <div class="card-body profile-card pb-0 pt-4 d-flex flex-column align-items-center text-dark">
                             <img src="assets/img/devs/carl.jpg" alt="Profile" class="rounded-circle">
-                            <h2>Kevin Anderson</h2>
-                            <h3>Web Designer</h3>
+                            <h2>Carl Alab</h2>
+                            <h3>Punong Barangay</h3>
                         </div>
                         <div class="mt-0 pt-0 mx-3 p-3 rounded-4">
                             <div class="tab-pane fade show active profile-overview text-dark" id="profile-overview">
