@@ -749,7 +749,7 @@ if (!isset($_SESSION['username'])) {
           </div>
 
         
-          <div class="container col-md-12 border">
+          <div class="container col-md-12">
 
             <div class="card-body pb-0">
               <h5 class="card-title">Bar Chart  <span>| Reports</span></h5>
