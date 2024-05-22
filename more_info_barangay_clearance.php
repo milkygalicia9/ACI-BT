@@ -145,12 +145,16 @@ if (!isset($_SESSION['username'])) {
                             <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Transacted by</th>
-                                        <th>Document ID</th>
-                                        <th>Client Transaction ID</th>
-                                        <th>Created At</th>
-                                        <th>Action</th>
+                                        <!-- <th>ID</th> -->
+                                        <th>Full name</th>
+                                        <th>Address</th>
+                                        <th>Birth Place</th>
+                                        <th>Birth Date</th>
+                                        <th>Civil Status</th>
+                                        <th>Period of Residency</th>
+                                        <th>Issued Date</th>
+                                        <th>Purpose</th>
+                                        <th>Duty Officer Name</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -160,29 +164,42 @@ if (!isset($_SESSION['username'])) {
                                     // Get doc_id from the URL
                                     $doc_id = isset($_GET['docId']) ? intval($_GET['docId']) : 0;
 
-                                    $sql = "SELECT t.id, a.username AS transact_by, dt.doc_name, t.client_trans_id, t.created_at
+                                    if ($doc_id == 1) {
+                                        // Fetch data from barangay_clearance table when doc_id is 1
+                                        $sql = "SELECT fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name 
+                                            FROM barangay_clearance";
+
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<tr>";
+                                                // echo "<td>" . $row["id"] . "</td>";
+                                                echo "<td>" . $row["fullname"] . "</td>";
+                                                echo "<td>" . $row["address"] . "</td>";
+                                                echo "<td>" . $row["birthplace"] . "</td>";
+                                                echo "<td>" . $row["birthdate"] . "</td>";
+                                                echo "<td>" . $row["civil_status"] . "</td>";
+                                                echo "<td>" . $row["period_of_residency"] . "</td>";
+                                                echo "<td>" . $row["issued_date"] . "</td>";
+                                                echo "<td>" . $row["purpose"] . "</td>";
+                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='10'><center>No barangay clearances found</center></td></tr>";
+                                        }
+                                    } else {
+                                        // Fetch data from transactions table for other doc_ids
+                                        $sql = "SELECT t.id, a.username AS transact_by, dt.doc_name, t.client_trans_id, t.created_at
                                             FROM transactions t
                                             INNER JOIN admin a ON t.transact_by = a.id
                                             INNER JOIN doctype dt ON t.doc_id = dt.id
                                             WHERE t.doc_id = $doc_id";
 
-                                    $result = $conn->query($sql);
+                                        $result = $conn->query($sql);
 
-                                    if ($result->num_rows > 0) {
-                                        while ($row = $result->fetch_assoc()) {
-                                            echo "<tr>";
-                                            echo "<td>" . $row["id"] . "</td>";
-                                            echo "<td>" . $row["transact_by"] . "</td>";
-                                            echo "<td>" . $row["doc_name"] . "</td>";
-                                            echo "<td>" . $row["client_trans_id"] . "</td>";
-                                            echo "<td>" . $row["created_at"] . "</td>";
-                                            echo "<td><a href='show_client_trans.php?id=" . $row["id"] . "&doc_name=" . str_replace(" ", "_", $row["doc_name"]) . "'><button type='submit'>VIEW</button></a></td>";
-                                            echo "</tr>";
-                                        }
-                                    } else {
-                                        echo "<tr><td colspan='6'><center>No transactions found</center></td></tr>";
                                     }
-
                                     ?>
                                 </tbody>
                             </table>
@@ -193,6 +210,7 @@ if (!isset($_SESSION['username'])) {
             </div>
         </section>
     </main><!-- End #main -->
+
 
 
 

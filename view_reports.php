@@ -219,7 +219,7 @@ if (!isset($_SESSION['username'])) {
 
             // Function to redirect to view_transactions page with document type parameter
             function moreInfo(docType, docId) {
-                window.location.href = 'more_info.php?docType=' + encodeURIComponent(docType) + '&docId=' + encodeURIComponent(docId);
+                window.location.href = 'more_info_barangay_clearance.php?docType=' + encodeURIComponent(docType) + '&docId=' + encodeURIComponent(docId);
             }
 
         </script>
@@ -251,10 +251,10 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    <div class="row px-3" onclick="moreInfo('Barangay Clearance', 1)"
+                                        style="cursor: pointer;">
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
                             </div>
@@ -278,7 +278,7 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3" onclick="moreInfo('Business Permit (New)', 1)"
+                                    <div class="row px-3" onclick="moreInfo('Business Permit (New)', 2)"
                                         style="cursor: pointer;">
                                         <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
@@ -299,7 +299,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_business_permit_renew ?>
                                             </div>
                                         </div>
-                                       
+
                                         <div class="cert mt-2" style="background-color: rgb(255, 215, 119);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -422,7 +422,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_certificate_of_employability ?>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="cert mt-2" style="background-color: rgb(110, 204, 204);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -448,7 +448,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_certificate_of_income ?>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="cert mt-2" style="background-color: rgb(183, 147, 255);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -507,7 +507,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_complaint_certificate ?>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="cert mt-2" style="background-color: rgb(90, 123, 156);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -533,7 +533,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_death_certificate; ?>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="cert mt-2" style="background-color: rgb(76, 166, 76);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -590,7 +590,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_indigency; ?>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="cert mt-2" style="background-color: rgb(140, 90, 140);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -642,7 +642,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_lot_ownership; ?>
                                             </div>
                                         </div>
-                                
+
                                         <div class="cert mt-2" style="background-color: rgb(173, 90, 90);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -673,7 +673,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_transfer_of_residency; ?>
                                             </div>
                                         </div>
-                                      
+
                                         <div class="cert mt-2" style="background-color: rgb(188, 188, 88);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -725,7 +725,7 @@ if (!isset($_SESSION['username'])) {
                                         <div class="card-icon">
                                             <div class="h5 mb-0 fw-bold text-gray-800 ml-5">145</div>
                                         </div>
-                               
+
                                         <div class="cert mt-2" style="background-color: rgb(54, 162, 235);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -749,7 +749,7 @@ if (!isset($_SESSION['username'])) {
                                         <div class="card-icon">
                                             <div class="h5 mb-0 fw-bold text-gray-800 ml-5">145</div>
                                         </div>
-                                     
+
                                         <div class="cert mt-2" style="background-color: rgb(54, 162, 235);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
