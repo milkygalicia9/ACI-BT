@@ -186,17 +186,16 @@ if (!isset($_SESSION['username'])) {
     </aside>
 
     <main id="main" class="main">
-        <div class="d-flex pb-2 px-3">
-            <a href="home.php" class="d-flex">
+        <div class="d-flex pb-2">
+            <a href="home.php" class="d-flex px-2">
                 <div class="icon">
-                    <i class="bi-caret-left-square fs-4 p-2 text-primary"></i>
+                    <i class="bi-caret-left-square fs-2 p-2 text-primary"></i>
                 </div>
                 <div class="back d-flex text-primary align-items-center fs-5">
                     Back
                 </div>
             </a>
         </div>
-
         <?php
         // Include your PHP code here
         include 'db.php';
@@ -226,12 +225,13 @@ if (!isset($_SESSION['username'])) {
 
         <div class="container content bg-light  border rounded  py-3"
             style="width: 97%;  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); overflow-x: hidden;">
-            <div id="myCarousel" class="carousel" data-bs-ride="carousel" data-bs-ride="carousel"
+            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-ride="carousel"
                 data-bs-interval="3000">
                 <div class="carousel-inner">
 
                     <div class="carousel-item active">
                         <div class="row p-2">
+<<<<<<< Updated upstream
 
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
@@ -259,11 +259,15 @@ if (!isset($_SESSION['username'])) {
                                 </div>
                             </div>
 
+=======
+                            
+>>>>>>> Stashed changes
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgba(94, 180, 239);">
                                     <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Business
                                         Permit (New)</div>
+
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
@@ -272,8 +276,9 @@ if (!isset($_SESSION['username'])) {
                                             </div>
                                         </div>
 
-                                        <div class="background-border"></div>
+                                        
                                         <div class="cert mt-2" style="background-color: rgba(94, 180, 239);">
+
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
                                         </div>
@@ -283,8 +288,10 @@ if (!isset($_SESSION['username'])) {
                                         <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
+
 
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
@@ -292,6 +299,7 @@ if (!isset($_SESSION['username'])) {
                                     <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Business
                                         Permit (Renew)
                                     </div>
+
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
@@ -328,7 +336,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_first_time_job_seeker ?>
                                             </div>
                                         </div>
-                                        <div class="background-border"></div>
+                                        
                                         <div class="cert mt-2" style="background-color: rgb(188, 70, 70);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -363,7 +371,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_clearance ?>
                                             </div>
                                         </div>
-                                        <div class="background-border"></div>
+                                        
                                         <div class="cert mt-2" style="background-color: rgb(255, 70, 70);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -394,7 +402,7 @@ if (!isset($_SESSION['username'])) {
                                                 <?php echo $count_cohabitation ?>
                                             </div>
                                         </div>
-                                        <div class="background-border"></div>
+                                        
                                         <div class="cert mt-2" style="background-color: rgb(255, 183, 50);">
                                             <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
                                                 height="70" alt="">
@@ -415,6 +423,7 @@ if (!isset($_SESSION['username'])) {
                                     <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
                                         Certificate of Employability
                                     </div>
+
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
@@ -436,11 +445,18 @@ if (!isset($_SESSION['username'])) {
                                 </div>
                             </div>
 
+                        </div>
+                    </div>
+
+
+                    <div class="carousel-item">
+                        <div class="row p-2">
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(183, 147, 255)">
                                     <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
                                         Certificate of Income</div>
+
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
@@ -462,44 +478,13 @@ if (!isset($_SESSION['username'])) {
                                 </div>
                             </div>
 
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(255, 183, 50)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
-                                        Certificate of Cohabitation
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_cohabitation ?>
-                                            </div>
-                                        </div>
-                                        <div class="background-border"></div>
-                                        <div class="cert mt-2" style="background-color: rgb(255, 183, 50);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
-                                        </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="carousel-item">
-                        <div class="row p-2">
 
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(90, 123, 156)">
                                     <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
                                         Complaint Certificate</div>
+
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
@@ -526,6 +511,7 @@ if (!isset($_SESSION['username'])) {
                                     style="background-color: rgb(76, 166, 76)">
                                     <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Death
                                         Certificate</div>
+
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
@@ -547,6 +533,7 @@ if (!isset($_SESSION['username'])) {
                                 </div>
                             </div>
 
+<<<<<<< Updated upstream
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(188, 70, 70)">
@@ -572,6 +559,8 @@ if (!isset($_SESSION['username'])) {
                                     </div>
                                 </div>
                             </div>
+=======
+>>>>>>> Stashed changes
                         </div>
                     </div>
 
@@ -580,9 +569,38 @@ if (!isset($_SESSION['username'])) {
 
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
+                                    style="background-color:  rgb(120, 120, 120)">
+                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
+                                        Certificate of Indigency (AICS)</div>
+
+                                    <div class="d-flex align-items-center justify-content-between mb-1"
+                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+                                        <div class="card-icon">
+                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
+                                                <?php echo $count_indigency_aics; ?>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="cert mt-2" style="background-color: rgb(120, 120, 120);">
+                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
+                                                height="70" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="row px-3">
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                        </div>
+                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md">
+                                <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(140, 90, 140)">
                                     <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
                                         Certificate of Indigency</div>
+
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
@@ -604,6 +622,7 @@ if (!isset($_SESSION['username'])) {
                                 </div>
                             </div>
 
+<<<<<<< Updated upstream
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color:  rgb(120, 120, 120)">
@@ -629,12 +648,15 @@ if (!isset($_SESSION['username'])) {
                                     </div>
                                 </div>
                             </div>
+=======
+>>>>>>> Stashed changes
 
                             <div class="col-md">
                                 <div class="card-body border rounded my-1 shadow-sm"
                                     style="background-color: rgb(173, 90, 90)">
                                     <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Lot
                                         Ownership</div>
+
                                     <div class="d-flex align-items-center justify-content-between mb-1"
                                         style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
                                         <div class="card-icon">
@@ -655,6 +677,7 @@ if (!isset($_SESSION['username'])) {
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -770,11 +793,11 @@ if (!isset($_SESSION['username'])) {
                     <!-- Add more carousel-items with three images each as needed -->
                 </div>
                 <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev"
-                    style="position:  absolute; left: -85px;">
+                    style="position:  absolute; left: -102px;">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 </a>
                 <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next"
-                    style="position:  absolute; right: -85px;">
+                    style="position:  absolute; right: -102px;">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </a>
             </div>
