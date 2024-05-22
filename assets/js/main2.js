@@ -1,3 +1,30 @@
+const monthNames = ['January', 
+  'February', 
+  'March', 
+  'April', 
+  'May', 
+  'June', 
+  'July', 
+  'August', 
+  'September', 
+  'October', 
+  'November', 
+  'December'];
+const certs = ['barangay_clearance',
+  'business_permit_new',
+  'business_permit_renew',
+  'certificate_of_employability',
+  'certificate_of_income',
+  'cohabitation',
+  'complaint_certificate',
+  'death_certificate',
+  'first_time_job_seeker',
+  'indigency',
+  'indigency_aics',
+  'lot_ownership',
+  'Oathtaking',
+  'transfer_of_residency'];
+
 
 function getOrdinalSuffix(number) {
   if (number % 100 >= 11 && number % 100 <= 13) {
@@ -11,23 +38,15 @@ function getOrdinalSuffix(number) {
   }
 }
 function convertTime(timeInput) {
-  // Get the input element
-  // var timeInput = document.getElementById('timeInput');
-  // Split the input value into hours and minutes
   var timeParts = timeInput.split(':');
   var hours = parseInt(timeParts[0]);
   var minutes = parseInt(timeParts[1]);
-
-  // Determine AM or PM
   var period = (hours >= 12) ? 'PM' : 'AM';
-
-  // Convert to 12-hour format
   hours = (hours > 12) ? hours - 12 : hours;
   hours = (hours == 0) ? 12 : hours;
-
-  // Return the converted time
   return hours + ':' + minutes.toString().padStart(2, '0') + ' ' + period;
 }
+
 function numberToWords(number) {
   const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
   const teens = ['', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
@@ -79,7 +98,42 @@ function numberToWords(number) {
 }
 
 
+
+
 function toggleFields() {
+  const varname = [
+    "first_name",
+    "middle_initial",
+    "last_name",
+    "age",
+    // "civil_status",
+    "bithdate"
+  ];
+  for (let i = 0; i < varname.length; i++) {
+    document.querySelectorAll('input[name="'+varname[i]+'"]').forEach(function(first) {
+      console.log(varname[i]);
+      first.setAttribute('name', varname[i]+"se");
+  });
+  }
+  for (let i = 0; i <  certs.length; i++) {
+
+
+  }
+  document.getElementById("fillup").scrollIntoView({ behavior: 'smooth' });
+
+  document.querySelectorAll('#form').forEach(function(form){
+    form.reset();
+  });
+  document.querySelectorAll("#purok").forEach(function (name){
+  name.setAttribute('id','puroks');
+  name.setAttribute('name','puroks');
+
+  });
+  document.querySelectorAll("#suffix").forEach(function (name){
+  name.setAttribute('id','suffixs');
+  name.setAttribute('name','suffixs');
+
+  });
   var certificateType = document.getElementById('certificateType').value;
   var forms = document.getElementsByClassName('certificates')[0].children;
 
@@ -98,7 +152,6 @@ function toggleFields() {
   if (currentForm) {
       currentForm.querySelectorAll('input[type=text], input[type=number]').forEach(function(input) {
           input.setAttribute('oninput', 'updateText()');
-          // input.setAttribute('style','width: 50% !important');
       });
       currentForm.querySelectorAll('input[type=date], input[type=time]').forEach(function(input) {
           input.setAttribute('onchange', 'updateText()');
@@ -112,6 +165,25 @@ function toggleFields() {
       });
   }
 
+    for (let index = 0; index < varname.length; index++) {
+            
+          var current = currentForm.querySelector('input[name="'+varname[index]+'se"]');
+          if (current) {
+              current.setAttribute('name', varname[index]);
+          }
+    }
+  var purokSelect = currentForm.querySelector('select[id="puroks"]');
+  var suffixSelect = currentForm.querySelector('select[id="suffixs"]');
+  if (purokSelect) {
+    purokSelect.setAttribute('id', 'purok');
+    purokSelect.setAttribute('name', 'purok');
+  }
+  if (suffixSelect) {
+    suffixSelect.setAttribute('id', 'suffix');
+    suffixSelect.setAttribute('name','suffix');
+  }
+
+  
   iframe.src = doc;
 }
 
@@ -156,10 +228,8 @@ iframeWindow.print();
         var date= document.getElementById(document.getElementById('certificateType').value).querySelectorAll('input[type=date]');
         var time= document.getElementById(document.getElementById('certificateType').value).querySelectorAll('input[type=time]');
         var checkbox = document.getElementById(document.getElementById('certificateType').value).querySelectorAll('input[type=checkbox]');
-    
-      // console.log(text[0].value);
+    // console.log(number[0].value);
       var iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
-      var data = {};
       for (var x = 0; x < text.length; x++) {
        
         var Var = iframeDocument.getElementById('var'+x);
@@ -168,9 +238,7 @@ iframeWindow.print();
       }
        
         }
-    
-    
-    
+        
   for (var x = 0; x < number.length; x++) {
     var Number = iframeDocument.getElementById('num'+x);
     
@@ -211,12 +279,9 @@ iframeWindow.print();
   }
 
   for (var x = 0; x < time.length; x++) {
-
     var Time = iframeDocument.getElementById('time'+x);
     if (Time) {
       Time.innerText = convertTime(time[x].value);
-
-      
   }
 }
 if(certificateType.value == 'lot_ownership') {
@@ -230,28 +295,38 @@ if(certificateType.value == 'lot_ownership') {
 }
 
 }
-console.log(document.getElementById('gg').value);
 
-if(certificateType.value == 'barangay_clearance') {
+if(certificateType.value == 'cohabitation') {
+var periods = iframeDocument.getElementById('period');
+var inyears = iframeDocument.getElementById('inyears');
 
-  
-  // switch () {
-  //   case value:
-      
-  //     break;
-  
-  //   default:
-  //     break;
+var month = monthNames[parseInt(document.getElementById('month').value.split('-')[1]-1, 10)]
+var year = document.getElementById('month').value.split('-')[0];
+let currentDate = new Date();
+        
+currentDate.setFullYear(currentDate.getFullYear() - year);
+console.log(currentDate);
+if (periods){ 
+  periods.innerText =  month + ' ' + year;
+}
+if (inyears){
+  inyears.innerText = currentDate;
+
+
+}
+else console.log('period not found');   
+
+
   }
 
 
 
 if (certificateType.value == 'certificate_of_income') {
-var num = iframeDocument.getElementById('intext').value;
+var num = iframeDocument.getElementById('intext');
 
 if (num ) { 
-
-  // num.innerText = 
+  
+  num.innerText = numberToWords(number[0].value);
 
 }
 if (certificateType.value == 'indigency') {
@@ -275,11 +350,10 @@ if (certificateType.value == 'indigency') {
   }
 }
 
-
-}}
-
+}
 
 
+}///end
 
 const inputs = document.querySelectorAll('input[type="text"]');
 
@@ -303,11 +377,13 @@ const day = currentDate.getDate();
 const month = currentDate.getMonth() ; 
 const year = currentDate.getFullYear();
 
-const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const monthName = monthNames[month];
-console.log(days,months,sups,years);
+// console.log(days,months,sups,years);
 if (days) days.innerText = day;
 if (months) months.innerText = monthName;
 if (sups) sups.innerText = getOrdinalSuffix(day);
 if (years) years.innerText =year;
-else console.log("not ok");
+
+window.onload = function() {
+  document.getElementById("fillup").scrollIntoView({ behavior: 'smooth' });
+};
