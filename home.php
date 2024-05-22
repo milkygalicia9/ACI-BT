@@ -111,14 +111,14 @@ if (!isset($_SESSION['username'])) {
         </div>
 
         <ul class="sidebar-nav" id="sidebar-nav" style="padding: 15px;">
-            <!-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
                     <i class="bi bi-grid text-light"></i>
                     <span>Dashboard</span>
                 </a>
-            </li> -->
+            </li>
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed text-light" data-bs-target="#dashboard-nav" data-bs-toggle="collapse"
                     href="#" style="background-color: #174793;">
                     <i class="bi bi-menu-button-wide"></i><span>Dashboard</span><i
@@ -141,7 +141,7 @@ if (!isset($_SESSION['username'])) {
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed text-light" data-bs-target="#officials-nav" data-bs-toggle="collapse"
