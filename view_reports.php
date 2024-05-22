@@ -57,7 +57,7 @@ if (!isset($_SESSION['username'])) {
 
   <main id="main" class="main">
 
-  <div class="d-flex pb-2">
+  <!-- <div class="d-flex pb-2">
             <a href="home.php" class="d-flex px-2">
                 <div class="icon">
                     <i class="bi-caret-left-square fs-2 p-2 text-primary"></i>
@@ -66,7 +66,7 @@ if (!isset($_SESSION['username'])) {
                     Back
                 </div>
             </a>
-        </div>
+        </div> -->
 
      <!-- ======= Header ======= -->
      <header id="header" class="header fixed-top d-flex align-items-center w-100"
