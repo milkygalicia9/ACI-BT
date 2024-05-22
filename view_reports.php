@@ -11,182 +11,53 @@ if (!isset($_SESSION['username'])) {
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>ACI-BT | View Reports</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+  <title>Dashboard - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <!-- Favicons -->
-    <link href="assets/img/cap-log.png" rel="icon">
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-        rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+        filter: invert(1);
+    } 
+  </style>
 
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
-
-    <!-- =======================================================
+  <!-- =======================================================
   * Template Name: NiceAdmin
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
   * Updated: Apr 20 2024 with Bootstrap v5.3.3
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
-======================================================= -->
+  ======================================================== -->
 </head>
 
-<style>
-    p {
-        color: white;
-        font-size: 12px;
-    }
+<body>
 
-    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        color: #000;
-    }
+  <main id="main" class="main">
 
-    .wrapper {
-        overflow-y: scroll;
-        /* Hide the vertical scrollbar */
-        overflow-x: hidden;
-        /* Optionally hide the horizontal scrollbar */
-        height: 100vh;
-        /* Set height to 100% of the viewport height */
-    }
-
-    .card {
-        height: 350px;
-        width: 350px;
-        transition: transform 0.3s;
-        font-size: 18px;
-        font-weight: 400;
-        border-bottom: 2px solid black;
-    }
-
-    .card:hover {
-        transform: scale(1.1);
-        background-color: rgb(255, 230, 91);
-    }
-
-    .carousel-control-next-icon,
-    .carousel-control-prev-icon {
-        filter: invert(1);
-    }
-
-
-    .card-body {
-        cursor: pointer;
-    }
-
-
-    .cert {
-        z-index: 1;
-        border: 1px solid rgba(255, 255, 255, 0.4);
-    }
-</style>
-
-
-<body style="background-color: #F4F3EF;">
-
-    <!-- ======= Header ======= -->
-    <header id="header" class="header fixed-top d-flex align-items-center w-100"
-        style="background-color: #F4F3EF; padding: 0">
-
-        <div class="d-flex align-items-center justify-content-between h-100 p-2">
-            <a href="home.php" class="logo d-flex align-items-center justify-content-center">
-                <span class="d-none d-lg-block">ACI-BT</span>
-            </a>
-        </div>
-
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-
-        <div class="title h-100 d-flex align-items-center" style="padding-left: 20px; padding-top: 8px;">
-            <h4 class="text-dark ">Automated Credential Issuance for Barangay Tiniguiban</h4>
-        </div>
-
-    </header><!-- End Header -->
-
-    <!-- ======= Sidebar ======= -->
-    <aside id="sidebar" class="sidebar" style="background-color: #174793; padding: 0;">
-
-        <div class="barangay-logo h-50 w-100" style="background-color: #729ED9; margin-bottom: 2px;">
-            <div class="barangay-logo h-100 d-flex align-items-center justify-content-center">
-                <a href="home.php">
-                    <img src="assets/img/cap-log.png" height="250" alt="">
-                </a>
-                x
-            </div>
-        </div>
-
-        <ul class="sidebar-nav" id="sidebar-nav" style="padding: 15px;">
-            <li class="nav-item">
-                <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
-                    <i class="bi bi-grid text-light"></i>
-                    <span>Home</span>
-                </a>
-            </li><!-- End Dashboard Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse"
-                    href="#" style="background-color: #174793;">
-                    <i class="bi bi-diagram-3"></i><span>Officials</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="officials.php">
-                            <i class="bi bi-person-check-fill text-light" style="font-size: 12px;"></i><span
-                                class="text-light">Barangay Officials</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="sk.php">
-                            <i class="bi bi-person-badge text-light" style="font-size: 12px;"></i><span
-                                class="text-light">SK Officials</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="staffs.php">
-                            <i class="bi bi-people-fill text-light" style="font-size: 12px;"></i><span
-                                class="text-light">Barangay Staffs</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Components Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed text-light" href="about.php" style="background-color: #174793;">
-                    <i class="bi bi-question-circle"></i>
-                    <span>About</span>
-                </a>
-            </li><!-- End F.A.Q Page Nav -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
-                    <i class="bi bi-question-circle"></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-        </ul>
-
-    </aside>
-
-    <main id="main" class="main">
-        <div class="d-flex pb-2">
+  <div class="d-flex pb-2">
             <a href="home.php" class="d-flex px-2">
                 <div class="icon">
                     <i class="bi-caret-left-square fs-2 p-2 text-primary"></i>
@@ -196,625 +67,693 @@ if (!isset($_SESSION['username'])) {
                 </div>
             </a>
         </div>
-        <?php
-        // Include your PHP code here
-        include 'db.php';
-        ?>
-        <script>
-            // Use PHP variables in JavaScript
-            const Sales_Clearance = <?php echo $count_clearance; ?>;
-            const Sales_Business_Permit_New = <?php echo $count_business_permit_new ?>;
-            const Sales_Business_Permit_Renew = <?php echo $count_business_permit_renew ?>;
-            const Sales_Certificate_of_Employability = <?php echo $count_certificate_of_employability ?>;
-            const Sales_Certificate_of_Income = <?php echo $count_certificate_of_income ?>;
-            const Sales_Cohabitation = <?php echo $count_cohabitation; ?>;
-            const Sales_Complaint_Certificate = <?php echo $count_complaint_certificate; ?>;
-            const Sales_Death_Certificate = <?php echo $count_death_certificate; ?>;
-            const Sales_First_Time_Job_Seeker = <?php echo $count_first_time_job_seeker; ?>;
-            const Sales_Indigency = <?php echo $count_indigency; ?>;
-            const Sales_Indigency_AICS = <?php echo $count_indigency_aics; ?>;
-            const Sales_Lot_Ownership = <?php echo $count_lot_ownership; ?>;
-            const Sales_Transfer_of_Residency = <?php echo $count_transfer_of_residency; ?>;
 
-            // Function to redirect to view_transactions page with document type parameter
-            function moreInfo(docType, docId) {
+     <!-- ======= Header ======= -->
+     <header id="header" class="header fixed-top d-flex align-items-center w-100"
+     style="background-color: #F4F3EF; padding: 0">
+
+     <div class="d-flex align-items-center justify-content-between h-100 p-2">
+         <a href="home.php" class="logo d-flex align-items-center justify-content-center">
+             <span class="d-none d-lg-block">ACI-BT</span>
+         </a>
+     </div>
+
+     <i class="bi bi-list toggle-sidebar-btn"></i>
+
+     <div class="title h-100 d-flex align-items-center" style="padding-left: 20px; padding-top: 8px;">
+         <h4 class="text-dark ">Automated Credential Issuance for Barangay Tiniguiban</h4>
+     </div>
+
+ </header><!-- End Header -->
+
+ <?php
+ // Include your PHP code here
+ include 'db.php';
+ ?>
+ <script>
+     // Use PHP variables in JavaScript
+     const Sales_Clearance = <?php echo $count_clearance; ?>;
+     const Sales_Business_Permit_New = <?php echo $count_business_permit_new ?>;
+     const Sales_Business_Permit_Renew = <?php echo $count_business_permit_renew ?>;
+     const Sales_Certificate_of_Employability = <?php echo $count_certificate_of_employability ?>;
+     const Sales_Certificate_of_Income = <?php echo $count_certificate_of_income ?>;
+     const Sales_Cohabitation = <?php echo $count_cohabitation; ?>;
+     const Sales_Complaint_Certificate = <?php echo $count_complaint_certificate; ?>;
+     const Sales_Death_Certificate = <?php echo $count_death_certificate; ?>;
+     const Sales_First_Time_Job_Seeker = <?php echo $count_first_time_job_seeker; ?>;
+     const Sales_Indigency = <?php echo $count_indigency; ?>;
+     const Sales_Indigency_AICS = <?php echo $count_indigency_aics; ?>;
+     const Sales_Lot_Ownership = <?php echo $count_lot_ownership; ?>;
+     const Sales_Transfer_of_Residency = <?php echo $count_transfer_of_residency; ?>;
+
+    // Function to redirect to view_transactions page with document type parameter
+    function moreInfo(docType, docId) {
                 window.location.href = 'more_info_barangay_clearance.php?docType=' + encodeURIComponent(docType) + '&docId=' + encodeURIComponent(docId);
             }
 
-        </script>
+ </script>
 
-        <div class="container content bg-light  border rounded  py-3"
-            style="width: 97%;  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); overflow-x: hidden;">
-            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-ride="carousel"
-                data-bs-interval="3000">
-                <div class="carousel-inner">
 
-                    <div class="carousel-item active">
-                        <div class="row p-2">
-<<<<<<< Updated upstream
+ <!-- ======= Sidebar ======= -->
+ <aside id="sidebar" class="sidebar" style="background-color: #174793; padding: 0;">
 
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(255, 70, 70)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Barangay
-                                        Clearance</div>
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_clearance ?>
-                                            </div>
-                                        </div>
-                                        <div class="background-border"></div>
-                                        <div class="cert mt-2" style="background-color: rgb(255, 70, 70);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
+     <div class="barangay-logo h-50 w-100" style="background-color: #729ED9; margin-bottom: 2px;">
+         <div class="barangay-logo h-100 d-flex align-items-center justify-content-center">
+             <a href="home.php">
+                 <img src="assets/img/cap-log.png" height="250" alt="">
+             </a>
+             
+         </div>
+     </div>
+
+     <ul class="sidebar-nav" id="sidebar-nav" style="padding: 15px;">
+         <li class="nav-item">
+             <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
+                 <i class="bi bi-grid text-light"></i>
+                 <span>Home</span>
+             </a>
+         </li><!-- End Dashboard Nav -->
+
+         <li class="nav-item">
+             <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse"
+                 href="#" style="background-color: #174793;">
+                 <i class="bi bi-diagram-3"></i><span>Officials</span><i class="bi bi-chevron-down ms-auto"></i>
+             </a>
+             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                 <li>
+                     <a href="officials.php">
+                         <i class="bi bi-person-check-fill text-light" style="font-size: 12px;"></i><span
+                             class="text-light">Barangay Officials</span>
+                     </a>
+                 </li>
+                 <li>
+                     <a href="sk.php">
+                         <i class="bi bi-person-badge text-light" style="font-size: 12px;"></i><span
+                             class="text-light">SK Officials</span>
+                     </a>
+                 </li>
+                 <li>
+                     <a href="staffs.php">
+                         <i class="bi bi-people-fill text-light" style="font-size: 12px;"></i><span
+                             class="text-light">Barangay Staffs</span>
+                     </a>
+                 </li>
+             </ul>
+         </li><!-- End Components Nav -->
+
+         <li class="nav-item">
+             <a class="nav-link collapsed text-light" href="about.php" style="background-color: #174793;">
+                 <i class="bi bi-question-circle"></i>
+                 <span>About</span>
+             </a>
+         </li><!-- End F.A.Q Page Nav -->
+         <li class="nav-item">
+             <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
+                 <i class="bi bi-question-circle"></i>
+                 <span>Logout</span>
+             </a>
+         </li>
+     </ul>
+
+ </aside>
+
+
+    <section class="section dashboard">
+      <div class="row">
+<div id="carouselExampleFade" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+                                <!-- Left side columns -->
+                        <div class="container-fluid col-lg" style="overflow-x: hidden;">
+                            <div class="row">
+                  
+                              <!-- Sales Card -->
+                              <div class="col-md-4">
+                                <div class="card info-card sales-card">
+                  
+                                  <div class="filter" style="z-index: 10;">
+                                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                      <li class="dropdown-header text-start">
+                                        <h6>Option</h6>
+                                      </li>
+                                      
+                  
+                                      <li><p class="dropdown-item lead" onclick="moreInfo('Barangay Clearance', 1)"
+                                        style="cursor: pointer;">Show Info</p></li>
+                                  
+                                    </ul>
+                                  </div>
+                  
+                                  <div class="card-body">
+                                
+                                    <h5 class="card-title" ><marquee loop="-1"  direction="left">BARANGAY CLEARANCE </marquee></h5>
+                  
+                                    <div class="d-flex align-items-center">
+                                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                      </div>
+                                      <div class="ps-3">
+                                        <h6> <?php echo $count_clearance; ?> </h6>
+                                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                  
+                                      </div>
                                     </div>
-                                    <div class="row px-3" onclick="moreInfo('Barangay Clearance', 1)"
-                                        style="cursor: pointer;">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
-                                        </div>
-                                    </div>
+                                  </div>
+                  
                                 </div>
+                              </div><!-- End Sales Card -->
+                  
+                              <!-- Revenue Card -->
+                              <div class="col-md col-md-4">
+                                <div class="card info-card revenue-card">
+                  
+                                    <div class="filter" style="z-index: 10;">
+                                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                          <li class="dropdown-header text-start">
+                                            <h6>Option</h6>
+                                          </li>
+                      
+                                          <li><p class="dropdown-item display-1" onclick="moreInfo('Business Permit (New)', 1)"
+                                        style="cursor: pointer;">Show Info</p></li>
+                                        </ul>
+                                      </div>
+                      
+                                      <div class="card-body">
+                                    
+                                        <h5 class="card-title marquee" ><marquee  direction="left">BUSINESS PERMIT | <span class="text-success">NEW</span> </marquee></h5>
+                  
+                                    <div class="d-flex align-items-center">
+                                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                      </div>
+                                      <div class="ps-3">
+                                        <h6> <?php echo $count_business_permit_new ?> </h6>
+                                        <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                  
+                                      </div>
+                                    </div>
+                                  </div>
+                  
+                                  
+                  
+                                </div>
+                              </div><!-- End Revenue Card -->
+                  
+                              
+                              <!-- Customers Card -->
+                              <div class="col-xxl-4 col-md-4">
+                                <div class="card info-card customers-card">
+                  
+                                    <div class="filter" style="z-index: 10;">
+                                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                          <li class="dropdown-header text-start">
+                                            <h6>Option</h6>
+                                          </li>
+                      
+                                          <li><p class="dropdown-item display-1" onclick="moreInfo('Business Permit (Renew)', 3)"
+                                        style="cursor: pointer;">Show Info</p></li>
+                             
+                                        </ul>
+                                      </div>
+                      
+                                      <div class="card-body">
+                                    
+                                        <h5 class="card-title marquee" ><marquee loop="-1"  direction="left">BUSINESS PERMIT | <span class="text-success">RENEW</span> </marquee></h5>
+                  
+                                    <div class="d-flex align-items-center">
+                                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                      </div>
+                                      <div class="ps-3">
+                                        <h6> <?php echo $count_business_permit_renew ?></h6>
+                                        <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                  
+                                      </div>
+                                    </div>
+                  
+                                  </div>
+                                </div>
+                  
+                              </div><!-- End Customers Card -->
+                  
+                              
                             </div>
+                          </div><!-- End Left side columns -->
+              </div>
+              <div class="carousel-item">
 
-=======
+                                          <!-- Left side columns -->
+                                  <div class="container-fluid col-lg-12">
+                                      <div class="row">
                             
->>>>>>> Stashed changes
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgba(94, 180, 239);">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Business
-                                        Permit (New)</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800">
-                                                <?php echo $count_business_permit_new ?>
-                                            </div>
-                                        </div>
-
                                         
-                                        <div class="cert mt-2" style="background-color: rgba(94, 180, 239);">
-
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3" onclick="moreInfo('Business Permit (New)', 2)"
-                                        style="cursor: pointer;">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(255, 215, 119)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Business
-                                        Permit (Renew)
-                                    </div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_business_permit_renew ?>
+                            
+                                        <!-- Sales Card -->
+                                        <div class="col-md-4 col-md-3">
+                                          <div class="card info-card sales-card">
+                            
+                                              <div class="filter" style="z-index: 10;">
+                                                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                    <li class="dropdown-header text-start">
+                                                      <h6>Option</h6>
+                                                    </li>
+                                
+                                                    <li><p class="dropdown-item display-1" onclick="moreInfo('Certificate of Income', 5)"
+                                        style="cursor: pointer;">Show Info</p></li>
+                                                  </ul>
+                                                </div>
+                                
+                                                <div class="card-body">
+                                              
+                                                  <h5 class="card-title" ><marquee loop="-1"  direction="left">CERTFICATE OF INCOME</marquee></h5>
+                            
+                                              <div class="d-flex align-items-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                                </div>
+                                                <div class="ps-3">
+                                                  <h6> <?php echo $count_certificate_of_income ?> </h6>
+                                                  <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                            
+                                                </div>
+                                              </div>
                                             </div>
-                                        </div>
-
-                                        <div class="cert mt-2" style="background-color: rgb(255, 215, 119);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3" onclick="moreInfo('Business Permit (Renew)', 3)"
-                                        style="cursor: pointer;">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(188, 70, 70)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">First
-                                        Time Job Seeker</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_first_time_job_seeker ?>
+                            
+                                          </div>
+                                        </div><!-- End Sales Card -->
+                            
+                                        <!-- Revenue Card -->
+                                        <div class="col-md col-md-4">
+                                          <div class="card info-card revenue-card">
+                            
+                                              <div class="filter" style="z-index: 10;">
+                                                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                    <li class="dropdown-header text-start">
+                                                      <h6>Option</h6>
+                                                    </li>
+                                
+                                                    <li><p class="dropdown-item display-1" onclick="moreInfo('Certificate of Cohabitaion', 6)"
+                                        style="cursor: pointer;">Show Info</p></li>
+                                                    
+                                                  </ul>
+                                                </div>
+                                
+                                                <div class="card-body">
+                                              
+                                                  <h5 class="card-title marquee" ><marquee loop="-1"  direction="left">CERTIFICATE OF COHABITATION</marquee></h5>
+                            
+                                              <div class="d-flex align-items-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                                </div>
+                                                <div class="ps-3">
+                                                  <h6> <?php echo $count_cohabitation; ?> </h6>
+                                                  <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                            
+                                                </div>
+                                              </div>
                                             </div>
-                                        </div>
+                            
+                                            
+                            
+                                          </div>
+                                        </div><!-- End Revenue Card -->
+                            
                                         
-                                        <div class="cert mt-2" style="background-color: rgb(188, 70, 70);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3" onclick="moreInfo('First Time Job Seeker', 4)"
-                                        style="cursor: pointer;">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-
-                    <div class="carousel-item">
-                        <div class="row p-2">
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(255, 70, 70)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Barangay
-                                        Clearance</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_clearance ?>
+                            
+                                        <!-- Customers Card -->
+                                        <div class="col-xxl-4 col-md-4">
+                            
+                                          <div class="card info-card customers-card">
+                            
+                                              <div class="filter" style="z-index: 10;">
+                                                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                                    <li class="dropdown-header text-start">
+                                                      <h6>Option</h6>
+                                                    </li>
+                                
+                                                    <li><p class="dropdown-item display-1" onclick="moreInfo('Certificate of Employability', 4)"
+                                        style="cursor: pointer;">Show Info</p></li>
+                                                    
+                                                  </ul>
+                                                </div>
+                                
+                                                <div class="card-body">
+                                              
+                                                  <h5 class="card-title marquee" ><marquee loop="-1"  direction="left">CERTIFICATE OF EMPLOYABILITY</marquee></h5>
+                            
+                                              <div class="d-flex align-items-center">
+                                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                                </div>
+                                                <div class="ps-3">
+                                                  <h6> <?php echo $count_certificate_of_employability ?> </h6>
+                                                  <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                            
+                                                </div>
+                                              </div>
+                            
                                             </div>
-                                        </div>
+                                          </div>
+                            
+                                        </div><!-- End Customers Card -->
+                            
                                         
-                                        <div class="cert mt-2" style="background-color: rgb(255, 70, 70);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
+                            
+                                      </div>
+                                    </div><!-- End Left side columns -->
+                              </div>
+
+                        <!-- Third Row -->
+                        <div class="carousel-item">
+
+                                <!-- Left side columns -->
+                        <div class="container-fluid col-lg-12">
+                            <div class="row">
+                  
+                              
+                  
+                              <!-- Sales Card -->
+                              <div class="col-md-4 col-md-3">
+                                <div class="card info-card sales-card">
+                  
+                                    <div class="filter" style="z-index: 10;">
+                                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                          <li class="dropdown-header text-start">
+                                            <h6>Option</h6>
+                                          </li>
+                      
+                                          <li><p class="dropdown-item display-1" onclick="moreInfo('Certificate of Indigency', 11)"
+                                        style="cursor: pointer;">Show Info</p></li>
+                                        </ul>
+                                      </div>
+                      
+                                      <div class="card-body">
+                                    
+                                        <h5 class="card-title" ><marquee loop="-1"  direction="left">CERTIFICATE OF INDIGENCY</marquee></h5>
+                  
+                                    <div class="d-flex align-items-center">
+                                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                      </div>
+                                      <div class="ps-3">
+                                        <h6><?php echo $count_indigency; ?></h6>
+                                        <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                  
+                                      </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
-                                        </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
-                                    </div>
+                                  </div>
+                  
                                 </div>
-                            </div>
-
-
-
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(255, 183, 50)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
-                                        Certificate of Cohabitation
+                              </div><!-- End Sales Card -->
+                  
+                              <!-- Revenue Card -->
+                              <div class="col-md col-md-4">
+                                <div class="card info-card revenue-card">
+                  
+                                    <div class="filter" style="z-index: 10;">
+                                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                          <li class="dropdown-header text-start">
+                                            <h6>Option</h6>
+                                          </li>
+                      
+                                          <li><p class="dropdown-item display-1" onclick="moreInfo('Certificate of Indigency (AICS)', 10)"
+                                        style="cursor: pointer;">Show Info</p></li>
+                                          
+                                        </ul>
+                                      </div>
+                      
+                                      <div class="card-body">
+                                    
+                                        <h5 class="card-title marquee" ><marquee loop="-1"  direction="left">CERTIFICATE OF INDIGENCY (AICS)</marquee></h5>
+                  
+                                    <div class="d-flex align-items-center">
+                                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                      </div>
+                                      <div class="ps-3">
+                                        <h6> <?php echo $count_indigency_aics; ?> </h6>
+                                        <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                  
+                                      </div>
                                     </div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_cohabitation ?>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="cert mt-2" style="background-color: rgb(255, 183, 50);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3" onclick="moreInfo('Certificate of Cohabitaion', 6)"
-                                        style="cursor: pointer;">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
-                                        </div>
-                                    </div>
+                                  </div>
+                  
+                                  
+                  
                                 </div>
-                            </div>
-
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(110, 204, 204)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
-                                        Certificate of Employability
+                              </div><!-- End Revenue Card -->
+                  
+                              
+                  
+                              <!-- Customers Card -->
+                              <div class="col-xxl-4 col-md-4">
+                  
+                                <div class="card info-card customers-card">
+                  
+                                    <div class="filter" style="z-index: 10;">
+                                        <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                          <li class="dropdown-header text-start">
+                                            <h6>Option</h6>
+                                          </li>
+                      
+                                          <li><p class="dropdown-item display-1" onclick="moreInfo('Complaint Certificate', 7)"
+                                        style="cursor: pointer;">Show Info</p></li>
+                                          
+                                        </ul>
+                                      </div>
+                      
+                                      <div class="card-body">
+                                    
+                                        <h5 class="card-title marquee" ><marquee loop="-1"  direction="left">COMPLAINT CERTIFICATE</marquee></h5>
+                  
+                                    <div class="d-flex align-items-center">
+                                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                      </div>
+                                      <div class="ps-3">
+                                        <h6> <?php echo $count_complaint_certificate; ?> </h6>
+                                        <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                  
+                                      </div>
                                     </div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_certificate_of_employability ?>
-                                            </div>
-                                        </div>
-
-                                        <div class="cert mt-2" style="background-color: rgb(110, 204, 204);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3" onclick="moreInfo('Certificate of Employability', 4)"
-                                        style="cursor: pointer;">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
-                                        </div>
-                                    </div>
+                  
+                                  </div>
                                 </div>
+                  
+                              </div><!-- End Customers Card -->
+                  
+                              
+                  
                             </div>
-
-                        </div>
+                          </div><!-- End Left side columns -->
                     </div>
 
-
+                    <!-- FOURTH ROW -->
                     <div class="carousel-item">
-                        <div class="row p-2">
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(183, 147, 255)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
-                                        Certificate of Income</div>
 
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_certificate_of_income ?>
-                                            </div>
-                                        </div>
-
-                                        <div class="cert mt-2" style="background-color: rgb(183, 147, 255);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3" onclick="moreInfo('Certificate of Income', 5)"
-                                        style="cursor: pointer;">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
-                                        </div>
-                                    </div>
-                                </div>
+                      <!-- Left side columns -->
+              <div class="container-fluid col-lg-12">
+                  <div class="row">
+        
+                    
+        
+                    <!-- Sales Card -->
+                    <div class="col-md-4 col-md-3">
+                      <div class="card info-card sales-card">
+        
+                          <div class="filter" style="z-index: 10;">
+                              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <li class="dropdown-header text-start">
+                                  <h6>Option</h6>
+                                </li>
+            
+                                <li><p class="dropdown-item display-1" onclick="moreInfo('Death Certificate', 8)"
+                                        style="cursor: pointer;">Show Info</p></li>
+                              </ul>
                             </div>
-
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(90, 123, 156)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
-                                        Complaint Certificate</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_complaint_certificate ?>
-                                            </div>
-                                        </div>
-
-                                        <div class="cert mt-2" style="background-color: rgb(90, 123, 156);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3" onclick="moreInfo('Complaint Certificate', 7)"
-                                        style="cursor: pointer;">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
-                                        </div>
-                                    </div>
-                                </div>
+            
+                            <div class="card-body">
+                          
+                              <h5 class="card-title" ><marquee loop="-1"  direction="left">DEATH CERTIFICATE</marquee></h5>
+        
+                          <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                             </div>
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(76, 166, 76)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Death
-                                        Certificate</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_death_certificate; ?>
-                                            </div>
-                                        </div>
-
-                                        <div class="cert mt-2" style="background-color: rgb(76, 166, 76);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3" onclick="moreInfo('Death Certificate', 8)"
-                                        style="cursor: pointer;">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="ps-3">
+                              <h6> <?php echo $count_death_certificate; ?> </h6>
+                              <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+        
                             </div>
-
-<<<<<<< Updated upstream
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(188, 70, 70)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">First
-                                        Time Job Seeker</div>
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_first_time_job_seeker ?>
-                                            </div>
-                                        </div>
-                                        <div class="background-border"></div>
-                                        <div class="cert mt-2" style="background-color: rgb(120, 120, 120);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3" onclick="moreInfo('First Time Job Seeker', 9)"
-                                        style="cursor: pointer;">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-=======
->>>>>>> Stashed changes
+                          </div>
                         </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <div class="row p-2">
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color:  rgb(120, 120, 120)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
-                                        Certificate of Indigency (AICS)</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_indigency_aics; ?>
-                                            </div>
-                                        </div>
-                                       
-                                        <div class="cert mt-2" style="background-color: rgb(120, 120, 120);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
-                                        </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
-                                    </div>
-                                </div>
+        
+                      </div>
+                    </div><!-- End Sales Card -->
+        
+                    <!-- Revenue Card -->
+                    <div class="col-md col-md-4">
+                      <div class="card info-card revenue-card">
+        
+                          <div class="filter" style="z-index: 10;">
+                              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <li class="dropdown-header text-start">
+                                  <h6>Option</h6>
+                                </li>
+            
+                                <li><p class="dropdown-item display-1" onclick="moreInfo('First Time Job Seeker', 4)"
+                                        style="cursor: pointer;">Show Info</p></li>
+                                
+                              </ul>
                             </div>
-
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(140, 90, 140)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
-                                        Certificate of Indigency</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_indigency; ?>
-                                            </div>
-                                        </div>
-
-                                        <div class="cert mt-2" style="background-color: rgb(140, 90, 140);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3" onclick="moreInfo('Certificate of Indigency', 11)"
-                                        style="cursor: pointer;">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
-                                        </div>
-                                    </div>
-                                </div>
+            
+                            <div class="card-body">
+                          
+                              <h5 class="card-title marquee" ><marquee loop="-1"  direction="left">FIRST TIME JOB SEEKER</marquee></h5>
+        
+                          <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                             </div>
-
-<<<<<<< Updated upstream
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color:  rgb(120, 120, 120)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">
-                                        Certificate of Indigency (AICS)</div>
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_indigency_aics; ?>
-                                            </div>
-                                        </div>
-                                        <div class="background-border"></div>
-                                        <div class="cert mt-2" style="background-color: rgb(120, 120, 120);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3" onclick="moreInfo('Certificate of Indigency (AICS)', 10)"
-                                        style="cursor: pointer;">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="ps-3">
+                              <h6><?php echo $count_first_time_job_seeker; ?></h6>
+                              <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+        
                             </div>
-=======
->>>>>>> Stashed changes
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(173, 90, 90)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Lot
-                                        Ownership</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_lot_ownership; ?>
-                                            </div>
-                                        </div>
-
-                                        <div class="cert mt-2" style="background-color: rgb(173, 90, 90);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3" onclick="moreInfo('Lot Ownership', 12)"
-                                        style="cursor: pointer;">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                          </div>
                         </div>
-                    </div>
-
-                    <div class="carousel-item">
-                        <div class="row p-2">
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(188, 188, 88)">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Transfer
-                                        of Residency</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">
-                                                <?php echo $count_transfer_of_residency; ?>
-                                            </div>
-                                        </div>
-
-                                        <div class="cert mt-2" style="background-color: rgb(188, 188, 88);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3" onclick="moreInfo('Transfer of Residency', 13)"
-                                        style="cursor: pointer;">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
-                                        </div>
-                                    </div>
-                                </div>
+        
+                        
+        
+                      </div>
+                    </div><!-- End Revenue Card -->
+        
+                    
+        
+                    <!-- Customers Card -->
+                    <div class="col-xxl-4 col-md-4">
+        
+                      <div class="card info-card customers-card">
+        
+                          <div class="filter" style="z-index: 10;">
+                              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <li class="dropdown-header text-start">
+                                  <h6>Option</h6>
+                                </li>
+            
+                                <li><p class="dropdown-item display-1" onclick="moreInfo('Lot Ownership', 12)"
+                                        style="cursor: pointer;">Show Info</p></li>
+                                
+                              </ul>
                             </div>
-
-                            <!-- <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3">Carl Vincent
-                                        Alabastro</div>
-                                    <img src="assets/img/devs/carl.jpg" height="100" width="100" alt="">
-                                </div>
-                                <div class="row px-3">
-                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
-                                    </div>
-                                    <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
-                                </div>
+            
+                            <div class="card-body">
+                          
+                              <h5 class="card-title marquee" ><marquee loop="-1"  direction="left">LOT OWNERSHIP</marquee></h5>
+        
+                          <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                             </div>
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm">
-                                    <div class="text-xs fw-bold text-gray-800 text-uppercase mb-1 pt-3 rounded-circle">
-                                        Charls Cayabyab
-                                    </div>
-                                    <img src="assets/img/devs/charls.jpg" height="100" width="100" alt="">
-                                </div>
-                                <div class="row px-3">
-                                    <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
-                                    </div>
-                                    <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
-                                </div>
-                            </div> -->
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(54, 162, 235); opacity: 0;">
-                                    <div class="text-xs fw-bold text-primary text-uppercase mb-1 pt-3">Barangay
-                                        Clearance</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">145</div>
-                                        </div>
-
-                                        <div class="cert mt-2" style="background-color: rgb(54, 162, 235);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3">
-                                        <div class="col text-white">MORE INFO</div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
-                                    </div>
-                                </div>
+                            <div class="ps-3">
+                              <h6> <?php echo $count_lot_ownership; ?> </h6>
+                              <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+        
                             </div>
-
-                            <div class="col-md">
-                                <div class="card-body border rounded my-1 shadow-sm"
-                                    style="background-color: rgb(54, 162, 235); opacity: 0;">
-                                    <div class="text-xs fw-bold text-primary text-uppercase mb-1 pt-3">Barangay
-                                        Clearance</div>
-
-                                    <div class="d-flex align-items-center justify-content-between mb-1"
-                                        style="border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
-                                        <div class="card-icon">
-                                            <div class="h5 mb-0 fw-bold text-gray-800 ml-5">145</div>
-                                        </div>
-
-                                        <div class="cert mt-2" style="background-color: rgb(54, 162, 235);">
-                                            <img src="assets/view_report_icons/icon.png" class="bg-transparent p-1"
-                                                height="70" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="row px-3">
-                                        <div class="col text-white">MORE INFO</div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
+                          </div>
+        
                         </div>
-                    </div>
+                      </div>
+        
+                    </div><!-- End Customers Card -->
+        
+                    
+        
+                  </div>
+                </div><!-- End Left side columns -->
+          </div>
 
-                    <!-- Add more carousel-items with three images each as needed -->
+          <!-- FIFTH ROW -->
+          <div class="carousel-item">
+
+            <!-- Left side columns -->
+    <div class="container-fluid col-lg-12">
+        <div class="row">
+
+          
+
+          <!-- Sales Card -->
+          <div class="col-md-4 col-md-3">
+            <div class="card info-card sales-card">
+
+                <div class="filter" style="z-index: 10;">
+                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
+                        <h6>Option</h6>
+                      </li>
+  
+                      <li><p class="dropdown-item display-1" onclick="moreInfo('Transfer of Residency', 13)"
+                                        style="cursor: pointer;">Show Info</p></li>
+                    </ul>
+                  </div>
+  
+                  <div class="card-body">
+                
+                    <h5 class="card-title" ><marquee loop="-1"  direction="left">TRANSFER OF RESIDENCY</marquee></h5>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                  </div>
+                  <div class="ps-3">
+                    <h6> <?php echo $count_transfer_of_residency; ?></h6>
+                    <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+
+                  </div>
                 </div>
-                <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev"
-                    style="position:  absolute; left: -102px;">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </a>
-                <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next"
-                    style="position:  absolute; right: -102px;">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </a>
+              </div>
+
             </div>
+          </div><!-- End Sales Card -->
+          
         </div>
+      </div><!-- End Left side columns -->
+</div>
+          
+                  
 
-        <!--End of Carousel -->
 
-        <!-- Start of Charts -->
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev" style="position:  absolute; left: -99px;">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next" style="position:  absolute; right: -99px;">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
 
-        <div class="container content bg-white border rounded py-2 mt-2"
-            style="width: 97%; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); overflow: hidden;">
-            <div id="chartCarousel" class="carousel slide " data-bs-ride="carousel" data-bs-ride="carousel">
-                <div class="carousel-inner">
+        
+          <div class="container col-md-12">
 
-                    <div class="carousel-item active px-5">
-                        <div class="row">
-                            <div class="col-lg">
+            <div class="card-body pb-0">
+              <h5 class="card-title">Bar Chart  <span>| Reports</span></h5>
+              <div class="col-lg">
                                 <canvas id="myChart" style="width: 800px; height: 240px;"></canvas>
 
                                 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -896,18 +835,19 @@ if (!isset($_SESSION['username'])) {
                                     updateChartDimensions(myChart);
                                 </script>
                             </div>
-                        </div>
-                    </div>
-
-                </div>
+              
             </div>
-        </div>
+          </div><!-- End News & Updates -->
 
+        </div><!-- End Right side columns -->
 
-    </main><!-- End #main -->
+      </div>
+    </section> 
 
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
         <div class="credits">
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
