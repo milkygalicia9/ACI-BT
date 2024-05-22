@@ -1,76 +1,144 @@
-use function mysqli_fetch_assoc;
 <?php
-session_start();
+// session_start();
 
-if (!isset($_SESSION['username'])) {
-  header("Location: index.php");
-  exit();
-}
+// if (!isset($_SESSION['username'])) {
+//   header("Location: index.php");
+//   exit();
+// }
 
 // Include database connection file
 include ("db.php");
 
-// Check if form is submitted
-if (isset($_POST["submit"])) {
-  // Sanitize and assign form data to variables
-  $first_name = $conn->real_escape_string($_POST["first_name"]);
-  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
-  $last_name = $conn->real_escape_string($_POST["last_name"]);
-  $suffix = $conn->real_escape_string($_POST["suffix"]);
-  $purok = $conn->real_escape_string($_POST["purok"]);
-  $birthplace = $conn->real_escape_string($_POST["birthplace"]);
-  $birthdate = $conn->real_escape_string($_POST["birthday"]);
-  $civil_status = $conn->real_escape_string($_POST["civil_status"]);
-  $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
-  $issued_date = $conn->real_escape_string($_POST["issued_date"]);
-  $purpose = $conn->real_escape_string($_POST["purpose"]);
-  $duty_officer_name = $conn->real_escape_string($_POST["duty_officer_full_name"]);
 
-  // Define SQL query using prepared statements
-  $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-  $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-  $stmt->bind_param('sssssssss', $fullname, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
+if (isset($_POST["barangay_clearance"])) {
+  $first_name = $_POST["first_name"];
+  $middle_initial = $_POST["middle_initial"];
+  $last_name = $_POST["last_name"];
+  $suffix = $_POST["suffix"];
+  $purok = $_POST["purok"];
+  $birthplace = $_POST["birthplace"];
+  $birthdate = $_POST["birthday"];
+  $civil_status = $_POST["civil_status"];
+  $period_of_residency = $_POST["residency_period"];
+  $issued_date = $_POST["issued_date"];
+  $purpose = $_POST["purpose"];
+  $duty_officer_name = $_POST["duty_officer_full_name"];
+
+  // Define SQL query
+  $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name', ' ', '$middle_initial', ' ', '$last_name', ' ', '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
 
   // Execute SQL query
-  if ($stmt->execute()) {
-    echo "New record inserted successfully";
-
-    // Fetch admin ID
-    $sql = "SELECT id FROM admin WHERE username = ?";
-    $admin_stmt = $conn->prepare($sql);
-    $admin_stmt->bind_param('s', $_SESSION['username']);
-    $admin_stmt->execute();
-    $admin_result = $admin_stmt->get_result();
-    // Add missing import statement
-    if ($admin_result->num_rows > 0) {
-      $row = mysqli_fetch_assoc($admin_result);
-      $admin_id = $row['id'];
-
-      // Modify SQL query to use COUNT function correctly
-      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, client_trans_id, created_at) VALUES (?, 1, (SELECT COUNT(*) FROM barangay_clearance), NOW())");
-      $trans_stmt->bind_param('i', $admin_id);
-
-      if ($trans_stmt->execute()) {
-        echo "Transaction record inserted successfully";
-      } else {
-        echo "Error: " . $trans_stmt->error;
-      }
-
-      $trans_stmt->close();
-    } else {
-      echo "Error: Admin user not found.";
-      echo "Error: Admin user not found.";
-    }
-
-    $admin_stmt->close();
+  if ($conn->query($sql) === TRUE) {
+      echo "New record inserted successfully";
+      
   } else {
-    echo "Error: " . $stmt->error;
+      echo "Error: " . $sql . "<br>" . $conn->error;
   }
 
   // Close database connection
-  $stmt->close();
   $conn->close();
+  
 }
+// if (isset($_POST["business_permit_new"])) {
+//   $businessName = $_POST["businessName"];
+//   $middle_initial = $_POST["manager_operator"];
+//   $last_name = $_POST["manager_operator_address"];
+//   // Define SQL query
+//   $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name', ' ', '$middle_initial', ' ', '$last_name', ' ', '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
+
+//   // Execute SQL query
+//   if ($conn->query($sql) === TRUE) {
+//       echo "New record inserted successfully";
+      
+//   } else {
+//       echo "Error: " . $sql . "<br>" . $conn->error;
+//   }
+
+//   // Close database connection
+//   $conn->close();
+  
+// }
+// if (isset($_POST["business_permit_renew"])) {
+//   $businessName = $_POST["business_name_renew"];
+//   $middle_initial = $_POST["manager_operator_renew"];
+//   $last_name = $_POST["manager_operator_address_renew"];
+//   // Define SQL query
+//   $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name', ' ', '$middle_initial', ' ', '$last_name', ' ', '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
+
+//   // Execute SQL query
+//   if ($conn->query($sql) === TRUE) {
+//       echo "New record inserted successfully";
+      
+//   } else {
+//       echo "Error: " . $sql . "<br>" . $conn->error;
+//   }
+
+//   // Close database connection
+//   $conn->close();
+
+// }
+// if (isset($_POST["certificate_of_employability"])) {
+//   $first_name = $_POST["first_name"];
+//   $middle_initial = $_POST["middle_initial"];
+//   $last_name = $_POST["last_name"];
+//   $suffix = $_POST["suffix"];
+//   $age = $_POST["age"];
+//   $purok = $_POST["purok"];
+//   //issue date
+//   $duty_officer_name = $_POST["duty_officer_full_name"];
+
+//   // Define SQL query
+//   $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name', ' ', '$middle_initial', ' ', '$last_name', ' ', '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
+
+//   // Execute SQL query
+//   if ($conn->query($sql) === TRUE) {
+//       echo "New record inserted successfully";
+      
+//   } else {
+//       echo "Error: " . $sql . "<br>" . $conn->error;
+//   }
+
+//   // Close database connection
+//   $conn->close();
+// }
+// if (isset($_POST["certificate_of_income"])) {
+//   $first_name = $_POST["first_name"];
+//   $middle_initial = $_POST["middle_initial"];
+//   $last_name = $_POST["last_name"];
+//   $suffix = $_POST["suffix"];
+//   $purok = $_POST["purok"];
+//   $amount = $_POST["amount"];
+//   $birthdate = $_POST["birthday"];
+//   $civil_status = $_POST["civil_status"];
+//   $period_of_residency = $_POST["residency_period"];
+//   $issued_date = $_POST["issued_date"];
+//   $purpose = $_POST["purpose"];
+//   $duty_officer_name = $_POST["duty_officer_full_name"];
+
+//   // Define SQL query
+//   $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name', ' ', '$middle_initial', ' ', '$last_name', ' ', '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
+
+//   // Execute SQL query
+//   if ($conn->query($sql) === TRUE) {
+//       echo "New record inserted successfully";
+      
+//   } else {
+//       echo "Error: " . $sql . "<br>" . $conn->error;
+//   }
+
+//   // Close database connection
+//   $conn->close();
+
+// }
+// if (isset($_POST["cohabitation"])) {}
+// if (isset($_POST["complaint_certificate"])) {}
+// if (isset($_POST["death_certificate"])) {}
+// if (isset($_POST["first_time_job_seeker"])) {}
+// if (isset($_POST["indigency"])) {}
+// if (isset($_POST["indigency_aics"])) {}
+// if (isset($_POST["lot_ownership"])) {}
+// if (isset($_POST["Oathtaking"])) {}
+// if (isset($_POST["transfer_of_residency"])) {}
 ?>
 
 
@@ -210,7 +278,7 @@ if (isset($_POST["submit"])) {
         </a>
       </div>
       <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-6" id="fillup">
 
           <div class="card">
             <div class="card-body">
@@ -233,7 +301,7 @@ if (isset($_POST["submit"])) {
                   height: 32cm;
                   border: none;
                   overflow: hidden !important;
-                  transform: scale(1);
+                  transform: scale(0.9);
                   transform-origin: 0 0;
                   /* border: 2px solid black; */
                 }
@@ -254,37 +322,32 @@ if (isset($_POST["submit"])) {
 
               <!-- General Form Elements -->
               <label for="certificateType"> Select Certificate</label><br>
-              <div class="col-md-6">
-                <select class="  p-2 text-left" id="certificateType" onchange="toggleFields()" onclick="resetForm()"
-                  style="cursor: pointer;">
-                  <option value="">--select certificates--</option>
-                  <option value="barangay_clearance">Barangay Clearance</option>
-                  <option value="business_permit_new">Barangay Business Permit New</option>
-                  <option value="business_permit_renew">Barangay Business Permit Renew</option>
-                  <option value="certificate_of_employability">Certificate Of Employability
-                  </option>
-                  <option value="certificate_of_income">Certificate of Income</option>
-                  <option value="cohabitation">Certificate of Cohabitation</option>
-                  <option value="complaint_certificate">Complaint Certificate</option>
-                  <option value="death_certificate">Death Certificate</option>
-                  <option value="first_time_job_seeker">Barangay Certification (First time Job
-                    Seeker)</option>
-                  <option value="indigency">Indigency</option>
-                  <option value="indigency_aics">Indigency (AICS)</option>
-                  <option value="lot_ownership">Lot Ownership</option>
-                  <option value="Oathtaking">Oathtaking</option>
-                  <option value="transfer_of_residency">Certificate of Transfer</option>
+                <div class="col-md-6">
+                  <select class="  p-2 text-left" id="certificateType" onchange="toggleFields()"
+                    style="cursor: pointer;">
+                    <option value="">--select certificates--</option>
+                    <option value="barangay_clearance">Barangay Clearance</option>
+                    <option value="business_permit_new">Barangay Business Permit New</option>
+                    <option value="business_permit_renew">Barangay Business Permit Renew</option>
+                    <option value="certificate_of_employability">Certificate Of Employability</option>
+                    <option value="certificate_of_income">Certificate of Income</option>
+                    <option value="cohabitation">Certificate of Cohabitation</option>
+                    <option value="complaint_certificate">Complaint Certificate</option>
+                    <option value="death_certificate">Death Certificate</option>
+                    <option value="first_time_job_seeker">Barangay Certification (First time Job Seeker)</option>
+                    <option value="indigency">Indigency</option>
+                    <option value="indigency_aics">Indigency (AICS)</option>
+                    <option value="lot_ownership">Lot Ownership</option>
+                    <option value="Oathtaking">Oathtaking</option>
+                    <option value="transfer_of_residency">Certificate of Transfer</option>
 
-                </select>
-
-              </div>
-              <br>
-              <form action="" method="POST" id="myForm">
-
-
+                  </select>
+                 
+                </div>
+                <br>
                 <div class="certificates">
                   <div id="barangay_clearance">
-                    <form action="#" method="post">
+                  <form action="#" method="post" id="form">
 
                       <label for="">First Name:</label>
                       <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
@@ -298,7 +361,7 @@ if (isset($_POST["submit"])) {
 
                       <label for="">Suffix:</label>
                       <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
-                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffix">
+                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
                         <option value="">N/A</option>
                         <option value="Jr">Jr</option>
                         <option value="Sr">Sr</option>
@@ -307,19 +370,19 @@ if (isset($_POST["submit"])) {
                         <option value="III">III</option>
                       </select><br><br>
                       <label for="">Purok:</label>
-                      <select class=" p-2 w-25 text-left" name="purok" id="purok">
-                        <option value="Centro">Centro</option>
-                        <option value="Hurawan">Huwaran</option>
-                        <option value="Kaakbayan">Kaakbayan</option>
-                        <option value="New Princesa"> New Princesa</option>
-                        <option value="San Franciso I">San Franciso I</option>
-                        <option value="San Franciso II">San Franciso II</option>
-                        <option value="Sandiwa">Sandiwa</option>
-                        <option value="Trece">Trece</option>
-                        <option value="Uha">UHA</option>
-                      </select>
-                      <br>
-                      <br>
+                     <select class=" p-2 w-25 text-left" name="puroks" id="puroks">
+                      <option value="Centro">Centro</option>
+                      <option value="Hurawan">Huwaran</option>
+                      <option value="Kaakbayan">Kaakbayan</option>
+                      <option value="New Princesa"> New Princesa</option>
+                      <option value="San Franciso I">San Franciso I</option>
+                      <option value="San Franciso II">San Franciso II</option>
+                      <option value="Sandiwa">Sandiwa</option>
+                      <option value="Trece">Trece</option>
+                      <option value="Uha">UHA</option>
+                    </select>
+                    <br>
+                    <br>
 
                       <label for="">Birthplace:</label>
                       <input type="text" class="form-control" name="birthplace"
@@ -343,211 +406,298 @@ if (isset($_POST["submit"])) {
                       <input type="text" name="purpose" class="form-control" id="" cols="30" rows="10"
                         placeholder="Ex. Undecided"></input><br>
 
-                      <label for="">Duty Officer Full Name:</label>
-                      <input type="textarea" class="form-control" name="duty_officer_full_name"
-                        placeholder="Ex. Franz Miguel">
-                      <button name="submit" onclick="printIframe()" type="submit">Print</button>
-                    </form>
-                  </div>
+                          <!-- <label for="">Duty Officer Full Name:</label>
+                  <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel"> -->
+                  <button name="barangay_clearance" id="coco" onclick="printIframe()"  type="submit">Print</button>
+                  </form>  
+                </div>
 
                   <div id="business_permit_new">
-
-                    <form action="#">
+                  <form action="#" method="post" id="form">
 
                       <label for="businessName">Business name/ Trade Activity:</label>
-                      <input type="text" class="form-control" name="business_name"><br>
+                      <input type="text"  name="businessName" class="form-control" name="business_name"><br>
 
                       <label for="">Purok:</label><br>
-                      <select name="" id="" onchange="">
-                        <option value="Centro">Centro</option>
-                        <option value="Hurawan">Huwaran</option>
-                        <option value="Kaakbayan">Kaakbayan</option>
-                        <option value="New Princesa"> New Princesa</option>
-                        <option value="San Franciso I">San Franciso I</option>
-                        <option value="San Franciso II">San Franciso II</option>
-                        <option value="Sandiwa">Sandiwa</option>
-                        <option value="Trece">Trece</option>
-                        <option value="Uha">UHA</option>
-                      </select>
-                      <br>
-                      <br>
+                     <select  name="puroks" id="puroks" onchange="update()">
+                      <option value="Centro">Centro</option>
+                      <option value="Hurawan">Huwaran</option>
+                      <option value="Kaakbayan">Kaakbayan</option>
+                      <option value="New Princesa"> New Princesa</option>
+                      <option value="San Franciso I">San Franciso I</option>
+                      <option value="San Franciso II">San Franciso II</option>
+                      <option value="Sandiwa">Sandiwa</option>
+                      <option value="Trece">Trece</option>
+                      <option value="Uha">UHA</option>
+                     </select>
+                     <br>
+<br>
                       <label for="">Manager / Operator</label>
                       <input type="text" class="form-control" name="manager_operator">
 
-                      <label for="">Address(Manager / Operator)</label>
-                      <input type="text" class="form-control" name="manager_operator_address">
+                        <label for="">Address(Manager / Operator)</label>
+                        <input type="text" class="form-control" name="manager_operator_address">
+                     <button name="business_permit_new" onclick="printIframe()"  type="submit">Print</button>
+
                     </form>
                   </div>
 
+
+
+
+
+
                   <div id="business_permit_renew">
-                    <form action="">
-                      <label for="businessName">Business name/ Trade Activity:</label>
-                      <input type="text" class="form-control" name="business_name"><br>
+                   <form action="#" method="post" id="form">
+                    <label for="businessName">Business name/ Trade Activity:</label>
+                    <input type="text" class="form-control" name="business_name_renew"><br>
 
-                      <label for="">Purok:</label><br>
-                      <select name="" id="">
-                        <option value="Centro">Centro</option>
-                        <option value="Kaakbayan">Kaakbayan</option>
-                        <option value="New Princesa"> New Princesa</option>
-                        <option value="San Franciso I">San Franciso I</option>
-                        <option value="San Franciso II">San Franciso II</option>
-                        <option value="Sandiwa">Sandiwa</option>
-                        <option value="Trece">Trece</option>
-                        <option value="Uha">UHA</option>
-                      </select>
+                    <label for="">Purok:</label><br>
+                    <select name="" id="purok">
+                      <option value="Centro">Centro</option>
+                      <option value="Kaakbayan">Kaakbayan</option>
+                      <option value="New Princesa"> New Princesa</option>
+                      <option value="San Franciso I">San Franciso I</option>
+                      <option value="San Franciso II">San Franciso II</option>
+                      <option value="Sandiwa">Sandiwa</option>
+                      <option value="Trece">Trece</option>
+                      <option value="Uha">UHA</option>
+                    </select>
 
                       <br>
                       <br>
 
-                      <label for="">Manager / Operator</label>
-                      <input type="text" class="form-control" name="manager_operator">
+                    <label for="">Manager / Operator</label>
+                    <input type="text" class="form-control" name="manager_operator_renew">
 
-                      <label for="">Address(Manager / Operator)</label>
-                      <input type="text" class="form-control" name="manager_operator_address">
+                    <label for="">Address(Manager / Operator)</label>
+                    <input type="text" class="form-control" name="manager_operator_address_renew">
 
                       <!-- <label for="businessIssuedDate">Issued Date:</label>
                   <input type="date" class="form-control" name="business_issued_date"><br> -->
-                    </form>
+                  <button name="business_permit_renew" onclick="printIframe()"  type="submit">Print</button>
+                 
+
+
+
+
+
+
+                </form>
                   </div>
 
                   <div id="certificate_of_employability">
-                    <form action="#">
+                 <form action="#" method="post" id="form">
 
-                      <label for="">First Name:</label>
-                      <input type="text" class="form-control" placeholder="Ex. Juan"><br>
+                  <label for="">First Name:</label>
+                  <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
-                      <label for="">Middle Name:</label>
-                      <input type="text" class="form-control" placeholder="Ex.Dela"><br>
+                  <label for="">Middle Initial:</label>
+                  <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
 
-                      <label for="">Last Name:</label>
-                      <input type="text" class="form-control" placeholder="Ex. Cruz"><br>
+                  <label for="">Last Name:</label>
+                  <input type="text" class="form-control" name="last_name" placeholder="Ex. J"><br>
 
-                      <label for="">Suffix:</label>
-                      <input type="text" class="form-control" placeholder="Ex. Jr"><br>
 
-                      <label for="">Age</label>
-                      <input type="number" class="form-control" placeholder="Ex. 20">
+                    <label for="">Suffix:</label>
+                      <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
+                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+                        <option value="">N/A</option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                      </select><br><br>
+                    <label for="">Age</label>
+                    <input type="number"  name="age" class="form-control" placeholder="Ex. 20">
 
-                      <label for="">Purok:</label>
-                      <input type="text" class="form-control"><br>
-
-                      <!-- <label for="">Issued Date:</label>
+                    <label for="">Purok:</label><br>
+                     <select name="puroks" id="puroks" onchange="update()">
+                      <option value="Centro">Centro</option>
+                      <option value="Hurawan">Huwaran</option>
+                      <option value="Kaakbayan">Kaakbayan</option>
+                      <option value="New Princesa"> New Princesa</option>
+                      <option value="San Franciso I">San Franciso I</option>
+                      <option value="San Franciso II">San Franciso II</option>
+                      <option value="Sandiwa">Sandiwa</option>
+                      <option value="Trece">Trece</option>
+                      <option value="Uha">UHA</option>
+                     </select>
+                    <br>
+                    <!-- <label for="">Issued Date:</label>
                   <input type="date" class="form-control"> -->
 
-                      <label for="">Duty Officer Full Name:</label>
-                      <input type="text" class="form-control">
+                    <label for="">Duty Officer Full Name:</label>
+                    <input type="text" name="Duty_Officer" class="form-control">
+                    <button name="certificate_of_employability" onclick="printIframe()"  type="submit">Print</button>
+
                     </form>
                   </div>
 
                   <div id="certificate_of_income">
+                 <form action="#" method="post" id="form">
+                  <label for="">First Name:</label>
+                    <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
-                    <form action="#">
-                      <label for="">First Name:</label>
-                      <input type="text" class="form-control" name="first_name"><br>
+                    <label for="">Middle Initial:</label>
+                    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
 
-                      <label for="">Middle Name:</label>
-                      <input type="text" class="form-control" name="middle_name"><br>
+                    <label for="">Last Name:</label>
+                    <input type="text" class="form-control" name="last_name" placeholder="Ex. J"><br>
 
-                      <label for="">Last Name:</label>
-                      <input type="text" class="form-control" name="last_name"><br>
 
-                      <label for="">Suffix:</label>
-                      <input type="text" class="form-control"><br>
+                    <label for="">Suffix:</label>
+                      <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
+                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+                        <option value="">N/A</option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                      </select><br><br>
 
-                      <label for="">Purok:</label>
-                      <input type="text" class="form-control"><br>
-
-                      <label for="">Amount (In Numeric Form)</label>
-                      <input type="number" class="form-control"><br>
+                    <label for="">Purok:</label><br>
+                     <select name="puroks" id="puroks" onchange="update()">
+                      <option value="Centro">Centro</option>
+                      <option value="Hurawan">Huwaran</option>
+                      <option value="Kaakbayan">Kaakbayan</option>
+                      <option value="New Princesa"> New Princesa</option>
+                      <option value="San Franciso I">San Franciso I</option>
+                      <option value="San Franciso II">San Franciso II</option>
+                      <option value="Sandiwa">Sandiwa</option>
+                      <option value="Trece">Trece</option>
+                      <option value="Uha">UHA</option>
+                     </select>
+                      <br>
+                    <label for="">Amount (In Numeric Form)</label>
+                    <input type="number" name="amount" class="form-control" maxlength="10"><br>
 
                       <!-- <label for="">Issued Date:</label>
                   <input type="date" class="form-control"> -->
 
-                      <label for="">Duty Officer Full Name:</label>
-                      <input type="text" class="form-control">
+                    <label for="">Duty Officer Full Name:</label>
+                    <input type="text" class="form-control">
+                    <button name="certificate_of_income" onclick="printIframe()"  type="submit">Print</button>
                     </form>
                   </div>
 
                   <div id="cohabitation">
-                    <form action="">
-                      <label for="">First Name:</label>
-                      <input type="text" class="form-control" name="first_name"><br>
+                   <form action="#" method="post" id="form">
+                    <label for="">First Name:</label>
+                    <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
-                      <label for="">Middle Name:</label>
-                      <input type="text" class="form-control" name="middle_name"><br>
+                    <label for="">Middle Initial:</label>
+                    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
 
-                      <label for="">Last Name:</label>
-                      <input type="text" class="form-control" name="last_name"><br>
+                    <label for="">Last Name:</label>
+                    <input type="text" class="form-control" name="last_name" placeholder="Ex. J"><br>
 
-                      <label for="">Suffix:</label>
-                      <input type="text" class="form-control" name="suffix"><br>
+
+                    <label for="">Suffix:</label>
+                      <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
+                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+                        <option value="">N/A</option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                      </select><br><br>
 
                       <label for="cohabitant1Birthdate">Birthdate:</label>
                       <input type="date" class="form-control" name="birth_date"><br>
 
-                      <label for="">First Name:</label>
-                      <input type="text" class="form-control" name="cohabitant_first_name"><br>
+                    <label for="">First Name:</label>
+                    <input type="text" class="form-control" name="first_name1" placeholder="Ex. Barbie"><br>
 
-                      <label for="">Middle Name:</label>
-                      <input type="text" class="form-control" name="cohabitant_middle_name"><br>
+                    <label for="">Middle Initial:</label>
+                    <input type="text" class="form-control" name="middle_initial1" placeholder="Ex. J"><br>
 
-                      <label for="">Last Name:</label>
-                      <input type="text" class="form-control" name="cohabitant_last_name"><br>
+                    <label for="">Last Name:</label>
+                    <input type="text" class="form-control" name="last_name1" placeholder="Ex. J"><br>
+
 
                       <label for="cohabitant1Birthdate">Birthdate:</label>
                       <input type="date" class="form-control" name="cohabitant_birth_date"><br>
 
-                      <label for="cohabitationPurok">Purok:</label>
-                      <input type="text" class="form-control" name="purok"><br>
-
-                      <!--Month and Year daw-->
-                      <label for="dateOfMarriage">Date of Marriage:</label>
-                      <input type="date" class="form-control" name="date_of_marriage"><br>
-
-                      <label for="periodOfMarriage">Period of marriage:</label>
-                      <input type="number" class="form-control" name="period_of_marriage"><br>
-
-                      <!-- <label for="cohabitationIssuedDate">Issued Date:</label>
-                  <input type="date" class="form-control" name="issued_date"><br> -->
+                     <label for="">Purok:</label><br>
+                     <select name="puroks" id="puroks" onchange="update()">
+                      <option value="Centro">Centro</option>
+                      <option value="Hurawan">Huwaran</option>
+                      <option value="Kaakbayan">Kaakbayan</option>
+                      <option value="New Princesa"> New Princesa</option>
+                      <option value="San Franciso I">San Franciso I</option>
+                      <option value="San Franciso II">San Franciso II</option>
+                      <option value="Sandiwa">Sandiwa</option>
+                      <option value="Trece">Trece</option>
+                      <option value="Uha">UHA</option>
+                     </select>
+                    <!--Month and Year daw-->
+                    <label for="dateOfMarriage">Period of marriage:</label>
+                    <input type="month" onchange="updateText()" id="month" class="form-control" name="date_of_marriage"><br>
 
                       <label for="">Duty Officer Full Name</label>
                       <input type="text" class="form-control" name="duty_officer_full_name">
                     </form>
+                  <button name="cohabitation" onclick="printIframe()"  type="submit">Print</button>
+
                   </div>
 
                   <div id="complaint_certificate">
-                    <form action=""></form>
+                   <form action="#" method="post" id="form">
                     <!--With honorifics-->
                     <label for="">First Name:</label>
-                    <input type="text" class="form-control"><br>
+                    <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
-                    <label for="">Middle Name:</label>
-                    <input type="text" class="form-control"><br>
+                    <label for="">Middle Initial:</label>
+                    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
 
                     <label for="">Last Name:</label>
-                    <input type="text" class="form-control"><br>
+                    <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
 
                     <label for="">Suffix:</label>
-                    <input type="text" class="form-control"><br>
+                      <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
+                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+                        <option value="">N/A</option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                      </select><br><br>
 
                     <label for="">Age</label>
-                    <input type="number" class="form-control">
+                    <input type="number" name="age" class="form-control">
 
-                    <label for="">Purok:</label>
-                    <input type="text" class="form-control"><br>
+                    <label for="">Purok:</label><br>
+                     <select name="puroks" id="puroks" onchange="update()">
+                      <option value="Centro">Centro</option>
+                      <option value="Hurawan">Huwaran</option>
+                      <option value="Kaakbayan">Kaakbayan</option>
+                      <option value="New Princesa"> New Princesa</option>
+                      <option value="San Franciso I">San Franciso I</option>
+                      <option value="San Franciso II">San Franciso II</option>
+                      <option value="Sandiwa">Sandiwa</option>
+                      <option value="Trece">Trece</option>
+                      <option value="Uha">UHA</option>
+                     </select>
 
                     <label for="">Date Filed:</label>
                     <input type="date" class="form-control">
 
                     <!--Respondent Full Name-->
                     <label for="">First Name:</label>
-                    <input type="text" class="form-control"><br>
+                    <input type="text" class="form-control" name="first_namec" placeholder="Ex. Juan"><br>
 
-                    <label for="">Middle Name:</label>
-                    <input type="text" class="form-control"><br>
+                    <label for="">Middle Initial:</label>
+                    <input type="text" class="form-control" name="middle_initialc" placeholder="Ex. J"><br>
 
                     <label for="">Last Name:</label>
-                    <input type="text" class="form-control"><br>
+                    <input type="text" class="form-control" name="last_namec" placeholder="Ex. Dela Cruz"><br>
+
+
 
                     <label for="">Suffix:</label>
                     <input type="text" class="form-control"><br>
@@ -557,31 +707,50 @@ if (isset($_POST["submit"])) {
 
                     <label for="">VAWC Official Name</label>
                     <input type="text" class="form-control">
-
+                  <button name="complaint_certificate" onclick="printIframe()"  type="submit">Print</button>
+                    </form>
                     <!-- <label for="">Issued Date:</label>
                   <input type="date" class="form-control"> -->
+
                   </div>
 
                   <div id="death_certificate">
-                    <form action="">
-                      <label for="">First Name:</label>
-                      <input type="text" class="form-control" name="dead_first_name"
-                        placeholder="Name of Dead Person"><br>
+                   <form action="#" method="post" id="form">
+                    <label for="">First Name:</label>
+                    <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
-                      <label for="">Middle Initial:</label>
-                      <input type="text" class="form-control" name="dead_middle_initial"><br>
+                    <label for="">Middle Initial:</label>
+                    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
 
-                      <label for="">Last Name:</label>
-                      <input type="text" class="form-control" name="dead_last_name"><br>
+                    <label for="">Last Name:</label>
+                    <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
 
-                      <label for="">Suffix</label>
-                      <input type="text" class="form-control" name="dead_suffix"><br>
 
-                      <label for="deathAge">Age:</label>
-                      <input type="number" class="form-control" name="dead_age"><br>
+                    <label for="">Suffix:</label>
+                      <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
+                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+                        <option value="">N/A</option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                      </select><br><br>
+                    <label for="deathAge">Age:</label>
+                    <input type="number" class="form-control" name="dead_age"><br>
 
-                      <label for="">Purok:</label>
-                      <input type="text" class="form-control" name="dead_purok"><br>
+                    <label for="">Purok:</label><br>
+                     <select name="puroks" id="puroks" onchange="update()">
+                      <option value="Centro">Centro</option>
+                      <option value="Hurawan">Huwaran</option>
+                      <option value="Kaakbayan">Kaakbayan</option>
+                      <option value="New Princesa"> New Princesa</option>
+                      <option value="San Franciso I">San Franciso I</option>
+                      <option value="San Franciso II">San Franciso II</option>
+                      <option value="Sandiwa">Sandiwa</option>
+                      <option value="Trece">Trece</option>
+                      <option value="Uha">UHA</option>
+                     </select>
 
                       <label for="dateOfDeath">Date of death:</label>
                       <input type="date" class="form-control" name="date_of_death"><br>
@@ -592,43 +761,71 @@ if (isset($_POST["submit"])) {
                       <label for="causeOfDeath">Cause of death:</label>
                       <input type="text" class="form-control" name="cause_of_death"><br>
 
-                      <label for="">First Name:</label>
-                      <input type="text" class="form-control" name="requesting_first_name"
-                        placeholder="Name of Requesting Person"><br>
+                    <label for="">First Name:</label>
+                    <input type="text" class="form-control" name="first_named" placeholder="Ex. Juan"><br>
 
-                      <label for="">Middle Name:</label>
-                      <input type="text" class="form-control" name="requesting_middle_name"><br>
+                    <label for="">Middle Initial:</label>
+                    <input type="text" class="form-control" name="middle_initiald" placeholder="Ex. J"><br>
 
-                      <label for="">Last Name:</label>
-                      <input type="text" class="form-control" name="requesting_last_name"><br>
+                    <label for="">Last Name:</label>
+                    <input type="text" class="form-control" name="last_named" placeholder="Ex. Dela Cruz"><br>
 
-                      <label for="">Suffix:</label>
-                      <input type="text" class="form-control" name="requesting_suffix"><br>
+                    <label for="">Suffix:</label>
+                      <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
+                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+                        <option value="">N/A</option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                      </select><br><br>
 
                       <label for="relationshipToDeadPerson">Relationship to the dead person:</label>
                       <input type="text" class="form-control" name="relationship_to_dead_person"><br>
 
-                      <label for="dateRequested">Date requested:</label>
-                      <input type="date" class="form-control" name="date_requested"><br>
-                    </form>
+                    <label for="dateRequested">Date requested:</label>
+                    <input type="date" class="form-control" name="date_requested"><br>
+                    <button name="death_certificate" onclick="printIframe()"  type="submit">Print</button>
+                    
+                  </form>
                   </div>
 
                   <div id="first_time_job_seeker">
-                    <form action="#">
-                      <label for="">First Name:</label>
-                      <input type="text" class="form-control" name="first_name"><br>
+                 <form action="#" method="post" id="form">
+                  <label for="">First Name:</label>
+                  <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
-                      <label for="">Middle Name:</label>
-                      <input type="text" class="form-control" name="middle_name"><br>
+                  <label for="">Middle Initial:</label>
+                  <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
 
-                      <label for="">Last Name:</label>
-                      <input type="text" class="form-control" name="last_name"><br>
+                  <label for="">Last Name:</label>
+                  <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
 
-                      <label for="">Suffix:</label>
-                      <input type="text" class="form-control" name="suffix"><br>
 
-                      <label for="jobSeekerPurok">Purok:</label>
-                      <input type="text" class="form-control" name="purok"><br>
+                    <label for="">Suffix:</label>
+                      <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
+                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+                        <option value="">N/A</option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                      </select><br><br>
+
+                    <label for="">Purok:</label><br>
+                     <select name="puroks" id="puroks" onchange="update()">
+                      <option value="Centro">Centro</option>
+                      <option value="Hurawan">Huwaran</option>
+                      <option value="Kaakbayan">Kaakbayan</option>
+                      <option value="New Princesa"> New Princesa</option>
+                      <option value="San Franciso I">San Franciso I</option>
+                      <option value="San Franciso II">San Franciso II</option>
+                      <option value="Sandiwa">Sandiwa</option>
+                      <option value="Trece">Trece</option>
+                      <option value="Uha">UHA</option>
+                     </select>
 
                       <label for="residencyPeriod">Period of Residency:</label>
                       <input type="text" class="form-control" name="residency_period"><br>
@@ -641,56 +838,77 @@ if (isset($_POST["submit"])) {
                       <label for="certificationValidationDate">Validation date:</label>
                       <input type="date" class="form-control" name="validation_date"><br>
 
-                      <!--(Full name daw)-->
-                      <label for="">Witness</label>
-                      <input type="text" class="form-control" name="witness">
-                  </div>
-              </form>
+                    <!--(Full name daw)-->
+                    <label for="">Witness</label>
+                    <input type="text" class="form-control" name="witness">
+                  <button name="first_time_job_seeker" onclick="printIframe()"  type="submit">Print</button>
 
-              <div id="indigency_aics">
-                <form action="#">
+                    </form>
+                  </div>
+                     
+                  <div id="indigency_aics">
+                 <form action="#" method="post" id="form">
                   <label for="">First Name:</label>
-                  <input type="text" class="form-control" name="first_name"><br>
+                  <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
                   <label for="">Middle Initial:</label>
-                  <input type="text" class="form-control" name="middle_initial"><br>
+                  <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
 
                   <label for="">Last Name:</label>
-                  <input type="text" class="form-control" name="last_name"><br>
+                  <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
 
-                  <!-- <label for="">Last Name:</label>
-                  <input type="text"  class="form-control" ><br>
-               -->
-                  <label for="">Suffix</label>
-                  <input type="text" class="form-control" name="suffix"><br>
+               <label for="">Suffix:</label>
+                      <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
+                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+                        <option value="">N/A</option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                      </select><br><br>
 
-                  <label for="">Purok</label>
-                  <input type="text" class="form-control" name="purok"><br>
+                    <label for="">Purok:</label><br>
+                     <select name="puroks" id="puroks" onchange="update()">
+                      <option value="Centro">Centro</option>
+                      <option value="Hurawan">Huwaran</option>
+                      <option value="Kaakbayan">Kaakbayan</option>
+                      <option value="New Princesa"> New Princesa</option>
+                      <option value="San Franciso I">San Franciso I</option>
+                      <option value="San Franciso II">San Franciso II</option>
+                      <option value="Sandiwa">Sandiwa</option>
+                      <option value="Trece">Trece</option>
+                      <option value="Uha">UHA</option>
+                     </select>
 
-                  <!-- <label for="">Purpose</label>
-                  <input type="text"  class="form-control"  placeholder="Ex. Food Assistance"><br>
-               -->
-                  <!-- <label for="">Purpose</label>
-                  <input type="text"  class="form-control"  placeholder="Ex. Purpose Reason"><br>
-               -->
-                  <label for="indigencyIssuedDate">Issued Date:</label>
-                  <input type="date" class="form-control" name="issued_date"><br>
-                </form>
-              </div>
+                    <label for="indigencyIssuedDate">Issued Date:</label>
+                    <input type="date" class="form-control" name="issued_date"><br>
+                    <button name="indigency_aics" onclick="printIframe()"  type="submit">Print</button>
 
-              <div id="indigency">
-                <form action="#">
+                    </form>
+                  </div>
+
+                  <div id="indigency">
+                 <form action="#" method="post" id="form">
                   <label for="">First Name:</label>
-                  <input type="text" class="form-control" name="first_name"><br>
+                  <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
-                  <label for="">Middle Name:</label>
-                  <input type="text" class="form-control" name="middle_name"><br>
+                  <label for="">Middle Initial:</label>
+                  <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
 
                   <label for="">Last Name:</label>
-                  <input type="text" class="form-control" name="last_name"><br>
+                  <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
 
-                  <label for="">Suffix:</label>
-                  <input type="text" class="form-control" name="suffix"><br>
+                    <label for="">Suffix:</label>
+                      <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
+                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+                        <option value="">N/A</option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                      </select><br><br>
 
                   <label for="">Age</label>
                   <input type="number" class="form-control" name="age">
@@ -703,31 +921,57 @@ if (isset($_POST["submit"])) {
                     <option value="w">Widow</option>
                   </select>
 
-                  <label for="">Purok:</label>
-                  <input type="text" class="form-control" name="purok"><br>
-
-                  <!-- <label for="">Purpose:</label>
-                  <input type="text" class="form-control"><br> -->
+                    <label for="">Purok:</label><br>
+                     <select name="puroks" id="puroks" onchange="update()">
+                      <option value="Centro">Centro</option>
+                      <option value="Hurawan">Huwaran</option>
+                      <option value="Kaakbayan">Kaakbayan</option>
+                      <option value="New Princesa"> New Princesa</option>
+                      <option value="San Franciso I">San Franciso I</option>
+                      <option value="San Franciso II">San Franciso II</option>
+                      <option value="Sandiwa">Sandiwa</option>
+                      <option value="Trece">Trece</option>
+                      <option value="Uha">UHA</option>
+                     </select><br>
+                     <button name="indigency" onclick="printIframe()"  type="submit">Print</button>
 
                 </form>
               </div>
 
-              <div id="lot_ownership">
-                <form action="#">
+                  <div id="lot_ownership">
+                 <form action="#" method="post" id="form">
                   <label for="">First Name:</label>
-                  <input type="text" class="form-control" name="lot_first_name"><br>
+                  <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
-                  <label for="">Middle Name:</label>
-                  <input type="text" class="form-control" name="lot_middle_name"><br>
+                  <label for="">Middle Initial:</label>
+                  <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
 
                   <label for="">Last Name:</label>
-                  <input type="text" class="form-control" name="lot_last_name"><br>
+                  <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
 
-                  <label for="">Suffix:</label>
-                  <input type="text" class="form-control" name="lot_suffix"><br>
+                    <label for="">Suffix:</label>
+                      <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
+                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+                        <option value="">N/A</option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                      </select><br><br>
 
-                  <label for="">Purok:</label>
-                  <input type="text" class="form-control" name="lot_purok"><br>
+                    <label for="">Purok:</label><br>
+                     <select name="puroks" id="puroks" onchange="update()">
+                      <option value="Centro">Centro</option>
+                      <option value="Hurawan">Huwaran</option>
+                      <option value="Kaakbayan">Kaakbayan</option>
+                      <option value="New Princesa"> New Princesa</option>
+                      <option value="San Franciso I">San Franciso I</option>
+                      <option value="San Franciso II">San Franciso II</option>
+                      <option value="Sandiwa">Sandiwa</option>
+                      <option value="Trece">Trece</option>
+                      <option value="Uha">UHA</option>
+                     </select>
 
                   <ul style="list-style: none;">
                     <li>
@@ -753,26 +997,36 @@ if (isset($_POST["submit"])) {
                   <!-- <label for="lotAreaWord">Area Measurement (Word Form):</label>
                   <input type="text" class="form-control"  disabled><br>
                -->
-                  <label for="lotLocationAddress">Location Address:</label>
-                  <input type="text" class="form-control" name="lot_location_address"><br>
-                </form>
+                    <label for="lotLocationAddress">Location Address:</label>
+                    <input type="text" class="form-control" name="lot_location_address"><br>
+                  <button name="lot_ownership" onclick="printIframe()"  type="submit">Print</button>
 
-              </div>
+                    </form>
+                  </div>
 
-              <div id="Oathtaking"> ⁡⁢⁣⁢
-                <!-- ‍wala sa database table -->⁡⁡
-                <form action="#">
+                  <div id="Oathtaking"> ⁡⁢⁣⁢<!-- ‍wala sa database table -->⁡⁡
+                 <form action="#" method="post" id="form">
                   <label for="">First Name:</label>
-                  <input type="text" class="form-control" name="first_name"><br>
+                  <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
-                  <label for="">Middle Name:</label>
-                  <input type="text" class="form-control" name="middle_name"><br>
+                  <label for="">Middle Initial:</label>
+                  <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
 
                   <label for="">Last Name:</label>
-                  <input type="text" class="form-control" name="last_name"><br>
+                  <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
 
-                  <label for="">Suffix:</label>
-                  <input type="text" class="form-control" name="suffix"><br>
+
+
+                    <label for="">Suffix:</label>
+                      <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
+                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+                        <option value="">N/A</option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                      </select><br><br>
 
                   <label for="applicantAge">Age:</label>
                   <input type="number" class="form-control" name="age"><br>
@@ -793,8 +1047,16 @@ if (isset($_POST["submit"])) {
                   <label for="">Last Name:</label>
                   <input type="text" class="form-control" name="guardian_last_name"><br>
 
-                  <label for="">Suffix:</label>
-                  <input type="text" class="form-control" name="guardian_suffix"><br>
+                    <label for="">Suffix:</label>
+                      <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
+                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+                        <option value="">N/A</option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                      </select><br><br>
 
                   <label for="guardianAge">Guardian Age:</label>
                   <input type="number" class="form-control" name="guardian_age"><br>
@@ -805,54 +1067,80 @@ if (isset($_POST["submit"])) {
                   <!-- <label for="applicantName">Name of Applicant:</label>
                   <input type="text" class="form-control" ><br> -->
 
-                  <label for="applicantPurok">Purok:</label>
-                  <input type="text" class="form-control" name="purok"><br>
+                  <label for="">Purok:</label><br>
+                     <select name="puroks" id="puroks" onchange="update()">
+                      <option value="Centro">Centro</option>
+                      <option value="Hurawan">Huwaran</option>
+                      <option value="Kaakbayan">Kaakbayan</option>
+                      <option value="New Princesa"> New Princesa</option>
+                      <option value="San Franciso I">San Franciso I</option>
+                      <option value="San Franciso II">San Franciso II</option>
+                      <option value="Sandiwa">Sandiwa</option>
+                      <option value="Trece">Trece</option>
+                      <option value="Uha">UHA</option>
+                     </select>
 
                   <label for="applicantResidencyPeriod2">Period of Residency:</label>
                   <input type="number" class="form-control" name="residency_period"><br>
 
                   <!-- <label for="guardianFullName2">Guardian Full Name:</label>
                   <input type="text" class="form-control" ><br> -->
-                </form>
-              </div>
+                  <button name="Oathtaking" onclick="printIframe()"  type="submit">Print</button>
 
-              <div id="transfer_of_residency">
-                <form action="#">
+                  </form>  
+                </div>
+
+                  <div id="transfer_of_residency">
+                 <form action="#" method="post" id="form">
 
                   <label for="">First Name:</label>
-                  <input type="text" class="form-control" name="first_name"><br>
+                  <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
-                  <label for="">Middle Name:</label>
-                  <input type="text" class="form-control" name="middle_name"><br>
+                  <label for="">Middle Initial:</label>
+                  <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
 
                   <label for="">Last Name:</label>
-                  <input type="text" class="form-control" name="last_name"><br>
+                  <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
 
-                  <label for="">Suffix:</label>
-                  <input type="text" class="form-control" name="suffix"><br>
 
-                  <label for="">Purok:</label>
-                  <input type="text" class="form-control" name="purok"><br>
+                    <label for="">Suffix:</label>
+                      <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
+                      <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+                        <option value="">N/A</option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                      </select><br><br>
 
-                  <!-- <label for="">Nationality:</label>
-                  <input type="text" class="form-control"><br>
-               -->
-                  <!-- <label for="">Civil Status:</label>
-                  <input type="text" class="form-control"><br> -->
+                      <label for="">Purok:</label><br>
+                      <select name="puroks" id="puroks" onchange="update()">
+                       <option value="Centro">Centro</option>
+                       <option value="Hurawan">Huwaran</option>
+                       <option value="Kaakbayan">Kaakbayan</option>
+                       <option value="New Princesa"> New Princesa</option>
+                       <option value="San Franciso I">San Franciso I</option>
+                       <option value="San Franciso II">San Franciso II</option>
+                       <option value="Sandiwa">Sandiwa</option>
+                       <option value="Trece">Trece</option>
+                       <option value="Uha">UHA</option>
+                      </select>
 
                   <label for="">Previous Address:</label>
                   <input type="text" class="form-control" name="previous_address"><br>
 
-                  <label for="">Current Address:</label>
-                  <input type="text" class="form-control" name="current_address"><br>
-                </form>
+                    <label for="">Current Address:</label>
+                    <input type="text" class="form-control" name="current_address"><br>
+                  <button name="transfer_of_residency" onclick="printIframe()"  type="submit">Print</button>
 
-              </div>
+                    </form>
+                  </div>
+                </div>
+              <!-- End General Form Elements -->
+            
             </div>
-            </form><!-- End General Form Elements -->
-            </form>
-          </div>
-        </div>
+            </div>
 
       </div>
       <div class="col-lg-6">
@@ -865,6 +1153,17 @@ if (isset($_POST["submit"])) {
             <iframe id="myIframe" class="col-lg-12" width="100%" height="100%" style="border: none;"></iframe>
           </div>
         </div>
+    <div class="card-body d-flex justify-content-center align-items-center">
+        <h5 class="card-title">View Certificate</h5>
+        <?php  
+        if (isset($_POST["barangay_clearance"])) {
+          echo"<p>business_permit_new</p>";}
+        ?>
+    </div>
+    <div class="card-body d-flex justify-content-center align-items-center">
+        <iframe id="myIframe" class="col-lg-12" width="100%" height="100%" style="border: none;"></iframe>
+    </div>
+</div>
 
       </div>
       </div>
@@ -900,10 +1199,7 @@ if (isset($_POST["submit"])) {
 
   <!-- Template Main JS File -->
   <script>
-    function resetForm() {
-      var form = document.getElementById("myForm");
-      form.reset();
-    }
+   
   </script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/main2.js"></script>
