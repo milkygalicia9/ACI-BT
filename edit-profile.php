@@ -1,3 +1,25 @@
+<?php
+include 'db.php';
+
+$sql = "SELECT * FROM staffs WHERE id = {$_GET['id']}";
+
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $id = $row["id"];
+        $profile_image = $row["profile_image"];
+        $name = $row["name"];
+        $age = $row["age"];
+        $birthdate = $row["birthdate"];
+        $address = $row["address"];
+        $phone = $row["phone"];
+    }
+} else {
+    echo "0 results";
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -148,7 +170,7 @@
                     <div class="card">
                         <div class="card-body profile-card pb-0 pt-4 d-flex flex-column align-items-center text-dark">
                             <img src="assets/img/devs/carl.jpg" alt="Profile" class="rounded-circle">
-                            <h2>Carl Alab</h2>
+                            <h2><?php echo $name; ?></h2>
                             <h3>Punong Barangay</h3>
                         </div>
                         <div class="mt-0 pt-0 mx-3 p-3 rounded-4">
@@ -159,32 +181,33 @@
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                                    <div class="col-lg-9 col-md-8">Carl Vincent Alabastro</div>
+                                    <div class="col-lg-9 col-md-8"><?php echo $name; ?></div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Age</div>
-                                    <div class="col-lg-9 col-md-8">32</div>
+                                    <div class="col-lg-9 col-md-8"><?php echo $age; ?></div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Birthday</div>
-                                    <div class="col-lg-9 col-md-8">December 11 2022</div>
+                                    <div class="col-lg-9 col-md-8"><?php echo $birthdate; ?></div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Address</div>
-                                    <div class="col-lg-9 col-md-8">Sa tabi ng PSU</div>
+                                    <div class="col-lg-9 col-md-8"><?php echo $address; ?></div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Phone</div>
-                                    <div class="col-lg-9 col-md-8">Dalawa orig</div>
+                                    <div class="col-lg-9 col-md-8"><?php echo $phone; ?></div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Email</div>
-                                    <div class="col-lg-9 col-md-8">carlhatdog@gmail.com</div>
+                                    <div class="col-lg-9 col-md-8">hindi na isama</div>
+                                </div>
                                 </div>
 
                             </div>
@@ -220,22 +243,22 @@
                                     Name</label>
                                 <div class="col-md-8 col-lg-9">
                                     <input name="fullName" type="text" class="form-control" id="fullName"
-                                        value="Full Name">
+                                        value="<?php echo $name; ?>">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label for="age" class="col-md-4 col-lg-3 col-form-label">Age</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="age" type="text" class="form-control" id="age" value="32">
+                                    <input name="age" type="text" class="form-control" id="age" value="<?php echo $age; ?>">
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <label for="birthdate" class="col-md-4 col-lg-3 col-form-label">Birthdate</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="birthdate" type="text" class="form-control" id="birthdate"
-                                        value="December">
+                                    <input name="birthdate" type="date" class="form-control" id="birthdate"
+                                        value="<?php echo $birthdate; ?>">
                                 </div>
                             </div>
 
@@ -243,7 +266,7 @@
                                 <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
                                 <div class="col-md-8 col-lg-9">
                                     <input name="address" type="text" class="form-control" id="Address"
-                                        value="Tabi ng PSU">
+                                        value="<?php echo $address; ?>">
                                 </div>
                             </div>
 
@@ -251,7 +274,7 @@
                                 <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
                                 <div class="col-md-8 col-lg-9">
                                     <input name="phone" type="text" class="form-control" id="Phone"
-                                        value="(436) 486-3538 x29071">
+                                        value="<?php echo $phone; ?>">
                                 </div>
                             </div>
 
@@ -292,7 +315,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save Changes</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
                 </div>
             </div>
         </div>
