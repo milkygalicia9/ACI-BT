@@ -145,36 +145,54 @@ if (!isset($_SESSION['username'])) {
                             <table class="table datatable">
                                 <thead>
                                     <tr>
-                                        <!-- <th>ID</th> -->
-                                        <th>Full name</th>
-                                        <th>Address</th>
-                                        <th>Birth Place</th>
-                                        <th>Birth Date</th>
-                                        <th>Civil Status</th>
-                                        <th>Period of Residency</th>
-                                        <th>Issued Date</th>
-                                        <th>Purpose</th>
-                                        <th>Duty Officer Name</th>
+                                        <?php
+                                        require 'db.php';
+
+                                        // Get doc_id from the URL
+                                        $doc_id = isset($_GET['docId']) ? intval($_GET['docId']) : 0;
+
+                                        if ($doc_id == 1) {
+                                            echo "
+                                            <th>Full name</th>
+                                            <th>Address</th>
+                                            <th>Birth Place</th>
+                                            <th>Birth Date</th>
+                                            <th>Civil Status</th>
+                                            <th>Period of Residency</th>
+                                            <th>Issued Date</th>
+                                            <th>Purpose</th>
+                                            <th>Duty Officer Name</th>
+                                        ";
+                                        } elseif ($doc_id == 2 || $doc_id == 3) {
+                                            echo "
+                                            <th>Business Name</th>
+                                            <th>Address</th>
+                                            <th>Issued Date</th>
+                                        ";
+                                        } else {
+                                            echo "
+                                            <th>ID</th>
+                                            <th>Transacted By</th>
+                                            <th>Document Name</th>
+                                            <th>Client Transaction ID</th>
+                                            <th>Created At</th>
+                                        ";
+                                        }
+                                        ?>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
-                                    require 'db.php';
-
-                                    // Get doc_id from the URL
-                                    $doc_id = isset($_GET['docId']) ? intval($_GET['docId']) : 0;
-
                                     if ($doc_id == 1) {
                                         // Fetch data from barangay_clearance table when doc_id is 1
                                         $sql = "SELECT fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name 
-                                            FROM barangay_clearance";
+                                        FROM barangay_clearance";
 
                                         $result = $conn->query($sql);
 
                                         if ($result->num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 echo "<tr>";
-                                                // echo "<td>" . $row["id"] . "</td>";
                                                 echo "<td>" . $row["fullname"] . "</td>";
                                                 echo "<td>" . $row["address"] . "</td>";
                                                 echo "<td>" . $row["birthplace"] . "</td>";
@@ -187,18 +205,65 @@ if (!isset($_SESSION['username'])) {
                                                 echo "</tr>";
                                             }
                                         } else {
-                                            echo "<tr><td colspan='10'><center>No barangay clearances found</center></td></tr>";
+                                            echo "<tr><td colspan='9'><center>No barangay clearances found</center></td></tr>";
+                                        }
+                                    } elseif ($doc_id == 2) {
+                                        // Fetch data from business_permit_new table when doc_id is 2
+                                        $sql = "SELECT business_name, address, issued_date FROM business_permit_new";
+
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<tr>";
+                                                echo "<td>" . $row["business_name"] . "</td>";
+                                                echo "<td>" . $row["address"] . "</td>";
+                                                echo "<td>" . $row["issued_date"] . "</td>";
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='3'><center>No new business permits found</center></td></tr>";
+                                        }
+                                    } elseif ($doc_id == 3) {
+                                        // Fetch data from business_permit_renew table when doc_id is 3
+                                        $sql = "SELECT business_name, address, issued_date FROM business_permit_renew";
+
+                                        $result = $conn->query($sql);
+
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<tr>";
+                                                echo "<td>" . $row["business_name"] . "</td>";
+                                                echo "<td>" . $row["address"] . "</td>";
+                                                echo "<td>" . $row["issued_date"] . "</td>";
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='3'><center>No renewed business permits found</center></td></tr>";
                                         }
                                     } else {
                                         // Fetch data from transactions table for other doc_ids
                                         $sql = "SELECT t.id, a.username AS transact_by, dt.doc_name, t.client_trans_id, t.created_at
-                                            FROM transactions t
-                                            INNER JOIN admin a ON t.transact_by = a.id
-                                            INNER JOIN doctype dt ON t.doc_id = dt.id
-                                            WHERE t.doc_id = $doc_id";
+                                        FROM transactions t
+                                        INNER JOIN admin a ON t.transact_by = a.id
+                                        INNER JOIN doctype dt ON t.doc_id = dt.id
+                                        WHERE t.doc_id = $doc_id";
 
                                         $result = $conn->query($sql);
 
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<tr>";
+                                                echo "<td>" . $row["id"] . "</td>";
+                                                echo "<td>" . $row["transact_by"] . "</td>";
+                                                echo "<td>" . $row["doc_name"] . "</td>";
+                                                echo "<td>" . $row["client_trans_id"] . "</td>";
+                                                echo "<td>" . $row["created_at"] . "</td>";
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='5'><center>No transactions found</center></td></tr>";
+                                        }
                                     }
                                     ?>
                                 </tbody>
@@ -210,6 +275,7 @@ if (!isset($_SESSION['username'])) {
             </div>
         </section>
     </main><!-- End #main -->
+
 
 
 
