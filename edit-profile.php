@@ -1,7 +1,11 @@
-<?php
+<?php //show information about officials
 include 'db.php';
 
-$sql = "SELECT * FROM staffs WHERE id = {$_GET['id']}";
+if (isset($_GET['id'])){
+
+    $id= $_GET['id'];
+
+    $sql = "SELECT * FROM staffs WHERE id = $id";
 
 $result = $conn->query($sql);
 
@@ -13,13 +17,37 @@ if ($result->num_rows > 0) {
         $age = $row["age"];
         $birthdate = $row["birthdate"];
         $address = $row["address"];
-        $phone = $row["phone"];
-    }
+        $phone = $row["phone"];    }
 } else {
     echo "0 results";
 }
-
+}
 ?>
+
+<?php //update information of officials
+include 'db.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $id = $_GET['id']; 
+    $name = $_POST['fname'];
+    $age = $_POST['age'];
+    $birthdate = $_POST['bday'];
+    $address = $_POST['address'];
+    $phone = preg_replace("/[^0-9]/", "", $_POST['phone']);
+
+    $sql = "UPDATE staffs SET name='$name', age='$age', birthdate='$birthdate', address='$address', phone='$phone' WHERE id = $id";
+
+    if ($conn->query($sql) === TRUE) {
+        echo "Profile updated successfully";
+    } else {
+        echo "Error updating profile: " . $conn->error;
+    }
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -221,14 +249,14 @@ if ($result->num_rows > 0) {
                         <div class="card-body">
                             <h5 class="card-title">Edit profile</h5>
                         </div>
-                        <form class="text-dark p-3 pt-0">
+                        <form class="text-dark p-3 pt-0" method="post">
                             <div class="row mb-3">
                                 <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile
                                     Image</label>
                                 <div class="col-md-8 col-lg-9">
                                     <img src="assets/img/profile-img.jpg" alt="Profile">
                                     <div class="pt-2">
-                                        <input class="form-control" type="file" accept=".png,.jpg,.jpeg" id="formFile">
+                                        <input class="form-control" type="file" accept=".png,.jpg,.jpeg" id="formFile" name="prof_img">
                                         <!-- <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i
                                                 class="bi bi-upload"></i></a>
                                         <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i
@@ -241,7 +269,7 @@ if ($result->num_rows > 0) {
                                 <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full
                                     Name</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="fullName" type="text" class="form-control" id="fullName"
+                                    <input name="fname" type="text" class="form-control" id="fullName"
                                         value="<?php echo $name; ?>">
                                 </div>
                             </div>
@@ -257,7 +285,7 @@ if ($result->num_rows > 0) {
                             <div class="row mb-3">
                                 <label for="birthdate" class="col-md-4 col-lg-3 col-form-label">Birthdate</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="birthdate" type="date" class="form-control" id="birthdate"
+                                    <input name="bday" type="date" class="form-control" id="birthdate"
                                         value="<?php echo $birthdate; ?>">
                                 </div>
                             </div>
