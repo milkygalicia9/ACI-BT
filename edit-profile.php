@@ -204,17 +204,16 @@ if ($result->num_rows > 0) {
                                     <div class="col-lg-9 col-md-8"><?php echo $phone; ?></div>
                                 </div>
 
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Email</div>
                                     <div class="col-lg-9 col-md-8">hindi na isama</div>
-                                </div>
-                                </div>
-
+                                </div> -->
                             </div>
+
                         </div>
                     </div>
-
                 </div>
+
 
                 <div class="col-xl-7">
 
@@ -250,7 +249,8 @@ if ($result->num_rows > 0) {
                             <div class="row mb-3">
                                 <label for="age" class="col-md-4 col-lg-3 col-form-label">Age</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="age" type="text" class="form-control" id="age" value="<?php echo $age; ?>">
+                                    <input name="age" type="text" class="form-control" id="age"
+                                        value="<?php echo $age; ?>">
                                 </div>
                             </div>
 
@@ -287,7 +287,8 @@ if ($result->num_rows > 0) {
 
                             <div class="text-center">
                                 <!-- <button type="submit" class="btn btn-primary p-2">Save Changes</button> -->
-                                <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">Confirm Changes</button>
+                                <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#basicModal">Confirm Changes</button>
                             </div>
                         </form><!-- End Profile Edit Form -->
                     </div>
