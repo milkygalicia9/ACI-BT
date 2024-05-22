@@ -2,9 +2,10 @@
 // session_start();
 
 // if (!isset($_SESSION['username'])) {
-//     header("Location: index.php");
-//     exit();
-// }<?php
+//   header("Location: index.php");
+//   exit();
+// }
+
 // Include database connection file
 include ("db.php");
 
@@ -140,6 +141,8 @@ if (isset($_POST["barangay_clearance"])) {
 // if (isset($_POST["transfer_of_residency"])) {}
 ?>
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -216,29 +219,32 @@ if (isset($_POST["barangay_clearance"])) {
       <li class="nav-item">
         <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
           <i class="bi bi-grid text-light"></i>
-          <span>Home</span>
+          <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#"
           style="background-color: #174793;">
-          <i class="bi bi-menu-button-wide"></i><span>Officials</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-diagram-3"></i><span>Officials</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="officials.php">
-              <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Officials</span>
+              <i class="bi bi-person-check-fill text-light" style="font-size: 12px;"></i><span
+                class="text-light">Barangay Officials</span>
             </a>
           </li>
           <li>
             <a href="sk.php">
-              <i class="bi bi-circle text-light"></i><span class="text-light">SK Officials</span>
+              <i class="bi bi-person-badge text-light" style="font-size: 12px;"></i><span class="text-light">SK
+                Officials</span>
             </a>
           </li>
           <li>
             <a href="staffs.php">
-              <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Staffs</span>
+              <i class="bi bi-people-fill text-light" style="font-size: 12px;"></i><span class="text-light">Barangay
+                Staffs</span>
             </a>
           </li>
         </ul>
@@ -251,30 +257,26 @@ if (isset($_POST["barangay_clearance"])) {
         </a>
       </li><!-- End F.A.Q Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="login.php" style="background-color: #F4F3EF;">
-          <i class="bi bi-question-circle"></i>
+        <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
+          <i class="bi bi-power text-dark"></i>
           <span>Logout</span>
         </a>
       </li>
     </ul>
-
   </aside>
 
-
   <main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>Form Elements</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Elements</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-
     <section class="section">
+      <div class="d-flex pb-2 pt-0 mt-0">
+        <a href="home.php" class="d-flex">
+          <div class="icon">
+            <i class="bi-caret-left-square fs-4 p-2 text-primary"></i>
+          </div>
+          <div class="back d-flex text-primary align-items-center fs-5">
+            Back
+          </div>
+        </a>
+      </div>
       <div class="row">
         <div class="col-lg-6" id="fillup">
 
@@ -290,7 +292,7 @@ if (isset($_POST["barangay_clearance"])) {
                   }
                 }
 
-              
+
                 iFrame {
                   top: 50%;
                   /* position: fixed !important; */
@@ -347,14 +349,14 @@ if (isset($_POST["barangay_clearance"])) {
                   <div id="barangay_clearance">
                   <form action="#" method="post" id="form">
 
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
+                      <label for="">First Name:</label>
+                      <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
-                    <label for="">Middle Initial:</label>
-                    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
+                      <label for="">Middle Initial:</label>
+                      <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="last_name" placeholder="Ex. J"><br>
+                      <label for="">Last Name:</label>
+                      <input type="text" class="form-control" name="last_name" placeholder="Ex. J"><br>
 
 
                       <label for="">Suffix:</label>
@@ -382,27 +384,27 @@ if (isset($_POST["barangay_clearance"])) {
                     <br>
                     <br>
 
-                        <label for="">Birthplace:</label>
-                        <input type="text" class="form-control" name="birthplace"
-                          placeholder="Ex. Puerto Princesa City"><br>
+                      <label for="">Birthplace:</label>
+                      <input type="text" class="form-control" name="birthplace"
+                        placeholder="Ex. Puerto Princesa City"><br>
 
                       <label for="">Birthday:</label>
                       <input type="date" class="form-control" name="birthday">
                       <br>
                       <label for="">Civil Status:</label>
                       <select class="form-control" onchange="update()" name="civil_status" id="stats">
-                          <option value="Maried">Married</option>
-                          <option value="Widow">Window</option>
-                          <option value="Single">Single</option>
+                        <option value="Maried">Married</option>
+                        <option value="Widow">Window</option>
+                        <option value="Single">Single</option>
                       </select>
                       <br>
                       <label for="">Period of Residency:</label>
                       <input type="number" class="form-control" name="residency_period" placeholder="Ex. 3 years"><br>
 
-                          <label for="">Purpose:</label>
-                          <!-- <input type="text" class="form-control" name="purpose"> -->
-                          <input type="text" name="purpose" class="form-control" id="" cols="30" rows="10"
-                            placeholder="Ex. Undecided"></input><br>
+                      <label for="">Purpose:</label>
+                      <!-- <input type="text" class="form-control" name="purpose"> -->
+                      <input type="text" name="purpose" class="form-control" id="" cols="30" rows="10"
+                        placeholder="Ex. Undecided"></input><br>
 
                           <!-- <label for="">Duty Officer Full Name:</label>
                   <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel"> -->
@@ -462,8 +464,8 @@ if (isset($_POST["barangay_clearance"])) {
                       <option value="Uha">UHA</option>
                     </select>
 
-                    <br>
-                    <br>
+                      <br>
+                      <br>
 
                     <label for="">Manager / Operator</label>
                     <input type="text" class="form-control" name="manager_operator_renew">
@@ -471,7 +473,7 @@ if (isset($_POST["barangay_clearance"])) {
                     <label for="">Address(Manager / Operator)</label>
                     <input type="text" class="form-control" name="manager_operator_address_renew">
 
-                    <!-- <label for="businessIssuedDate">Issued Date:</label>
+                      <!-- <label for="businessIssuedDate">Issued Date:</label>
                   <input type="date" class="form-control" name="business_issued_date"><br> -->
                   <button name="business_permit_renew" onclick="printIframe()"  type="submit">Print</button>
                  
@@ -572,7 +574,7 @@ if (isset($_POST["barangay_clearance"])) {
                     <label for="">Amount (In Numeric Form)</label>
                     <input type="number" name="amount" class="form-control" maxlength="10"><br>
 
-                    <!-- <label for="">Issued Date:</label>
+                      <!-- <label for="">Issued Date:</label>
                   <input type="date" class="form-control"> -->
 
                     <label for="">Duty Officer Full Name:</label>
@@ -580,7 +582,7 @@ if (isset($_POST["barangay_clearance"])) {
                     <button name="certificate_of_income" onclick="printIframe()"  type="submit">Print</button>
                     </form>
                   </div>
-                 
+
                   <div id="cohabitation">
                    <form action="#" method="post" id="form">
                     <label for="">First Name:</label>
@@ -604,8 +606,8 @@ if (isset($_POST["barangay_clearance"])) {
                         <option value="III">III</option>
                       </select><br><br>
 
-                    <label for="cohabitant1Birthdate">Birthdate:</label>
-                    <input type="date" class="form-control" name="birth_date"><br>
+                      <label for="cohabitant1Birthdate">Birthdate:</label>
+                      <input type="date" class="form-control" name="birth_date"><br>
 
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name1" placeholder="Ex. Barbie"><br>
@@ -617,8 +619,8 @@ if (isset($_POST["barangay_clearance"])) {
                     <input type="text" class="form-control" name="last_name1" placeholder="Ex. J"><br>
 
 
-                    <label for="cohabitant1Birthdate">Birthdate:</label>
-                    <input type="date" class="form-control" name="cohabitant_birth_date"><br>
+                      <label for="cohabitant1Birthdate">Birthdate:</label>
+                      <input type="date" class="form-control" name="cohabitant_birth_date"><br>
 
                      <label for="">Purok:</label><br>
                      <select name="puroks" id="puroks" onchange="update()">
@@ -636,8 +638,8 @@ if (isset($_POST["barangay_clearance"])) {
                     <label for="dateOfMarriage">Period of marriage:</label>
                     <input type="month" onchange="updateText()" id="month" class="form-control" name="date_of_marriage"><br>
 
-                    <label for="">Duty Officer Full Name</label>
-                    <input type="text" class="form-control" name="duty_officer_full_name">
+                      <label for="">Duty Officer Full Name</label>
+                      <input type="text" class="form-control" name="duty_officer_full_name">
                     </form>
                   <button name="cohabitation" onclick="printIframe()"  type="submit">Print</button>
 
@@ -750,14 +752,14 @@ if (isset($_POST["barangay_clearance"])) {
                       <option value="Uha">UHA</option>
                      </select>
 
-                    <label for="dateOfDeath">Date of death:</label>
-                    <input type="date" class="form-control" name="date_of_death"><br>
+                      <label for="dateOfDeath">Date of death:</label>
+                      <input type="date" class="form-control" name="date_of_death"><br>
 
-                    <label for="timeOfDeath">Time of death:</label>
-                    <input type="time" class="form-control" name="time_of_death"><br>
+                      <label for="timeOfDeath">Time of death:</label>
+                      <input type="time" class="form-control" name="time_of_death"><br>
 
-                    <label for="causeOfDeath">Cause of death:</label>
-                    <input type="text" class="form-control" name="cause_of_death"><br>
+                      <label for="causeOfDeath">Cause of death:</label>
+                      <input type="text" class="form-control" name="cause_of_death"><br>
 
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_named" placeholder="Ex. Juan"><br>
@@ -779,8 +781,8 @@ if (isset($_POST["barangay_clearance"])) {
                         <option value="III">III</option>
                       </select><br><br>
 
-                    <label for="relationshipToDeadPerson">Relationship to the dead person:</label>
-                    <input type="text" class="form-control" name="relationship_to_dead_person"><br>
+                      <label for="relationshipToDeadPerson">Relationship to the dead person:</label>
+                      <input type="text" class="form-control" name="relationship_to_dead_person"><br>
 
                     <label for="dateRequested">Date requested:</label>
                     <input type="date" class="form-control" name="date_requested"><br>
@@ -825,16 +827,16 @@ if (isset($_POST["barangay_clearance"])) {
                       <option value="Uha">UHA</option>
                      </select>
 
-                    <label for="residencyPeriod">Period of Residency:</label>
-                    <input type="text" class="form-control" name="residency_period"><br>
+                      <label for="residencyPeriod">Period of Residency:</label>
+                      <input type="text" class="form-control" name="residency_period"><br>
 
-                    <!--(Day/Month/Year daw)-->
-                    <label for="certificationSignedDate">Signed date:</label>
-                    <input type="date" class="form-control" name="signed_date"><br>
+                      <!--(Day/Month/Year daw)-->
+                      <label for="certificationSignedDate">Signed date:</label>
+                      <input type="date" class="form-control" name="signed_date"><br>
 
-                    <!--(Month and Year daw)-->
-                    <label for="certificationValidationDate">Validation date:</label>
-                    <input type="date" class="form-control" name="validation_date"><br>
+                      <!--(Month and Year daw)-->
+                      <label for="certificationValidationDate">Validation date:</label>
+                      <input type="date" class="form-control" name="validation_date"><br>
 
                     <!--(Full name daw)-->
                     <label for="">Witness</label>
@@ -908,16 +910,16 @@ if (isset($_POST["barangay_clearance"])) {
                         <option value="III">III</option>
                       </select><br><br>
 
-                    <label for="">Age</label>
-                    <input type="number" class="form-control" name="age">
+                  <label for="">Age</label>
+                  <input type="number" class="form-control" name="age">
 
-                    <label for="">Civil Status</label>
-                    <select name="" id="civil" onchange="updateText()" class="form-control">
-                      <option value="">Select Civil Status</option>
-                      <option value="m">Married</option>
-                      <option value="s">Single</option>
-                      <option value="w">Widow</option>
-                    </select>
+                  <label for="">Civil Status</label>
+                  <select name="" id="civil" onchange="updateText()" class="form-control">
+                    <option value="">Select Civil Status</option>
+                    <option value="m">Married</option>
+                    <option value="s">Single</option>
+                    <option value="w">Widow</option>
+                  </select>
 
                     <label for="">Purok:</label><br>
                      <select name="puroks" id="puroks" onchange="update()">
@@ -933,8 +935,8 @@ if (isset($_POST["barangay_clearance"])) {
                      </select><br>
                      <button name="indigency" onclick="printIframe()"  type="submit">Print</button>
 
-                  </form>
-                  </div>
+                </form>
+              </div>
 
                   <div id="lot_ownership">
                  <form action="#" method="post" id="form">
@@ -971,28 +973,28 @@ if (isset($_POST["barangay_clearance"])) {
                       <option value="Uha">UHA</option>
                      </select>
 
-                    <ul style="list-style: none;">
-                      <li>
-                        <input type="checkbox">
-                        <label for="">Claimant</label>
-                      </li>
-                      <li>
-                        <input type="checkbox">
-                        <label for="">Beneficiary</label>
-                      </li>
-                      <li>
-                        <input type="checkbox">
-                        <label for="">Actual Occupant</label>
-                      </li>
-                    </ul>
+                  <ul style="list-style: none;">
+                    <li>
+                      <input type="checkbox">
+                      <label for="">Claimant</label>
+                    </li>
+                    <li>
+                      <input type="checkbox">
+                      <label for="">Beneficiary</label>
+                    </li>
+                    <li>
+                      <input type="checkbox">
+                      <label for="">Actual Occupant</label>
+                    </li>
+                  </ul>
 
-                    <label for="lotNumber">Lot Number:</label>
-                    <input type="number" class="form-control" name="lot_number" placeholder="Lot No. 123"><br>
+                  <label for="lotNumber">Lot Number:</label>
+                  <input type="number" class="form-control" name="lot_number" placeholder="Lot No. 123"><br>
 
-                    <label for="lotAreaNumerical">Area Measurement (Numerical Form):</label>
-                    <input type="number" class="form-control" name="lot_area_numerical"><br>
+                  <label for="lotAreaNumerical">Area Measurement (Numerical Form):</label>
+                  <input type="number" class="form-control" name="lot_area_numerical"><br>
 
-                    <!-- <label for="lotAreaWord">Area Measurement (Word Form):</label>
+                  <!-- <label for="lotAreaWord">Area Measurement (Word Form):</label>
                   <input type="text" class="form-control"  disabled><br>
                -->
                     <label for="lotLocationAddress">Location Address:</label>
@@ -1026,24 +1028,24 @@ if (isset($_POST["barangay_clearance"])) {
                         <option value="III">III</option>
                       </select><br><br>
 
-                    <label for="applicantAge">Age:</label>
-                    <input type="number" class="form-control" name="age"><br>
+                  <label for="applicantAge">Age:</label>
+                  <input type="number" class="form-control" name="age"><br>
 
-                    <label for="applicantResidencyPeriod">Period of Residency:</label>
-                    <input type="number" class="form-control" name="residency_period"><br>
+                  <label for="applicantResidencyPeriod">Period of Residency:</label>
+                  <input type="number" class="form-control" name="residency_period"><br>
 
-                    <label for="applicantSignedDate">Signed date:</label>
-                    <input type="date" class="form-control" name="signed_date"><br>
+                  <label for="applicantSignedDate">Signed date:</label>
+                  <input type="date" class="form-control" name="signed_date"><br>
 
-                    <!--For Guardian-->
-                    <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="guardian_first_name"><br>
+                  <!--For Guardian-->
+                  <label for="">First Name:</label>
+                  <input type="text" class="form-control" name="guardian_first_name"><br>
 
-                    <label for="">Middle Name:</label>
-                    <input type="text" class="form-control" name="guardian_middle_name"><br>
+                  <label for="">Middle Name:</label>
+                  <input type="text" class="form-control" name="guardian_middle_name"><br>
 
-                    <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="guardian_last_name"><br>
+                  <label for="">Last Name:</label>
+                  <input type="text" class="form-control" name="guardian_last_name"><br>
 
                     <label for="">Suffix:</label>
                       <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
@@ -1056,13 +1058,13 @@ if (isset($_POST["barangay_clearance"])) {
                         <option value="III">III</option>
                       </select><br><br>
 
-                    <label for="guardianAge">Guardian Age:</label>
-                    <input type="number" class="form-control" name="guardian_age"><br>
+                  <label for="guardianAge">Guardian Age:</label>
+                  <input type="number" class="form-control" name="guardian_age"><br>
 
-                    <!-- <label for="guardianOption">Option (Parent/ Guardian):</label>
+                  <!-- <label for="guardianOption">Option (Parent/ Guardian):</label>
                   <input type="text" class="form-control" ><br> -->
 
-                    <!-- <label for="applicantName">Name of Applicant:</label>
+                  <!-- <label for="applicantName">Name of Applicant:</label>
                   <input type="text" class="form-control" ><br> -->
 
                   <label for="">Purok:</label><br>
@@ -1078,10 +1080,10 @@ if (isset($_POST["barangay_clearance"])) {
                       <option value="Uha">UHA</option>
                      </select>
 
-                    <label for="applicantResidencyPeriod2">Period of Residency:</label>
-                    <input type="number" class="form-control" name="residency_period"><br>
+                  <label for="applicantResidencyPeriod2">Period of Residency:</label>
+                  <input type="number" class="form-control" name="residency_period"><br>
 
-                    <!-- <label for="guardianFullName2">Guardian Full Name:</label>
+                  <!-- <label for="guardianFullName2">Guardian Full Name:</label>
                   <input type="text" class="form-control" ><br> -->
                   <button name="Oathtaking" onclick="printIframe()"  type="submit">Print</button>
 
@@ -1125,8 +1127,8 @@ if (isset($_POST["barangay_clearance"])) {
                        <option value="Uha">UHA</option>
                       </select>
 
-                    <label for="">Previous Address:</label>
-                    <input type="text" class="form-control" name="previous_address"><br>
+                  <label for="">Previous Address:</label>
+                  <input type="text" class="form-control" name="previous_address"><br>
 
                     <label for="">Current Address:</label>
                     <input type="text" class="form-control" name="current_address"><br>
@@ -1140,10 +1142,17 @@ if (isset($_POST["barangay_clearance"])) {
             </div>
             </div>
 
-        </div>
-        <div class="col-lg-6">
+      </div>
+      <div class="col-lg-6">
 
         <div class="card bg-light">
+          <div class="card-body d-flex justify-content-center align-items-center">
+            <h5 class="card-title">View Certificate</h5>
+          </div>
+          <div class="card-body d-flex justify-content-center align-items-center">
+            <iframe id="myIframe" class="col-lg-12" width="100%" height="100%" style="border: none;"></iframe>
+          </div>
+        </div>
     <div class="card-body d-flex justify-content-center align-items-center">
         <h5 class="card-title">View Certificate</h5>
         <?php  
@@ -1156,7 +1165,7 @@ if (isset($_POST["barangay_clearance"])) {
     </div>
 </div>
 
-        </div>
+      </div>
       </div>
       </div>
 
@@ -1196,7 +1205,7 @@ if (isset($_POST["barangay_clearance"])) {
   <script src="assets/js/main2.js"></script>
   <script>
     // Select all input elements of type "text"
-    
+
 
   </script>
 </body>

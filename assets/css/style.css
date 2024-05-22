@@ -221,7 +221,9 @@ h6 {
   margin-bottom: 30px;
   border: none;
   border-radius: 5px;
+ 
   box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+
 }
 
 .card-header,
@@ -764,7 +766,7 @@ h6 {
 .dashboard .filter {
   position: absolute;
   right: 0px;
-  top: 15px;
+  top: 35px;
 }
 
 .dashboard .filter .icon {

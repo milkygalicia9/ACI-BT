@@ -13,7 +13,7 @@ if (!isset($_SESSION['username'])) {
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>ACI-BT | Home</title>
+    <title>ACI-BT | Transactions</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -48,34 +48,11 @@ if (!isset($_SESSION['username'])) {
 </head>
 
 <style>
-    .navbar-wrapper button {
-        width: 100px;
-        background-color: #729ED9;
-    }
-
-    .card {
-        color: #fff;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: none;
-        position: relative;
-        display: inline-block;
-        border-radius: 10px;
-        background: #efefef;
-        box-shadow: 5px 5px 4px #c8d0e7, -1px -1px 3px #fff;
-        color: #585858;
-    }
-
-    .card:active {
-        box-shadow: inset 1px 1px 3px #c8d0e7, inset -1px -1px 3px #fff;
-    }
-
-    .card:hover {
-        transform: scale(1.1);
-        background-color: rgb(255, 230, 91);
+    .hover-img {
+        border-bottom: 10px solid #F1F04B;
     }
 </style>
+
 
 <body style="background-color: #F4F3EF;">
 
@@ -91,10 +68,8 @@ if (!isset($_SESSION['username'])) {
 
         <i class="bi bi-list toggle-sidebar-btn"></i>
 
-        <div class="title h-100 pl-5 w-100 d-flex align-items-center justify-content-between"
-            style="padding-left: 20px; padding-top: 8px;">
-            <h4 class="text-dark">Automated Credential Issuance for Barangay Tiniguiban</h4>
-            <div class="text-end ms-auto m-3" id="datetimes">sdadas</div>
+        <div class="title h-100 d-flex align-items-center" style="padding-left: 20px; padding-top: 8px;">
+            <h4 class="text-dark ">Automated Credential Issuance for Barangay Tiniguiban</h4>
         </div>
 
     </header><!-- End Header -->
@@ -114,32 +89,30 @@ if (!isset($_SESSION['username'])) {
             <li class="nav-item">
                 <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
                     <i class="bi bi-grid text-light"></i>
-                    <span>Dashboard</span>
+                    <span>Home</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse"
                     href="#" style="background-color: #174793;">
-                    <i class="bi bi-diagram-3"></i><span>Officials</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-menu-button-wide"></i><span>Officials</span><i
+                        class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="officials.php">
-                            <i class="bi bi-person-check-fill text-light" style="font-size: 12px;"></i><span
-                                class="text-light">Barangay Officials</span>
+                            <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Officials</span>
                         </a>
                     </li>
                     <li>
                         <a href="sk.php">
-                            <i class="bi bi-person-badge text-light" style="font-size: 12px;"></i><span
-                                class="text-light">SK Officials</span>
+                            <i class="bi bi-circle text-light"></i><span class="text-light">SK Officials</span>
                         </a>
                     </li>
                     <li>
                         <a href="staffs.php">
-                            <i class="bi bi-people-fill text-light" style="font-size: 12px;"></i><span
-                                class="text-light">Barangay Staffs</span>
+                            <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Staffs</span>
                         </a>
                     </li>
                 </ul>
@@ -153,102 +126,93 @@ if (!isset($_SESSION['username'])) {
             </li><!-- End F.A.Q Page Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
-                    <i class="bi bi-power text-dark"></i>
+                    <i class="bi bi-question-circle"></i>
                     <span>Logout</span>
                 </a>
             </li>
         </ul>
+
     </aside>
 
     <main id="main" class="main">
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Transaction Table</h5>
+                            <!-- Table with stripped rows -->
+                            <table class="table datatable">
+                                <thead>
+                                    <tr>
+                                        <!-- <th>ID</th> -->
+                                        <th>Full name</th>
+                                        <th>Address</th>
+                                        <th>Birth Place</th>
+                                        <th>Birth Date</th>
+                                        <th>Civil Status</th>
+                                        <th>Period of Residency</th>
+                                        <th>Issued Date</th>
+                                        <th>Purpose</th>
+                                        <th>Duty Officer Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    require 'db.php';
 
-        <div class="pagetitle mb-5 mt-3">
-            <div class="col-md-11">
-                <div class="welcome-card d-flex align-items-center justify-content-between">
-                    <h3>Welcome, <?php echo $_SESSION['username'] ?>!</h3>
-                    <script type="text/javascript">
-                        tday = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
-                        tmonth = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+                                    // Get doc_id from the URL
+                                    $doc_id = isset($_GET['docId']) ? intval($_GET['docId']) : 0;
 
-                        function GetClock() {
-                            var d = new Date();
-                            var nday = d.getDay(), nmonth = d.getMonth(), ndate = d.getDate(), nyear = d.getFullYear();
-                            var nhour = d.getHours(), nmin = d.getMinutes(), nsec = d.getSeconds(), ap;
+                                    if ($doc_id == 1) {
+                                        // Fetch data from barangay_clearance table when doc_id is 1
+                                        $sql = "SELECT fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name 
+                                            FROM barangay_clearance";
 
-                            if (nhour == 0) { ap = " AM"; nhour = 12; }
-                            else if (nhour < 12) { ap = " AM"; }
-                            else if (nhour == 12) { ap = " PM"; }
-                            else if (nhour > 12) { ap = " PM"; nhour -= 12; }
+                                        $result = $conn->query($sql);
 
-                            if (nmin <= 9) nmin = "0" + nmin;
-                            if (nsec <= 9) nsec = "0" + nsec;
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<tr>";
+                                                // echo "<td>" . $row["id"] . "</td>";
+                                                echo "<td>" . $row["fullname"] . "</td>";
+                                                echo "<td>" . $row["address"] . "</td>";
+                                                echo "<td>" . $row["birthplace"] . "</td>";
+                                                echo "<td>" . $row["birthdate"] . "</td>";
+                                                echo "<td>" . $row["civil_status"] . "</td>";
+                                                echo "<td>" . $row["period_of_residency"] . "</td>";
+                                                echo "<td>" . $row["issued_date"] . "</td>";
+                                                echo "<td>" . $row["purpose"] . "</td>";
+                                                echo "<td>" . $row["duty_officer_name"] . "</td>";
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                            echo "<tr><td colspan='10'><center>No barangay clearances found</center></td></tr>";
+                                        }
+                                    } else {
+                                        // Fetch data from transactions table for other doc_ids
+                                        $sql = "SELECT t.id, a.username AS transact_by, dt.doc_name, t.client_trans_id, t.created_at
+                                            FROM transactions t
+                                            INNER JOIN admin a ON t.transact_by = a.id
+                                            INNER JOIN doctype dt ON t.doc_id = dt.id
+                                            WHERE t.doc_id = $doc_id";
 
-                            document.getElementById('datetimes').innerHTML = "" + nhour + ":" + nmin + ":" + nsec + ap + " , " + tmonth[nmonth] + " " + ndate + ", " + nyear + " " + tday[nday] + "";
-                        }
-                        window.onload = function () {
-                            GetClock();
-                            setInterval(GetClock, 1000);
-                        }
-                    </script>
-                    <h6 class="" id="datetime"></h6>
+                                        $result = $conn->query($sql);
+
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                            <!-- End Table with stripped rows -->
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <section class="section dashboard">
-            <div class="col-md-12 d-flex align-items-center justify-content-around mt-4">
-                <form action="gen_docs.php" class="row">
-                    <div class="col-md-12"> <button class="card">
-                            <div class="card-document">
-                                <h6 class="card-title">Generate Documents</h6>
-                            </div>
-                            <div class="card-body">
-                                <img height="250" width="280" src="./assets/img/certs.png" alt="">
-                            </div>
-                            <div class="card-document">
-                                <hr>
-                                <div class="stats">
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </form>
-                <form action="view_transactions.php">
-                    <div class="col-md-12"> <button class="card">
-                            <div class="card-document">
-                                <h6 class="card-title">View Transactions</h6>
-                            </div>
-                            <div class="card-body">
-                                <img height="250" width="280" src="./assets/img/list.png" alt="">
-                            </div>
-                            <div class="card-document">
-                                <hr>
-                                <div class="stats">
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </form>
-                <form action="view_reports.php">
-                    <div class="col-md-12"> <button class="card">
-                            <div class="card-document">
-                                <h6 class="card-title">View Reports</h6>
-                            </div>
-                            <div class="card-body">
-                                <img height="250" width="280" src="./assets/img/reports.png" alt="">
-                            </div>
-                            <div class="card-document">
-                                <hr>
-                                <div class="stats">
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </form>
-            </div>
         </section>
-
     </main><!-- End #main -->
+
+
+
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">

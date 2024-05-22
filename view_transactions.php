@@ -89,29 +89,32 @@ if (!isset($_SESSION['username'])) {
       <li class="nav-item">
         <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
           <i class="bi bi-grid text-light"></i>
-          <span>Home</span>
+          <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#"
           style="background-color: #174793;">
-          <i class="bi bi-menu-button-wide"></i><span>Officials</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-diagram-3"></i><span>Officials</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="officials.php">
-              <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Officials</span>
+              <i class="bi bi-person-check-fill text-light" style="font-size: 12px;"></i><span
+                class="text-light">Barangay Officials</span>
             </a>
           </li>
           <li>
             <a href="sk.php">
-              <i class="bi bi-circle text-light"></i><span class="text-light">SK Officials</span>
+              <i class="bi bi-person-badge text-light" style="font-size: 12px;"></i><span class="text-light">SK
+                Officials</span>
             </a>
           </li>
           <li>
             <a href="staffs.php">
-              <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Staffs</span>
+              <i class="bi bi-people-fill text-light" style="font-size: 12px;"></i><span class="text-light">Barangay
+                Staffs</span>
             </a>
           </li>
         </ul>
@@ -125,20 +128,29 @@ if (!isset($_SESSION['username'])) {
       </li><!-- End F.A.Q Page Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
-          <i class="bi bi-question-circle"></i>
+          <i class="bi bi-power text-dark"></i>
           <span>Logout</span>
         </a>
       </li>
     </ul>
-
   </aside>
 
   <main id="main" class="main">
     <section class="section">
+      <div class="d-flex pb-2">
+        <a href="home.php" class="d-flex">
+          <div class="icon">
+            <i class="bi-caret-left-square fs-4 p-2 text-primary"></i>
+          </div>
+          <div class="back d-flex text-primary align-items-center fs-5">
+            Back
+          </div>
+        </a>
+      </div>
+
       <div class="row">
         <div class="col-lg-12">
-
-          <div class="card">
+          <div class="card" id="transactions">
             <div class="card-body">
               <h5 class="card-title">Transaction Table</h5>
               <!-- Table with stripped rows -->
@@ -157,12 +169,12 @@ if (!isset($_SESSION['username'])) {
                   <?php
                   require 'db.php';
 
-                  $sql = "SELECT * FROM transactions";
-                  // $sql = "SELECT t.id, a.username AS transact_by_name, dt.doc_name, t.client_trans_id, t.created_at
-                  //                                     FROM transactions t
-                  //                                     INNER JOIN admin a ON t.transact_by = a.id
-                  //                                     INNER JOIN doctype dt ON t.doc_id = dt.id";
-                  
+                  // $sql = "SELECT * FROM transactions";
+                  $sql = "SELECT t.id, a.username AS transact_by, dt.doc_name, t.client_trans_id, t.created_at
+                                                      FROM transactions t
+                                                      INNER JOIN admin a ON t.transact_by = a.id
+                                                      INNER JOIN doctype dt ON t.doc_id = dt.id";
+
                   $result = $conn->query($sql);
 
                   if ($result->num_rows > 0) {
@@ -170,10 +182,10 @@ if (!isset($_SESSION['username'])) {
                       echo "<tr>";
                       echo "<td>" . $row["id"] . "</td>";
                       echo "<td>" . $row["transact_by"] . "</td>";
-                      echo "<td>" . $row["doc_id"] . "</td>";
+                      echo "<td>" . $row["doc_name"] . "</td>";
                       echo "<td>" . $row["client_trans_id"] . "</td>";
                       echo "<td>" . $row["created_at"] . "</td>";
-                      echo "<td><a href=" . "show_client_trans.php?id=" . $row["id"] . "&doc_id=" . str_replace(" ", "_", $row["doc_id"]) . "><button type=" . "submit" . ">VIEW</button></a></td>";
+                      echo "<td><a href=" . "show_client_trans.php?id=" . $row["client_trans_id"] . "&doc_name=" . str_replace(" ", "_", $row["doc_name"]) . "><button type=" . "submit" . ">VIEW</button></a></td>";
                       echo "</tr>";
                     }
                   } else {
@@ -186,7 +198,6 @@ if (!isset($_SESSION['username'])) {
 
             </div>
           </div>
-
         </div>
       </div>
     </section>

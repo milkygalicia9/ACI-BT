@@ -106,7 +106,6 @@ function toggleFields() {
     "middle_initial",
     "last_name",
     "age",
-    // "civil_status",
     "bithdate"
   ];
   for (let i = 0; i < varname.length; i++) {
