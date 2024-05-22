@@ -148,7 +148,7 @@ if (!isset($_SESSION['username'])) {
                             <div class="col-lg-4 mt-n3 order-lg-2 order-1">
                                 <div class="mt-n4">
                                     <div class="d-flex justify-content-end">
-                                        <a href="edit-profile.php">
+                                        <a href="edit-profile.php?id=1">
                                             <button type="button" class="btn" data-toggle="tooltip" data-placement="top"
                                                 title="Edit Profile"><i class="bi bi-list text-secondary"></i>
                                             </button>
