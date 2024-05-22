@@ -3,73 +3,73 @@ use function mysqli_fetch_assoc;
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: index.php");
-    exit();
+  header("Location: index.php");
+  exit();
 }
 
 // Include database connection file
-include("db.php");
+include ("db.php");
 
 // Check if form is submitted
 if (isset($_POST["submit"])) {
-    // Sanitize and assign form data to variables
-    $first_name = $conn->real_escape_string($_POST["first_name"]);
-    $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
-    $last_name = $conn->real_escape_string($_POST["last_name"]);
-    $suffix = $conn->real_escape_string($_POST["suffix"]);
-    $purok = $conn->real_escape_string($_POST["purok"]);
-    $birthplace = $conn->real_escape_string($_POST["birthplace"]);
-    $birthdate = $conn->real_escape_string($_POST["birthday"]);
-    $civil_status = $conn->real_escape_string($_POST["civil_status"]);
-    $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
-    $issued_date = $conn->real_escape_string($_POST["issued_date"]);
-    $purpose = $conn->real_escape_string($_POST["purpose"]);
-    $duty_officer_name = $conn->real_escape_string($_POST["duty_officer_full_name"]);
+  // Sanitize and assign form data to variables
+  $first_name = $conn->real_escape_string($_POST["first_name"]);
+  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+  $last_name = $conn->real_escape_string($_POST["last_name"]);
+  $suffix = $conn->real_escape_string($_POST["suffix"]);
+  $purok = $conn->real_escape_string($_POST["purok"]);
+  $birthplace = $conn->real_escape_string($_POST["birthplace"]);
+  $birthdate = $conn->real_escape_string($_POST["birthday"]);
+  $civil_status = $conn->real_escape_string($_POST["civil_status"]);
+  $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
+  $issued_date = $conn->real_escape_string($_POST["issued_date"]);
+  $purpose = $conn->real_escape_string($_POST["purpose"]);
+  $duty_officer_name = $conn->real_escape_string($_POST["duty_officer_full_name"]);
 
-    // Define SQL query using prepared statements
-    $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-    $stmt->bind_param('sssssssss', $fullname, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
+  // Define SQL query using prepared statements
+  $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+  $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+  $stmt->bind_param('sssssssss', $fullname, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
 
-    // Execute SQL query
-    if ($stmt->execute()) {
-        echo "New record inserted successfully";
+  // Execute SQL query
+  if ($stmt->execute()) {
+    echo "New record inserted successfully";
 
-        // Fetch admin ID
-        $sql = "SELECT id FROM admin WHERE username = ?";
-        $admin_stmt = $conn->prepare($sql);
-        $admin_stmt->bind_param('s', $_SESSION['username']);
-        $admin_stmt->execute();
-        $admin_result = $admin_stmt->get_result();
-        // Add missing import statement
-        if ($admin_result->num_rows > 0) {
-          $row = mysqli_fetch_assoc($admin_result);
-          $admin_id = $row['id'];
+    // Fetch admin ID
+    $sql = "SELECT id FROM admin WHERE username = ?";
+    $admin_stmt = $conn->prepare($sql);
+    $admin_stmt->bind_param('s', $_SESSION['username']);
+    $admin_stmt->execute();
+    $admin_result = $admin_stmt->get_result();
+    // Add missing import statement
+    if ($admin_result->num_rows > 0) {
+      $row = mysqli_fetch_assoc($admin_result);
+      $admin_id = $row['id'];
 
-          // Modify SQL query to use COUNT function correctly
-          $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, client_trans_id, created_at) VALUES (?, 1, (SELECT COUNT(*) FROM barangay_clearance), NOW())");
-          $trans_stmt->bind_param('i', $admin_id);
+      // Modify SQL query to use COUNT function correctly
+      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, client_trans_id, created_at) VALUES (?, 1, (SELECT COUNT(*) FROM barangay_clearance), NOW())");
+      $trans_stmt->bind_param('i', $admin_id);
 
-          if ($trans_stmt->execute()) {
-            echo "Transaction record inserted successfully";
-          } else {
-            echo "Error: " . $trans_stmt->error;
-          }
+      if ($trans_stmt->execute()) {
+        echo "Transaction record inserted successfully";
+      } else {
+        echo "Error: " . $trans_stmt->error;
+      }
 
-          $trans_stmt->close();
-        } else {
-          echo "Error: Admin user not found.";
-            echo "Error: Admin user not found.";
-        }
-
-        $admin_stmt->close();
+      $trans_stmt->close();
     } else {
-        echo "Error: " . $stmt->error;
+      echo "Error: Admin user not found.";
+      echo "Error: Admin user not found.";
     }
 
-    // Close database connection
-    $stmt->close();
-    $conn->close();
+    $admin_stmt->close();
+  } else {
+    echo "Error: " . $stmt->error;
+  }
+
+  // Close database connection
+  $stmt->close();
+  $conn->close();
 }
 ?>
 
@@ -151,29 +151,32 @@ if (isset($_POST["submit"])) {
       <li class="nav-item">
         <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
           <i class="bi bi-grid text-light"></i>
-          <span>Home</span>
+          <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#"
           style="background-color: #174793;">
-          <i class="bi bi-menu-button-wide"></i><span>Officials</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-diagram-3"></i><span>Officials</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             <a href="officials.php">
-              <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Officials</span>
+              <i class="bi bi-person-check-fill text-light" style="font-size: 12px;"></i><span
+                class="text-light">Barangay Officials</span>
             </a>
           </li>
           <li>
             <a href="sk.php">
-              <i class="bi bi-circle text-light"></i><span class="text-light">SK Officials</span>
+              <i class="bi bi-person-badge text-light" style="font-size: 12px;"></i><span class="text-light">SK
+                Officials</span>
             </a>
           </li>
           <li>
             <a href="staffs.php">
-              <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Staffs</span>
+              <i class="bi bi-people-fill text-light" style="font-size: 12px;"></i><span class="text-light">Barangay
+                Staffs</span>
             </a>
           </li>
         </ul>
@@ -186,30 +189,26 @@ if (isset($_POST["submit"])) {
         </a>
       </li><!-- End F.A.Q Page Nav -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="login.php" style="background-color: #F4F3EF;">
-          <i class="bi bi-question-circle"></i>
+        <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
+          <i class="bi bi-power text-dark"></i>
           <span>Logout</span>
         </a>
       </li>
     </ul>
-
   </aside>
 
-
   <main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>Form Elements</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Forms</li>
-          <li class="breadcrumb-item active">Elements</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-
     <section class="section">
+      <div class="d-flex pb-2 pt-0 mt-0">
+        <a href="home.php" class="d-flex">
+          <div class="icon">
+            <i class="bi-caret-left-square fs-4 p-2 text-primary"></i>
+          </div>
+          <div class="back d-flex text-primary align-items-center fs-5">
+            Back
+          </div>
+        </a>
+      </div>
       <div class="row">
         <div class="col-lg-6">
 
@@ -345,13 +344,14 @@ if (isset($_POST["submit"])) {
                         placeholder="Ex. Undecided"></input><br>
 
                       <label for="">Duty Officer Full Name:</label>
-                      <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel">
+                      <input type="textarea" class="form-control" name="duty_officer_full_name"
+                        placeholder="Ex. Franz Miguel">
                       <button name="submit" onclick="printIframe()" type="submit">Print</button>
                     </form>
                   </div>
 
                   <div id="business_permit_new">
-                    
+
                     <form action="#">
 
                       <label for="businessName">Business name/ Trade Activity:</label>

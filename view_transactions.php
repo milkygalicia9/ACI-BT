@@ -89,7 +89,7 @@ if (!isset($_SESSION['username'])) {
       <li class="nav-item">
         <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
           <i class="bi bi-grid text-light"></i>
-          <span>Home</span>
+          <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
@@ -128,12 +128,11 @@ if (!isset($_SESSION['username'])) {
       </li><!-- End F.A.Q Page Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
-          <i class="bi bi-question-circle"></i>
+          <i class="bi bi-power text-dark"></i>
           <span>Logout</span>
         </a>
       </li>
     </ul>
-
   </aside>
 
   <main id="main" class="main">

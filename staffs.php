@@ -89,30 +89,34 @@ if (!isset($_SESSION['username'])) {
             <li class="nav-item">
                 <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
                     <i class="bi bi-grid text-light"></i>
-                    <span>Home</span>
+                    <span>Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse"
                     href="#" style="background-color: #174793;">
-                    <i class="bi bi-menu-button-wide"></i><span>Officials</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-diagram-3"></i><span>Officials</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="officials.php">
-                            <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Officials</span>
+                            <i class="bi bi-person-check-fill text-light" style="font-size: 12px;"></i><span
+                                class="text-light">Barangay Officials</span>
                         </a>
                     </li>
                     <li>
                         <a href="sk.php">
-                            <i class="bi bi-circle text-light"></i><span class="text-light">SK Officials</span>
+                            <i class="bi bi-person-badge text-light" style="font-size: 12px;"></i><span
+                                class="text-light">SK
+                                Officials</span>
                         </a>
                     </li>
                     <li>
                         <a href="staffs.php">
-                            <i class="bi bi-circle text-light"></i><span class="text-light">Barangay Staffs</span>
+                            <i class="bi bi-people-fill text-light" style="font-size: 12px;"></i><span
+                                class="text-light">Barangay
+                                Staffs</span>
                         </a>
                     </li>
                 </ul>
@@ -126,12 +130,11 @@ if (!isset($_SESSION['username'])) {
             </li><!-- End F.A.Q Page Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
-                    <i class="bi bi-question-circle"></i>
+                    <i class="bi bi-power text-dark"></i>
                     <span>Logout</span>
                 </a>
             </li>
         </ul>
-
     </aside>
 
     <main id="main" class="main">

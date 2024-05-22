@@ -85,7 +85,7 @@
             <li class="nav-item">
                 <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
                     <i class="bi bi-grid text-light"></i>
-                    <span>Home</span>
+                    <span>Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
@@ -127,7 +127,6 @@
                 </a>
             </li>
         </ul>
-
     </aside>
 
     <main id="main" class="main">
