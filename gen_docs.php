@@ -47,7 +47,7 @@ if (isset($_POST["submit"])) {
           $admin_id = $row['id'];
 
           // Modify SQL query to use COUNT function correctly
-          $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, client_trans_id, created_at) VALUES (?, 1, (SELECT COUNT(*) FROM barangay_clearance) + 1, NOW())");
+          $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, client_trans_id, created_at) VALUES (?, 1, (SELECT COUNT(*) FROM barangay_clearance), NOW())");
           $trans_stmt->bind_param('i', $admin_id);
 
           if ($trans_stmt->execute()) {
@@ -344,13 +344,14 @@ if (isset($_POST["submit"])) {
                       <input type="text" name="purpose" class="form-control" id="" cols="30" rows="10"
                         placeholder="Ex. Undecided"></input><br>
 
-                      <!-- <label for="">Duty Officer Full Name:</label>
-                  <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel"> -->
+                      <label for="">Duty Officer Full Name:</label>
+                      <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel">
                       <button name="submit" onclick="printIframe()" type="submit">Print</button>
                     </form>
                   </div>
 
                   <div id="business_permit_new">
+                    
                     <form action="#">
 
                       <label for="businessName">Business name/ Trade Activity:</label>
