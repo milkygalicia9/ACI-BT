@@ -149,9 +149,7 @@ if (!isset($_SESSION['username'])) {
       
       <div class="row">
         <div class="col-lg-12">
-
-
-          <div class="card">
+          <div class="card" id="transactions">
             <div class="card-body">
               <h5 class="card-title">Transaction Table</h5>
               <!-- Table with stripped rows -->
@@ -199,7 +197,6 @@ if (!isset($_SESSION['username'])) {
 
             </div>
           </div>
-
         </div>
       </div>
     </section>
