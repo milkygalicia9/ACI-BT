@@ -305,7 +305,7 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3" onclick="moreInfo('Business Permit (Renew)', 2)"
+                                    <div class="row px-3" onclick="moreInfo('Business Permit (Renew)', 3)"
                                         style="cursor: pointer;">
                                         <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
@@ -400,10 +400,10 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    <div class="row px-3" onclick="moreInfo('Certificate of Cohabitaion', 6)"
+                                        style="cursor: pointer;">
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
                             </div>
@@ -428,7 +428,7 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3" onclick="moreInfo('Certificate of Employability', 3)"
+                                    <div class="row px-3" onclick="moreInfo('Certificate of Employability', 4)"
                                         style="cursor: pointer;">
                                         <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
@@ -454,10 +454,10 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    <div class="row px-3" onclick="moreInfo('Certificate of Income', 5)"
+                                        style="cursor: pointer;">
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
                             </div>
@@ -513,10 +513,10 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    <div class="row px-3" onclick="moreInfo('Complaint Certificate', 7)"
+                                        style="cursor: pointer;">
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
                             </div>
@@ -539,10 +539,10 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    <div class="row px-3" onclick="moreInfo('Death Certificate', 8)"
+                                        style="cursor: pointer;">
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
                             </div>
@@ -565,7 +565,7 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3" onclick="moreInfo('First Time Job Seeker', 4)"
+                                    <div class="row px-3" onclick="moreInfo('First Time Job Seeker', 9)"
                                         style="cursor: pointer;">
                                         <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
@@ -596,10 +596,10 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    <div class="row px-3" onclick="moreInfo('Certificate of Indigency', 11)"
+                                        style="cursor: pointer;">
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
                             </div>
@@ -622,10 +622,10 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    <div class="row px-3" onclick="moreInfo('Certificate of Indigency (AICS)', 10)"
+                                        style="cursor: pointer;">
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
                             </div>
@@ -648,10 +648,10 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    <div class="row px-3" onclick="moreInfo('Lot Ownership', 12)"
+                                        style="cursor: pointer;">
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
                             </div>
@@ -679,10 +679,10 @@ if (!isset($_SESSION['username'])) {
                                                 height="70" alt="">
                                         </div>
                                     </div>
-                                    <div class="row px-3">
-                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center ">MORE INFO
+                                    <div class="row px-3" onclick="moreInfo('Transfer of Residency', 13)"
+                                        style="cursor: pointer;">
+                                        <div class="col text-gray-800 fw-bold d-flex justify-content-center">MORE INFO
                                         </div>
-                                        <i style="margin-top: 5px; color: white;" class="fas fa-info-circle"></i>
                                     </div>
                                 </div>
                             </div>
