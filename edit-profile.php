@@ -230,10 +230,10 @@ if ($result->num_rows > 0) {
                                     <img src="assets/img/profile-img.jpg" alt="Profile">
                                     <div class="pt-2">
                                         <input class="form-control" type="file" accept=".png,.jpg,.jpeg" id="formFile">
-                                        <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i
+                                        <!-- <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i
                                                 class="bi bi-upload"></i></a>
                                         <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i
-                                                class="bi bi-trash"></i></a>
+                                                class="bi bi-trash"></i></a> -->
                                     </div>
                                 </div>
                             </div>
@@ -281,14 +281,13 @@ if ($result->num_rows > 0) {
                             <div class="row mb-3">
                                 <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                 <div class="col-md-8 col-lg-9">
-                                    <input name="email" type="email" class="form-control" id="Email"
-                                        value="carlhatdog@gmail.com">
+                                    <input name="email" type="email" class="form-control" id="Email">
                                 </div>
                             </div>
 
                             <div class="text-center">
                                 <!-- <button type="submit" class="btn btn-primary p-2">Save Changes</button> -->
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">Confirm Changes</button>
+                                <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#basicModal">Confirm Changes</button>
                             </div>
                         </form><!-- End Profile Edit Form -->
                     </div>
