@@ -60,7 +60,7 @@
                                         <div class="author logo-overlap d-flex flex-column align-items-center">
                                             <img class="avatar border-gray m-2 rounded-circle"
                                                 src="./assets/img/logo.jpg" alt="..."
-                                                style="height: 160px; margin: 20;">
+                                                style="height: 120%; margin: 20;">
                                             <h5 class="title fs-2" style="color: #729ED9;">Welcome to ACI-BT!</h5>
                                             <label for="" class="fs-2">Login</label>
                                         </div>
