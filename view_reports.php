@@ -995,12 +995,19 @@ if (!isset($_SESSION['username'])) {
                     ],
                     borderWidth: 1,
                     data: [       
-                      Sales_Clearance, Sales_Business_Permit_New, Sales_Business_Permit_Renew, Sales_Certificate_of_Income, Sales_Cohabitation,
-                      Sales_Certificate_of_Employability, Sales_Indigency,
-                      Sales_Indigency_AICS, Sales_Complaint_Certificate, 
-                      Sales_Death_Certificate, Sales_First_Time_Job_Seeker, 
-                      Sales_Lot_Ownership, Sales_Transfer_of_Residency,
-                      Sales_Complaint_Certificate]
+                      Sales_Clearance,
+                      Sales_Business_Permit_New,
+                      Sales_Business_Permit_Renew, 
+                      Sales_Certificate_of_Income, 
+                      Sales_Cohabitation,
+                      Sales_Certificate_of_Employability,
+                      Sales_Indigency,
+                      Sales_Indigency_AICS, 
+                      Sales_Complaint_Certificate, 
+                      Sales_Death_Certificate, 
+                      Sales_First_Time_Job_Seeker, 
+                      Sales_Lot_Ownership, 
+                      Sales_Transfer_of_Residency]
                   }]
                 };
 
