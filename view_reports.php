@@ -212,14 +212,14 @@ if (!isset($_SESSION['username'])) {
                       <div class="card-body">
 
                         <h5 class="card-title">
-                          <marquee loop="-1" direction="left">BARANGAY CLEARANCE </marquee>
+                          BARANGAY CLEARANCE
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text">
+                              stroke-linejoin="round" class="feather feather-file-text" style="color: rgba(255, 0, 0, 1)">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -261,15 +261,16 @@ if (!isset($_SESSION['username'])) {
 
                       <div class="card-body">
 
-                        <h5 class="card-title marquee">
-                          <marquee direction="left">BUSINESS PERMIT | <span class="text-success">NEW</span> </marquee>
+                        <h5 class="card-title">
+                          BUSINESS PERMIT | <span class="text-success">NEW</span>
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text">
+                              stroke-linejoin="round" class="feather feather-file-text" style="color: rgba(54, 162, 235, 1)">
+                              stroke-linejoin="round" class="feather feather-file-text" >
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -315,16 +316,15 @@ if (!isset($_SESSION['username'])) {
 
                       <div class="card-body">
 
-                        <h5 class="card-title marquee">
-                          <marquee loop="-1" direction="left">BUSINESS PERMIT | <span class="text-success">RENEW</span>
-                          </marquee>
+                        <h5 class="card-title ">
+                          BUSINESS PERMIT | <span class="text-success">RENEW</span>
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text">
+                              stroke-linejoin="round" class="feather feather-file-text" style="color: rgba(255, 206, 86, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -380,14 +380,14 @@ if (!isset($_SESSION['username'])) {
                       <div class="card-body">
 
                         <h5 class="card-title">
-                          <marquee loop="-1" direction="left">CERTFICATE OF INCOME</marquee>
+                          CERTFICATE OF INCOME
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text">
+                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(153, 102, 255, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -430,15 +430,15 @@ if (!isset($_SESSION['username'])) {
 
                       <div class="card-body">
 
-                        <h5 class="card-title marquee">
-                          <marquee loop="-1" direction="left">CERTIFICATE OF COHABITATION</marquee>
+                        <h5 class="card-title ">
+                          CERTIFICATE OF COHABITATION
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text">
+                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(255, 165, 0, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -486,15 +486,15 @@ if (!isset($_SESSION['username'])) {
 
                       <div class="card-body">
 
-                        <h5 class="card-title marquee">
-                          <marquee loop="-1" direction="left">CERTIFICATE OF EMPLOYABILITY</marquee>
+                        <h5 class="card-title ">
+                          CERTIFICATE OF EMPLOYABILITY
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text">
+                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(75, 192, 192, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -553,14 +553,14 @@ if (!isset($_SESSION['username'])) {
                       <div class="card-body">
 
                         <h5 class="card-title">
-                          <marquee loop="-1" direction="left">CERTIFICATE OF INDIGENCY</marquee>
+                  CERTIFICATE OF INDIGENCY
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text">
+                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(77, 0, 77, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -603,15 +603,15 @@ if (!isset($_SESSION['username'])) {
 
                       <div class="card-body">
 
-                        <h5 class="card-title marquee">
-                          <marquee loop="-1" direction="left">CERTIFICATE OF INDIGENCY (AICS)</marquee>
+                        <h5 class="card-title ">
+                          CERTIFICATE OF INDIGENCY (AICS)
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text">
+                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(16, 16, 16, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -659,15 +659,15 @@ if (!isset($_SESSION['username'])) {
 
                       <div class="card-body">
 
-                        <h5 class="card-title marquee">
-                          <marquee loop="-1" direction="left">COMPLAINT CERTIFICATE</marquee>
+                        <h5 class="card-title">
+                         COMPLAINT CERTIFICATE
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text">
+                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(0, 51, 102, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -726,14 +726,14 @@ if (!isset($_SESSION['username'])) {
                       <div class="card-body">
 
                         <h5 class="card-title">
-                          <marquee loop="-1" direction="left">DEATH CERTIFICATE</marquee>
+                         DEATH CERTIFICATE
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text">
+                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(0, 128, 0, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -776,15 +776,15 @@ if (!isset($_SESSION['username'])) {
 
                       <div class="card-body">
 
-                        <h5 class="card-title marquee">
-                          <marquee loop="-1" direction="left">FIRST TIME JOB SEEKER</marquee>
+                        <h5 class="card-title ">
+                          FIRST TIME JOB SEEKER
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text">
+                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(153, 0, 0, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -832,15 +832,15 @@ if (!isset($_SESSION['username'])) {
 
                       <div class="card-body">
 
-                        <h5 class="card-title marquee">
-                          <marquee loop="-1" direction="left">LOT OWNERSHIP</marquee>
+                        <h5 class="card-title">
+                         LOT OWNERSHIP
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text">
+                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(128, 0, 0, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -899,14 +899,14 @@ if (!isset($_SESSION['username'])) {
                       <div class="card-body">
 
                         <h5 class="card-title">
-                          <marquee loop="-1" direction="left">TRANSFER OF RESIDENCY</marquee>
+                          TRANSFER OF RESIDENCY
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text">
+                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(153, 153, 0, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -994,7 +994,13 @@ if (!isset($_SESSION['username'])) {
                       'rgba(153, 153, 0, 1)' // Transfer of Residency
                     ],
                     borderWidth: 1,
-                    data: [Sales_Clearance, Sales_Business_Permit_New, Sales_Business_Permit_Renew, Sales_Certificate_of_Employability, Sales_Certificate_of_Income, Sales_Cohabitation, Sales_Complaint_Certificate, Sales_Death_Certificate, Sales_First_Time_Job_Seeker, Sales_Indigency, Sales_Indigency_AICS, Sales_Lot_Ownership, Sales_Transfer_of_Residency]
+                    data: [       
+                      Sales_Clearance, Sales_Business_Permit_New, Sales_Business_Permit_Renew, Sales_Certificate_of_Income, Sales_Cohabitation,
+                      Sales_Certificate_of_Employability, Sales_Indigency,
+                      Sales_Indigency_AICS, Sales_Complaint_Certificate, 
+                      Sales_Death_Certificate, Sales_First_Time_Job_Seeker, 
+                      Sales_Lot_Ownership, Sales_Transfer_of_Residency,
+                      Sales_Complaint_Certificate]
                   }]
                 };
 
