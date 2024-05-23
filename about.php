@@ -58,16 +58,16 @@
 
         <div class="d-flex align-items-center justify-content-between h-100 p-2">
             <a href="home.php" class="logo d-flex align-items-center justify-content-center">
-                <span class="d-none d-lg-block">ACI-BT</span>
+                <span class="d-none d-lg-block fs-3">ACI-BT</span>
             </a>
         </div>
 
         <i class="bi bi-list toggle-sidebar-btn"></i>
 
-        <div class="title h-100 d-flex align-items-center" style="padding-left: 20px; padding-top: 8px;">
-            <h4 class="text-dark ">Automated Credential Issuance for Barangay Tiniguiban</h4>
+        <div class="title h-100 pl-5 w-100 d-flex align-items-center justify-content-between"
+            style="padding-left: 20px; padding-top: 8px;">
+            <h4 class="text-dark fs-3">Automated Credential Issuance for Barangay Tiniguiban</h4>
         </div>
-
     </header><!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
@@ -84,31 +84,34 @@
         <ul class="sidebar-nav" id="sidebar-nav" style="padding: 15px;">
             <li class="nav-item">
                 <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
-                    <i class="bi bi-grid text-light"></i>
-                    <span>Dashboard</span>
+                    <i class="bi bi-grid text-light fs-5"></i>
+                    <span class="fs-5">Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse"
                     href="#" style="background-color: #174793;">
-                    <i class="bi bi-diagram-3"></i><span>Officials</span><i
-                        class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-diagram-3 fs-5"></i><span class="fs-5">Officials</span><i
+                        class="bi bi-chevron-down ms-auto fs-5"></i>
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="officials.php">
-                            <i class="bi bi-person-check-fill text-light" style="font-size: 12px;"></i><span class="text-light">Barangay Officials</span>
+                            <i class="bi bi-person-check-fill text-light fs-5" style="font-size: 12px;"></i><span
+                                class="text-light fs-5">Barangay Officials</span>
                         </a>
                     </li>
                     <li>
                         <a href="sk.php">
-                            <i class="bi bi-person-badge text-light" style="font-size: 12px;"></i><span class="text-light">SK Officials</span>
+                            <i class="bi bi-person-badge text-light fs-5" style="font-size: 12px;"></i><span
+                                class="text-light fs-5">SK Officials</span>
                         </a>
                     </li>
                     <li>
                         <a href="staffs.php">
-                            <i class="bi bi-people-fill text-light" style="font-size: 12px;"></i><span class="text-light">Barangay Staffs</span>
+                            <i class="bi bi-people-fill text-light fs-5" style="font-size: 12px;"></i><span
+                                class="text-light fs-5">Barangay Staffs</span>
                         </a>
                     </li>
                 </ul>
@@ -116,44 +119,45 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed text-light" href="about.php" style="background-color: #174793;">
-                    <i class="bi bi-question-circle"></i>
-                    <span>About</span>
+                    <i class="bi bi-question-circle fs-5"></i>
+                    <span class="fs-5">About</span>
                 </a>
             </li><!-- End F.A.Q Page Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
-                    <i class="bi bi-power text-dark"></i>
-                    <span>Logout</span>
+                    <i class="bi bi-power text-dark fs-5"></i>
+                    <span class="fs-5">Logout</span>
                 </a>
             </li>
         </ul>
     </aside>
 
+
     <main id="main" class="main">
         <div class="content">
             <div class="container p-3">
                 <div class="about">
-                    <p class="text-dark" style="font-size: 20px;">About ACI-BT</p>
+                    <p class="text-dark fs-2">About ACI-BT</p>
                 </div>
-                <div class="row d-flex">
-                    <div class="col-lg-5 p-5">
+                <div class="row d-flex align-items-center">
+                    <div class="col-lg-5">
                         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
+                            <div class="carousel-inner py-3">
                                 <div class="carousel-item active">
-                                    <img src="assets/img/acs-logo.png" class="d-block w-100" alt="">
+                                    <img src="assets/img/acs-logo.png" class="d-block w-75" alt="">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets/img/cap-log.png" class="d-block w-100" alt="...">
+                                    <img src="assets/img/cap-log.png" class="d-block w-75" alt="...">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="assets/img/psu-logo.jpg" class="d-block w-100" alt="...">
+                                    <img src="assets/img/psu-logo.jpg" class="d-block w-75" alt="...">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-7 brgy-details">
                         <div class="details-container">
-                            <div class="card p-3" style="font-size: .8em;">
+                            <div class="card p-3" style="font-size: .9em;">
                                 <p class="text-black">
                                     ACI-BT: Automated Credential Issuance of Barangay Tiniguiban is an automated
                                     system for certificate and permit generation that is being developed.
@@ -161,14 +165,14 @@
                                     service delivery, and enhance efficiency and transparency in local governance.
                                 </p>
                             </div>
-                            <div class="card p-3" style="font-size: .8em;">
+                            <div class="card p-3" style="font-size: .9em;">
                                 <p class="text-black-50 ">
                                     ACI-BT: Automated Credential Issuance of Barangay Tiniguiban is developed by <a
                                         href="#developers">3rd year students</a> from Bachelor of Science in
                                     Computer Science, Palawan State University.
                                 </p>
                             </div>
-                            <div class="card p-3" style="font-size: .8em;">
+                            <div class="card p-3" style="font-size: .9em;">
                                 <p class="text-black-50 ">
                                     ACI-BT: Automated Credential Issuance of Barangay Tiniguiban offers the
                                     advantage of workload reduction through the automation of certificate
@@ -181,7 +185,7 @@
                         </div>
                     </div>
                 </div>
-<!-- 
+                <!-- 
                 <section style="height: 400px;">
                     <div class="blank"></div>
                 </section> -->
@@ -308,12 +312,12 @@
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
-        <div class="credits">
+        <div class="credits fs-5">
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            Designed by <a href="about.html">&copy; Cayabyabers</a>
+            Designed by <a href="about.php">&copy; Cayabyabers</a>
         </div>
     </footer><!-- End Footer -->
 

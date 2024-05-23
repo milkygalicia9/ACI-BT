@@ -85,7 +85,7 @@ if (!isset($_SESSION['username'])) {
 
         <div class="d-flex align-items-center justify-content-between h-100 p-2">
             <a href="home.php" class="logo d-flex align-items-center justify-content-center">
-                <span class="d-none d-lg-block fs-2">ACI-BT</span>
+                <span class="d-none d-lg-block fs-3">ACI-BT</span>
             </a>
         </div>
 
@@ -93,8 +93,8 @@ if (!isset($_SESSION['username'])) {
 
         <div class="title h-100 pl-5 w-100 d-flex align-items-center justify-content-between"
             style="padding-left: 20px; padding-top: 8px;">
-            <h4 class="text-dark fs-2">Automated Credential Issuance for Barangay Tiniguiban</h4>
-            <div class="text-end ms-auto m-3 fs-4" id="datetimes">sdadas</div>
+            <h4 class="text-dark fs-3">Automated Credential Issuance for Barangay Tiniguiban</h4>
+            <div class="text-end ms-auto m-3 fs-4 mx-5 px-4" id="datetimes">sdadas</div>
         </div>
 
     </header><!-- End Header -->
@@ -113,15 +113,16 @@ if (!isset($_SESSION['username'])) {
         <ul class="sidebar-nav" id="sidebar-nav" style="padding: 15px;">
             <li class="nav-item">
                 <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
-                    <i class="bi bi-grid text-light fs-4"></i>
-                    <span class="fs-4">Dashboard</span>
+                    <i class="bi bi-grid text-light fs-5"></i>
+                    <span class="fs-5">Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse"
                     href="#" style="background-color: #174793;">
-                    <i class="bi bi-diagram-3 fs-4"></i><span class="fs-4">Officials</span><i class="bi bi-chevron-down ms-auto fs-5"></i>
+                    <i class="bi bi-diagram-3 fs-5"></i><span class="fs-5">Officials</span><i
+                        class="bi bi-chevron-down ms-auto fs-5"></i>
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
@@ -147,14 +148,14 @@ if (!isset($_SESSION['username'])) {
 
             <li class="nav-item">
                 <a class="nav-link collapsed text-light" href="about.php" style="background-color: #174793;">
-                    <i class="bi bi-question-circle fs-4"></i>
-                    <span class="fs-4">About</span>
+                    <i class="bi bi-question-circle fs-5"></i>
+                    <span class="fs-5">About</span>
                 </a>
             </li><!-- End F.A.Q Page Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
-                    <i class="bi bi-power text-dark fs-4"></i>
-                    <span class="fs-4">Logout</span>
+                    <i class="bi bi-power text-dark fs-5"></i>
+                    <span class="fs-5">Logout</span>
                 </a>
             </li>
         </ul>
@@ -195,14 +196,14 @@ if (!isset($_SESSION['username'])) {
         </div>
 
         <section class="section dashboard">
-            <div class="col-md-12 d-flex align-items-center justify-content-around p-3">
+            <div class="col-md-12 d-flex align-items-center justify-content-around p-3 pb-5 mb-5">
                 <form action="gen_docs.php" class="row">
                     <div class="col-md-12"> <button class="card">
                             <div class="card-document p-2">
-                                <h6 class="card-title fs-2">Generate Documents</h6>
+                                <h6 class="card-title fw-semibold fs-2">Generate Documents</h6>
                             </div>
                             <div class="card-body">
-                                <img height="420" width="420" src="./assets/img/certs.png" alt="">
+                                <img height="360" width="400" src="./assets/img/certs.png" alt="">
                             </div>
                             <div class="card-document">
                                 <hr>
@@ -215,10 +216,10 @@ if (!isset($_SESSION['username'])) {
                 <form action="view_transactions.php">
                     <div class="col-md-12"> <button class="card">
                             <div class="card-document p-2">
-                                <h6 class="card-title fs-2">View Transactions</h6>
+                                <h6 class="card-title fw-semibold fs-2">View Transactions</h6>
                             </div>
                             <div class="card-body">
-                                <img height="420" width="420" src="./assets/img/list.png" alt="">
+                                <img height="360" width="400" src="./assets/img/list.png" alt="">
                             </div>
                             <div class="card-document">
                                 <hr>
@@ -231,10 +232,10 @@ if (!isset($_SESSION['username'])) {
                 <form action="view_reports.php">
                     <div class="col-md-12"> <button class="card">
                             <div class="card-document p-2">
-                                <h6 class="card-title fs-2">View Reports</h6>
+                                <h6 class="card-title fw-semibold fs-2">View Reports</h6>
                             </div>
                             <div class="card-body">
-                                <img height="420" width="420" src="./assets/img/reports.png" alt="">
+                                <img height="360" width="400" src="./assets/img/reports.png" alt="">
                             </div>
                             <div class="card-document">
                                 <hr>
@@ -251,7 +252,7 @@ if (!isset($_SESSION['username'])) {
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
-        <div class="credits fs-4">
+        <div class="credits fs-5">
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->

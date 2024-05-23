@@ -62,16 +62,16 @@
 
         <div class="d-flex align-items-center justify-content-between h-100 p-2">
             <a href="home.php" class="logo d-flex align-items-center justify-content-center">
-                <span class="d-none d-lg-block">ACI-BT</span>
+                <span class="d-none d-lg-block fs-3">ACI-BT</span>
             </a>
         </div>
 
         <i class="bi bi-list toggle-sidebar-btn"></i>
 
-        <div class="title h-100 d-flex align-items-center" style="padding-left: 20px; padding-top: 8px;">
-            <h4 class="text-dark ">Automated Credential Issuance for Barangay Tiniguiban</h4>
+        <div class="title h-100 pl-5 w-100 d-flex align-items-center justify-content-between"
+            style="padding-left: 20px; padding-top: 8px;">
+            <h4 class="text-dark fs-3">Automated Credential Issuance for Barangay Tiniguiban</h4>
         </div>
-
     </header><!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
@@ -88,35 +88,34 @@
         <ul class="sidebar-nav" id="sidebar-nav" style="padding: 15px;">
             <li class="nav-item">
                 <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
-                    <i class="bi bi-grid text-light"></i>
-                    <span>Dashboard</span>
+                    <i class="bi bi-grid text-light fs-5"></i>
+                    <span class="fs-5">Dashboard</span>
                 </a>
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse"
                     href="#" style="background-color: #174793;">
-                    <i class="bi bi-diagram-3"></i><span>Officials</span><i class="bi bi-chevron-down ms-auto"></i>
+                    <i class="bi bi-diagram-3 fs-5"></i><span class="fs-5">Officials</span><i
+                        class="bi bi-chevron-down ms-auto fs-5"></i>
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="officials.php">
-                            <i class="bi bi-person-check-fill text-light" style="font-size: 12px;"></i><span
-                                class="text-light">Barangay Officials</span>
+                            <i class="bi bi-person-check-fill text-light fs-5" style="font-size: 12px;"></i><span
+                                class="text-light fs-5">Barangay Officials</span>
                         </a>
                     </li>
                     <li>
                         <a href="sk.php">
-                            <i class="bi bi-person-badge text-light" style="font-size: 12px;"></i><span
-                                class="text-light">SK
-                                Officials</span>
+                            <i class="bi bi-person-badge text-light fs-5" style="font-size: 12px;"></i><span
+                                class="text-light fs-5">SK Officials</span>
                         </a>
                     </li>
                     <li>
                         <a href="staffs.php">
-                            <i class="bi bi-people-fill text-light" style="font-size: 12px;"></i><span
-                                class="text-light">Barangay
-                                Staffs</span>
+                            <i class="bi bi-people-fill text-light fs-5" style="font-size: 12px;"></i><span
+                                class="text-light fs-5">Barangay Staffs</span>
                         </a>
                     </li>
                 </ul>
@@ -124,14 +123,14 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed text-light" href="about.php" style="background-color: #174793;">
-                    <i class="bi bi-question-circle"></i>
-                    <span>About</span>
+                    <i class="bi bi-question-circle fs-5"></i>
+                    <span class="fs-5">About</span>
                 </a>
             </li><!-- End F.A.Q Page Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
-                    <i class="bi bi-power text-dark"></i>
-                    <span>Logout</span>
+                    <i class="bi bi-power text-dark fs-5"></i>
+                    <span class="fs-5">Logout</span>
                 </a>
             </li>
         </ul>
@@ -154,8 +153,8 @@
                                 <div class="card-body p-4 text-center border-bottom">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
-                                    <h6 class="text-primary">EVELYN G. COMAHIG</h6>
-                                    <span class="text-dark fs-4">Accounting Clerk</span>
+                                    <h6 class="text-primary fs-5">EVELYN G. COMAHIG</h6>
+                                    <span class="text-dark fs-5">Accounting Clerk</span>
                                 </div>
                                 <ul
                                     class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
@@ -167,8 +166,8 @@
                                 <div class="card-body p-4 text-center border-bottom">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
-                                    <h6 class="text-primary">ZANGELICA B. NEPOMUCENO</h6>
-                                    <span class="text-dark fs-4">Clerk</span>
+                                    <h6 class="text-primary fs-5">ZANGELICA B. NEPOMUCENO</h6>
+                                    <span class="text-dark fs-5">Clerk</span>
                                 </div>
                                 <ul
                                     class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
@@ -180,8 +179,8 @@
                                 <div class="card-body p-4 text-center border-bottom">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
-                                    <h6 class="text-primary">MINERVA IGNACIO</h6>
-                                    <span class="text-dark fs-4">VAWC</span>
+                                    <h6 class="text-primary fs-5">MINERVA IGNACIO</h6>
+                                    <span class="text-dark fs-5">VAWC</span>
                                 </div>
                                 <ul
                                     class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
@@ -193,8 +192,8 @@
                                 <div class="card-body p-4 text-center border-bottom">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
-                                    <h6 class="text-primary">APRIL ESVER</h6>
-                                    <span class="text-dark fs-4">BCWPC</span>
+                                    <h6 class="text-primary fs-5">APRIL ESVER</h6>
+                                    <span class="text-dark fs-5">BCWPC</span>
                                 </div>
                                 <ul
                                     class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
@@ -206,8 +205,8 @@
                                 <div class="card-body p-4 text-center border-bottom">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
-                                    <h6 class="text-primary">GEMMA ANZA</h6>
-                                    <span class="text-dark fs-4">Utility</span>
+                                    <h6 class="text-primary fs-5">GEMMA ANZA</h6>
+                                    <span class="text-dark fs-5">Utility</span>
                                 </div>
                                 <ul
                                     class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
@@ -219,8 +218,8 @@
                                 <div class="card-body p-4 text-center border-bottom">
                                     <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
-                                    <h6 class="text-primary">ESTELITA MAGBANUA</h6>
-                                    <span class="text-dark fs-4">Utility</span>
+                                    <h6 class="text-primary fs-5">ESTELITA MAGBANUA</h6>
+                                    <span class="text-dark fs-5">Utility</span>
                                 </div>
                                 <ul
                                     class="px-2 py-3 bg-light list-unstyled d-flex align-items-center justify-content-center mb-0">
@@ -235,12 +234,12 @@
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
-        <div class="credits">
+        <div class="credits fs-5">
             <!-- All the links in the footer should remain intact. -->
             <!-- You can delete the links only if you purchased the pro version. -->
             <!-- Licensing information: https://bootstrapmade.com/license/ -->
             <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            Designed by <a href="about.html">&copy; Cayabyabers</a>
+            Designed by <a href="about.php">&copy; Cayabyabers</a>
         </div>
     </footer><!-- End Footer -->
 

@@ -34,9 +34,7 @@
 
 <style>
     .logo-overlap {
-        height: 150px;
-        margin-top: -90px;
-        border: 5px solid white;
+        margin-top: -100px;
     }
 </style>
 
@@ -48,36 +46,36 @@
                 <div class="container">
                     <div class="row d-flex align-items-center justify-content-center">
                         <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center">
-                            <div class="card" style="height: 740px;">
+                            <div class="card" style="height: 750px;">
                                 <!-- <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
                                         <p class="text-center small">Enter your username & password to login</p> -->
-                                <div class="pb-5">
+                                <div class="p-0 m-0">
                                     <div class="image">
                                         <img src="./assets/img/tiniguiban.jpg" alt="..." class="img-fluid rounded"
                                             style="height: 240px; width: 100%;">
                                     </div>
-                                    <div class="card-body pb-5">
+                                    <div class="card-body">
                                         <div class="author logo-overlap d-flex flex-column align-items-center">
                                             <img class="avatar border-gray m-2 rounded-circle"
                                                 src="./assets/img/logo.jpg" alt="..."
-                                                style="height: 120%; margin: 20;">
-                                            <h5 class="title fs-2" style="color: #729ED9;">Welcome to ACI-BT!</h5>
-                                            <label for="" class="fs-2">Login</label>
+                                                style="height: 190px; margin: 20;">
+                                            <h5 class="title fs-2 fw-bold" style="color: #729ED9;">Welcome to ACI-BT!</h5>
+                                            <label for="" class="fs-4">Login</label>
                                         </div>
                                     </div>
                                 </div>
-                                <form class="row g-3 needs-validation p-5 pt-4" action="login_process.php" method="post"
+                                <form class="row g-3 needs-validation px-5" action="login_process.php" method="post"
                                     novalidate>
                                     <div class="col-12">
                                         <label for="yourUsername" class="form-label fs-5">Username</label>
                                         <div class="input-group has-validation" style="height: 50px;">
-                                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                            <span class="input-group-text fs-5" id="inputGroupPrepend">@</span>
                                             <input type="text" name="username" class="form-control" id="yourUsername"
                                                 placeholder="Enter Username" required>
                                             <div class="invalid-feedback">Please enter your username.</div>
                                         </div>
                                     </div>
-                                    <div class="col-12">
+                                    <div class="col-12 pb-1">
                                         <label for="yourPassword" class="form-label fs-5">Password</label>
                                         <div class="input-group has-validation" style="height: 50px;">
                                             <span class="input-group-text" id="inputGroupPrepend"><i
@@ -89,7 +87,7 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100 fs-4" type="submit" style="height: 50px;">Login</button>
+                                        <button class="btn btn-primary w-100 fs-4 fw-bold" type="submit" style="height: 50px;">Login</button>
                                     </div>
                                 </form>
                             </div>
