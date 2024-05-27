@@ -1,146 +1,76 @@
 <?php
-// session_start();
+session_start();
 
-// if (!isset($_SESSION['username'])) {
-//   header("Location: index.php");
-//   exit();
-// }
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+    exit();
+}
 
 // Include database connection file
-include ("db.php");
+include("db.php");
 
+// Check if form is submitted
+if (isset($_POST["submit"])) {
+    // Sanitize and assign form data to variables
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $birthplace = $conn->real_escape_string($_POST["birthplace"]);
+    $birthdate = $conn->real_escape_string($_POST["birthday"]);
+    $civil_status = $conn->real_escape_string($_POST["civil_status"]);
+    $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
+    $issued_date = $conn->real_escape_string($_POST["issued_date"]);
+    $purpose = $conn->real_escape_string($_POST["purpose"]);
+    $duty_officer_name = $conn->real_escape_string($_POST["duty_officer_full_name"]);
 
-if (isset($_POST["barangay_clearance"])) {
-  $first_name = $_POST["first_name"];
-  $middle_initial = $_POST["middle_initial"];
-  $last_name = $_POST["last_name"];
-  $suffix = $_POST["suffix"];
-  $purok = $_POST["purok"];
-  $birthplace = $_POST["birthplace"];
-  $birthdate = $_POST["birthday"];
-  $civil_status = $_POST["civil_status"];
-  $period_of_residency = $_POST["residency_period"];
-  $issued_date = $_POST["issued_date"];
-  $purpose = $_POST["purpose"];
-  $duty_officer_name = $_POST["duty_officer_full_name"];
+    // Define SQL query using prepared statements
+    $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+    $stmt->bind_param('sssssssss', $fullname, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
 
-  // Define SQL query
-  $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name', ' ', '$middle_initial', ' ', '$last_name', ' ', '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
+    // Execute SQL query
+    if ($stmt->execute()) {
+        echo "New record inserted successfully";
 
-  // Execute SQL query
-  if ($conn->query($sql) === TRUE) {
-    echo "New record inserted successfully";
+        // Fetch admin ID
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $_SESSION['username']);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+        // Add missing import statement
+        if ($admin_result->num_rows > 0) {
+          $row = mysqli_fetch_assoc($admin_result);
+          $admin_id = $row['id'];
 
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
+          // Modify SQL query to use COUNT function correctly
+          $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, client_trans_id, created_at) VALUES (?, 1, (SELECT COUNT(*) FROM barangay_clearance), NOW())");
+          $trans_stmt->bind_param('i', $admin_id);
 
-  // Close database connection
-  $conn->close();
+          if ($trans_stmt->execute()) {
+            echo "Transaction record inserted successfully";
+          } else {
+            echo "Error: " . $trans_stmt->error;
+          }
 
+          $trans_stmt->close();
+        } else {
+          echo "Error: Admin user not found.";
+            echo "Error: Admin user not found.";
+        }
+
+        $admin_stmt->close();
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    // Close database connection
+    $stmt->close();
+    $conn->close();
 }
-// if (isset($_POST["business_permit_new"])) {
-//   $businessName = $_POST["businessName"];
-//   $middle_initial = $_POST["manager_operator"];
-//   $last_name = $_POST["manager_operator_address"];
-//   // Define SQL query
-//   $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name', ' ', '$middle_initial', ' ', '$last_name', ' ', '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
-
-//   // Execute SQL query
-//   if ($conn->query($sql) === TRUE) {
-//       echo "New record inserted successfully";
-
-//   } else {
-//       echo "Error: " . $sql . "<br>" . $conn->error;
-//   }
-
-//   // Close database connection
-//   $conn->close();
-
-// }
-// if (isset($_POST["business_permit_renew"])) {
-//   $businessName = $_POST["business_name_renew"];
-//   $middle_initial = $_POST["manager_operator_renew"];
-//   $last_name = $_POST["manager_operator_address_renew"];
-//   // Define SQL query
-//   $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name', ' ', '$middle_initial', ' ', '$last_name', ' ', '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
-
-//   // Execute SQL query
-//   if ($conn->query($sql) === TRUE) {
-//       echo "New record inserted successfully";
-
-//   } else {
-//       echo "Error: " . $sql . "<br>" . $conn->error;
-//   }
-
-//   // Close database connection
-//   $conn->close();
-
-// }
-// if (isset($_POST["certificate_of_employability"])) {
-//   $first_name = $_POST["first_name"];
-//   $middle_initial = $_POST["middle_initial"];
-//   $last_name = $_POST["last_name"];
-//   $suffix = $_POST["suffix"];
-//   $age = $_POST["age"];
-//   $purok = $_POST["purok"];
-//   //issue date
-//   $duty_officer_name = $_POST["duty_officer_full_name"];
-
-//   // Define SQL query
-//   $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name', ' ', '$middle_initial', ' ', '$last_name', ' ', '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
-
-//   // Execute SQL query
-//   if ($conn->query($sql) === TRUE) {
-//       echo "New record inserted successfully";
-
-//   } else {
-//       echo "Error: " . $sql . "<br>" . $conn->error;
-//   }
-
-//   // Close database connection
-//   $conn->close();
-// }
-// if (isset($_POST["certificate_of_income"])) {
-//   $first_name = $_POST["first_name"];
-//   $middle_initial = $_POST["middle_initial"];
-//   $last_name = $_POST["last_name"];
-//   $suffix = $_POST["suffix"];
-//   $purok = $_POST["purok"];
-//   $amount = $_POST["amount"];
-//   $birthdate = $_POST["birthday"];
-//   $civil_status = $_POST["civil_status"];
-//   $period_of_residency = $_POST["residency_period"];
-//   $issued_date = $_POST["issued_date"];
-//   $purpose = $_POST["purpose"];
-//   $duty_officer_name = $_POST["duty_officer_full_name"];
-
-//   // Define SQL query
-//   $sql = "INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (CONCAT('$first_name', ' ', '$middle_initial', ' ', '$last_name', ' ', '$suffix'), '$purok', '$birthplace', '$birthdate', '$civil_status', '$period_of_residency', '$issued_date', '$purpose', '$duty_officer_name')";
-
-//   // Execute SQL query
-//   if ($conn->query($sql) === TRUE) {
-//       echo "New record inserted successfully";
-
-//   } else {
-//       echo "Error: " . $sql . "<br>" . $conn->error;
-//   }
-
-//   // Close database connection
-//   $conn->close();
-
-// }
-// if (isset($_POST["cohabitation"])) {}
-// if (isset($_POST["complaint_certificate"])) {}
-// if (isset($_POST["death_certificate"])) {}
-// if (isset($_POST["first_time_job_seeker"])) {}
-// if (isset($_POST["indigency"])) {}
-// if (isset($_POST["indigency_aics"])) {}
-// if (isset($_POST["lot_ownership"])) {}
-// if (isset($_POST["Oathtaking"])) {}
-// if (isset($_POST["transfer_of_residency"])) {}
 ?>
-
 
 
 <!DOCTYPE html>
