@@ -70,24 +70,10 @@ if (!isset($_SESSION['username'])) {
             </a>
         </div> -->
 
-    <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center w-100"
       style="background-color: #F4F3EF; padding: 0">
-
-      <div class="d-flex align-items-center justify-content-between h-100 p-2">
-        <a href="home.php" class="logo d-flex align-items-center justify-content-center">
-          <span class="d-none d-lg-block fs-3">ACI-BT</span>
-        </a>
-      </div>
-
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-
-      <div class="title h-100 pl-5 w-100 d-flex align-items-center justify-content-between"
-        style="padding-left: 20px; padding-top: 8px;">
-        <h4 class="text-dark fs-3">Automated Credential Issuance for Barangay Tiniguiban</h4>
-      </div>
-
-    </header><!-- End Header -->
+      <?php include 'includes/header.php' ?>
+    </header>
 
     <?php
     // Include your PHP code here
@@ -116,69 +102,9 @@ if (!isset($_SESSION['username'])) {
 
     </script>
 
-
-    <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar" style="background-color: #174793; padding: 0;">
-
-      <div class="barangay-logo h-50 w-100" style="background-color: #729ED9; margin-bottom: 2px;">
-        <div class="barangay-logo h-100 d-flex align-items-center justify-content-center">
-          <a href="home.php">
-            <img src="assets/img/cap-log.png" height="250" alt="">
-          </a>
-        </div>
-      </div>
-
-      <ul class="sidebar-nav" id="sidebar-nav" style="padding: 15px;">
-        <li class="nav-item">
-          <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
-            <i class="bi bi-grid text-light fs-5"></i>
-            <span class="fs-5">Dashboard</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-
-        <li class="nav-item">
-          <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#"
-            style="background-color: #174793;">
-            <i class="bi bi-diagram-3 fs-5"></i><span class="fs-5">Officials</span><i
-              class="bi bi-chevron-down ms-auto fs-5"></i>
-          </a>
-          <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="officials.php">
-                <i class="bi bi-person-check-fill text-light fs-5" style="font-size: 12px;"></i><span
-                  class="text-light fs-5">Barangay Officials</span>
-              </a>
-            </li>
-            <li>
-              <a href="sk.php">
-                <i class="bi bi-person-badge text-light fs-5" style="font-size: 12px;"></i><span
-                  class="text-light fs-5">SK Officials</span>
-              </a>
-            </li>
-            <li>
-              <a href="staffs.php">
-                <i class="bi bi-people-fill text-light fs-5" style="font-size: 12px;"></i><span
-                  class="text-light fs-5">Barangay Staffs</span>
-              </a>
-            </li>
-          </ul>
-        </li><!-- End Components Nav -->
-
-        <li class="nav-item">
-          <a class="nav-link collapsed text-light" href="about.php" style="background-color: #174793;">
-            <i class="bi bi-question-circle fs-5"></i>
-            <span class="fs-5">About</span>
-          </a>
-        </li><!-- End F.A.Q Page Nav -->
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
-            <i class="bi bi-power text-dark fs-5"></i>
-            <span class="fs-5">Logout</span>
-          </a>
-        </li>
-      </ul>
+      <?php include 'includes/sidebar.php' ?>
     </aside>
-
 
     <section class="section dashboard">
       <div class="row">
@@ -219,7 +145,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color: rgba(255, 0, 0, 1)">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color: rgba(255, 0, 0, 1)">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -269,7 +196,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color: rgba(54, 162, 235, 1)">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color: rgba(54, 162, 235, 1)">
                               stroke-linejoin="round" class="feather feather-file-text" >
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
@@ -324,7 +252,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color: rgba(255, 206, 86, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color: rgba(255, 206, 86, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -387,7 +316,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(153, 102, 255, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(153, 102, 255, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -438,7 +368,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(255, 165, 0, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(255, 165, 0, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -494,7 +425,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(75, 192, 192, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(75, 192, 192, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -553,14 +485,15 @@ if (!isset($_SESSION['username'])) {
                       <div class="card-body">
 
                         <h5 class="card-title">
-                  CERTIFICATE OF INDIGENCY
+                          CERTIFICATE OF INDIGENCY
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(77, 0, 77, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(77, 0, 77, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -611,7 +544,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(16, 16, 16, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(16, 16, 16, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -660,14 +594,15 @@ if (!isset($_SESSION['username'])) {
                       <div class="card-body">
 
                         <h5 class="card-title">
-                         COMPLAINT CERTIFICATE
+                          COMPLAINT CERTIFICATE
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(0, 51, 102, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(0, 51, 102, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -726,14 +661,15 @@ if (!isset($_SESSION['username'])) {
                       <div class="card-body">
 
                         <h5 class="card-title">
-                         DEATH CERTIFICATE
+                          DEATH CERTIFICATE
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(0, 128, 0, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(0, 128, 0, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -784,7 +720,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(153, 0, 0, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(153, 0, 0, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -833,14 +770,15 @@ if (!isset($_SESSION['username'])) {
                       <div class="card-body">
 
                         <h5 class="card-title">
-                         LOT OWNERSHIP
+                          LOT OWNERSHIP
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(128, 0, 0, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(128, 0, 0, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -906,7 +844,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(153, 153, 0, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(153, 153, 0, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -994,19 +933,19 @@ if (!isset($_SESSION['username'])) {
                       'rgba(153, 153, 0, 1)' // Transfer of Residency
                     ],
                     borderWidth: 1,
-                    data: [       
+                    data: [
                       Sales_Clearance,
                       Sales_Business_Permit_New,
-                      Sales_Business_Permit_Renew, 
-                      Sales_Certificate_of_Income, 
+                      Sales_Business_Permit_Renew,
+                      Sales_Certificate_of_Income,
                       Sales_Cohabitation,
                       Sales_Certificate_of_Employability,
                       Sales_Indigency,
-                      Sales_Indigency_AICS, 
-                      Sales_Complaint_Certificate, 
-                      Sales_Death_Certificate, 
-                      Sales_First_Time_Job_Seeker, 
-                      Sales_Lot_Ownership, 
+                      Sales_Indigency_AICS,
+                      Sales_Complaint_Certificate,
+                      Sales_Death_Certificate,
+                      Sales_First_Time_Job_Seeker,
+                      Sales_Lot_Ownership,
                       Sales_Transfer_of_Residency]
                   }]
                 };
