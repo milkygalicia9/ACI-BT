@@ -88,10 +88,11 @@ if (!isset($_SESSION['username'])) {
               <table class="table datatable">
                 <thead>
                   <tr>
-                    <th>ID</th>
+                    <!-- <th>ID</th> -->
                     <th>Transacted by</th>
                     <th>Document Name</th>
-                    <th>Client Transaction ID</th>
+                    <th>Client Name</th>
+                    <!-- <th>Client Transaction ID</th> -->
                     <th>Created At</th>
                     <th>Action</th>
                   </tr>
@@ -101,20 +102,34 @@ if (!isset($_SESSION['username'])) {
                   require 'db.php';
 
                   // $sql = "SELECT * FROM transactions";
-                  $sql = "SELECT t.id, a.username AS transact_by, dt.doc_name, t.client_trans_id, t.created_at
-                                                      FROM transactions t
-                                                      INNER JOIN admin a ON t.transact_by = a.id
-                                                      INNER JOIN doctype dt ON t.doc_id = dt.id";
+                  // $sql = "SELECT t.id, a.username AS transact_by, dt.doc_name, t.client_trans_id, t.created_at
+                  //                                     FROM transactions t
+                  //                                     INNER JOIN admin a ON t.transact_by = a.id
+                  //                                     INNER JOIN doctype dt ON t.doc_id = dt.id";
+
+                  $sql = "SELECT t.id, a.username AS transact_by, dt.doc_name, 
+                    CASE 
+                      WHEN dt.id = 1 THEN bc.fullname
+                      -- WHEN dt.id = 2 THEN bp.manager_operator 
+                      ELSE 'Unknown' 
+                    END AS fullname, 
+                    t.client_trans_id, t.created_at
+                    FROM transactions t
+                    INNER JOIN admin a ON t.transact_by = a.id
+                    INNER JOIN doctype dt ON t.doc_id = dt.id
+                    LEFT JOIN barangay_clearance bc ON t.client_trans_id = bc.id AND dt.id = 1
+                    LEFT JOIN business_permit_new bp ON t.client_trans_id = bp.id AND dt.id = 2";
 
                   $result = $conn->query($sql);
 
                   if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                       echo "<tr>";
-                      echo "<td>" . $row["id"] . "</td>";
+                      // echo "<td>" . $row["id"] . "</td>";
                       echo "<td>" . $row["transact_by"] . "</td>";
                       echo "<td>" . $row["doc_name"] . "</td>";
-                      echo "<td>" . $row["client_trans_id"] . "</td>";
+                      echo "<td>" . $row["fullname"] . "</td>";
+                      // echo "<td>" . $row["client_trans_id"] . "</td>";
                       echo "<td>" . $row["created_at"] . "</td>";
                       echo "<td><a href=" . "show_client_trans.php?id=" . $row["client_trans_id"] . "&doc_name=" . str_replace(" ", "_", $row["doc_name"]) . "><button type=" . "submit" . ">VIEW</button></a></td>";
                       echo "</tr>";
