@@ -77,7 +77,8 @@ if (!isset($_SESSION['username'])) {
 
     <?php
     // Include your PHP code here
-    include 'db.php';
+    //include 'db.php';
+    include 'queries_reports.php';
     ?>
     <script>
       // Use PHP variables in JavaScript
