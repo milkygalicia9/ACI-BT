@@ -249,6 +249,39 @@
                 .certificates div.active {
                   display: block;
                 }
+
+                .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+            padding-top: 60px; 
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
               </style>
 
               <!-- General Form Elements -->
@@ -319,7 +352,7 @@
                       placeholder="Ex. Puerto Princesa City"><br>
 
                     <label for="">Birthday:</label>
-                    <input type="date" class="form-control" name="birthday">
+                    <input type="date" class="form-control" id="birthdate" name="birthday">
                     <br>
                     <label for="">Civil Status:</label>
                     <select class="form-control" onchange="update()" name="civil_status" id="stats">
@@ -339,6 +372,8 @@
                     <!-- <label for="">Duty Officer Full Name:</label>
                   <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel"> -->
                     <button name="barangay_clearance" id="coco" onclick="printIframe()" type="submit">Print</button>
+                    <input type="date" name="issueddate" style="display:none; position:absolute;"> 
+
                   </form>
                 </div>
 
@@ -1090,6 +1125,7 @@
             if (isset($_POST["barangay_clearance"])) {
               echo "<p>business_permit_new</p>";
             }
+
             ?>
           </div>
           <div class="card-body d-flex justify-content-center align-items-center">
@@ -1137,7 +1173,10 @@
   <script src="assets/js/main2.js"></script>
   <script>
     // Select all input elements of type "text"
+    const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
 
+        document.getElementById('issueddate').value = formattedDate;
 
   </script>
 </body>
