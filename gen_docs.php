@@ -594,7 +594,7 @@ if (isset($_POST["certificate_of_employability"])) {
                     <input type="text" class="form-control" name="business_name_renew"><br>
 
                     <label for="">Purok:</label><br>
-                    <select name="" id="purok">
+                    <select name="purok" id="purok">
                       <option value="Centro">Centro</option>
                       <option value="Kaakbayan">Kaakbayan</option>
                       <option value="New Princesa"> New Princesa</option>
