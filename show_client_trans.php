@@ -67,6 +67,16 @@ if (!isset($_SESSION['username'])) {
 
     <main id="main" class="main">
         <section class="section">
+        <div class="d-flex pb-2">
+            <a href="view_transactions.php" class="d-flex">
+            <div class="icon">
+                <i class="bi-caret-left-square fs-2 p-2 text-primary"></i>
+            </div>
+            <div class="back d-flex text-primary align-items-center fs-3">
+                Back
+            </div>
+            </a>
+        </div>
             <div class="row fs-4">
                 <div class="col-lg-12">
 

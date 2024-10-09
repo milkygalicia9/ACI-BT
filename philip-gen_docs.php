@@ -6,9 +6,11 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 
-include 'db.php';
+//Include database connection file
+include("db.php");
 include 'includes/cert_db.php'
     ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -81,11 +83,11 @@ include 'includes/cert_db.php'
         font-size: 12px;
     }
 
-    .certificates div {
+    .certificates .cert {
         display: none;
     }
 
-    .certificates div.active {
+    .certificates .cert.active {
         display: block;
     }
 
@@ -94,7 +96,8 @@ include 'includes/cert_db.php'
     }
 
     select {
-        width: 100%
+        width: 100%;
+        cursor: pointer;
     }
 
     .card {
@@ -104,10 +107,14 @@ include 'includes/cert_db.php'
         background: #efefef;
         box-shadow: 5px 5px 4px #c8d0e7, -1px -1px 3px #fff;
     }
+
+    label,
+    select {
+        font-size: 1.2em;
+    }
 </style>
 
 <body style="background-color: #F4F3EF;">
-
     <header id="header" class="header fixed-top d-flex align-items-center w-100"
         style="background-color: #F4F3EF; padding: 0">
         <?php include 'includes/header.php' ?>
@@ -117,172 +124,108 @@ include 'includes/cert_db.php'
         <?php include 'includes/sidebar.php' ?>
     </aside>
 
-
     <main id="main" class="main">
         <section class="section">
+            <div class="d-flex pb-2 pt-0 mt-0">
+                <a href="home.php" class="d-flex">
+                    <div class="icon">
+                        <i class="bi-caret-left-square fs-4 p-2 text-primary"></i>
+                    </div>
+                    <div class="back d-flex text-primary align-items-center fs-5">
+                        Back
+                    </div>
+                </a>
+            </div>
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="card" id="fillup">
+                <div class="col-lg-4" id="fillup">
+                    <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Fillup Certificate</h5>
                             <!-- General Form Elements -->
-                            <form>
-                                <label for="certificateType"> Select Certificate</label><br>
-                                <div class="col-md-12">
-                                    <select class="p-2 text-left" id="certificateType" onchange="toggleFields()"
-                                        style="cursor: pointer;">
-                                        <option value="">--select certificates--</option>
-                                        <option value="barangay_clearance">Barangay Clearance</option>
-                                        <option value="business_permit_new">Barangay Business Permit New</option>
-                                        <option value="business_permit_renew">Barangay Business Permit Renew</option>
-                                        <option value="certificate_of_employability">Certificate Of Employability
-                                        </option>
-                                        <option value="certificate_of_income">Certificate of Income</option>
-                                        <option value="cohabitation">Certificate of Cohabitation</option>
-                                        <option value="complaint_certificate">Complaint Certificate</option>
-                                        <option value="death_certificate">Death Certificate</option>
-                                        <option value="first_time_job_seeker">Barangay Certification (First time Job
-                                            Seeker)</option>
-                                        <option value="indigency">Indigency</option>
-                                        <option value="indigency_aics">Indigency (AICS)</option>
-                                        <option value="lot_ownership">Lot Ownership</option>
-                                        <option value="Oathtaking">Oathtaking</option>
-                                        <option value="transfer_of_residency">Certificate of Transfer</option>
-                                    </select>
+                            <label for="certificateType"> Select Certificate</label><br>
+                            <div class="col-md-12">
+                                <select class="p-2 text-left form-control" id="certificateType"
+                                    onchange="toggleFields()">
+                                    <option value="">--select certificates--</option>
+                                    <option value="barangay_clearance">Barangay Clearance</option>
+                                    <option value="business_permit_new">Barangay Business Permit New</option>
+                                    <option value="business_permit_renew">Barangay Business Permit Renew</option>
+                                    <option value="certificate_of_employability">Certificate Of Employability</option>
+                                    <option value="certificate_of_income">Certificate of Income</option>
+                                    <option value="cohabitation">Certificate of Cohabitation</option>
+                                    <option value="complaint_certificate">Complaint Certificate</option>
+                                    <option value="death_certificate">Death Certificate</option>
+                                    <option value="first_time_job_seeker">Barangay Certification (First time Job Seeker)
+                                    </option>
+                                    <option value="indigency_aics">Indigency (AICS)</option>
+                                    <option value="indigency">Indigency</option>
+                                    <option value="lot_ownership">Lot Ownership</option>
+                                    <option value="Oathtaking">Oathtaking</option>
+                                    <option value="transfer_of_residency">Certificate of Transfer</option>
+                                </select>
+                            </div>
+                            <hr>
+                            <div class="certificates">
+                                <div class="cert" id="barangay_clearance">
+                                    <?php include 'forms/barangay_clearance.php' ?>
                                 </div>
 
-                                <!-- Barangay Certificates -->
-                                <div class="certificates pt-3">
-                                    <div id="barangay_clearance">
-                                        <form action="" method="post" id="form">
-
-                                            <label for="">First Name:</label>
-                                            <input type="text" class="form-control" name="first_name"
-                                                placeholder="Ex. Juan"><br>
-
-                                            <label for="">Middle Initial:</label>
-                                            <input type="text" class="form-control" name="middle_initial"
-                                                placeholder="Ex. J"><br>
-
-                                            <label for="">Last Name:</label>
-                                            <input type="text" class="form-control" name="last_name"
-                                                placeholder="Ex. Dela Cruz"><br>
-
-
-                                            <label for="">Suffix:</label>
-                                            <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
-                                            <select class="text-left" style="width: 8%;" name="suffix" id="suffixs">
-                                                <option value="">N/A</option>
-                                                <option value="Jr">Jr</option>
-                                                <option value="Sr">Sr</option>
-                                                <option value="I">I</option>
-                                                <option value="II">II</option>
-                                                <option value="III">III</option>
-                                            </select><br><br>
-                                            <label for="">Purok:</label>
-                                            <select class=" p-2 w-25 text-left" name="puroks" id="puroks">
-                                                <option value="Centro">Centro</option>
-                                                <option value="Hurawan">Huwaran</option>
-                                                <option value="Kaakbayan">Kaakbayan</option>
-                                                <option value="New Princesa"> New Princesa</option>
-                                                <option value="San Franciso I">San Franciso I</option>
-                                                <option value="San Franciso II">San Franciso II</option>
-                                                <option value="Sandiwa">Sandiwa</option>
-                                                <option value="Trece">Trece</option>
-                                                <option value="Uha">UHA</option>
-                                            </select>
-                                            <br>
-                                            <br>
-
-                                            <label for="">Birthplace:</label>
-                                            <input type="text" class="form-control" name="birthplace"
-                                                placeholder="Ex. Puerto Princesa City"><br>
-
-                                            <label for="">Birthday:</label>
-                                            <input type="date" class="form-control" name="birthday">
-                                            <br>
-                                            <label for="">Civil Status:</label>
-                                            <select class="form-control" onchange="update()" name="civil_status"
-                                                id="stats">
-                                                <option value="Maried">Married</option>
-                                                <option value="Widow">Window</option>
-                                                <option value="Single">Single</option>
-                                            </select>
-                                            <br>
-                                            <label for="">Period of Residency:</label>
-                                            <input type="number" class="form-control" name="residency_period"
-                                                placeholder="Ex. 3 years"><br>
-
-                                            <label for="">Purpose:</label>
-                                            <!-- <input type="text" class="form-control" name="purpose"> -->
-                                            <input type="text" name="purpose" class="form-control" id="" cols="30"
-                                                rows="10" placeholder="Ex. Undecided"></input><br>
-
-                                            <!-- <label for="">Duty Officer Full Name:</label>
-              <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel"> -->
-                                            <button name="barangay_clearance" id="coco" onclick="printIframe()"
-                                                type="submit">Print</button>
-                                        </form>
-                                    </div>
-
-                                    <div id="business_permit_new">
-                                        <?php include 'forms/business_permit_new.php' ?>
-                                    </div>
-
-                                    <div id="business_permit_renew">
-                                        <?php include 'forms/business_permit_renew.php' ?>
-                                    </div>
-
-                                    <div id="certificate_of_employability">
-                                        <?php include 'forms/certificate_of_employability.php' ?>
-                                    </div>
-
-                                    <div id="certificate_of_income">
-                                        <?php include 'forms/certificate_of_income.php' ?>
-                                    </div>
-
-                                    <div id="cohabitation">
-                                        <?php include 'forms/cohabilitation.php' ?>
-                                    </div>
-
-                                    <div id="complaint_certificate">
-                                        <?php include 'forms/complaint_certificate.php' ?>
-                                    </div>
-
-                                    <div id="death_certificate">
-                                        <?php include 'forms/death_certificate.php' ?>
-                                    </div>
-
-                                    <div id="first_time_job_seeker">
-                                        <?php include 'forms/first_time_job_seeker.php' ?>
-                                    </div>
-
-                                    <div id="indigency_aics">
-                                        <?php include 'forms/indigency_aics.php' ?>
-                                    </div>
-
-                                    <div id="indigency">
-                                        <?php include 'forms/indigency.php' ?>
-                                    </div>
-
-                                    <div id="lot_ownership">
-                                        <?php include 'forms/lot_ownership.php' ?>
-                                    </div>
-
-                                    <div id="Oathtaking"> ⁡⁢⁣⁢<!-- ‍wala sa database table -->⁡⁡
-                                        <?php include 'forms/Oathtaking.php' ?>
-                                    </div>
-
-                                    <div id="transfer_of_residency">
-                                        <?php include 'forms/transfer_of_residency.php' ?>
-                                    </div>
+                                <div class="cert" id="business_permit_new">
+                                    <?php include 'forms/business_permit_new.php' ?>
                                 </div>
-                                <!-- End of Barangay Certificates -->
-                            </form>
+
+                                <div class="cert" id="business_permit_renew">
+                                    <?php include 'forms/business_permit_renew.php' ?>
+                                </div>
+
+                                <div class="cert" id="certificate_of_employability">
+                                    <?php include 'forms/certificate_of_employability.php' ?>
+                                </div>
+
+                                <div class="cert" id="certificate_of_income">
+                                    <?php include 'forms/certificate_of_income.php' ?>
+                                </div>
+
+                                <div class="cert" id="cohabitation">
+                                    <?php include 'forms/cohabilitation.php' ?>
+                                </div>
+
+                                <div class="cert" id="complaint_certificate">
+                                    <?php include 'forms/complaint_certificate.php' ?>
+                                </div>
+
+                                <div class="cert" id="death_certificate">
+                                    <?php include 'forms/death_certificate.php' ?>
+                                </div>
+
+                                <div class="cert" id="first_time_job_seeker">
+                                    <?php include 'forms/first_time_job_seeker.php' ?>
+                                </div>
+
+                                <div class="cert" id="indigency_aics">
+                                    <?php include 'forms/indigency_aics.php' ?>
+                                </div>
+
+                                <div class="cert" id="indigency">
+                                    <?php include 'forms/indigency.php' ?>
+                                </div>
+
+                                <div class="cert" id="lot_ownership">
+                                    <?php include 'forms/lot_ownership.php' ?>
+                                </div>
+
+                                <div class="cert" id="Oathtaking"> ⁡⁢⁣⁢<!-- ‍wala sa database table -->⁡⁡
+                                    <?php include 'forms/Oathtaking.php' ?>
+                                </div>
+
+                                <div class="cert" id="transfer_of_residency">
+                                    <?php include 'forms/transfer_of_residency.php' ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
+
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="">
@@ -294,8 +237,10 @@ include 'includes/cert_db.php'
                     </div>
                 </div>
             </div>
+
         </section>
-    </main>
+
+    </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
@@ -322,8 +267,19 @@ include 'includes/cert_db.php'
     <script src="assets/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
+    <script>
+
+    </script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/main2.js"></script>
+    <script>
+        // Select all input elements of type "text"
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
+
+        document.getElementById('issueddate').value = formattedDate;
+
+    </script>
 </body>
 
 </html>

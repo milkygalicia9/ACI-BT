@@ -3,35 +3,35 @@
     <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
     <label for="">Middle Initial:</label>
-    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
+    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. M"><br>
 
     <label for="">Last Name:</label>
     <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
 
     <label for="">Suffix:</label>
-    <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
-    <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+    <select class="form-control text-left" name="suffix" id="suffixs">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
         <option value="I">I</option>
         <option value="II">II</option>
         <option value="III">III</option>
-    </select><br><br>
+    </select><br>
 
     <label for="">Age</label>
-    <input type="number" class="form-control" name="age">
+    <input type="number" class="form-control" name="age" placeholder="Ex. 24"><br>
 
     <label for="">Civil Status</label>
-    <select name="" id="civil" onchange="updateText()" class="form-control">
-        <option value="">Select Civil Status</option>
-        <option value="m">Married</option>
-        <option value="s">Single</option>
-        <option value="w">Widow</option>
-    </select>
+    <select name="civil_status" id="civil" onchange="updateText()" class="form-control">
+        <option value="">--Select Civil Status--</option>
+        <option value="Married">Married</option>
+        <option value="Single">Single</option>
+        <option value="Widow">Widow</option>
+    </select><br>
 
     <label for="">Purok:</label><br>
-    <select name="puroks" id="puroks" onchange="update()">
+    <select name="puroks" class="form-control" id="puroks" onchange="update()">
+        <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
         <option value="Kaakbayan">Kaakbayan</option>
@@ -42,6 +42,12 @@
         <option value="Trece">Trece</option>
         <option value="Uha">UHA</option>
     </select><br>
+
+    <label for="">Purpose:</label>
+    <input type="text" name="purpose" class="form-control" id="" cols="30" rows="10"
+        placeholder="Ex. Medical Assistance"></input>
+    <hr>
+
     <button name="indigency" onclick="printIframe()" type="submit">Print</button>
 
 </form>

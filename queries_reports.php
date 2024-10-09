@@ -157,3 +157,5 @@
     } else {
         $count_transfer_of_residency = 0;
     }
+
+    $sum = $count_cohabitation + $count_clearance + $count_business_permit_new + $count_business_permit_renew + $count_certificate_of_employability + $count_certificate_of_income + $count_complaint_certificate + $count_death_certificate + $count_first_time_job_seeker + $count_indigency + $count_indigency_aics + $count_lot_ownership + $count_transfer_of_residency;

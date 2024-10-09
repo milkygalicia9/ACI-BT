@@ -96,6 +96,43 @@ if (!isset($_SESSION['username'])) {
       const Sales_Lot_Ownership = <?php echo $count_lot_ownership; ?>;
       const Sales_Transfer_of_Residency = <?php echo $count_transfer_of_residency; ?>;
 
+      const sum = <?php echo $sum; ?>;
+      document.addEventListener('DOMContentLoaded', function () {
+      
+      // Calculate the clearance percentage
+      const Sales_Clearance_Percent = (Sales_Clearance / sum) * 100;
+      const Sales_Business_Permit_New_Percent = (Sales_Business_Permit_New / sum) * 100;
+      const Sales_Business_Permit_Renew_Percent = (Sales_Business_Permit_Renew / sum) * 100;
+      const Sales_Certificate_of_Employability_Percent = (Sales_Certificate_of_Employability / sum) * 100;
+      const Sales_Certificate_of_Income_Percent = (Sales_Certificate_of_Income / sum) * 100;
+      const Sales_Cohabitation_Percent = (Sales_Cohabitation / sum) * 100;
+      const Sales_Complaint_Certificate_Percent = (Sales_Complaint_Certificate / sum) * 100;
+      const Sales_Death_Certificate_Percent = (Sales_Death_Certificate / sum) * 100;
+      const Sales_First_Time_Job_Seeker_Percent = (Sales_First_Time_Job_Seeker / sum) * 100;
+      const Sales_Indigency_Percent = (Sales_Indigency / sum) * 100;
+      const Sales_Indigency_AICS_Percent = (Sales_Indigency_AICS / sum) * 100;
+      const Sales_Lot_Ownership_Percent = (Sales_Lot_Ownership / sum) * 100;
+      const Sales_Transfer_of_Residency_Percent = (Sales_Transfer_of_Residency / sum) * 100;
+
+      // Set the clearance percentage value into the span
+      document.getElementById('clearance_percent').innerHTML = Sales_Clearance_Percent.toFixed(2) + '%';
+      document.getElementById('business_permit_new_percent').innerHTML = Sales_Business_Permit_New_Percent.toFixed(2) + '%';
+      document.getElementById('business_permit_renew_percent').innerHTML = Sales_Business_Permit_Renew_Percent.toFixed(2) + '%';
+      document.getElementById('income_percent').innerHTML = Sales_Certificate_of_Income_Percent.toFixed(2) + '%';
+      document.getElementById('cohabitation_percent').innerHTML = Sales_Cohabitation_Percent.toFixed(2) + '%';
+      document.getElementById('coe_percent').innerHTML = Sales_Certificate_of_Employability_Percent.toFixed(2) + '%';
+      document.getElementById('indigency_percent').innerHTML = Sales_Indigency_Percent.toFixed(2) + '%';
+      document.getElementById('indigency_aics_percent').innerHTML = Sales_Indigency_AICS_Percent.toFixed(2) + '%';
+      document.getElementById('complaint_percent').innerHTML = Sales_Complaint_Certificate_Percent.toFixed(2) + '%';
+      document.getElementById('death_percent').innerHTML = Sales_Death_Certificate_Percent.toFixed(2) + '%';
+      document.getElementById('ftjs_percent').innerHTML = Sales_First_Time_Job_Seeker_Percent.toFixed(2) + '%';
+      document.getElementById('lot_percent').innerHTML = Sales_Lot_Ownership_Percent.toFixed(2) + '%';
+      document.getElementById('transfer_percent').innerHTML = Sales_Transfer_of_Residency_Percent.toFixed(2) + '%';
+    })
+      
+      
+
+
       // Function to redirect to view_transactions page with document type parameter
       function moreInfo(docType, docId) {
         window.location.href = 'more_info.php?docType=' + encodeURIComponent(docType) + '&docId=' + encodeURIComponent(docId);
@@ -108,6 +145,16 @@ if (!isset($_SESSION['username'])) {
     </aside>
 
     <section class="section dashboard">
+    <div class="d-flex pb-2">
+        <a href="home.php" class="d-flex">
+          <div class="icon">
+            <i class="bi-caret-left-square fs-2 p-2 text-primary"></i>
+          </div>
+          <div class="back d-flex text-primary align-items-center fs-3">
+            Back
+          </div>
+        </a>
+      </div>
       <div class="row">
         <div id="carouselExampleFade" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -159,12 +206,26 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_clearance; ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">12%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="clearance_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
                         </div>
                       </div>
+                      <script>
+                        // Wait for the page to load before running the script
+                        document.addEventListener('DOMContentLoaded', function () {
+                          // Use PHP variables in JavaScript
+                          const Sales_Clearance = <?php echo $count_clearance; ?>;
+                          const sum = <?php echo $sum; ?>;
+                          
+                          // Calculate the clearance percentage
+                          const Sales_Clearance_Percent = (Sales_Clearance / sum) * 100;
+
+                          // Set the clearance percentage value into the span
+                          document.getElementById('clearance_percent').innerHTML = Sales_Clearance_Percent.toFixed(2) + '%';
+                        });
+                      </script>
 
                     </div>
                   </div><!-- End Sales Card -->
@@ -211,7 +272,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_business_permit_new ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">8%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="business_permit_new_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -266,8 +327,8 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_business_permit_renew ?>
                             </h6>
-                            <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                              class="text-muted small pt-2 ps-1">decrease</span>
+                            <span class="text-success small pt-1 fw-bold" id="business_permit_renew_percent">%</span> <span
+                              class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
                         </div>
@@ -330,7 +391,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_certificate_of_income ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">12%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="income_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -382,7 +443,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_cohabitation; ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">8%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="cohabitation_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -439,8 +500,8 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_certificate_of_employability ?>
                             </h6>
-                            <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                              class="text-muted small pt-2 ps-1">decrease</span>
+                            <span class="text-success small pt-1 fw-bold" id="coe_percent">%</span> <span
+                              class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
                         </div>
@@ -506,7 +567,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_indigency; ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">12%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="indigency_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -558,7 +619,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_indigency_aics; ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">8%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="indigency_aics_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -615,8 +676,8 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_complaint_certificate; ?>
                             </h6>
-                            <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                              class="text-muted small pt-2 ps-1">decrease</span>
+                            <span class="text-success small pt-1 fw-bold" id="complaint_percent">%</span> <span
+                              class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
                         </div>
@@ -682,7 +743,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_death_certificate; ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">12%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="death_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -734,7 +795,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_first_time_job_seeker; ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">8%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="ftjs_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -791,8 +852,8 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_lot_ownership; ?>
                             </h6>
-                            <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                              class="text-muted small pt-2 ps-1">decrease</span>
+                            <span class="text-success small pt-1 fw-bold" id="lot_percent">%</span> <span
+                              class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
                         </div>
@@ -858,7 +919,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_transfer_of_residency; ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">12%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="transfer_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
