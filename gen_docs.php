@@ -352,7 +352,7 @@
                       placeholder="Ex. Puerto Princesa City"><br>
 
                     <label for="">Birthday:</label>
-                    <input type="date" class="form-control" id="birthdate" name="birthday">
+                    <input type="date" class="form-control" name="bday" id="bday">
                     <br>
                     <label for="">Civil Status:</label>
                     <select class="form-control" onchange="update()" name="civil_status" id="stats">
@@ -362,7 +362,7 @@
                     </select>
                     <br>
                     <label for="">Period of Residency:</label>
-                    <input type="number" class="form-control" name="residency_period" placeholder="Ex. 3 years"><br>
+                    <input type="number" min="0" class="form-control" name="residency_period" placeholder="Ex. 3 years"><br>
 
                     <label for="">Purpose:</label>
                     <!-- <input type="text" class="form-control" name="purpose"> -->
@@ -372,8 +372,6 @@
                     <!-- <label for="">Duty Officer Full Name:</label>
                   <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel"> -->
                     <button name="barangay_clearance" id="coco" onclick="printIframe()" type="submit">Print</button>
-                    <input type="date" name="issueddate" style="display:none; position:absolute;"> 
-
                   </form>
                 </div>
 
@@ -538,6 +536,8 @@
                     <br>
                     <label for="">Amount (In Numeric Form)</label>
                     <input type="number" name="amount" class="form-control" maxlength="10"><br>
+                   <span name="amountinwords" id="amountinwords" style="display:none;"></span>
+
 
                     <!-- <label for="">Issued Date:</label>
                   <input type="date" class="form-control"> -->
@@ -572,7 +572,7 @@
                     </select><br><br>
 
                     <label for="cohabitant1Birthdate">Birthdate:</label>
-                    <input type="date" class="form-control" name="birth_date"><br>
+                    <input type="date" class="form-control" name="bday" id="bday"><br>
 
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name1" placeholder="Ex. Barbie"><br>
@@ -585,7 +585,7 @@
 
 
                     <label for="cohabitant1Birthdate">Birthdate:</label>
-                    <input type="date" class="form-control" name="cohabitant_birth_date"><br>
+                    <input type="date" class="form-control" name="bday2" id="bday2"><br>
 
                     <label for="">Purok:</label><br>
                     <select name="puroks" id="puroks" onchange="update()">
@@ -697,7 +697,7 @@
                     <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
                       <option value="">N/A</option>
                       <option value="Jr">Jr</option>
-                      <option value="Sr">Sr</option>
+                      <option value="Sr"sub>Sr</option>
                       <option value="I">I</option>
                       <option value="II">II</option>
                       <option value="III">III</option>
