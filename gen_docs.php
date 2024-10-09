@@ -248,24 +248,25 @@ if (isset($_POST["certificate_of_employability"])) {
 }
 
 // if (isset($_POST["first_time_job_seeker"])) {
+
 //   // Sanitize and assign form data to variables
 //   $first_name = $conn->real_escape_string($_POST["first_name"]);
 //   $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
 //   $last_name = $conn->real_escape_string($_POST["last_name"]);
 //   $suffix = $conn->real_escape_string($_POST["suffix"]);
-//   $purok = $conn->real_escape_string($_POST["puroks"]);
+//   $purok = $conn->real_escape_string($_POST["purok"]);
 //   $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
 //   $signed_date = $conn->real_escape_string($_POST["signed_date"]);
 //   $validation_date = $conn->real_escape_string($_POST["validation_date"]);
 //   $witness = $conn->real_escape_string($_POST["witness"]);
 
 //   // Define SQL query using prepared statements
-//   $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, period_of_residency, signed_date, validation_date, witness) VALUES (?, ?, ?, ?, ?, ?, ?)");
 //   $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
 //   $fullname = ucwords($fullname);
 //   $signed_date = date('Y-m-d');
 //   $witness = $_SESSION['username'];
-//   $stmt->bind_param('sssssssss', $fullname, $purok, $period_of_residency, $signed_date, $validation_date, $witness);
+//   $stmt = $conn->prepare("INSERT INTO first_time_job_seeker (fullname, address, period_of_residency, signed_date, validation_date, witness) VALUES (?, ?, ?, ?, ?, ?)");
+//   $stmt->bind_param('ssssss', $fullname, $purok, $period_of_residency, $signed_date, $validation_date, $witness);
 
 //   // Execute SQL query
 //   if ($stmt->execute()) {
@@ -1154,7 +1155,7 @@ if (isset($_POST["cohabitation"])) {
                     </select><br><br>
 
                     <label for="">Purok:</label><br>
-                    <select name="puroks" id="puroks" onchange="update()">
+                    <select name="purok" id="purok" onchange="update()">
                       <option value="Centro">Centro</option>
                       <option value="Hurawan">Huwaran</option>
                       <option value="Kaakbayan">Kaakbayan</option>
@@ -1167,7 +1168,7 @@ if (isset($_POST["cohabitation"])) {
                     </select>
 
                     <label for="residencyPeriod">Period of Residency:</label>
-                    <input type="text" class="form-control" name="residency_period"><br>
+                    <input type="number" class="form-control" name="residency_period"><br>
 
                     <!--(Day/Month/Year daw)-->
                     <label for="certificationSignedDate">Signed date:</label>
