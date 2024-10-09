@@ -273,46 +273,46 @@ if (isset($_POST["transfer_of_residency"])) {
     $stmt->bind_param('sssssss', $fullname, $address, $nationality, $civil_status, $previous_address, $purpose, $issued_date);
 
 
-    // Execute the certificate of transfer insertion query
-    if ($stmt->execute()) {
-        echo "New certificate of transfer record inserted successfully";
+// Execute the certificate of transfer insertion query
+if ($stmt->execute()) {
+    echo "New certificate of transfer record inserted successfully";
 
-        // Fetch admin ID
-        $sql = "SELECT id FROM admin WHERE username = ?";
-        $admin_stmt = $conn->prepare($sql);
-        $admin_stmt->bind_param('s', $_SESSION['username']);
-        $admin_stmt->execute();
-        $admin_result = $admin_stmt->get_result();
+    // Fetch admin ID
+    $sql = "SELECT id FROM admin WHERE username = ?";
+    $admin_stmt = $conn->prepare($sql);
+    $admin_stmt->bind_param('s', $_SESSION['username']);
+    $admin_stmt->execute();
+    $admin_result = $admin_stmt->get_result();
 
-        // Check if the admin user was found
-        if ($admin_result->num_rows > 0) {
-            $row = mysqli_fetch_assoc($admin_result);
-            $admin_id = $row['id'];
+    // Check if the admin user was found
+    if ($admin_result->num_rows > 0) {
+        $row = mysqli_fetch_assoc($admin_result);
+        $admin_id = $row['id'];
 
-            // Insert a transaction record into the `transactions` table
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
-            $trans_stmt->bind_param('is', $admin_id, $fullname);
+        // Insert a transaction record into the `transactions` table
+        $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+        $trans_stmt->bind_param('is', $admin_id, $fullname);
 
-            // Execute the transaction query
-            if ($trans_stmt->execute()) {
-                echo "Transaction record inserted successfully";
-            } else {
-                echo "Error: " . $trans_stmt->error;
-            }
-
-            $trans_stmt->close();
+        // Execute the transaction query
+        if ($trans_stmt->execute()) {
+            echo "Transaction record inserted successfully";
         } else {
-            echo "Error: Admin user not found.";
+            echo "Error: " . $trans_stmt->error;
         }
 
-        $admin_stmt->close();
+        $trans_stmt->close();
     } else {
-        echo "Error: " . $stmt->error;
+        echo "Error: Admin user not found.";
     }
 
-    // Close database connection
-    $stmt->close();
-    $conn->close();
+    $admin_stmt->close();
+} else {
+    echo "Error: " . $stmt->error;
+}
+
+// Close database connection
+$stmt->close();
+$conn->close();
 }
 // End of Certificate of Transfer 
 

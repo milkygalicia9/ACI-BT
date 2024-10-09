@@ -82,7 +82,7 @@ if (isset($_POST["business_permit_new"])) {
   $address = $conn->real_escape_string($_POST["manager_operator_address"]);
 
   // Define SQL query using prepared statements for the business permit
-  $address = $address . ' ' . $purok;
+  $address = $address . ', ' . $purok;
   $fullname = $manager;
   $issued_date = date('Y-m-d');
   $stmt = $conn->prepare("INSERT INTO business_permit_new (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
@@ -138,7 +138,7 @@ if (isset($_POST["business_permit_renew"])) {
   $address = $conn->real_escape_string($_POST["manager_operator_address_renew"]);
 
   // Define SQL query using prepared statements for the business permit
-  $address = $address . ' ' . $purok;
+  $address = $address . ', ' . $purok;
   $fullname = $manager;
   $issued_date = date('Y-m-d');
   $stmt = $conn->prepare("INSERT INTO business_permit_renew (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
@@ -309,6 +309,7 @@ if (isset($_POST["certificate_of_employability"])) {
 //   $conn->close();
 // }
 
+
 if (isset($_POST["indigency"])) {
   // Sanitize and assign form data to variables
   $first_name = $conn->real_escape_string($_POST["first_name"]);
@@ -442,6 +443,73 @@ if (isset($_POST["cohabitation"])) {
   $stmt->close();
   $conn->close();
 }
+
+if (isset($_POST["transfer_of_residency"])) {
+  // Sanitize and assign form data to variables
+  $first_name = $conn->real_escape_string($_POST["first_name"]);
+  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+  $last_name = $conn->real_escape_string($_POST["last_name"]);
+  $suffix = $conn->real_escape_string($_POST["suffix"]);
+  $purok = $conn->real_escape_string($_POST["purok"]);
+  $current_address = $conn->real_escape_string($_POST["current_address"]);
+  $previous_address = $conn->real_escape_string($_POST["previous_address"]);
+  $nationality = $conn->real_escape_string($_POST["nationality"]);
+  $civil_status = $conn->real_escape_string($_POST["civil_status"]);
+  $purpose = $conn->real_escape_string($_POST["purpose"]);
+
+  // Define SQL query using prepared statements for the certificate of transfer
+  $address = $current_address . ', ' . $purok;
+  $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+  $fullname = ucwords($fullname);
+  $issued_date = date('Y-m-d');
+
+  $stmt = $conn->prepare("INSERT INTO transfer_of_residency (fullname, address, nationality, civil_status, previous_address, purpose, issued_date) VALUES (?, ?, ?, ?, ?, ?, ?)");
+  $stmt->bind_param('sssssss', $fullname, $address, $nationality, $civil_status, $previous_address, $purpose, $issued_date);
+
+
+// Execute the certificate of transfer insertion query
+if ($stmt->execute()) {
+  echo "New certificate of transfer record inserted successfully";
+
+  // Fetch admin ID
+  $sql = "SELECT id FROM admin WHERE username = ?";
+  $admin_stmt = $conn->prepare($sql);
+  $admin_stmt->bind_param('s', $_SESSION['username']);
+  $admin_stmt->execute();
+  $admin_result = $admin_stmt->get_result();
+
+  // Check if the admin user was found
+  if ($admin_result->num_rows > 0) {
+      $row = mysqli_fetch_assoc($admin_result);
+      $admin_id = $row['id'];
+
+      // Insert a transaction record into the `transactions` table
+      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+      $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+      // Execute the transaction query
+      if ($trans_stmt->execute()) {
+          echo "Transaction record inserted successfully";
+      } else {
+          echo "Error: " . $trans_stmt->error;
+      }
+
+      $trans_stmt->close();
+  } else {
+      echo "Error: Admin user not found.";
+  }
+
+  $admin_stmt->close();
+} else {
+  echo "Error: " . $stmt->error;
+}
+
+// Close database connection
+$stmt->close();
+$conn->close();
+}
+
+
 
 ?>
 
@@ -1433,7 +1501,6 @@ if (isset($_POST["cohabitation"])) {
 
                 <div id="transfer_of_residency">
                   <form action="#" method="post" id="form">
-
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
@@ -1446,33 +1513,52 @@ if (isset($_POST["cohabitation"])) {
 
                     <label for="">Suffix:</label>
                     <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
-                    <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
-                      <option value="">N/A</option>
-                      <option value="Jr">Jr</option>
-                      <option value="Sr">Sr</option>
-                      <option value="I">I</option>
-                      <option value="II">II</option>
-                      <option value="III">III</option>
-                    </select><br><br>
+                    <select class="form-control text-left" name="suffix" id="suffixs">
+                        <option value="">N/A</option>
+                        <option value="Jr">Jr</option>
+                        <option value="Sr">Sr</option>
+                        <option value="I">I</option>
+                        <option value="II">II</option>
+                        <option value="III">III</option>
+                    </select><br>
 
-                    <label for="">Purok:</label><br>
-                    <select name="puroks" id="puroks" onchange="update()">
-                      <option value="Centro">Centro</option>
-                      <option value="Hurawan">Huwaran</option>
-                      <option value="Kaakbayan">Kaakbayan</option>
-                      <option value="New Princesa"> New Princesa</option>
-                      <option value="San Franciso I">San Franciso I</option>
-                      <option value="San Franciso II">San Franciso II</option>
-                      <option value="Sandiwa">Sandiwa</option>
-                      <option value="Trece">Trece</option>
-                      <option value="Uha">UHA</option>
-                    </select>
-
-                    <label for="">Previous Address:</label>
-                    <input type="text" class="form-control" name="previous_address"><br>
+                    <label for="">Purok:</label>
+                    <select name="puroks" class="form-control" id="puroks" onchange="update()">
+                        <option value="Centro">Centro</option>
+                        <option value="Hurawan">Huwaran</option>
+                        <option value="Kaakbayan">Kaakbayan</option>
+                        <option value="New Princesa"> New Princesa</option>
+                        <option value="San Franciso I">San Franciso I</option>
+                        <option value="San Franciso II">San Franciso II</option>
+                        <option value="Sandiwa">Sandiwa</option>
+                        <option value="Trece">Trece</option>
+                        <option value="Uha">UHA</option>
+                    </select><br>
 
                     <label for="">Current Address:</label>
-                    <input type="text" class="form-control" name="current_address"><br>
+                    <input type="text" class="form-control" name="current_address" placeholder="Ex. Previous Address"><br>
+
+                    <label for="">Previous Address:</label>
+                    <input type="text" class="form-control" name="previous_address" placeholder="Ex. Previous Address"><br>
+
+                    <label for="">Nationality</label>
+                    <input type="text" class="form-control" name="nationality" placeholder="Filipino"><br>
+
+                    <label for="">Civil Status:</label>
+                    <select class="form-control" onchange="update()" name="civil_status" id="stats">
+                        <option value="Married">Married</option>
+                        <option value="Widow">Widow</option>
+                        <option value="Single">Single</option>
+                    </select><br>
+
+                    <label for="">Purpose:</label>
+                    <input type="text" name="purpose" class="form-control" id="" cols="30" rows="10"
+                        placeholder="Ex. Moving to another country"></input>
+
+                    <input type="date" name="issueddate" style="display:none; position:absolute;">
+
+                    <hr>
+
                     <button name="transfer_of_residency" onclick="printIframe()" type="submit">Print</button>
 
                   </form>
