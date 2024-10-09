@@ -3,12 +3,8 @@
     <input type="text" class="form-control" name="business_name_renew" placeholder="Ex. Star Oil"><br>
 
     <label for="">Purok:</label><br>
-<<<<<<< Updated upstream
-    <select name="purok" id="purok">
-=======
     <select name="" id="purok" class="form-control">
         <option value="">--Select Purok--</option>
->>>>>>> Stashed changes
         <option value="Centro">Centro</option>
         <option value="Kaakbayan">Kaakbayan</option>
         <option value="New Princesa"> New Princesa</option>

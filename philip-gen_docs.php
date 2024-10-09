@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 //Include database connection file
 include("db.php");
 include 'includes/cert_db.php'
-?>
+    ?>
 
 
 <!DOCTYPE html>
@@ -108,7 +108,8 @@ include 'includes/cert_db.php'
         box-shadow: 5px 5px 4px #c8d0e7, -1px -1px 3px #fff;
     }
 
-    label, select {
+    label,
+    select {
         font-size: 1.2em;
     }
 </style>
@@ -156,8 +157,8 @@ include 'includes/cert_db.php'
                                     <option value="death_certificate">Death Certificate</option>
                                     <option value="first_time_job_seeker">Barangay Certification (First time Job Seeker)
                                     </option>
-                                    <option value="indigency">Indigency</option>
                                     <option value="indigency_aics">Indigency (AICS)</option>
+                                    <option value="indigency">Indigency</option>
                                     <option value="lot_ownership">Lot Ownership</option>
                                     <option value="Oathtaking">Oathtaking</option>
                                     <option value="transfer_of_residency">Certificate of Transfer</option>
