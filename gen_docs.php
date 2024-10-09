@@ -141,7 +141,7 @@ if (isset($_POST["business_permit_renew"])) {
   $address = $address . ' ' . $purok;
   $fullname = $manager;
   $issued_date = date('Y-m-d');
-  $stmt = $conn->prepare("INSERT INTO business_permit_renew (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
+  $stmt = $conn->prepare("INSERT INTO business_permit_new (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
   $stmt->bind_param('ssss', $business_name, $manager, $address, $issued_date);
 
   // Execute the business permit insertion query
@@ -186,6 +186,66 @@ if (isset($_POST["business_permit_renew"])) {
   $conn->close();
 }
 
+if (isset($_POST["certificate_of_employability"])) {
+  // Sanitize and assign form data to variables
+  $first_name = $conn->real_escape_string($_POST["first_name"]);
+  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+  $last_name = $conn->real_escape_string($_POST["last_name"]);
+  $suffix = $conn->real_escape_string($_POST["suffix"]);
+  $age = $conn->real_escape_string($_POST["age"]);
+  $address = $conn->real_escape_string($_POST["purok"]);
+  //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
+  //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_name"]);
+
+  // Define SQL query using prepared statements for the business permit
+  $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+  $fullname = ucwords($fullname);
+  $duty_officer_name = $_SESSION['username'];
+  $issued_date = date('Y-m-d');
+  $stmt = $conn->prepare("INSERT INTO certificate_of_employability (fullname, age, address, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?)");
+  $stmt->bind_param('sssss', $fullname, $age, $address, $issued_date, $duty_officer_name);
+
+  // Execute the business permit insertion query
+  if ($stmt->execute()) {
+      echo "New certificate of employability record inserted successfully";
+
+      // Fetch admin ID
+      $sql = "SELECT id FROM admin WHERE username = ?";
+      $admin_stmt = $conn->prepare($sql);
+      $admin_stmt->bind_param('s', $_SESSION['username']);
+      $admin_stmt->execute();
+      $admin_result = $admin_stmt->get_result();
+
+      // Check if the admin user was found
+      if ($admin_result->num_rows > 0) {
+          $row = mysqli_fetch_assoc($admin_result);
+          $admin_id = $row['id'];
+
+          // Insert a transaction record into the `transactions` table
+          $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+          $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+          // Execute the transaction query
+          if ($trans_stmt->execute()) {
+              echo "Transaction record inserted successfully";
+          } else {
+              echo "Error: " . $trans_stmt->error;
+          }
+
+          $trans_stmt->close();
+      } else {
+          echo "Error: Admin user not found.";
+      }
+
+      $admin_stmt->close();
+  } else {
+      echo "Error: " . $stmt->error;
+  }
+
+  // Close database connection
+  $stmt->close();
+  $conn->close();
+}
 ?>
 
 
@@ -609,8 +669,8 @@ if (isset($_POST["business_permit_renew"])) {
                     <!-- <label for="">Issued Date:</label>
                   <input type="date" class="form-control"> -->
 
-                    <label for="">Duty Officer Full Name:</label>
-                    <input type="text" name="Duty_Officer" class="form-control">
+                    <!-- <label for="">Duty Officer Full Name:</label>
+                    <input type="text" name="Duty_Officer" class="form-control"> -->
                     <button name="certificate_of_employability" onclick="printIframe()" type="submit">Print</button>
 
                   </form>

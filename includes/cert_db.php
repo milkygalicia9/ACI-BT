@@ -25,7 +25,7 @@ if (isset($_POST["barangay_clearance"])) {
 
     // Execute SQL query
     if ($stmt->execute()) {
-        //echo "New record inserted successfully";
+        echo "New record inserted successfully";
 
         // Fetch admin ID
         $sql = "SELECT id FROM admin WHERE username = ?";
@@ -43,19 +43,19 @@ if (isset($_POST["barangay_clearance"])) {
             $trans_stmt->bind_param('is', $admin_id, $fullname);
 
             if ($trans_stmt->execute()) {
-                //echo "Transaction record inserted successfully";
+                echo "Transaction record inserted successfully";
             } else {
-                //echo "Error: " . $trans_stmt->error;
+                echo "Error: " . $trans_stmt->error;
             }
 
             $trans_stmt->close();
         } else {
-            //echo "Error: Admin user not found.";
+            echo "Error: Admin user not found.";
         }
 
         $admin_stmt->close();
     } else {
-        //echo "Error: " . $stmt->error;
+        echo "Error: " . $stmt->error;
     }
 
     // Close database connection
