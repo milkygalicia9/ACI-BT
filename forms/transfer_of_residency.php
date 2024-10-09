@@ -12,17 +12,17 @@
 
     <label for="">Suffix:</label>
     <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
-    <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+    <select class="form-control text-left" name="suffix" id="suffixs">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
         <option value="I">I</option>
         <option value="II">II</option>
         <option value="III">III</option>
-    </select><br><br>
+    </select><br>
 
-    <label for="">Purok:</label><br>
-    <select name="puroks" id="puroks" onchange="update()">
+    <label for="">Purok:</label>
+    <select name="puroks" class="form-control" id="puroks" onchange="update()">
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
         <option value="Kaakbayan">Kaakbayan</option>
@@ -32,13 +32,32 @@
         <option value="Sandiwa">Sandiwa</option>
         <option value="Trece">Trece</option>
         <option value="Uha">UHA</option>
-    </select>
-
-    <label for="">Previous Address:</label>
-    <input type="text" class="form-control" name="previous_address"><br>
+    </select><br>
 
     <label for="">Current Address:</label>
-    <input type="text" class="form-control" name="current_address"><br>
+    <input type="text" class="form-control" name="current_address" placeholder="Ex. Previous Address"><br>
+
+    <label for="">Previous Address:</label>
+    <input type="text" class="form-control" name="previous_address" placeholder="Ex. Previous Address"><br>
+
+    <label for="">Nationality</label>
+    <input type="text" class="form-control" name="current_address" placeholder="Filipino"><br>
+
+    <label for="">Civil Status:</label>
+    <select class="form-control" onchange="update()" name="civil_status" id="stats">
+        <option value="Married">Married</option>
+        <option value="Widow">Widow</option>
+        <option value="Single">Single</option>
+    </select><br>
+
+    <label for="">Purpose:</label>
+    <input type="text" name="purpose" class="form-control" id="" cols="30" rows="10"
+        placeholder="Ex. Moving to another country"></input>
+
+    <input type="date" name="issueddate" style="display:none; position:absolute;">
+
+    <hr>
+
     <button name="transfer_of_residency" onclick="printIframe()" type="submit">Print</button>
 
 </form>

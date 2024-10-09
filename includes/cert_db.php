@@ -181,3 +181,69 @@ if (isset($_POST["business_permit_renew"])) {
 }
 // End of Business Permit Renew
 
+// Certificate of Transfer
+if (isset($_POST["transfer_of_residency"])) {
+    // Sanitize and assign form data to variables
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $current_address = $conn->real_escape_string($_POST["current_address"]);
+    $previous_address = $conn->real_escape_string($_POST["previous_address"]);
+    $nationality = $conn->real_escape_string($_POST["nationality"]);
+    $civil_status = $conn->real_escape_string($_POST["civil_status"]);
+    $purpose = $conn->real_escape_string($_POST["purpose"]);
+
+    // Define SQL query using prepared statements for the certificate of transfer
+    $address = $current_address . ' . ' . $purok;
+    $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+    $fullname = ucwords($fullname);
+    $issued_date = date('Y-m-d');
+
+    $stmt = $conn->prepare("INSERT INTO transfer_of_residency (fullname, address, nationality, civil_status, previous_address, purpose, issued_date) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssss', $fullname, $address, $nationality, $civil_status, $previous_address, $purpose,  $issued_date);
+
+
+    // Execute the certificate of transfer insertion query
+    if ($stmt->execute()) {
+        echo "New certificate of transfer record inserted successfully";
+
+        // Fetch admin ID
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $_SESSION['username']);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        // Check if the admin user was found
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            // Insert a transaction record into the `transactions` table
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            // Execute the transaction query
+            if ($trans_stmt->execute()) {
+                echo "Transaction record inserted successfully";
+            } else {
+                echo "Error: " . $trans_stmt->error;
+            }
+
+            $trans_stmt->close();
+        } else {
+            echo "Error: Admin user not found.";
+        }
+
+        $admin_stmt->close();
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    // Close database connection
+    $stmt->close();
+    $conn->close();
+}
+// End of Certificate of Transfer 
