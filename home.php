@@ -124,7 +124,7 @@ if (!isset($_SESSION['username'])) {
 
         <section class="section dashboard">
             <div class="col-md-12 d-flex align-items-center justify-content-around p-3 pb-5 mb-5">
-                <form action="philip-gen_docs.php" class="row">
+                <form action="gen_docs.php" class="row">
                     <div class="col-md-12"> <button class="card">
                             <div class="card-document p-2">
                                 <h6 class="card-title fw-semibold fs-2">Generate Documents</h6>
