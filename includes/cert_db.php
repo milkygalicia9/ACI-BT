@@ -302,8 +302,6 @@ if (isset($_POST["indigency"])) {
     } else {
         echo "Error: " . $stmt->error;
     }
-
-
     // Close database connection
     $stmt->close();
     $conn->close();
@@ -382,9 +380,6 @@ if (isset($_POST["cohabitation"])) {
     $conn->close();
 }
 // End of Certificate of Cohabitation
-
-
-
 
 
 
