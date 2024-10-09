@@ -246,6 +246,8 @@ if (isset($_POST["certificate_of_employability"])) {
   $stmt->close();
   $conn->close();
 }
+
+
 ?>
 
 
@@ -586,11 +588,6 @@ if (isset($_POST["certificate_of_employability"])) {
                   </form>
                 </div>
 
-
-
-
-
-
                 <div id="business_permit_renew">
                   <form action="#" method="post" id="form">
                     <label for="businessName">Business name/ Trade Activity:</label>
@@ -767,7 +764,7 @@ if (isset($_POST["certificate_of_employability"])) {
                     <input type="date" class="form-control" name="cohabitant_birth_date"><br>
 
                     <label for="">Purok:</label><br>
-                    <select name="puroks" id="puroks" onchange="update()">
+                    <select name="purok" id="purok" onchange="update()">
                       <option value="Centro">Centro</option>
                       <option value="Hurawan">Huwaran</option>
                       <option value="Kaakbayan">Kaakbayan</option>
@@ -785,8 +782,8 @@ if (isset($_POST["certificate_of_employability"])) {
                     <input type="month" onchange="updateText()" id="month" class="form-control"
                       name="date_of_marriage"><br>
 
-                    <label for="">Duty Officer Full Name</label>
-                    <input type="text" class="form-control" name="duty_officer_full_name">
+                    <!-- <label for="">Duty Officer Full Name</label>
+                    <input type="text" class="form-control" name="duty_officer_full_name"> -->
                   </form>
                   <button name="cohabitation" onclick="printIframe()" type="submit">Print</button>
 
