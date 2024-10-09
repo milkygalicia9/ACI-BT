@@ -641,6 +641,66 @@ if (isset($_POST["transfer_of_residency"])) {
 //   $conn->close();
 // }
 
+// if (isset($_POST["complaint_certificate"])) {
+//   // Sanitize and assign form data to variables
+//   $first_name = $conn->real_escape_string($_POST["first_name"]);
+//   $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+//   $last_name = $conn->real_escape_string($_POST["last_name"]);
+//   $suffix = $conn->real_escape_string($_POST["suffix"]);
+//   $age = $conn->real_escape_string($_POST["age"]);
+//   $purok = $conn->real_escape_string($_POST["purok"]);
+//   $first_namec = $conn->real_escape_string($_POST["first_namec"]);
+//   $middle_initialc = $conn->real_escape_string($_POST["middle_initialc"]);
+//   $last_namec = $conn->real_escape_string($_POST["last_namec"]);
+
+//   // Define SQL query using prepared statements for the business permit
+//   $fullname_of_complainant = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+//   $address = $purok;
+//   $fullname_of_respondent = $first_namec . ' ' . $middle_initialc . ' ' . $last_namec;
+//   $stmt = $conn->prepare("INSERT INTO complaint_certificate (fullname_of_complainant, address, date_of_complain, fullname_of_respondent) VALUES (?, ?, ?, ?)");
+//   $stmt->bind_param('ssss', $fullname_of_complainant, $address, $date_of_complain, $fullname_of_respondent);
+
+//   //Execute the business permit insertion query
+//   if ($stmt->execute()) {
+//     echo "New business permit record inserted successfully";
+
+//     //Fetch admin ID
+//     $sql = "SELECT id FROM admin WHERE username = ?";
+//     $admin_stmt = $conn->prepare($sql);
+//     $admin_stmt->bind_param('s', $_SESSION['username']);
+//     $admin_stmt->execute();
+//     $admin_result = $admin_stmt->get_result();
+
+//     // Check if the admin user was found
+//     if ($admin_result->num_rows > 0) {
+//       $row = mysqli_fetch_assoc($admin_result);
+//       $admin_id = $row['id'];
+
+//       // Insert a transaction record into the `transactions` table
+//       $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_new), NOW())");
+//       $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+//       // Execute the transaction query
+//       if ($trans_stmt->execute()) {
+//         echo "Transaction record inserted successfully";
+//       } else {
+//         echo "Error: " . $trans_stmt->error;
+//       }
+
+//       $trans_stmt->close();
+//     } else {
+//       echo "Error: Admin user not found.";
+//     }
+
+//     $admin_stmt->close();
+//   } else {
+//     echo "Error: " . $stmt->error;
+//   }
+
+//   // Close database connection
+//   $stmt->close();
+//   $conn->close();
+// }
 
 ?>
 
@@ -937,7 +997,8 @@ if (isset($_POST["transfer_of_residency"])) {
                     </select>
                     <br>
                     <label for="">Period of Residency:</label>
-                    <input type="number" min="0" class="form-control" name="residency_period" placeholder="Ex. 3 years"><br>
+                    <input type="number" min="0" class="form-control" name="residency_period"
+                      placeholder="Ex. 3 years"><br>
 
                     <label for="">Purpose:</label>
                     <!-- <input type="text" class="form-control" name="purpose"> -->
@@ -954,7 +1015,7 @@ if (isset($_POST["transfer_of_residency"])) {
                   <form action="#" method="post" id="form">
                     <label for="businessName">Business name/ Trade Activity:</label>
                     <input type="text" name="businessName" class="form-control" name="business_name"><br>
-                  
+
                     <label for="">Purok:</label><br>
                     <select name="purok" id="purok" onchange="update()">
                       <option value="Centro, Barangay Tiniguiban Puerto Princesa City">Centro</option>
@@ -1101,7 +1162,7 @@ if (isset($_POST["transfer_of_residency"])) {
                     <br>
                     <label for="">Amount (In Numeric Form)</label>
                     <input type="number" name="amount" class="form-control" maxlength="10"><br>
-                   <span name="amountinwords" id="amountinwords" style="display:none;"></span>
+                    <span name="amountinwords" id="amountinwords" style="display:none;"></span>
 
 
                     <!-- <label for="">Issued Date:</label>
@@ -1263,7 +1324,7 @@ if (isset($_POST["transfer_of_residency"])) {
                     <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
                       <option value="">N/A</option>
                       <option value="Jr">Jr</option>
-                      <option value="Sr"sub>Sr</option>
+                      <option value="Sr" sub>Sr</option>
                       <option value="I">I</option>
                       <option value="II">II</option>
                       <option value="III">III</option>
