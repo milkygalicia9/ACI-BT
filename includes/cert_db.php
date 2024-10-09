@@ -11,7 +11,7 @@ if (isset($_POST["barangay_clearance"])) {
     $birthdate = $conn->real_escape_string($_POST["birthday"]);
     $civil_status = $conn->real_escape_string($_POST["civil_status"]);
     $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
-    $issued_date = $conn->real_escape_string($_POST["issued_date"]);
+    //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
     $purpose = $conn->real_escape_string($_POST["purpose"]);
     //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_full_name"]);
 
@@ -25,7 +25,7 @@ if (isset($_POST["barangay_clearance"])) {
 
     // Execute SQL query
     if ($stmt->execute()) {
-        echo "New record inserted successfully";
+        //echo "New record inserted successfully";
 
         // Fetch admin ID
         $sql = "SELECT id FROM admin WHERE username = ?";
@@ -39,28 +39,26 @@ if (isset($_POST["barangay_clearance"])) {
             $admin_id = $row['id'];
 
             // Modify SQL query to use COUNT function correctly
-            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, client_trans_id, created_at) VALUES (?, 1, (SELECT COUNT(*) FROM barangay_clearance), NOW())");
-            $trans_stmt->bind_param('i', $admin_id);
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?, (SELECT COUNT(*) FROM barangay_clearance), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
 
             if ($trans_stmt->execute()) {
-                echo "Transaction record inserted successfully";
+                //echo "Transaction record inserted successfully";
             } else {
-                echo "Error: " . $trans_stmt->error;
+                //echo "Error: " . $trans_stmt->error;
             }
 
             $trans_stmt->close();
         } else {
-            echo "Error: Admin user not found.";
-            echo "Error: Admin user not found.";
+            //echo "Error: Admin user not found.";
         }
 
         $admin_stmt->close();
     } else {
-        echo "Error: " . $stmt->error;
+        //echo "Error: " . $stmt->error;
     }
 
     // Close database connection
     $stmt->close();
     $conn->close();
 }
-?>

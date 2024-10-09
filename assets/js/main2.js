@@ -214,7 +214,8 @@ function select(){
   function printIframe() {
     var iframe = document.getElementById('myIframe');
 var iframeWindow = iframe.contentWindow;
-iframeWindow.print(); 
+iframeWindow.print();
+ 
   }
 
   function updateText() { 
