@@ -247,6 +247,7 @@ if (isset($_POST["certificate_of_employability"])) {
   $conn->close();
 }
 
+<<<<<<< Updated upstream
 // if (isset($_POST["first_time_job_seeker"])) {
 //   // Sanitize and assign form data to variables
 //   $first_name = $conn->real_escape_string($_POST["first_name"]);
@@ -307,6 +308,76 @@ if (isset($_POST["certificate_of_employability"])) {
 //   $stmt->close();
 //   $conn->close();
 // }
+=======
+if (isset($_POST["cohabitation"])) {
+  // Sanitize and assign form data to variables
+  $first_name = $conn->real_escape_string($_POST["first_name"]);
+  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+  $last_name = $conn->real_escape_string($_POST["last_name"]);
+  $suffix = $conn->real_escape_string($_POST["suffix"]);
+  $birthdate = $conn->real_escape_string($_POST["birth_date"]);
+  $first_name1 = $conn->real_escape_string($_POST["first_name1"]);
+  $middle_initial1 = $conn->real_escape_string($_POST["middle_initial1"]);
+  $last_name1 = $conn->real_escape_string($_POST["last_name1"]);
+  $cohabitant_birthdate = $conn->real_escape_string($_POST["cohabitant_birth_date"]);
+  $purok = $conn->real_escape_string($_POST["purok"]);
+  $date_of_marriage = $conn->real_escape_string($_POST["date_of_marriage"]);
+
+  // Define SQL query using prepared statements for the business permit
+  $fullname_male = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+  $fullname_male = ucwords($fullname_male);
+  $fullname_female = $first_name1 . ' ' . $middle_initial1 . ' ' . $last_name;
+  $fullname_female = ucwords($fullname_female);
+  $address = $purok;
+  $years_married = date('Y') - date('Y', strtotime($date_of_marriage));
+  $fullname = $fullname_male;
+  $duty_officer_name = $_SESSION['username'];
+  $issued_date = date('Y-m-d');
+  $stmt = $conn->prepare("INSERT INTO cohabitation (fullname_male, birthdate_male, fullname_female, birthdate_female, address, date_of_marriage, years_married, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+  $stmt->bind_param('sssssssss', $fullname_male, $birthdate, $fullname_female, $cohabitant_birthdate, $address, $date_of_marriage, $years_married, $issued_date, $duty_officer_name);
+
+  // Execute the business permit insertion query
+  if ($stmt->execute()) {
+    echo "New certificate of employability record inserted successfully";
+
+    // Fetch admin ID
+    $sql = "SELECT id FROM admin WHERE username = ?";
+    $admin_stmt = $conn->prepare($sql);
+    $admin_stmt->bind_param('s', $_SESSION['username']);
+    $admin_stmt->execute();
+    $admin_result = $admin_stmt->get_result();
+
+    // Check if the admin user was found
+    if ($admin_result->num_rows > 0) {
+      $row = mysqli_fetch_assoc($admin_result);
+      $admin_id = $row['id'];
+
+      // Insert a transaction record into the `transactions` table
+      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+      $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+      // Execute the transaction query
+      if ($trans_stmt->execute()) {
+        echo "Transaction record inserted successfully";
+      } else {
+        echo "Error: " . $trans_stmt->error;
+      }
+
+      $trans_stmt->close();
+    } else {
+      echo "Error: Admin user not found.";
+    }
+
+    $admin_stmt->close();
+  } else {
+    echo "Error: " . $stmt->error;
+  }
+
+  // Close database connection
+  $stmt->close();
+  $conn->close();
+}
+>>>>>>> Stashed changes
 
 if (isset($_POST["indigency"])) {
   // Sanitize and assign form data to variables
@@ -317,11 +388,16 @@ if (isset($_POST["indigency"])) {
   $age = $conn->real_escape_string($_POST["age"]);
   $civil_status = $conn->real_escape_string($_POST["civil_status"]);
   $purok = $conn->real_escape_string($_POST["purok"]);
+  // $purpose = $conn->real_escape_string($_POST["purpose"]);
 
   // Define SQL query using prepared statements for the indigency
   $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
   $fullname = ucwords($fullname);
   $address = $purok;
+<<<<<<< Updated upstream
+=======
+  $purpose = "wala lang";
+>>>>>>> Stashed changes
   $issued_date = date('Y-m-d');
   $purpose = "Indigency"; // Add a default purpose or get it from the form if needed
 
@@ -904,13 +980,10 @@ if (isset($_POST["indigency"])) {
                     <br>
                     <!--Month and Year daw-->
                     <label for="dateOfMarriage">Period of marriage:</label>
-                    <input type="month" onchange="updateText()" id="month" class="form-control"
-                      name="date_of_marriage"><br>
-
-                    <!-- <label for="">Duty Officer Full Name</label>
-                    <input type="text" class="form-control" name="duty_officer_full_name"> -->
+                    <input type="date" id="date" class="form-control" name="date_of_marriage"><br>
+                    <button name="cohabitation" onclick="printIframe()" type="submit">Print</button>
                   </form>
-                  <button name="cohabitation" onclick="printIframe()" type="submit">Print</button>
+                  
 
                 </div>
 
