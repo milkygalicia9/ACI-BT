@@ -4,7 +4,7 @@
     <input type="text" name="businessName" class="form-control" name="business_name"><br>
 
     <label for="">Purok:</label><br>
-    <select name="puroks" id="puroks" onchange="update()">
+    <select name="purok" id="purok" onchange="update()">
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
         <option value="Kaakbayan">Kaakbayan</option>
