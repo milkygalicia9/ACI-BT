@@ -570,6 +570,78 @@ if (isset($_POST["transfer_of_residency"])) {
 //   $conn->close();
 // }
 
+
+// if (isset($_POST["death_certificate"])) {
+//   // Sanitize and assign form data to variables
+//   $first_name = $conn->real_escape_string($_POST["first_name"]);
+//   $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+//   $last_name = $conn->real_escape_string($_POST["last_name"]);
+//   $suffix = $conn->real_escape_string($_POST["suffix"]);
+//   $purok = $conn->real_escape_string($_POST["purok"]);
+//   $date_of_death = $conn->real_escape_string($_POST["date_of_death"]);
+//   $time_of_death = $conn->real_escape_string($_POST["time_of_death"]);
+//   $cause_of_death = $conn->real_escape_string($_POST["cause_of_death"]);
+//   $first_named = $conn->real_escape_string($_POST["first_named"]);
+//   $middle_initiald = $conn->real_escape_string($_POST["middle_initiald"]);
+//   $last_named = $conn->real_escape_string($_POST["last_named"]);
+//   $suffixd = $conn->real_escape_string($_POST["suffixd"]);
+//   $relationship_to_dead_person = $conn->real_escape_string($_POST["relationship_to_dead_person"]);
+//   $date_requested = $conn->real_escape_string($_POST["date_requested"]);
+//   //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
+//   //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_name"]);
+
+//   // Define SQL query using prepared statements for the business permit
+//   $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+//   $fullname = ucwords($fullname);
+//   $address = $purok;
+//   $req_fullname = $first_named . ' ' . $middle_initiald . ' ' . $last_named . ' ' . $suffixd;
+//   $relationship = $relationship_to_dead_person;
+//   $stmt = $conn->prepare("INSERT INTO death_certificate (fullname, address, date_of_death, time_of_death, req_fullname, relationship, date_requested) VALUES (?, ?, ?, ?, ?, ?, ?)");
+//   $stmt->bind_param('sssssss', $fullname, $address, $date_of_death, $time_of_death, $req_fullname, $relationship, $date_requested);
+
+//   // Execute the business permit insertion query
+//   if ($stmt->execute()) {
+//     echo "New certificate of employability record inserted successfully";
+
+//     // Fetch admin ID
+//     $sql = "SELECT id FROM admin WHERE username = ?";
+//     $admin_stmt = $conn->prepare($sql);
+//     $admin_stmt->bind_param('s', $_SESSION['username']);
+//     $admin_stmt->execute();
+//     $admin_result = $admin_stmt->get_result();
+
+//     // Check if the admin user was found
+//     if ($admin_result->num_rows > 0) {
+//       $row = mysqli_fetch_assoc($admin_result);
+//       $admin_id = $row['id'];
+
+//       // Insert a transaction record into the `transactions` table
+//       $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+//       $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+//       // Execute the transaction query
+//       if ($trans_stmt->execute()) {
+//         echo "Transaction record inserted successfully";
+//       } else {
+//         echo "Error: " . $trans_stmt->error;
+//       }
+
+//       $trans_stmt->close();
+//     } else {
+//       echo "Error: Admin user not found.";
+//     }
+
+//     $admin_stmt->close();
+//   } else {
+//     echo "Error: " . $stmt->error;
+//   }
+
+//   // Close database connection
+//   $stmt->close();
+//   $conn->close();
+// }
+
+
 ?>
 
 
