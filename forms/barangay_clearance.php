@@ -58,8 +58,8 @@
 
     <div class="print" style="text-align: right;">
         <button type="button" class="btn btn-primary w-25" data-bs-toggle="modal"
-            data-bs-target="#verticalycentered">Print</button>
-        <div class="modal fade" id="verticalycentered" tabindex="-1" style="display: none;" aria-hidden="true">
+            data-bs-target="#brgyClearance">Print</button>
+        <div class="modal fade" id="brgyClearance" tabindex="-1" style="display: none;" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content text-center">
                     <div class="modal-header">
