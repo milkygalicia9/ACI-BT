@@ -7,7 +7,7 @@
 // }
 
 // Include database connection file
-include("db.php");
+// include("db.php");
 
 // // Check if form is submitted
 // if (isset($_POST["submit"])) {
