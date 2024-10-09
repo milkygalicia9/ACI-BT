@@ -6,8 +6,8 @@
 //     exit();
 // }
 
-// // Include database connection file
-// include("db.php");
+// Include database connection file
+include("db.php");
 
 // // Check if form is submitted
 // if (isset($_POST["submit"])) {
@@ -323,7 +323,7 @@
                     <br>
                     <label for="">Civil Status:</label>
                     <select class="form-control" onchange="update()" name="civil_status" id="stats">
-                      <option value="Maried">Married</option>
+                      <option value="Married">Married</option>
                       <option value="Widow">Window</option>
                       <option value="Single">Single</option>
                     </select>
