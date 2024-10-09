@@ -1120,7 +1120,7 @@ if (isset($_POST["indigency"])) {
                     <input type="number" class="form-control" name="age">
 
                     <label for="">Civil Status</label>
-                    <select name="" id="civil" onchange="updateText()" class="form-control">
+                    <select name="civil_status" id="civil" onchange="updateText()" class="form-control">
                       <option value="">Select Civil Status</option>
                       <option value="m">Married</option>
                       <option value="s">Single</option>
