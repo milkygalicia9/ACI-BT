@@ -77,13 +77,16 @@ if (isset($_POST["barangay_clearance"])) {
 if (isset($_POST["business_permit_new"])) {
   // Sanitize and assign form data to variables
   $business_name = $conn->real_escape_string($_POST["businessName"]);
-  $purok = $conn->real_escape_string($_POST["puroks"]);
-  $manager_operator = $conn->real_escape_string($_POST["manager_operator"]);
-  $manager_operator_address = $conn->real_escape_string($_POST["manager_operator_address"]);
+  $purok = $conn->real_escape_string($_POST["purok"]);
+  $manager = $conn->real_escape_string($_POST["manager_operator"]);
+  $address = $conn->real_escape_string($_POST["manager_operator_address"]);
 
   // Define SQL query using prepared statements for the business permit
-  $stmt = $conn->prepare("INSERT INTO business_permit_new (business_name, purok, manager_operator, manager_operator_address) VALUES (?, ?, ?, ?)");
-  $stmt->bind_param('ssss', $business_name, $purok, $manager_operator, $manager_operator_address);
+  $address = $address . ' ' . $purok;
+  $fullname = $manager;
+  $issued_date = date('Y-m-d');
+  $stmt = $conn->prepare("INSERT INTO business_permit_new (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
+  $stmt->bind_param('ssss', $business_name, $manager, $address, $issued_date);
 
   // Execute the business permit insertion query
   if ($stmt->execute()) {
@@ -102,8 +105,8 @@ if (isset($_POST["business_permit_new"])) {
           $admin_id = $row['id'];
 
           // Insert a transaction record into the `transactions` table
-          $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, client_trans_id, created_at) VALUES (?, 2, (SELECT COUNT(*) FROM business_permit), NOW())");
-          $trans_stmt->bind_param('i', $admin_id);
+          $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_new), NOW())");
+          $trans_stmt->bind_param('is', $admin_id, $fullname);
 
           // Execute the transaction query
           if ($trans_stmt->execute()) {
@@ -127,6 +130,61 @@ if (isset($_POST["business_permit_new"])) {
   $conn->close();
 }
 
+if (isset($_POST["business_permit_renew"])) {
+  // Sanitize and assign form data to variables
+  $business_name = $conn->real_escape_string($_POST["business_name_renew"]);
+  $purok = $conn->real_escape_string($_POST["purok"]);
+  $manager = $conn->real_escape_string($_POST["manager_operator_renew"]);
+  $address = $conn->real_escape_string($_POST["manager_operator_address_renew"]);
+
+  // Define SQL query using prepared statements for the business permit
+  $address = $address . ' ' . $purok;
+  $fullname = $manager;
+  $issued_date = date('Y-m-d');
+  $stmt = $conn->prepare("INSERT INTO business_permit_renew (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
+  $stmt->bind_param('ssss', $business_name, $manager, $address, $issued_date);
+
+  // Execute the business permit insertion query
+  if ($stmt->execute()) {
+      echo "New business permit record inserted successfully";
+
+      // Fetch admin ID
+      $sql = "SELECT id FROM admin WHERE username = ?";
+      $admin_stmt = $conn->prepare($sql);
+      $admin_stmt->bind_param('s', $_SESSION['username']);
+      $admin_stmt->execute();
+      $admin_result = $admin_stmt->get_result();
+
+      // Check if the admin user was found
+      if ($admin_result->num_rows > 0) {
+          $row = mysqli_fetch_assoc($admin_result);
+          $admin_id = $row['id'];
+
+          // Insert a transaction record into the `transactions` table
+          $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+          $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+          // Execute the transaction query
+          if ($trans_stmt->execute()) {
+              echo "Transaction record inserted successfully";
+          } else {
+              echo "Error: " . $trans_stmt->error;
+          }
+
+          $trans_stmt->close();
+      } else {
+          echo "Error: Admin user not found.";
+      }
+
+      $admin_stmt->close();
+  } else {
+      echo "Error: " . $stmt->error;
+  }
+
+  // Close database connection
+  $stmt->close();
+  $conn->close();
+}
 
 ?>
 
@@ -442,7 +500,7 @@ if (isset($_POST["business_permit_new"])) {
                     <input type="text" name="businessName" class="form-control" name="business_name"><br>
 
                     <label for="">Purok:</label><br>
-                    <select name="puroks" id="puroks" onchange="update()">
+                    <select name="purok" id="purok" onchange="update()">
                       <option value="Centro">Centro</option>
                       <option value="Hurawan">Huwaran</option>
                       <option value="Kaakbayan">Kaakbayan</option>
@@ -657,6 +715,8 @@ if (isset($_POST["business_permit_new"])) {
                       <option value="Trece">Trece</option>
                       <option value="Uha">UHA</option>
                     </select>
+                    <br>
+                    <br>
                     <!--Month and Year daw-->
                     <label for="dateOfMarriage">Period of marriage:</label>
                     <input type="month" onchange="updateText()" id="month" class="form-control"
@@ -707,6 +767,8 @@ if (isset($_POST["business_permit_new"])) {
                       <option value="Trece">Trece</option>
                       <option value="Uha">UHA</option>
                     </select>
+
+                    <br>
 
                     <label for="">Date Filed:</label>
                     <input type="date" class="form-control">
@@ -775,6 +837,8 @@ if (isset($_POST["business_permit_new"])) {
                       <option value="Trece">Trece</option>
                       <option value="Uha">UHA</option>
                     </select>
+                    <br>
+                    <br>
 
                     <label for="dateOfDeath">Date of death:</label>
                     <input type="date" class="form-control" name="date_of_death"><br>
