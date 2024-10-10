@@ -564,6 +564,8 @@
                       <option value="Trece">Trece</option>
                       <option value="Uha">UHA</option>
                     </select>
+                    <br>
+                    <br>
                     <!--Month and Year daw-->
                     <label for="dateOfMarriage">Period of marriage:</label>
                     <input type="month" onchange="updateText()" id="month" class="form-control"
@@ -614,6 +616,8 @@
                       <option value="Trece">Trece</option>
                       <option value="Uha">UHA</option>
                     </select>
+
+                    <br>
 
                     <label for="">Date Filed:</label>
                     <input type="date" class="form-control">
@@ -682,6 +686,8 @@
                       <option value="Trece">Trece</option>
                       <option value="Uha">UHA</option>
                     </select>
+                    <br>
+                    <br>
 
                     <label for="dateOfDeath">Date of death:</label>
                     <input type="date" class="form-control" name="date_of_death"><br>
