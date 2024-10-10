@@ -1,6 +1,7 @@
 <?php
 // session_start();
 
+<<<<<<< HEAD
 // if (!isset($_SESSION['username'])) {
 //     header("Location: index.php");
 //     exit();
@@ -73,6 +74,80 @@
 //     $stmt->close();
 //     $conn->close();
 // }
+=======
+if (!isset($_SESSION['username'])) {
+  header("Location: index.php");
+  exit();
+}
+
+//Include database connection file
+include ("db.php");
+
+// Check if form is submitted
+if (isset($_POST["barangay_clearance"])) {
+  // Sanitize and assign form data to variables
+  $first_name = $conn->real_escape_string($_POST["first_name"]);
+  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+  $last_name = $conn->real_escape_string($_POST["last_name"]);
+  $suffix = $conn->real_escape_string($_POST["suffix"]);
+  $purok = $conn->real_escape_string($_POST["purok"]);
+  $birthplace = $conn->real_escape_string($_POST["birthplace"]);
+  $birthdate = $conn->real_escape_string($_POST["birthday"]);
+  $civil_status = $conn->real_escape_string($_POST["civil_status"]);
+  $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
+  //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
+  $purpose = $conn->real_escape_string($_POST["purpose"]);
+  //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_full_name"]);
+
+  // Define SQL query using prepared statements
+  $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+  $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+  $fullname = ucwords($fullname);
+  $issued_date = date('Y-m-d');
+  $duty_officer_name = $_SESSION['username'];
+  $stmt->bind_param('sssssssss', $fullname, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
+
+  // Execute SQL query
+  if ($stmt->execute()) {
+    echo "New record inserted successfully";
+
+    // Fetch admin ID
+    $sql = "SELECT id FROM admin WHERE username = ?";
+    $admin_stmt = $conn->prepare($sql);
+    $admin_stmt->bind_param('s', $_SESSION['username']);
+    $admin_stmt->execute();
+    $admin_result = $admin_stmt->get_result();
+    // Add missing import statement
+    if ($admin_result->num_rows > 0) {
+      $row = mysqli_fetch_assoc($admin_result);
+      $admin_id = $row['id'];
+
+      // Modify SQL query to use COUNT function correctly
+      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?,(SELECT COUNT(*) FROM barangay_clearance), NOW())");
+      $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+      if ($trans_stmt->execute()) {
+        echo "Transaction record inserted successfully";
+      } else {
+        echo "Error: " . $trans_stmt->error;
+      }
+
+      $trans_stmt->close();
+    } else {
+      echo "Error: Admin user not found.";
+      echo "Error: Admin user not found.";
+    }
+
+    $admin_stmt->close();
+  } else {
+    echo "Error: " . $stmt->error;
+  }
+
+  // Close database connection
+  $stmt->close();
+  $conn->close();
+}
+>>>>>>> c59300a2fc08503fbc43e8c38118d717d5e80bde
 
 // if (isset($_POST["business_permit_new"])) {
 //   // Sanitize and assign form data to variables
@@ -88,6 +163,7 @@
 //   $stmt = $conn->prepare("INSERT INTO business_permit_new (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
 //   $stmt->bind_param('ssss', $business_name, $manager, $address, $issued_date);
 
+<<<<<<< HEAD
 //   // Execute the business permit insertion query
 //   if ($stmt->execute()) {
 //       echo "New business permit record inserted successfully";
@@ -124,6 +200,44 @@
 //   } else {
 //       echo "Error: " . $stmt->error;
 //   }
+=======
+  // Execute the business permit insertion query
+  if ($stmt->execute()) {
+    echo "New business permit record inserted successfully";
+
+    // Fetch admin ID
+    $sql = "SELECT id FROM admin WHERE username = ?";
+    $admin_stmt = $conn->prepare($sql);
+    $admin_stmt->bind_param('s', $_SESSION['username']);
+    $admin_stmt->execute();
+    $admin_result = $admin_stmt->get_result();
+
+    // Check if the admin user was found
+    if ($admin_result->num_rows > 0) {
+      $row = mysqli_fetch_assoc($admin_result);
+      $admin_id = $row['id'];
+
+      // Insert a transaction record into the `transactions` table
+      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_new), NOW())");
+      $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+      // Execute the transaction query
+      if ($trans_stmt->execute()) {
+        echo "Transaction record inserted successfully";
+      } else {
+        echo "Error: " . $trans_stmt->error;
+      }
+
+      $trans_stmt->close();
+    } else {
+      echo "Error: Admin user not found.";
+    }
+
+    $admin_stmt->close();
+  } else {
+    echo "Error: " . $stmt->error;
+  }
+>>>>>>> c59300a2fc08503fbc43e8c38118d717d5e80bde
 
 //   // Close database connection
 //   $stmt->close();
@@ -144,6 +258,7 @@
 //   $stmt = $conn->prepare("INSERT INTO business_permit_renew (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
 //   $stmt->bind_param('ssss', $business_name, $manager, $address, $issued_date);
 
+<<<<<<< HEAD
 //   // Execute the business permit insertion query
 //   if ($stmt->execute()) {
 //       echo "New business permit record inserted successfully";
@@ -180,12 +295,110 @@
 //   } else {
 //       echo "Error: " . $stmt->error;
 //   }
+=======
+  // Execute the business permit insertion query
+  if ($stmt->execute()) {
+    echo "New business permit record inserted successfully";
+
+    // Fetch admin ID
+    $sql = "SELECT id FROM admin WHERE username = ?";
+    $admin_stmt = $conn->prepare($sql);
+    $admin_stmt->bind_param('s', $_SESSION['username']);
+    $admin_stmt->execute();
+    $admin_result = $admin_stmt->get_result();
+
+    // Check if the admin user was found
+    if ($admin_result->num_rows > 0) {
+      $row = mysqli_fetch_assoc($admin_result);
+      $admin_id = $row['id'];
+
+      // Insert a transaction record into the `transactions` table
+      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+      $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+      // Execute the transaction query
+      if ($trans_stmt->execute()) {
+        echo "Transaction record inserted successfully";
+      } else {
+        echo "Error: " . $trans_stmt->error;
+      }
+
+      $trans_stmt->close();
+    } else {
+      echo "Error: Admin user not found.";
+    }
+
+    $admin_stmt->close();
+  } else {
+    echo "Error: " . $stmt->error;
+  }
+>>>>>>> c59300a2fc08503fbc43e8c38118d717d5e80bde
 
 //   // Close database connection
 //   $stmt->close();
 //   $conn->close();
 // }
 
+if (isset($_POST["certificate_of_employability"])) {
+  // Sanitize and assign form data to variables
+  $first_name = $conn->real_escape_string($_POST["first_name"]);
+  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+  $last_name = $conn->real_escape_string($_POST["last_name"]);
+  $suffix = $conn->real_escape_string($_POST["suffix"]);
+  $age = $conn->real_escape_string($_POST["age"]);
+  $address = $conn->real_escape_string($_POST["purok"]);
+  //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
+  //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_name"]);
+
+  // Define SQL query using prepared statements for the business permit
+  $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+  $fullname = ucwords($fullname);
+  $duty_officer_name = $_SESSION['username'];
+  $issued_date = date('Y-m-d');
+  $stmt = $conn->prepare("INSERT INTO certificate_of_employability (fullname, age, address, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?)");
+  $stmt->bind_param('sssss', $fullname, $age, $address, $issued_date, $duty_officer_name);
+
+  // Execute the business permit insertion query
+  if ($stmt->execute()) {
+    echo "New certificate of employability record inserted successfully";
+
+    // Fetch admin ID
+    $sql = "SELECT id FROM admin WHERE username = ?";
+    $admin_stmt = $conn->prepare($sql);
+    $admin_stmt->bind_param('s', $_SESSION['username']);
+    $admin_stmt->execute();
+    $admin_result = $admin_stmt->get_result();
+
+    // Check if the admin user was found
+    if ($admin_result->num_rows > 0) {
+      $row = mysqli_fetch_assoc($admin_result);
+      $admin_id = $row['id'];
+
+      // Insert a transaction record into the `transactions` table
+      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+      $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+      // Execute the transaction query
+      if ($trans_stmt->execute()) {
+        echo "Transaction record inserted successfully";
+      } else {
+        echo "Error: " . $trans_stmt->error;
+      }
+
+      $trans_stmt->close();
+    } else {
+      echo "Error: Admin user not found.";
+    }
+
+    $admin_stmt->close();
+  } else {
+    echo "Error: " . $stmt->error;
+  }
+
+  // Close database connection
+  $stmt->close();
+  $conn->close();
+}
 ?>
 
 
@@ -253,64 +466,64 @@
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar" style="background-color: #174793; padding: 0;">
 
-        <div class="barangay-logo h-50 w-100" style="background-color: #729ED9; margin-bottom: 2px;">
-            <div class="barangay-logo h-100 d-flex align-items-center justify-content-center">
-                <a href="home.php">
-                    <img src="assets/img/cap-log.png" height="250" alt="">
-                </a>
-            </div>
-        </div>
+    <div class="barangay-logo h-50 w-100" style="background-color: #729ED9; margin-bottom: 2px;">
+      <div class="barangay-logo h-100 d-flex align-items-center justify-content-center">
+        <a href="home.php">
+          <img src="assets/img/cap-log.png" height="250" alt="">
+        </a>
+      </div>
+    </div>
 
-        <ul class="sidebar-nav" id="sidebar-nav" style="padding: 15px;">
-            <li class="nav-item">
-                <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
-                    <i class="bi bi-grid text-light fs-5"></i>
-                    <span class="fs-5">Dashboard</span>
-                </a>
-            </li><!-- End Dashboard Nav -->
+    <ul class="sidebar-nav" id="sidebar-nav" style="padding: 15px;">
+      <li class="nav-item">
+        <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
+          <i class="bi bi-grid text-light fs-5"></i>
+          <span class="fs-5">Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
 
-            <li class="nav-item">
-                <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse"
-                    href="#" style="background-color: #174793;">
-                    <i class="bi bi-diagram-3 fs-5"></i><span class="fs-5">Officials</span><i
-                        class="bi bi-chevron-down ms-auto fs-5"></i>
-                </a>
-                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="officials.php">
-                            <i class="bi bi-person-check-fill text-light fs-5" style="font-size: 12px;"></i><span
-                                class="text-light fs-5">Barangay Officials</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="sk.php">
-                            <i class="bi bi-person-badge text-light fs-5" style="font-size: 12px;"></i><span
-                                class="text-light fs-5">SK Officials</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="staffs.php">
-                            <i class="bi bi-people-fill text-light fs-5" style="font-size: 12px;"></i><span
-                                class="text-light fs-5">Barangay Staffs</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Components Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed text-light" href="about.php" style="background-color: #174793;">
-                    <i class="bi bi-question-circle fs-5"></i>
-                    <span class="fs-5">About</span>
-                </a>
-            </li><!-- End F.A.Q Page Nav -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
-                    <i class="bi bi-power text-dark fs-5"></i>
-                    <span class="fs-5">Logout</span>
-                </a>
-            </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#"
+          style="background-color: #174793;">
+          <i class="bi bi-diagram-3 fs-5"></i><span class="fs-5">Officials</span><i
+            class="bi bi-chevron-down ms-auto fs-5"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="officials.php">
+              <i class="bi bi-person-check-fill text-light fs-5" style="font-size: 12px;"></i><span
+                class="text-light fs-5">Barangay Officials</span>
+            </a>
+          </li>
+          <li>
+            <a href="sk.php">
+              <i class="bi bi-person-badge text-light fs-5" style="font-size: 12px;"></i><span
+                class="text-light fs-5">SK Officials</span>
+            </a>
+          </li>
+          <li>
+            <a href="staffs.php">
+              <i class="bi bi-people-fill text-light fs-5" style="font-size: 12px;"></i><span
+                class="text-light fs-5">Barangay Staffs</span>
+            </a>
+          </li>
         </ul>
-    </aside>
+      </li><!-- End Components Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed text-light" href="about.php" style="background-color: #174793;">
+          <i class="bi bi-question-circle fs-5"></i>
+          <span class="fs-5">About</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
+          <i class="bi bi-power text-dark fs-5"></i>
+          <span class="fs-5">Logout</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
 
   <main id="main" class="main">
     <section class="section">
@@ -367,37 +580,40 @@
                 }
 
                 .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 1; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgb(0,0,0); 
-            background-color: rgba(0,0,0,0.4); 
-            padding-top: 60px; 
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto; 
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; 
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
+                  display: none;
+                  position: fixed;
+                  z-index: 1;
+                  left: 0;
+                  top: 0;
+                  width: 100%;
+                  height: 100%;
+                  overflow: auto;
+                  background-color: rgb(0, 0, 0);
+                  background-color: rgba(0, 0, 0, 0.4);
+                  padding-top: 60px;
+                }
+
+                .modal-content {
+                  background-color: #fefefe;
+                  margin: 5% auto;
+                  padding: 20px;
+                  border: 1px solid #888;
+                  width: 80%;
+                }
+
+                .close {
+                  color: #aaa;
+                  float: right;
+                  font-size: 28px;
+                  font-weight: bold;
+                }
+
+                .close:hover,
+                .close:focus {
+                  color: black;
+                  text-decoration: none;
+                  cursor: pointer;
+                }
               </style>
 
               <!-- General Form Elements -->
@@ -488,7 +704,7 @@
                     <!-- <label for="">Duty Officer Full Name:</label>
                   <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel"> -->
                     <button name="barangay_clearance" id="coco" onclick="printIframe()" type="submit">Print</button>
-                    <input type="date" name="issueddate" style="display:none; position:absolute;"> 
+                    <input type="date" name="issueddate" style="display:none; position:absolute;">
 
                   </form>
                 </div>
@@ -534,7 +750,7 @@
                     <input type="text" class="form-control" name="business_name_renew"><br>
 
                     <label for="">Purok:</label><br>
-                    <select name="" id="purok">
+                    <select name="purok" id="purok">
                       <option value="Centro">Centro</option>
                       <option value="Kaakbayan">Kaakbayan</option>
                       <option value="New Princesa"> New Princesa</option>
@@ -609,8 +825,8 @@
                     <!-- <label for="">Issued Date:</label>
                   <input type="date" class="form-control"> -->
 
-                    <label for="">Duty Officer Full Name:</label>
-                    <input type="text" name="Duty_Officer" class="form-control">
+                    <!-- <label for="">Duty Officer Full Name:</label>
+                    <input type="text" name="Duty_Officer" class="form-control"> -->
                     <button name="certificate_of_employability" onclick="printIframe()" type="submit">Print</button>
 
                   </form>
@@ -1092,7 +1308,8 @@
                   </form>
                 </div>
 
-                <div id="Oathtaking"> ⁡⁢⁣⁢<!-- ‍wala sa database table -->⁡⁡
+                <div id="Oathtaking"> ⁡⁢⁣⁢
+                  <!-- ‍wala sa database table -->⁡⁡
                   <form action="#" method="post" id="form">
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
@@ -1296,9 +1513,9 @@
   <script>
     // Select all input elements of type "text"
     const today = new Date();
-        const formattedDate = today.toISOString().split('T')[0];
+    const formattedDate = today.toISOString().split('T')[0];
 
-        document.getElementById('issueddate').value = formattedDate;
+    document.getElementById('issueddate').value = formattedDate;
 
   </script>
 </body>

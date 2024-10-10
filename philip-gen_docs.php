@@ -8,10 +8,8 @@ if (!isset($_SESSION['username'])) {
 
 //Include database connection file
 include("db.php");
-include("includes/cert_db.php");
-
-
-?>
+include 'includes/cert_db.php'
+    ?>
 
 
 <!DOCTYPE html>
@@ -85,11 +83,11 @@ include("includes/cert_db.php");
         font-size: 12px;
     }
 
-    .certificates div {
+    .certificates .cert {
         display: none;
     }
 
-    .certificates div.active {
+    .certificates .cert.active {
         display: block;
     }
 
@@ -108,6 +106,11 @@ include("includes/cert_db.php");
         border-radius: 10px;
         background: #efefef;
         box-shadow: 5px 5px 4px #c8d0e7, -1px -1px 3px #fff;
+    }
+
+    label,
+    select {
+        font-size: 1.2em;
     }
 </style>
 
@@ -154,8 +157,8 @@ include("includes/cert_db.php");
                                     <option value="death_certificate">Death Certificate</option>
                                     <option value="first_time_job_seeker">Barangay Certification (First time Job Seeker)
                                     </option>
-                                    <option value="indigency">Indigency</option>
                                     <option value="indigency_aics">Indigency (AICS)</option>
+                                    <option value="indigency">Indigency</option>
                                     <option value="lot_ownership">Lot Ownership</option>
                                     <option value="Oathtaking">Oathtaking</option>
                                     <option value="transfer_of_residency">Certificate of Transfer</option>
@@ -163,59 +166,59 @@ include("includes/cert_db.php");
                             </div>
                             <hr>
                             <div class="certificates">
-                                <div id="barangay_clearance">
+                                <div class="cert" id="barangay_clearance">
                                     <?php include 'forms/barangay_clearance.php' ?>
                                 </div>
 
-                                <div id="business_permit_new">
+                                <div class="cert" id="business_permit_new">
                                     <?php include 'forms/business_permit_new.php' ?>
                                 </div>
 
-                                <div id="business_permit_renew">
+                                <div class="cert" id="business_permit_renew">
                                     <?php include 'forms/business_permit_renew.php' ?>
                                 </div>
 
-                                <div id="certificate_of_employability">
+                                <div class="cert" id="certificate_of_employability">
                                     <?php include 'forms/certificate_of_employability.php' ?>
                                 </div>
 
-                                <div id="certificate_of_income">
+                                <div class="cert" id="certificate_of_income">
                                     <?php include 'forms/certificate_of_income.php' ?>
                                 </div>
 
-                                <div id="cohabitation">
+                                <div class="cert" id="cohabitation">
                                     <?php include 'forms/cohabilitation.php' ?>
                                 </div>
 
-                                <div id="complaint_certificate">
+                                <div class="cert" id="complaint_certificate">
                                     <?php include 'forms/complaint_certificate.php' ?>
                                 </div>
 
-                                <div id="death_certificate">
+                                <div class="cert" id="death_certificate">
                                     <?php include 'forms/death_certificate.php' ?>
                                 </div>
 
-                                <div id="first_time_job_seeker">
+                                <div class="cert" id="first_time_job_seeker">
                                     <?php include 'forms/first_time_job_seeker.php' ?>
                                 </div>
 
-                                <div id="indigency_aics">
+                                <div class="cert" id="indigency_aics">
                                     <?php include 'forms/indigency_aics.php' ?>
                                 </div>
 
-                                <div id="indigency">
+                                <div class="cert" id="indigency">
                                     <?php include 'forms/indigency.php' ?>
                                 </div>
 
-                                <div id="lot_ownership">
+                                <div class="cert" id="lot_ownership">
                                     <?php include 'forms/lot_ownership.php' ?>
                                 </div>
 
-                                <div id="Oathtaking"> ⁡⁢⁣⁢<!-- ‍wala sa database table -->⁡⁡
+                                <div class="cert" id="Oathtaking"> ⁡⁢⁣⁢<!-- ‍wala sa database table -->⁡⁡
                                     <?php include 'forms/Oathtaking.php' ?>
                                 </div>
 
-                                <div id="transfer_of_residency">
+                                <div class="cert" id="transfer_of_residency">
                                     <?php include 'forms/transfer_of_residency.php' ?>
                                 </div>
                             </div>

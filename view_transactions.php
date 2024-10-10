@@ -110,7 +110,9 @@ if (!isset($_SESSION['username'])) {
                   $sql = "SELECT t.id, a.username AS transact_by, dt.doc_name, 
                     CASE 
                       WHEN dt.id = 1 THEN bc.fullname
-                      -- WHEN dt.id = 2 THEN bp.manager_operator 
+                      WHEN dt.id = 2 THEN bp.manager
+                      WHEN dt.id = 3 THEN bpr.manager
+                      WHEN dt.id = 4 THEN coe.fullname
                       ELSE 'Unknown' 
                     END AS fullname, 
                     t.client_trans_id, t.created_at
@@ -118,7 +120,9 @@ if (!isset($_SESSION['username'])) {
                     INNER JOIN admin a ON t.transact_by = a.id
                     INNER JOIN doctype dt ON t.doc_id = dt.id
                     LEFT JOIN barangay_clearance bc ON t.client_trans_id = bc.id AND dt.id = 1
-                    LEFT JOIN business_permit_new bp ON t.client_trans_id = bp.id AND dt.id = 2";
+                    LEFT JOIN business_permit_new bp ON t.client_trans_id = bp.id AND dt.id = 2
+                    LEFT JOIN business_permit_renew bpr ON  t.client_trans_id = bpr.id AND dt.id = 3
+                    LEFT JOIN certificate_of_employability coe ON t.client_trans_id = coe.id AND dt.id = 4";
 
                   $result = $conn->query($sql);
 
