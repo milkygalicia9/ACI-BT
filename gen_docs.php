@@ -1,190 +1,190 @@
 <?php
-// // session_start();
+session_start();
 
-// if (!isset($_SESSION['username'])) {
-//     header("Location: index.php");
-//     exit();
-// }
+if (!isset($_SESSION['username'])) {
+  header("Location: index.php");
+  exit();
+}
 
-// //Include database connection file
-// include("db.php");
+//Include database connection file
+include ("db.php");
 
-// // Check if form is submitted
-// if (isset($_POST["barangay_clearance"])) {
-//     // Sanitize and assign form data to variables
-//     $first_name = $conn->real_escape_string($_POST["first_name"]);
-//     $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
-//     $last_name = $conn->real_escape_string($_POST["last_name"]);
-//     $suffix = $conn->real_escape_string($_POST["suffix"]);
-//     $purok = $conn->real_escape_string($_POST["purok"]);
-//     $birthplace = $conn->real_escape_string($_POST["birthplace"]);
-//     $birthdate = $conn->real_escape_string($_POST["birthday"]);
-//     $civil_status = $conn->real_escape_string($_POST["civil_status"]);
-//     $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
-//     //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
-//     $purpose = $conn->real_escape_string($_POST["purpose"]);
-//     //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_full_name"]);
+// Check if form is submitted
+if (isset($_POST["barangay_clearance"])) {
+  // Sanitize and assign form data to variables
+  $first_name = $conn->real_escape_string($_POST["first_name"]);
+  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+  $last_name = $conn->real_escape_string($_POST["last_name"]);
+  $suffix = $conn->real_escape_string($_POST["suffix"]);
+  $purok = $conn->real_escape_string($_POST["purok"]);
+  $birthplace = $conn->real_escape_string($_POST["birthplace"]);
+  $birthdate = $conn->real_escape_string($_POST["birthday"]);
+  $civil_status = $conn->real_escape_string($_POST["civil_status"]);
+  $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
+  //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
+  $purpose = $conn->real_escape_string($_POST["purpose"]);
+  //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_full_name"]);
 
-//     // Define SQL query using prepared statements
-//     $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-//     $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-//     $fullname = ucwords($fullname);
-//     $issued_date = date('Y-m-d');
-//     $duty_officer_name = $_SESSION['username'];
-//     $stmt->bind_param('sssssssss', $fullname, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
+  // Define SQL query using prepared statements
+  $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+  $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+  $fullname = ucwords($fullname);
+  $issued_date = date('Y-m-d');
+  $duty_officer_name = $_SESSION['username'];
+  $stmt->bind_param('sssssssss', $fullname, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
 
-//     // Execute SQL query
-//     if ($stmt->execute()) {
-//         echo "New record inserted successfully";
-        
-//         // Fetch admin ID
-//         $sql = "SELECT id FROM admin WHERE username = ?";
-//         $admin_stmt = $conn->prepare($sql);
-//         $admin_stmt->bind_param('s', $_SESSION['username']);
-//         $admin_stmt->execute();
-//         $admin_result = $admin_stmt->get_result();
-//         // Add missing import statement
-//         if ($admin_result->num_rows > 0) {
-//           $row = mysqli_fetch_assoc($admin_result);
-//           $admin_id = $row['id'];
+  // Execute SQL query
+  if ($stmt->execute()) {
+    echo "New record inserted successfully";
 
-//           // Modify SQL query to use COUNT function correctly
-//           $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?,(SELECT COUNT(*) FROM barangay_clearance), NOW())");
-//           $trans_stmt->bind_param('is', $admin_id, $fullname);
+    // Fetch admin ID
+    $sql = "SELECT id FROM admin WHERE username = ?";
+    $admin_stmt = $conn->prepare($sql);
+    $admin_stmt->bind_param('s', $_SESSION['username']);
+    $admin_stmt->execute();
+    $admin_result = $admin_stmt->get_result();
+    // Add missing import statement
+    if ($admin_result->num_rows > 0) {
+      $row = mysqli_fetch_assoc($admin_result);
+      $admin_id = $row['id'];
 
-//           if ($trans_stmt->execute()) {
-//             echo "Transaction record inserted successfully";
-//           } else {
-//             echo "Error: " . $trans_stmt->error;
-//           }
+      // Modify SQL query to use COUNT function correctly
+      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?,(SELECT COUNT(*) FROM barangay_clearance), NOW())");
+      $trans_stmt->bind_param('is', $admin_id, $fullname);
 
-//           $trans_stmt->close();
-//         } else {
-//           echo "Error: Admin user not found.";
-//             echo "Error: Admin user not found.";
-//         }
+      if ($trans_stmt->execute()) {
+        echo "Transaction record inserted successfully";
+      } else {
+        echo "Error: " . $trans_stmt->error;
+      }
 
-//         $admin_stmt->close();
-//     } else {
-//         echo "Error: " . $stmt->error;
-//     }
+      $trans_stmt->close();
+    } else {
+      echo "Error: Admin user not found.";
+      echo "Error: Admin user not found.";
+    }
 
-//     // Close database connection
-//     $stmt->close();
-//     $conn->close();
-// }
+    $admin_stmt->close();
+  } else {
+    echo "Error: " . $stmt->error;
+  }
 
-// // if (isset($_POST["business_permit_new"])) {
-// //   // Sanitize and assign form data to variables
-// //   $business_name = $conn->real_escape_string($_POST["businessName"]);
-// //   $purok = $conn->real_escape_string($_POST["purok"]);
-// //   $manager = $conn->real_escape_string($_POST["manager_operator"]);
-// //   $address = $conn->real_escape_string($_POST["manager_operator_address"]);
+  // Close database connection
+  $stmt->close();
+  $conn->close();
+}
 
-// //   // Define SQL query using prepared statements for the business permit
-// //   $address = $address . ' ' . $purok;
-// //   $fullname = $manager;
-// //   $issued_date = date('Y-m-d');
-// //   $stmt = $conn->prepare("INSERT INTO business_permit_new (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
-// //   $stmt->bind_param('ssss', $business_name, $manager, $address, $issued_date);
+if (isset($_POST["business_permit_new"])) {
+  // Sanitize and assign form data to variables
+  $business_name = $conn->real_escape_string($_POST["businessName"]);
+  $purok = $conn->real_escape_string($_POST["purok"]);
+  $manager = $conn->real_escape_string($_POST["manager_operator"]);
+  $address = $conn->real_escape_string($_POST["manager_operator_address"]);
 
-//   // Execute the business permit insertion query
-//   if ($stmt->execute()) {
-//       echo "New business permit record inserted successfully";
+  // Define SQL query using prepared statements for the business permit
+  $address = $address . ', ' . $purok;
+  $fullname = $manager;
+  $issued_date = date('Y-m-d');
+  $stmt = $conn->prepare("INSERT INTO business_permit_new (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
+  $stmt->bind_param('ssss', $business_name, $manager, $address, $issued_date);
 
-//       // Fetch admin ID
-//       $sql = "SELECT id FROM admin WHERE username = ?";
-//       $admin_stmt = $conn->prepare($sql);
-//       $admin_stmt->bind_param('s', $_SESSION['username']);
-//       $admin_stmt->execute();
-//       $admin_result = $admin_stmt->get_result();
+  //Execute the business permit insertion query
+  if ($stmt->execute()) {
+    echo "New business permit record inserted successfully";
 
-//       // Check if the admin user was found
-//       if ($admin_result->num_rows > 0) {
-//           $row = mysqli_fetch_assoc($admin_result);
-//           $admin_id = $row['id'];
+    //Fetch admin ID
+    $sql = "SELECT id FROM admin WHERE username = ?";
+    $admin_stmt = $conn->prepare($sql);
+    $admin_stmt->bind_param('s', $_SESSION['username']);
+    $admin_stmt->execute();
+    $admin_result = $admin_stmt->get_result();
 
-//           // Insert a transaction record into the `transactions` table
-//           $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_new), NOW())");
-//           $trans_stmt->bind_param('is', $admin_id, $fullname);
+    // Check if the admin user was found
+    if ($admin_result->num_rows > 0) {
+      $row = mysqli_fetch_assoc($admin_result);
+      $admin_id = $row['id'];
 
-//           // Execute the transaction query
-//           if ($trans_stmt->execute()) {
-//               echo "Transaction record inserted successfully";
-//           } else {
-//               echo "Error: " . $trans_stmt->error;
-//           }
+      // Insert a transaction record into the `transactions` table
+      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_new), NOW())");
+      $trans_stmt->bind_param('is', $admin_id, $fullname);
 
-//           $trans_stmt->close();
-//       } else {
-//           echo "Error: Admin user not found.";
-//       }
+      // Execute the transaction query
+      if ($trans_stmt->execute()) {
+        echo "Transaction record inserted successfully";
+      } else {
+        echo "Error: " . $trans_stmt->error;
+      }
 
-//       $admin_stmt->close();
-//   } else {
-//       echo "Error: " . $stmt->error;
-//   }
+      $trans_stmt->close();
+    } else {
+      echo "Error: Admin user not found.";
+    }
 
-// //   // Close database connection
-// //   $stmt->close();
-// //   $conn->close();
-// // }
+    $admin_stmt->close();
+  } else {
+    echo "Error: " . $stmt->error;
+  }
 
-// // if (isset($_POST["business_permit_renew"])) {
-// //   // Sanitize and assign form data to variables
-// //   $business_name = $conn->real_escape_string($_POST["business_name_renew"]);
-// //   $purok = $conn->real_escape_string($_POST["purok"]);
-// //   $manager = $conn->real_escape_string($_POST["manager_operator_renew"]);
-// //   $address = $conn->real_escape_string($_POST["manager_operator_address_renew"]);
+  // Close database connection
+  $stmt->close();
+  $conn->close();
+}
 
-// //   // Define SQL query using prepared statements for the business permit
-// //   $address = $address . ' ' . $purok;
-// //   $fullname = $manager;
-// //   $issued_date = date('Y-m-d');
-// //   $stmt = $conn->prepare("INSERT INTO business_permit_renew (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
-// //   $stmt->bind_param('ssss', $business_name, $manager, $address, $issued_date);
+if (isset($_POST["business_permit_renew"])) {
+  // Sanitize and assign form data to variables
+  $business_name = $conn->real_escape_string($_POST["business_name_renew"]);
+  $purok = $conn->real_escape_string($_POST["purok"]);
+  $manager = $conn->real_escape_string($_POST["manager_operator_renew"]);
+  $address = $conn->real_escape_string($_POST["manager_operator_address_renew"]);
 
-//   // Execute the business permit insertion query
-//   if ($stmt->execute()) {
-//       echo "New business permit record inserted successfully";
+  // Define SQL query using prepared statements for the business permit
+  $address = $address . ', ' . $purok;
+  $fullname = $manager;
+  $issued_date = date('Y-m-d');
+  $stmt = $conn->prepare("INSERT INTO business_permit_renew (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
+  $stmt->bind_param('ssss', $business_name, $manager, $address, $issued_date);
 
-//       // Fetch admin ID
-//       $sql = "SELECT id FROM admin WHERE username = ?";
-//       $admin_stmt = $conn->prepare($sql);
-//       $admin_stmt->bind_param('s', $_SESSION['username']);
-//       $admin_stmt->execute();
-//       $admin_result = $admin_stmt->get_result();
+  //Execute the business permit insertion query
+  if ($stmt->execute()) {
+    echo "New business permit record inserted successfully";
 
-//       // Check if the admin user was found
-//       if ($admin_result->num_rows > 0) {
-//           $row = mysqli_fetch_assoc($admin_result);
-//           $admin_id = $row['id'];
+    // Fetch admin ID
+    $sql = "SELECT id FROM admin WHERE username = ?";
+    $admin_stmt = $conn->prepare($sql);
+    $admin_stmt->bind_param('s', $_SESSION['username']);
+    $admin_stmt->execute();
+    $admin_result = $admin_stmt->get_result();
 
-//           // Insert a transaction record into the `transactions` table
-//           $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
-//           $trans_stmt->bind_param('is', $admin_id, $fullname);
+    //Check if the admin user was found
+    if ($admin_result->num_rows > 0) {
+      $row = mysqli_fetch_assoc($admin_result);
+      $admin_id = $row['id'];
 
-//           // Execute the transaction query
-//           if ($trans_stmt->execute()) {
-//               echo "Transaction record inserted successfully";
-//           } else {
-//               echo "Error: " . $trans_stmt->error;
-//           }
+      // Insert a transaction record into the `transactions` table
+      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+      $trans_stmt->bind_param('is', $admin_id, $fullname);
 
-//           $trans_stmt->close();
-//       } else {
-//           echo "Error: Admin user not found.";
-//       }
+      // Execute the transaction query
+      if ($trans_stmt->execute()) {
+        echo "Transaction record inserted successfully";
+      } else {
+        echo "Error: " . $trans_stmt->error;
+      }
 
-//       $admin_stmt->close();
-//   } else {
-//       echo "Error: " . $stmt->error;
-//   }
+      $trans_stmt->close();
+    } else {
+      echo "Error: Admin user not found.";
+    }
 
-// //   // Close database connection
-// //   $stmt->close();
-// //   $conn->close();
-// // }
+    $admin_stmt->close();
+  } else {
+    echo "Error: " . $stmt->error;
+  }
+
+  // Close database connection
+  $stmt->close();
+  $conn->close();
+}
 
 // if (isset($_POST["certificate_of_employability"])) {
 //   // Sanitize and assign form data to variables
@@ -248,65 +248,399 @@
 // }
 
 // if (isset($_POST["first_time_job_seeker"])) {
+
 //   // Sanitize and assign form data to variables
 //   $first_name = $conn->real_escape_string($_POST["first_name"]);
 //   $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
 //   $last_name = $conn->real_escape_string($_POST["last_name"]);
 //   $suffix = $conn->real_escape_string($_POST["suffix"]);
-//   $purok = $conn->real_escape_string($_POST["puroks"]);
+//   $purok = $conn->real_escape_string($_POST["purok"]);
 //   $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
 //   $signed_date = $conn->real_escape_string($_POST["signed_date"]);
 //   $validation_date = $conn->real_escape_string($_POST["validation_date"]);
 //   $witness = $conn->real_escape_string($_POST["witness"]);
 
 //   // Define SQL query using prepared statements
-//   $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, period_of_residency, signed_date, validation_date, witness) VALUES (?, ?, ?, ?, ?, ?, ?)");
 //   $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
 //   $fullname = ucwords($fullname);
 //   $signed_date = date('Y-m-d');
 //   $witness = $_SESSION['username'];
-//   $stmt->bind_param('sssssssss', $fullname, $purok, $period_of_residency, $signed_date, $validation_date, $witness);
+//   $stmt = $conn->prepare("INSERT INTO first_time_job_seeker (fullname, address, period_of_residency, signed_date, validation_date, witness) VALUES (?, ?, ?, ?, ?, ?)");
+//   $stmt->bind_param('ssssss', $fullname, $purok, $period_of_residency, $signed_date, $validation_date, $witness);
 
 //   // Execute SQL query
 //   if ($stmt->execute()) {
-//       echo "New record inserted successfully";
-      
-//       // Fetch admin ID
-//       $sql = "SELECT id FROM admin WHERE username = ?";
-//       $admin_stmt = $conn->prepare($sql);
-//       $admin_stmt->bind_param('s', $_SESSION['username']);
-//       $admin_stmt->execute();
-//       $admin_result = $admin_stmt->get_result();
-//       // Add missing import statement
-//       if ($admin_result->num_rows > 0) {
-//         $row = mysqli_fetch_assoc($admin_result);
-//         $admin_id = $row['id'];
+//     echo "New record inserted successfully";
 
-//         // Modify SQL query to use COUNT function correctly
-//         $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?,(SELECT COUNT(*) FROM barangay_clearance), NOW())");
-//         $trans_stmt->bind_param('is', $admin_id, $fullname);
+//     // Fetch admin ID
+//     $sql = "SELECT id FROM admin WHERE username = ?";
+//     $admin_stmt = $conn->prepare($sql);
+//     $admin_stmt->bind_param('s', $_SESSION['username']);
+//     $admin_stmt->execute();
+//     $admin_result = $admin_stmt->get_result();
+//     // Add missing import statement
+//     if ($admin_result->num_rows > 0) {
+//       $row = mysqli_fetch_assoc($admin_result);
+//       $admin_id = $row['id'];
 
-//         if ($trans_stmt->execute()) {
-//           echo "Transaction record inserted successfully";
-//         } else {
-//           echo "Error: " . $trans_stmt->error;
-//         }
+//       // Modify SQL query to use COUNT function correctly
+//       $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?,(SELECT COUNT(*) FROM barangay_clearance), NOW())");
+//       $trans_stmt->bind_param('is', $admin_id, $fullname);
 
-//         $trans_stmt->close();
+//       if ($trans_stmt->execute()) {
+//         echo "Transaction record inserted successfully";
 //       } else {
-//         echo "Error: Admin user not found.";
-//           echo "Error: Admin user not found.";
+//         echo "Error: " . $trans_stmt->error;
 //       }
 
-//       $admin_stmt->close();
+//       $trans_stmt->close();
+//     } else {
+//       echo "Error: Admin user not found.";
+//       echo "Error: Admin user not found.";
+//     }
+
+//     $admin_stmt->close();
 //   } else {
-//       echo "Error: " . $stmt->error;
+//     echo "Error: " . $stmt->error;
 //   }
 
 //   // Close database connection
 //   $stmt->close();
 //   $conn->close();
 // }
+
+
+if (isset($_POST["indigency"])) {
+  // Sanitize and assign form data to variables
+  $first_name = $conn->real_escape_string($_POST["first_name"]);
+  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+  $last_name = $conn->real_escape_string($_POST["last_name"]);
+  $suffix = $conn->real_escape_string($_POST["suffix"]);
+  $age = $conn->real_escape_string($_POST["age"]);
+  $civil_status = $conn->real_escape_string($_POST["civil_status"]);
+  $purok = $conn->real_escape_string($_POST["purok"]);
+  // $purpose = $conn->real_escape_string($_POST["purpose"]);
+
+  // Define SQL query using prepared statements for the indigency
+  $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+  $fullname = ucwords($fullname);
+  $address = $purok;
+  $purpose = "wala lang";
+  $issued_date = date('Y-m-d');
+  $purpose = "Indigency"; // Add a default purpose or get it from the form if needed
+
+  $stmt = $conn->prepare("INSERT INTO indigency (fullname, age, civil_status, address, purpose, issued_date) VALUES (?, ?, ?, ?, ?, ?)");
+  $stmt->bind_param('ssssss', $fullname, $age, $civil_status, $address, $purpose, $issued_date);
+
+  // Execute the indigency insertion query
+  if ($stmt->execute()) {
+    echo "New Indigency record inserted successfully";
+
+    // Fetch admin ID
+    $sql = "SELECT id FROM admin WHERE username = ?";
+    $admin_stmt = $conn->prepare($sql);
+    $admin_stmt->bind_param('s', $_SESSION['username']);
+    $admin_stmt->execute();
+    $admin_result = $admin_stmt->get_result();
+
+    // Check if the admin user was found
+    if ($admin_result->num_rows > 0) {
+      $row = mysqli_fetch_assoc($admin_result);
+      $admin_id = $row['id'];
+
+      // Insert a transaction record into the `transactions` table
+      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?, (SELECT COUNT(*) FROM indigency), NOW())");
+      $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+      // Execute the transaction query
+      if ($trans_stmt->execute()) {
+        echo "Transaction record inserted successfully";
+      } else {
+        echo "Error: " . $trans_stmt->error;
+      }
+
+      $trans_stmt->close();
+    } else {
+      echo "Error: Admin user not found.";
+    }
+
+    $admin_stmt->close();
+  } else {
+    echo "Error: " . $stmt->error;
+  }
+
+
+  // Close database connection
+  $stmt->close();
+  $conn->close();
+}
+
+if (isset($_POST["cohabitation"])) {
+  // Sanitize and assign form data to variables
+  $first_name = $conn->real_escape_string($_POST["first_name"]);
+  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+  $last_name = $conn->real_escape_string($_POST["last_name"]);
+  $suffix = $conn->real_escape_string($_POST["suffix"]);
+  $birthdate = $conn->real_escape_string($_POST["birth_date"]);
+  $first_name1 = $conn->real_escape_string($_POST["first_name1"]);
+  $middle_initial1 = $conn->real_escape_string($_POST["middle_initial1"]);
+  $last_name1 = $conn->real_escape_string($_POST["last_name1"]);
+  $cohabitant_birthdate = $conn->real_escape_string($_POST["cohabitant_birth_date"]);
+  $purok = $conn->real_escape_string($_POST["purok"]);
+  $date_of_marriage = $conn->real_escape_string($_POST["date_of_marriage"]);
+
+  // Define SQL query using prepared statements for the business permit
+  $fullname_male = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+  $fullname_male = ucwords($fullname_male);
+  $fullname_female = $first_name1 . ' ' . $middle_initial1 . ' ' . $last_name;
+  $fullname_female = ucwords($fullname_female);
+  $duty_officer_name = $_SESSION['username'];
+  $address = $purok;
+  $fullname = $fullname_male;
+  $years_married = date('Y') - date('Y', strtotime($date_of_marriage));
+  $issued_date = date('Y-m-d');
+  $stmt = $conn->prepare("INSERT INTO cohabitation (fullname_male, birthdate_male, fullname_female, birthdate_female, address, date_of_marriage, years_married, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+  $stmt->bind_param('sssssssss', $fullname_male, $birthdate, $fullname_female, $cohabitant_birthdate, $address, $date_of_marriage, $years_married, $issued_date, $duty_officer_name);
+
+  // Execute the business permit insertion query
+  if ($stmt->execute()) {
+    echo "New certificate of employability record inserted successfully";
+
+    // Fetch admin ID
+    $sql = "SELECT id FROM admin WHERE username = ?";
+    $admin_stmt = $conn->prepare($sql);
+    $admin_stmt->bind_param('s', $_SESSION['username']);
+    $admin_stmt->execute();
+    $admin_result = $admin_stmt->get_result();
+
+    // Check if the admin user was found
+    if ($admin_result->num_rows > 0) {
+      $row = mysqli_fetch_assoc($admin_result);
+      $admin_id = $row['id'];
+
+      // Insert a transaction record into the `transactions` table
+      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+      $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+      // Execute the transaction query
+      if ($trans_stmt->execute()) {
+        echo "Transaction record inserted successfully";
+      } else {
+        echo "Error: " . $trans_stmt->error;
+      }
+
+      $trans_stmt->close();
+    } else {
+      echo "Error: Admin user not found.";
+    }
+
+    $admin_stmt->close();
+  } else {
+    echo "Error: " . $stmt->error;
+  }
+
+  // Close database connection
+  $stmt->close();
+  $conn->close();
+}
+
+if (isset($_POST["transfer_of_residency"])) {
+  // Sanitize and assign form data to variables
+  $first_name = $conn->real_escape_string($_POST["first_name"]);
+  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+  $last_name = $conn->real_escape_string($_POST["last_name"]);
+  $suffix = $conn->real_escape_string($_POST["suffix"]);
+  $purok = $conn->real_escape_string($_POST["purok"]);
+  $current_address = $conn->real_escape_string($_POST["current_address"]);
+  $previous_address = $conn->real_escape_string($_POST["previous_address"]);
+  $nationality = $conn->real_escape_string($_POST["nationality"]);
+  $civil_status = $conn->real_escape_string($_POST["civil_status"]);
+  $purpose = $conn->real_escape_string($_POST["purpose"]);
+
+  // Define SQL query using prepared statements for the certificate of transfer
+  $address = $current_address . ', ' . $purok;
+  $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+  $fullname = ucwords($fullname);
+  $issued_date = date('Y-m-d');
+
+  $stmt = $conn->prepare("INSERT INTO transfer_of_residency (fullname, address, nationality, civil_status, previous_address, purpose, issued_date) VALUES (?, ?, ?, ?, ?, ?, ?)");
+  $stmt->bind_param('sssssss', $fullname, $address, $nationality, $civil_status, $previous_address, $purpose, $issued_date);
+
+
+  // Execute the certificate of transfer insertion query
+  if ($stmt->execute()) {
+    echo "New certificate of transfer record inserted successfully";
+
+    // Fetch admin ID
+    $sql = "SELECT id FROM admin WHERE username = ?";
+    $admin_stmt = $conn->prepare($sql);
+    $admin_stmt->bind_param('s', $_SESSION['username']);
+    $admin_stmt->execute();
+    $admin_result = $admin_stmt->get_result();
+
+    // Check if the admin user was found
+    if ($admin_result->num_rows > 0) {
+      $row = mysqli_fetch_assoc($admin_result);
+      $admin_id = $row['id'];
+
+      // Insert a transaction record into the `transactions` table
+      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+      $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+      // Execute the transaction query
+      if ($trans_stmt->execute()) {
+        echo "Transaction record inserted successfully";
+      } else {
+        echo "Error: " . $trans_stmt->error;
+      }
+
+      $trans_stmt->close();
+    } else {
+      echo "Error: Admin user not found.";
+    }
+
+    $admin_stmt->close();
+  } else {
+    echo "Error: " . $stmt->error;
+  }
+
+  // Close database connection
+  $stmt->close();
+  $conn->close();
+}
+
+// if (isset($_POST["certificate_of_income"])) {
+//   // Sanitize and assign form data to variables
+//   $first_name = $conn->real_escape_string($_POST["first_name"]);
+//   $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+//   $last_name = $conn->real_escape_string($_POST["last_name"]);
+//   $suffix = $conn->real_escape_string($_POST["suffix"]);
+//   $purok = $conn->real_escape_string($_POST["purok"]);
+//   $amount = $conn->real_escape_string($_POST["amount"]);
+//   //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
+//   //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_name"]);
+
+//   // Define SQL query using prepared statements for the business permit
+//   $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+//   $fullname = ucwords($fullname);
+//   $address = $purok;
+//   $issued_date = date('Y-m-d');
+//   $stmt = $conn->prepare("INSERT INTO certificate_of_income (fullname, address, issued_date) VALUES (?, ?, ?)");
+//   $stmt->bind_param('sss', $fullname, $address, $issued_date);
+
+//   // Execute the business permit insertion query
+//   if ($stmt->execute()) {
+//     echo "New certificate of employability record inserted successfully";
+
+//     // Fetch admin ID
+//     $sql = "SELECT id FROM admin WHERE username = ?";
+//     $admin_stmt = $conn->prepare($sql);
+//     $admin_stmt->bind_param('s', $_SESSION['username']);
+//     $admin_stmt->execute();
+//     $admin_result = $admin_stmt->get_result();
+
+//     // Check if the admin user was found
+//     if ($admin_result->num_rows > 0) {
+//       $row = mysqli_fetch_assoc($admin_result);
+//       $admin_id = $row['id'];
+
+//       // Insert a transaction record into the `transactions` table
+//       $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+//       $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+//       // Execute the transaction query
+//       if ($trans_stmt->execute()) {
+//         echo "Transaction record inserted successfully";
+//       } else {
+//         echo "Error: " . $trans_stmt->error;
+//       }
+
+//       $trans_stmt->close();
+//     } else {
+//       echo "Error: Admin user not found.";
+//     }
+
+//     $admin_stmt->close();
+//   } else {
+//     echo "Error: " . $stmt->error;
+//   }
+
+// Close database connection
+//   $stmt->close();
+//   $conn->close();
+// }
+
+
+// if (isset($_POST["death_certificate"])) {
+//   // Sanitize and assign form data to variables
+//   $first_name = $conn->real_escape_string($_POST["first_name"]);
+//   $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+//   $last_name = $conn->real_escape_string($_POST["last_name"]);
+//   $suffix = $conn->real_escape_string($_POST["suffix"]);
+//   $purok = $conn->real_escape_string($_POST["purok"]);
+//   $date_of_death = $conn->real_escape_string($_POST["date_of_death"]);
+//   $time_of_death = $conn->real_escape_string($_POST["time_of_death"]);
+//   $cause_of_death = $conn->real_escape_string($_POST["cause_of_death"]);
+//   $first_named = $conn->real_escape_string($_POST["first_named"]);
+//   $middle_initiald = $conn->real_escape_string($_POST["middle_initiald"]);
+//   $last_named = $conn->real_escape_string($_POST["last_named"]);
+//   $suffixd = $conn->real_escape_string($_POST["suffixd"]);
+//   $relationship_to_dead_person = $conn->real_escape_string($_POST["relationship_to_dead_person"]);
+//   $date_requested = $conn->real_escape_string($_POST["date_requested"]);
+//   //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
+//   //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_name"]);
+
+//   // Define SQL query using prepared statements for the business permit
+//   $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+//   $fullname = ucwords($fullname);
+//   $address = $purok;
+//   $req_fullname = $first_named . ' ' . $middle_initiald . ' ' . $last_named . ' ' . $suffixd;
+//   $relationship = $relationship_to_dead_person;
+//   $stmt = $conn->prepare("INSERT INTO death_certificate (fullname, address, date_of_death, time_of_death, req_fullname, relationship, date_requested) VALUES (?, ?, ?, ?, ?, ?, ?)");
+//   $stmt->bind_param('sssssss', $fullname, $address, $date_of_death, $time_of_death, $req_fullname, $relationship, $date_requested);
+
+//   // Execute the business permit insertion query
+//   if ($stmt->execute()) {
+//     echo "New certificate of employability record inserted successfully";
+
+//     // Fetch admin ID
+//     $sql = "SELECT id FROM admin WHERE username = ?";
+//     $admin_stmt = $conn->prepare($sql);
+//     $admin_stmt->bind_param('s', $_SESSION['username']);
+//     $admin_stmt->execute();
+//     $admin_result = $admin_stmt->get_result();
+
+//     // Check if the admin user was found
+//     if ($admin_result->num_rows > 0) {
+//       $row = mysqli_fetch_assoc($admin_result);
+//       $admin_id = $row['id'];
+
+//       // Insert a transaction record into the `transactions` table
+//       $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+//       $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+//       // Execute the transaction query
+//       if ($trans_stmt->execute()) {
+//         echo "Transaction record inserted successfully";
+//       } else {
+//         echo "Error: " . $trans_stmt->error;
+//       }
+
+//       $trans_stmt->close();
+//     } else {
+//       echo "Error: Admin user not found.";
+//     }
+
+//     $admin_stmt->close();
+//   } else {
+//     echo "Error: " . $stmt->error;
+//   }
+
+//   // Close database connection
+//   $stmt->close();
+//   $conn->close();
+// }
+
 
 ?>
 
@@ -593,7 +927,7 @@
                       placeholder="Ex. Puerto Princesa City"><br>
 
                     <label for="">Birthday:</label>
-                    <input type="date" class="form-control" id="birthdate" name="birthday">
+                    <input type="date" class="form-control" name="bday" id="bday">
                     <br>
                     <label for="">Civil Status:</label>
                     <select class="form-control" onchange="update()" name="civil_status" id="stats">
@@ -603,7 +937,7 @@
                     </select>
                     <br>
                     <label for="">Period of Residency:</label>
-                    <input type="number" class="form-control" name="residency_period" placeholder="Ex. 3 years"><br>
+                    <input type="number" min="0" class="form-control" name="residency_period" placeholder="Ex. 3 years"><br>
 
                     <label for="">Purpose:</label>
                     <!-- <input type="text" class="form-control" name="purpose"> -->
@@ -613,8 +947,6 @@
                     <!-- <label for="">Duty Officer Full Name:</label>
                   <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel"> -->
                     <button name="barangay_clearance" id="coco" onclick="printIframe()" type="submit">Print</button>
-                    <input type="date" name="issueddate" style="display:none; position:absolute;">
-
                   </form>
                 </div>
 
@@ -769,6 +1101,8 @@
                     <br>
                     <label for="">Amount (In Numeric Form)</label>
                     <input type="number" name="amount" class="form-control" maxlength="10"><br>
+                   <span name="amountinwords" id="amountinwords" style="display:none;"></span>
+
 
                     <!-- <label for="">Issued Date:</label>
                   <input type="date" class="form-control"> -->
@@ -803,7 +1137,7 @@
                     </select><br><br>
 
                     <label for="cohabitant1Birthdate">Birthdate:</label>
-                    <input type="date" class="form-control" name="birth_date"><br>
+                    <input type="date" class="form-control" name="bday" id="bday"><br>
 
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name1" placeholder="Ex. Barbie"><br>
@@ -816,7 +1150,7 @@
 
 
                     <label for="cohabitant1Birthdate">Birthdate:</label>
-                    <input type="date" class="form-control" name="cohabitant_birth_date"><br>
+                    <input type="date" class="form-control" name="bday2" id="bday2"><br>
 
                     <label for="">Purok:</label><br>
                     <select name="puroks" id="puroks" onchange="update()">
@@ -833,14 +1167,11 @@
                     <br>
                     <br>
                     <!--Month and Year daw-->
-                    <label for="dateOfMarriage">Period of marriage:</label>
-                    <input type="month" onchange="updateText()" id="month" class="form-control"
-                      name="date_of_marriage"><br>
-
-                    <label for="">Duty Officer Full Name</label>
-                    <input type="text" class="form-control" name="duty_officer_full_name">
+                    <label for="dateOfMarriage">Date of marriage:</label>
+                    <input type="date" id="date" class="form-control" name="date_of_marriage"><br>
+                    <button name="cohabitation" onclick="printIframe()" type="submit">Print</button>
                   </form>
-                  <button name="cohabitation" onclick="printIframe()" type="submit">Print</button>
+
 
                 </div>
 
@@ -932,7 +1263,7 @@
                     <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
                       <option value="">N/A</option>
                       <option value="Jr">Jr</option>
-                      <option value="Sr">Sr</option>
+                      <option value="Sr"sub>Sr</option>
                       <option value="I">I</option>
                       <option value="II">II</option>
                       <option value="III">III</option>
@@ -1018,7 +1349,7 @@
                     </select><br><br>
 
                     <label for="">Purok:</label><br>
-                    <select name="puroks" id="puroks" onchange="update()">
+                    <select name="purok" id="purok" onchange="update()">
                       <option value="Centro">Centro</option>
                       <option value="Hurawan">Huwaran</option>
                       <option value="Kaakbayan">Kaakbayan</option>
@@ -1031,7 +1362,7 @@
                     </select>
 
                     <label for="residencyPeriod">Period of Residency:</label>
-                    <input type="text" class="form-control" name="residency_period"><br>
+                    <input type="number" class="form-control" name="residency_period"><br>
 
                     <!--(Day/Month/Year daw)-->
                     <label for="certificationSignedDate">Signed date:</label>
@@ -1119,9 +1450,9 @@
                     <label for="">Civil Status</label>
                     <select name="" id="civil" onchange="updateText()" class="form-control">
                       <option value="">Select Civil Status</option>
-                      <option value="m">Married</option>
-                      <option value="s">Single</option>
-                      <option value="w">Widow</option>
+                      <option value="Married">Married</option>
+                      <option value="Single">Single</option>
+                      <option value="Widow">Widow</option>
                     </select>
 
                     <label for="">Purok:</label><br>
@@ -1296,7 +1627,6 @@
 
                 <div id="transfer_of_residency">
                   <form action="#" method="post" id="form">
-
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
@@ -1309,17 +1639,17 @@
 
                     <label for="">Suffix:</label>
                     <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
-                    <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+                    <select class="form-control text-left" name="suffix" id="suffixs">
                       <option value="">N/A</option>
                       <option value="Jr">Jr</option>
                       <option value="Sr">Sr</option>
                       <option value="I">I</option>
                       <option value="II">II</option>
                       <option value="III">III</option>
-                    </select><br><br>
+                    </select><br>
 
-                    <label for="">Purok:</label><br>
-                    <select name="puroks" id="puroks" onchange="update()">
+                    <label for="">Purok:</label>
+                    <select name="puroks" class="form-control" id="puroks" onchange="update()">
                       <option value="Centro">Centro</option>
                       <option value="Hurawan">Huwaran</option>
                       <option value="Kaakbayan">Kaakbayan</option>
@@ -1329,13 +1659,34 @@
                       <option value="Sandiwa">Sandiwa</option>
                       <option value="Trece">Trece</option>
                       <option value="Uha">UHA</option>
-                    </select>
-
-                    <label for="">Previous Address:</label>
-                    <input type="text" class="form-control" name="previous_address"><br>
+                    </select><br>
 
                     <label for="">Current Address:</label>
-                    <input type="text" class="form-control" name="current_address"><br>
+                    <input type="text" class="form-control" name="current_address"
+                      placeholder="Ex. Previous Address"><br>
+
+                    <label for="">Previous Address:</label>
+                    <input type="text" class="form-control" name="previous_address"
+                      placeholder="Ex. Previous Address"><br>
+
+                    <label for="">Nationality</label>
+                    <input type="text" class="form-control" name="nationality" placeholder="Filipino"><br>
+
+                    <label for="">Civil Status:</label>
+                    <select class="form-control" onchange="update()" name="civil_status" id="stats">
+                      <option value="Married">Married</option>
+                      <option value="Widow">Widow</option>
+                      <option value="Single">Single</option>
+                    </select><br>
+
+                    <label for="">Purpose:</label>
+                    <input type="text" name="purpose" class="form-control" id="" cols="30" rows="10"
+                      placeholder="Ex. Moving to another country"></input>
+
+                    <input type="date" name="issueddate" style="display:none; position:absolute;">
+
+                    <hr>
+
                     <button name="transfer_of_residency" onclick="printIframe()" type="submit">Print</button>
 
                   </form>

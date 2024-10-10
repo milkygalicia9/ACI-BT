@@ -41,7 +41,7 @@
     <input type="text" class="form-control" name="previous_address" placeholder="Ex. Previous Address"><br>
 
     <label for="">Nationality</label>
-    <input type="text" class="form-control" name="current_address" placeholder="Filipino"><br>
+    <input type="text" class="form-control" name="nationality" placeholder="Filipino"><br>
 
     <label for="">Civil Status:</label>
     <select class="form-control" onchange="update()" name="civil_status" id="stats">
@@ -55,9 +55,28 @@
         placeholder="Ex. Moving to another country"></input>
 
     <input type="date" name="issueddate" style="display:none; position:absolute;">
-
     <hr>
 
-    <button name="transfer_of_residency" onclick="printIframe()" type="submit">Print</button>
+    <div class="print" style="text-align: right;">
+        <button type="button" class="btn btn-primary w-25" data-bs-toggle="modal"
+            data-bs-target="#transferResidency">Print</button>
+        <div class="modal fade" id="transferResidency" tabindex="-1" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content text-center">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body bg-light">
+                        <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-around">
+                        <button class="w-25 btn btn-primary" name="transfer_of_residency" onclick="printIframe()" id="coco"
+                            type="submit">Yes</button>
+                        <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </form>

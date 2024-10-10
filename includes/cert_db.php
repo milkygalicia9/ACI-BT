@@ -245,6 +245,145 @@ if (isset($_POST["certificate_of_employability"])) {
 
 
 
+// Certificate of Indigency 
+if (isset($_POST["indigency"])) {
+    // Sanitize and assign form data to variables
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $age = $conn->real_escape_string($_POST["age"]);
+    $civil_status = $conn->real_escape_string($_POST["civil_status"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $purpose = $conn->real_escape_string($_POST["purpose"]);
+
+    // Define SQL query using prepared statements for the indigency
+    $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+    $fullname = ucwords($fullname);
+    $address = $purok;
+    $issued_date = date('Y-m-d');
+
+    $stmt = $conn->prepare("INSERT INTO indigency (fullname, age, civil_status, address, purpose, issued_date) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('ssssss', $fullname, $age, $civil_status, $address, $purpose, $issued_date);
+
+    // Execute the indigency insertion query
+    if ($stmt->execute()) {
+        echo "New Indigency record inserted successfully";
+
+        // Fetch admin ID
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $_SESSION['username']);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        // Check if the admin user was found
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            // Insert a transaction record into the `transactions` table
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?, (SELECT COUNT(*) FROM indigency), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            // Execute the transaction query
+            if ($trans_stmt->execute()) {
+                echo "Transaction record inserted successfully";
+            } else {
+                echo "Error: " . $trans_stmt->error;
+            }
+
+            $trans_stmt->close();
+        } else {
+            echo "Error: Admin user not found.";
+        }
+
+        $admin_stmt->close();
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+
+    // Close database connection
+    $stmt->close();
+    $conn->close();
+}
+//   End of Certificate of Indigency 
+
+
+
+// Certificate of Cohabitation
+if (isset($_POST["cohabitation"])) {
+    // Sanitize and assign form data to variables
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $birthdate = $conn->real_escape_string($_POST["birth_date"]);
+    $first_name1 = $conn->real_escape_string($_POST["first_name1"]);
+    $middle_initial1 = $conn->real_escape_string($_POST["middle_initial1"]);
+    $last_name1 = $conn->real_escape_string($_POST["last_name1"]);
+    $cohabitant_birthdate = $conn->real_escape_string($_POST["cohabitant_birth_date"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $date_of_marriage = $conn->real_escape_string($_POST["date_of_marriage"]);
+
+    // Define SQL query using prepared statements for the business permit
+    $fullname_male = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+    $fullname_male = ucwords($fullname_male);
+    $fullname_female = $first_name1 . ' ' . $middle_initial1 . ' ' . $last_name;
+    $fullname_female = ucwords($fullname_female);
+    $duty_officer_name = $_SESSION['username'];
+    $address = $purok;
+    $fullname = $fullname_male;
+    $years_married = date('Y') - date('Y', strtotime($date_of_marriage));
+    $issued_date = date('Y-m-d');
+    $stmt = $conn->prepare("INSERT INTO cohabitation (fullname_male, birthdate_male, fullname_female, birthdate_female, address, date_of_marriage, years_married, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssssss', $fullname_male, $birthdate, $fullname_female, $cohabitant_birthdate, $address, $date_of_marriage, $years_married, $issued_date, $duty_officer_name);
+
+    // Execute the business permit insertion query
+    if ($stmt->execute()) {
+        echo "New certificate of employability record inserted successfully";
+
+        // Fetch admin ID
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $_SESSION['username']);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+
+        // Check if the admin user was found
+        if ($admin_result->num_rows > 0) {
+            $row = mysqli_fetch_assoc($admin_result);
+            $admin_id = $row['id'];
+
+            // Insert a transaction record into the `transactions` table
+            $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+            $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+            // Execute the transaction query
+            if ($trans_stmt->execute()) {
+                echo "Transaction record inserted successfully";
+            } else {
+                echo "Error: " . $trans_stmt->error;
+            }
+
+            $trans_stmt->close();
+        } else {
+            echo "Error: Admin user not found.";
+        }
+
+        $admin_stmt->close();
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    // Close database connection
+    $stmt->close();
+    $conn->close();
+}
+// End of Certificate of Cohabitation
+
+
 
 
 
@@ -264,7 +403,7 @@ if (isset($_POST["transfer_of_residency"])) {
     $purpose = $conn->real_escape_string($_POST["purpose"]);
 
     // Define SQL query using prepared statements for the certificate of transfer
-    $address = $current_address . ' . ' . $purok;
+    $address = $current_address . ', ' . $purok;
     $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
     $fullname = ucwords($fullname);
     $issued_date = date('Y-m-d');

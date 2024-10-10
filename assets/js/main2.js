@@ -101,12 +101,14 @@ function numberToWords(number) {
 
 
 function toggleFields() {
+ 
   const varname = [
     "first_name",
     "middle_initial",
     "last_name",
     "age",
-    "bithdate"
+      
+    
   ];
   for (let i = 0; i < varname.length; i++) {
     document.querySelectorAll('input[name="'+varname[i]+'"]').forEach(function(first) {
@@ -123,11 +125,18 @@ function toggleFields() {
   document.querySelectorAll('#form').forEach(function(form){
     form.reset();
   });
+
   document.querySelectorAll("#purok").forEach(function (name){
   name.setAttribute('id','puroks');
   name.setAttribute('name','puroks');
 
   });
+  
+  document.querySelectorAll("#bday").forEach(function (name){
+    name.setAttribute('id','bdays');
+    name.setAttribute('name','bdays');
+  
+    });
   document.querySelectorAll("#suffix").forEach(function (name){
   name.setAttribute('id','suffixs');
   name.setAttribute('name','suffixs');
@@ -173,9 +182,16 @@ function toggleFields() {
     }
   var purokSelect = currentForm.querySelector('select[id="puroks"]');
   var suffixSelect = currentForm.querySelector('select[id="suffixs"]');
+  var bdayinput = currentForm.querySelector('input[id="bdays"]');
+
+
   if (purokSelect) {
     purokSelect.setAttribute('id', 'purok');
     purokSelect.setAttribute('name', 'purok');
+  }
+  if (bdayinput) {
+    bdayinput.setAttribute('id', 'bday');
+    bdayinput.setAttribute('name', 'bday');
   }
   if (suffixSelect) {
     suffixSelect.setAttribute('id', 'suffix');
@@ -184,6 +200,15 @@ function toggleFields() {
 
   
   iframe.src = doc;
+  function setIssuedDate() {
+    const today = new Date();
+    const formattedDate = today.toISOString().split('T')[0];
+    document.getElementById('issueddate').value = formattedDate;
+}
+
+// Call the function when the page loads
+window.onload = setIssuedDate;
+
 }
 
 
@@ -221,8 +246,6 @@ iframeWindow.print();
   function updateText() { 
 
     var iframe = document.getElementById('myIframe');          
-
-
         var text = document.getElementById(document.getElementById('certificateType').value).querySelectorAll('input[type=text]');
         var number =document.getElementById(document.getElementById('certificateType').value).querySelectorAll('input[type=number]');
         var date= document.getElementById(document.getElementById('certificateType').value).querySelectorAll('input[type=date]');
@@ -324,9 +347,11 @@ else console.log('period not found');
 
 if (certificateType.value == 'certificate_of_income') {
 var num = iframeDocument.getElementById('intext');
+var numtotext = document.getElementById('amountinwords');
 
+if ( numtotext){ numtotext.innerText = numberToWords(number[0].value);}
 if (num ) { 
-  
+ 
   num.innerText = numberToWords(number[0].value);
 
 }
@@ -353,13 +378,58 @@ if (certificateType.value == 'indigency') {
 
 }
 
-if (certificateType.value == 'clearance') {
-  
+
+const bdayInput = document.getElementById('bday').value;
+const bdayCoha = document.getElementById('bday2').value;
+
+if (bdayInput) {
+  console.log(validateAge(bdayInput));
+  console.log("bdayCinpu");
 }
 
+if (bdayCoha) {
+  console.log(validateAge(bdayCoha));
+
+console.log("bdayCoha" );
+}
+
+// // Function to validate birthday and update DOM
+// function validateBirthday(bdayInputValue, bdayId, bmonthId, byearId) {
+//   const bday = new Date(bdayInputValue);
+//   const today = new Date();
+
+//   var bbday = iframeDocument.getElementById(bdayId);
+//   var bmonth = iframeDocument.getElementById(bmonthId);
+//   var byear = iframeDocument.getElementById(byearId);
+
+//   // Calculate age
+//   let age = today.getFullYear() - bday.getFullYear();
+//   const monthDiff = today.getMonth() - bday.getMonth();
+
+//   // Adjust age if the birthday hasn't occurred yet this year
+//   if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < bday.getDate())) {
+//     age--;
+//   }
+
+//   if (bbday || bmonth || byear) {
+//     if (age >= 18) {
+//       bbday.innerText = bday.getDate();
+//       bmonth.innerText = monthNames[bday.getMonth()];
+//       byear.innerText = bday.getFullYear();
+//     } else {
+//       // Clear the birthdate input if the age is less than 18
+//       document.getElementById(bdayId).value = '';
+//       alert("Warning: Must be 18 or older to proceed.");
+//     }
+//   }
+//   else{
+//     console.log('bbday, bmonth, byear not found');
+//   }
+// }
 
 
-}///end
+
+}///end updateText
 
 const inputs = document.querySelectorAll('input[type="text"]');
 
@@ -395,3 +465,32 @@ if (years) years.innerText =year;
 window.onload = function() {
   document.getElementById("fillup").scrollIntoView({ behavior: 'smooth' });
 };
+
+
+
+
+
+function validateAge(dateOfBirth) {
+  const today = new Date();
+  const birthDate = new Date(dateOfBirth);
+
+  // Calculate the age
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+
+  // Adjust age if the birthday hasn't occurred yet this year
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+  }
+
+  return age >= 18; // Return true if age is 18 or older, false otherwise
+}
+
+// Example usage
+const dateOfBirthInput = '2005-10-09'; // Replace with the actual date of birth in YYYY-MM-DD format
+
+if (validateAge(dateOfBirthInput)) {
+  console.log("Age is valid.");
+} else {
+  console.log("You must be 18 years old or older.");
+}
