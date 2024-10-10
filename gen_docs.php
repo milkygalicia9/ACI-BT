@@ -1,153 +1,78 @@
 <?php
 // session_start();
 
-<<<<<<< HEAD
-// if (!isset($_SESSION['username'])) {
-//     header("Location: index.php");
-//     exit();
-// }
-
-// //Include database connection file
-// include("db.php");
-
-// // Check if form is submitted
-// if (isset($_POST["barangay_clearance"])) {
-//     // Sanitize and assign form data to variables
-//     $first_name = $conn->real_escape_string($_POST["first_name"]);
-//     $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
-//     $last_name = $conn->real_escape_string($_POST["last_name"]);
-//     $suffix = $conn->real_escape_string($_POST["suffix"]);
-//     $purok = $conn->real_escape_string($_POST["purok"]);
-//     $birthplace = $conn->real_escape_string($_POST["birthplace"]);
-//     $birthdate = $conn->real_escape_string($_POST["birthday"]);
-//     $civil_status = $conn->real_escape_string($_POST["civil_status"]);
-//     $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
-//     //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
-//     $purpose = $conn->real_escape_string($_POST["purpose"]);
-//     //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_full_name"]);
-
-//     // Define SQL query using prepared statements
-//     $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-//     $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-//     $fullname = ucwords($fullname);
-//     $issued_date = date('Y-m-d');
-//     $duty_officer_name = $_SESSION['username'];
-//     $stmt->bind_param('sssssssss', $fullname, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
-
-//     // Execute SQL query
-//     if ($stmt->execute()) {
-//         echo "New record inserted successfully";
-        
-//         // Fetch admin ID
-//         $sql = "SELECT id FROM admin WHERE username = ?";
-//         $admin_stmt = $conn->prepare($sql);
-//         $admin_stmt->bind_param('s', $_SESSION['username']);
-//         $admin_stmt->execute();
-//         $admin_result = $admin_stmt->get_result();
-//         // Add missing import statement
-//         if ($admin_result->num_rows > 0) {
-//           $row = mysqli_fetch_assoc($admin_result);
-//           $admin_id = $row['id'];
-
-//           // Modify SQL query to use COUNT function correctly
-//           $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?,(SELECT COUNT(*) FROM barangay_clearance), NOW())");
-//           $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-//           if ($trans_stmt->execute()) {
-//             echo "Transaction record inserted successfully";
-//           } else {
-//             echo "Error: " . $trans_stmt->error;
-//           }
-
-//           $trans_stmt->close();
-//         } else {
-//           echo "Error: Admin user not found.";
-//             echo "Error: Admin user not found.";
-//         }
-
-//         $admin_stmt->close();
-//     } else {
-//         echo "Error: " . $stmt->error;
-//     }
-
-//     // Close database connection
-//     $stmt->close();
-//     $conn->close();
-// }
-=======
 if (!isset($_SESSION['username'])) {
-  header("Location: index.php");
-  exit();
+    header("Location: index.php");
+    exit();
 }
 
 //Include database connection file
-include ("db.php");
+include("db.php");
 
 // Check if form is submitted
 if (isset($_POST["barangay_clearance"])) {
-  // Sanitize and assign form data to variables
-  $first_name = $conn->real_escape_string($_POST["first_name"]);
-  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
-  $last_name = $conn->real_escape_string($_POST["last_name"]);
-  $suffix = $conn->real_escape_string($_POST["suffix"]);
-  $purok = $conn->real_escape_string($_POST["purok"]);
-  $birthplace = $conn->real_escape_string($_POST["birthplace"]);
-  $birthdate = $conn->real_escape_string($_POST["birthday"]);
-  $civil_status = $conn->real_escape_string($_POST["civil_status"]);
-  $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
-  //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
-  $purpose = $conn->real_escape_string($_POST["purpose"]);
-  //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_full_name"]);
+    // Sanitize and assign form data to variables
+    $first_name = $conn->real_escape_string($_POST["first_name"]);
+    $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+    $last_name = $conn->real_escape_string($_POST["last_name"]);
+    $suffix = $conn->real_escape_string($_POST["suffix"]);
+    $purok = $conn->real_escape_string($_POST["purok"]);
+    $birthplace = $conn->real_escape_string($_POST["birthplace"]);
+    $birthdate = $conn->real_escape_string($_POST["birthday"]);
+    $civil_status = $conn->real_escape_string($_POST["civil_status"]);
+    $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
+    //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
+    $purpose = $conn->real_escape_string($_POST["purpose"]);
+    //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_full_name"]);
 
-  // Define SQL query using prepared statements
-  $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-  $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-  $fullname = ucwords($fullname);
-  $issued_date = date('Y-m-d');
-  $duty_officer_name = $_SESSION['username'];
-  $stmt->bind_param('sssssssss', $fullname, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
+    // Define SQL query using prepared statements
+    $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+    $fullname = ucwords($fullname);
+    $issued_date = date('Y-m-d');
+    $duty_officer_name = $_SESSION['username'];
+    $stmt->bind_param('sssssssss', $fullname, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
 
-  // Execute SQL query
-  if ($stmt->execute()) {
-    echo "New record inserted successfully";
+    // Execute SQL query
+    if ($stmt->execute()) {
+        echo "New record inserted successfully";
+        
+        // Fetch admin ID
+        $sql = "SELECT id FROM admin WHERE username = ?";
+        $admin_stmt = $conn->prepare($sql);
+        $admin_stmt->bind_param('s', $_SESSION['username']);
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+        // Add missing import statement
+        if ($admin_result->num_rows > 0) {
+          $row = mysqli_fetch_assoc($admin_result);
+          $admin_id = $row['id'];
 
-    // Fetch admin ID
-    $sql = "SELECT id FROM admin WHERE username = ?";
-    $admin_stmt = $conn->prepare($sql);
-    $admin_stmt->bind_param('s', $_SESSION['username']);
-    $admin_stmt->execute();
-    $admin_result = $admin_stmt->get_result();
-    // Add missing import statement
-    if ($admin_result->num_rows > 0) {
-      $row = mysqli_fetch_assoc($admin_result);
-      $admin_id = $row['id'];
+          // Modify SQL query to use COUNT function correctly
+          $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?,(SELECT COUNT(*) FROM barangay_clearance), NOW())");
+          $trans_stmt->bind_param('is', $admin_id, $fullname);
 
-      // Modify SQL query to use COUNT function correctly
-      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?,(SELECT COUNT(*) FROM barangay_clearance), NOW())");
-      $trans_stmt->bind_param('is', $admin_id, $fullname);
+          if ($trans_stmt->execute()) {
+            echo "Transaction record inserted successfully";
+          } else {
+            echo "Error: " . $trans_stmt->error;
+          }
 
-      if ($trans_stmt->execute()) {
-        echo "Transaction record inserted successfully";
-      } else {
-        echo "Error: " . $trans_stmt->error;
-      }
+          $trans_stmt->close();
+        } else {
+          echo "Error: Admin user not found.";
+            echo "Error: Admin user not found.";
+        }
 
-      $trans_stmt->close();
+        $admin_stmt->close();
     } else {
-      echo "Error: Admin user not found.";
-      echo "Error: Admin user not found.";
+        echo "Error: " . $stmt->error;
     }
 
-    $admin_stmt->close();
-  } else {
-    echo "Error: " . $stmt->error;
-  }
-
-  // Close database connection
-  $stmt->close();
-  $conn->close();
+    // Close database connection
+    $stmt->close();
+    $conn->close();
 }
->>>>>>> c59300a2fc08503fbc43e8c38118d717d5e80bde
 
 // if (isset($_POST["business_permit_new"])) {
 //   // Sanitize and assign form data to variables
@@ -163,81 +88,42 @@ if (isset($_POST["barangay_clearance"])) {
 //   $stmt = $conn->prepare("INSERT INTO business_permit_new (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
 //   $stmt->bind_param('ssss', $business_name, $manager, $address, $issued_date);
 
-<<<<<<< HEAD
-//   // Execute the business permit insertion query
-//   if ($stmt->execute()) {
-//       echo "New business permit record inserted successfully";
-
-//       // Fetch admin ID
-//       $sql = "SELECT id FROM admin WHERE username = ?";
-//       $admin_stmt = $conn->prepare($sql);
-//       $admin_stmt->bind_param('s', $_SESSION['username']);
-//       $admin_stmt->execute();
-//       $admin_result = $admin_stmt->get_result();
-
-//       // Check if the admin user was found
-//       if ($admin_result->num_rows > 0) {
-//           $row = mysqli_fetch_assoc($admin_result);
-//           $admin_id = $row['id'];
-
-//           // Insert a transaction record into the `transactions` table
-//           $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_new), NOW())");
-//           $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-//           // Execute the transaction query
-//           if ($trans_stmt->execute()) {
-//               echo "Transaction record inserted successfully";
-//           } else {
-//               echo "Error: " . $trans_stmt->error;
-//           }
-
-//           $trans_stmt->close();
-//       } else {
-//           echo "Error: Admin user not found.";
-//       }
-
-//       $admin_stmt->close();
-//   } else {
-//       echo "Error: " . $stmt->error;
-//   }
-=======
   // Execute the business permit insertion query
   if ($stmt->execute()) {
-    echo "New business permit record inserted successfully";
+      echo "New business permit record inserted successfully";
 
-    // Fetch admin ID
-    $sql = "SELECT id FROM admin WHERE username = ?";
-    $admin_stmt = $conn->prepare($sql);
-    $admin_stmt->bind_param('s', $_SESSION['username']);
-    $admin_stmt->execute();
-    $admin_result = $admin_stmt->get_result();
+      // Fetch admin ID
+      $sql = "SELECT id FROM admin WHERE username = ?";
+      $admin_stmt = $conn->prepare($sql);
+      $admin_stmt->bind_param('s', $_SESSION['username']);
+      $admin_stmt->execute();
+      $admin_result = $admin_stmt->get_result();
 
-    // Check if the admin user was found
-    if ($admin_result->num_rows > 0) {
-      $row = mysqli_fetch_assoc($admin_result);
-      $admin_id = $row['id'];
+      // Check if the admin user was found
+      if ($admin_result->num_rows > 0) {
+          $row = mysqli_fetch_assoc($admin_result);
+          $admin_id = $row['id'];
 
-      // Insert a transaction record into the `transactions` table
-      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_new), NOW())");
-      $trans_stmt->bind_param('is', $admin_id, $fullname);
+          // Insert a transaction record into the `transactions` table
+          $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_new), NOW())");
+          $trans_stmt->bind_param('is', $admin_id, $fullname);
 
-      // Execute the transaction query
-      if ($trans_stmt->execute()) {
-        echo "Transaction record inserted successfully";
+          // Execute the transaction query
+          if ($trans_stmt->execute()) {
+              echo "Transaction record inserted successfully";
+          } else {
+              echo "Error: " . $trans_stmt->error;
+          }
+
+          $trans_stmt->close();
       } else {
-        echo "Error: " . $trans_stmt->error;
+          echo "Error: Admin user not found.";
       }
 
-      $trans_stmt->close();
-    } else {
-      echo "Error: Admin user not found.";
-    }
-
-    $admin_stmt->close();
+      $admin_stmt->close();
   } else {
-    echo "Error: " . $stmt->error;
+      echo "Error: " . $stmt->error;
   }
->>>>>>> c59300a2fc08503fbc43e8c38118d717d5e80bde
 
 //   // Close database connection
 //   $stmt->close();
@@ -258,81 +144,42 @@ if (isset($_POST["barangay_clearance"])) {
 //   $stmt = $conn->prepare("INSERT INTO business_permit_renew (business_name, manager, address, issued_date) VALUES (?, ?, ?, ?)");
 //   $stmt->bind_param('ssss', $business_name, $manager, $address, $issued_date);
 
-<<<<<<< HEAD
-//   // Execute the business permit insertion query
-//   if ($stmt->execute()) {
-//       echo "New business permit record inserted successfully";
-
-//       // Fetch admin ID
-//       $sql = "SELECT id FROM admin WHERE username = ?";
-//       $admin_stmt = $conn->prepare($sql);
-//       $admin_stmt->bind_param('s', $_SESSION['username']);
-//       $admin_stmt->execute();
-//       $admin_result = $admin_stmt->get_result();
-
-//       // Check if the admin user was found
-//       if ($admin_result->num_rows > 0) {
-//           $row = mysqli_fetch_assoc($admin_result);
-//           $admin_id = $row['id'];
-
-//           // Insert a transaction record into the `transactions` table
-//           $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
-//           $trans_stmt->bind_param('is', $admin_id, $fullname);
-
-//           // Execute the transaction query
-//           if ($trans_stmt->execute()) {
-//               echo "Transaction record inserted successfully";
-//           } else {
-//               echo "Error: " . $trans_stmt->error;
-//           }
-
-//           $trans_stmt->close();
-//       } else {
-//           echo "Error: Admin user not found.";
-//       }
-
-//       $admin_stmt->close();
-//   } else {
-//       echo "Error: " . $stmt->error;
-//   }
-=======
   // Execute the business permit insertion query
   if ($stmt->execute()) {
-    echo "New business permit record inserted successfully";
+      echo "New business permit record inserted successfully";
 
-    // Fetch admin ID
-    $sql = "SELECT id FROM admin WHERE username = ?";
-    $admin_stmt = $conn->prepare($sql);
-    $admin_stmt->bind_param('s', $_SESSION['username']);
-    $admin_stmt->execute();
-    $admin_result = $admin_stmt->get_result();
+      // Fetch admin ID
+      $sql = "SELECT id FROM admin WHERE username = ?";
+      $admin_stmt = $conn->prepare($sql);
+      $admin_stmt->bind_param('s', $_SESSION['username']);
+      $admin_stmt->execute();
+      $admin_result = $admin_stmt->get_result();
 
-    // Check if the admin user was found
-    if ($admin_result->num_rows > 0) {
-      $row = mysqli_fetch_assoc($admin_result);
-      $admin_id = $row['id'];
+      // Check if the admin user was found
+      if ($admin_result->num_rows > 0) {
+          $row = mysqli_fetch_assoc($admin_result);
+          $admin_id = $row['id'];
 
-      // Insert a transaction record into the `transactions` table
-      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
-      $trans_stmt->bind_param('is', $admin_id, $fullname);
+          // Insert a transaction record into the `transactions` table
+          $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+          $trans_stmt->bind_param('is', $admin_id, $fullname);
 
-      // Execute the transaction query
-      if ($trans_stmt->execute()) {
-        echo "Transaction record inserted successfully";
+          // Execute the transaction query
+          if ($trans_stmt->execute()) {
+              echo "Transaction record inserted successfully";
+          } else {
+              echo "Error: " . $trans_stmt->error;
+          }
+
+          $trans_stmt->close();
       } else {
-        echo "Error: " . $trans_stmt->error;
+          echo "Error: Admin user not found.";
       }
 
-      $trans_stmt->close();
-    } else {
-      echo "Error: Admin user not found.";
-    }
-
-    $admin_stmt->close();
+      $admin_stmt->close();
   } else {
-    echo "Error: " . $stmt->error;
+      echo "Error: " . $stmt->error;
   }
->>>>>>> c59300a2fc08503fbc43e8c38118d717d5e80bde
 
 //   // Close database connection
 //   $stmt->close();
@@ -399,6 +246,68 @@ if (isset($_POST["certificate_of_employability"])) {
   $stmt->close();
   $conn->close();
 }
+
+if (isset($_POST["first_time_job_seeker"])) {
+  // Sanitize and assign form data to variables
+  $first_name = $conn->real_escape_string($_POST["first_name"]);
+  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+  $last_name = $conn->real_escape_string($_POST["last_name"]);
+  $suffix = $conn->real_escape_string($_POST["suffix"]);
+  $purok = $conn->real_escape_string($_POST["puroks"]);
+  $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
+  $signed_date = $conn->real_escape_string($_POST["signed_date"]);
+  $validation_date = $conn->real_escape_string($_POST["validation_date"]);
+  $witness = $conn->real_escape_string($_POST["witness"]);
+
+  // Define SQL query using prepared statements
+  $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, period_of_residency, signed_date, validation_date, witness) VALUES (?, ?, ?, ?, ?, ?, ?)");
+  $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+  $fullname = ucwords($fullname);
+  $signed_date = date('Y-m-d');
+  $witness = $_SESSION['username'];
+  $stmt->bind_param('sssssssss', $fullname, $purok, $period_of_residency, $signed_date, $validation_date, $witness);
+
+  // Execute SQL query
+  if ($stmt->execute()) {
+      echo "New record inserted successfully";
+      
+      // Fetch admin ID
+      $sql = "SELECT id FROM admin WHERE username = ?";
+      $admin_stmt = $conn->prepare($sql);
+      $admin_stmt->bind_param('s', $_SESSION['username']);
+      $admin_stmt->execute();
+      $admin_result = $admin_stmt->get_result();
+      // Add missing import statement
+      if ($admin_result->num_rows > 0) {
+        $row = mysqli_fetch_assoc($admin_result);
+        $admin_id = $row['id'];
+
+        // Modify SQL query to use COUNT function correctly
+        $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?,(SELECT COUNT(*) FROM barangay_clearance), NOW())");
+        $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+        if ($trans_stmt->execute()) {
+          echo "Transaction record inserted successfully";
+        } else {
+          echo "Error: " . $trans_stmt->error;
+        }
+
+        $trans_stmt->close();
+      } else {
+        echo "Error: Admin user not found.";
+          echo "Error: Admin user not found.";
+      }
+
+      $admin_stmt->close();
+  } else {
+      echo "Error: " . $stmt->error;
+  }
+
+  // Close database connection
+  $stmt->close();
+  $conn->close();
+}
+
 ?>
 
 
