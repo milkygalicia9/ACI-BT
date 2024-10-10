@@ -247,12 +247,17 @@ if (isset($_POST["certificate_of_employability"])) {
   $conn->close();
 }
 
+<<<<<<< HEAD
 if (isset($_POST["first_time_job_seeker"])) {
+=======
+if (isset($_POST["indigency"])) {
+>>>>>>> 2420155af6e49e3a4dbf74a76e4f3a26b2f94712
   // Sanitize and assign form data to variables
   $first_name = $conn->real_escape_string($_POST["first_name"]);
   $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
   $last_name = $conn->real_escape_string($_POST["last_name"]);
   $suffix = $conn->real_escape_string($_POST["suffix"]);
+<<<<<<< HEAD
   $purok = $conn->real_escape_string($_POST["puroks"]);
   $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
   $signed_date = $conn->real_escape_string($_POST["signed_date"]);
@@ -301,6 +306,54 @@ if (isset($_POST["first_time_job_seeker"])) {
       $admin_stmt->close();
   } else {
       echo "Error: " . $stmt->error;
+=======
+  $age = $conn->real_escape_string($_POST["age"]);
+  $civil_status = $conn->real_escape_string($_POST["civil_status"]);
+  $purok = $conn->real_escape_string($_POST["purok"]);
+
+  // Define SQL query using prepared statements for the business permit
+  $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+  $fullname = ucwords($fullname);
+  $issued_date = date('Y-m-d');
+  $stmt = $conn->prepare("INSERT INTO indigency (fullname, age, civil_status, address, purpose, issued_date) VALUES (?, ?, ?, ?, ?, ?)");
+  $stmt->bind_param('ssssss', $fullname, $age, $civil_status, $address, $purpose, $issued_date);
+
+  // Execute the indigency insertion query
+  if ($stmt->execute()) {
+    echo "New Indigency record inserted successfully";
+
+    // Fetch admin ID
+    $sql = "SELECT id FROM admin WHERE username = ?";
+    $admin_stmt = $conn->prepare($sql);
+    $admin_stmt->bind_param('s', $_SESSION['username']);
+    $admin_stmt->execute();
+    $admin_result = $admin_stmt->get_result();
+
+    // Check if the admin user was found
+    if ($admin_result->num_rows > 0) {
+      $row = mysqli_fetch_assoc($admin_result);
+      $admin_id = $row['id'];
+
+      // Insert a transaction record into the `transactions` table
+      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+      $trans_stmt->bind_param('is', $admin_id, $fullname);
+
+      // Execute the transaction query
+      if ($trans_stmt->execute()) {
+        echo "Transaction record inserted successfully";
+      } else {
+        echo "Error: " . $trans_stmt->error;
+      }
+
+      $trans_stmt->close();
+    } else {
+      echo "Error: Admin user not found.";
+    }
+
+    $admin_stmt->close();
+  } else {
+    echo "Error: " . $stmt->error;
+>>>>>>> 2420155af6e49e3a4dbf74a76e4f3a26b2f94712
   }
 
   // Close database connection
@@ -648,11 +701,6 @@ if (isset($_POST["first_time_job_seeker"])) {
                   </form>
                 </div>
 
-
-
-
-
-
                 <div id="business_permit_renew">
                   <form action="#" method="post" id="form">
                     <label for="businessName">Business name/ Trade Activity:</label>
@@ -829,7 +877,7 @@ if (isset($_POST["first_time_job_seeker"])) {
                     <input type="date" class="form-control" name="cohabitant_birth_date"><br>
 
                     <label for="">Purok:</label><br>
-                    <select name="puroks" id="puroks" onchange="update()">
+                    <select name="purok" id="purok" onchange="update()">
                       <option value="Centro">Centro</option>
                       <option value="Hurawan">Huwaran</option>
                       <option value="Kaakbayan">Kaakbayan</option>
@@ -847,8 +895,8 @@ if (isset($_POST["first_time_job_seeker"])) {
                     <input type="month" onchange="updateText()" id="month" class="form-control"
                       name="date_of_marriage"><br>
 
-                    <label for="">Duty Officer Full Name</label>
-                    <input type="text" class="form-control" name="duty_officer_full_name">
+                    <!-- <label for="">Duty Officer Full Name</label>
+                    <input type="text" class="form-control" name="duty_officer_full_name"> -->
                   </form>
                   <button name="cohabitation" onclick="printIframe()" type="submit">Print</button>
 
@@ -1127,7 +1175,7 @@ if (isset($_POST["first_time_job_seeker"])) {
                     <input type="number" class="form-control" name="age">
 
                     <label for="">Civil Status</label>
-                    <select name="" id="civil" onchange="updateText()" class="form-control">
+                    <select name="civil_status" id="civil" onchange="updateText()" class="form-control">
                       <option value="">Select Civil Status</option>
                       <option value="m">Married</option>
                       <option value="s">Single</option>

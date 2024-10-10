@@ -4,27 +4,28 @@
     <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
     <label for="">Middle Initial:</label>
-    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
+    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. M"><br>
 
     <label for="">Last Name:</label>
-    <input type="text" class="form-control" name="last_name" placeholder="Ex. J"><br>
+    <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
 
 
     <label for="">Suffix:</label>
-    <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
-    <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
+    <select class="form-control text-left" name="suffix" id="suffixs">
         <option value="">N/A</option>
         <option value="Jr">Jr</option>
         <option value="Sr">Sr</option>
         <option value="I">I</option>
         <option value="II">II</option>
         <option value="III">III</option>
-    </select><br><br>
+    </select><br>
+
     <label for="">Age</label>
-    <input type="number" name="age" class="form-control" placeholder="Ex. 20">
+    <input type="number" name="age" class="form-control" placeholder="Ex. 20"><br>
 
     <label for="">Purok:</label><br>
-    <select name="puroks" id="puroks" onchange="update()">
+    <select name="puroks" class="form-control" id="puroks" onchange="update()">
+        <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
         <option value="Kaakbayan">Kaakbayan</option>
@@ -35,10 +36,28 @@
         <option value="Trece">Trece</option>
         <option value="Uha">UHA</option>
     </select>
-    <br>
-    <!-- <label for="">Issued Date:</label>
-                  <input type="date" class="form-control"> -->
-    <label for="">Duty Officer Full Name:</label>
-    <input type="text" name="Duty_Officer" class="form-control">
-    <button name="certificate_of_employability" onclick="printIframe()" type="submit">Print</button>
+    <hr>    
+
+    <div class="print" style="text-align: right;">
+        <button type="button" class="btn btn-primary w-25" data-bs-toggle="modal"
+            data-bs-target="#certOfEmployability">Print</button>
+        <div class="modal fade" id="certOfEmployability" tabindex="-1" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content text-center">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body bg-light">
+                        <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-around">
+                        <button class="w-25 btn btn-primary" name="certificate_of_employability" onclick="printIframe()"
+                            type="submit">Yes</button>
+                        <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </form>
