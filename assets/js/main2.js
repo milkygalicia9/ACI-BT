@@ -214,7 +214,8 @@ function select(){
   function printIframe() {
     var iframe = document.getElementById('myIframe');
 var iframeWindow = iframe.contentWindow;
-iframeWindow.print(); 
+iframeWindow.print();
+ 
   }
 
   function updateText() { 
@@ -295,6 +296,7 @@ if(certificateType.value == 'lot_ownership') {
 
 }
 
+
 if(certificateType.value == 'cohabitation') {
 var periods = iframeDocument.getElementById('period');
 var inyears = iframeDocument.getElementById('inyears');
@@ -351,6 +353,11 @@ if (certificateType.value == 'indigency') {
 
 }
 
+if (certificateType.value == 'clearance') {
+  
+}
+
+
 
 }///end
 
@@ -382,6 +389,8 @@ if (days) days.innerText = day;
 if (months) months.innerText = monthName;
 if (sups) sups.innerText = getOrdinalSuffix(day);
 if (years) years.innerText =year;
+
+
 
 window.onload = function() {
   document.getElementById("fillup").scrollIntoView({ behavior: 'smooth' });

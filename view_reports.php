@@ -70,28 +70,15 @@ if (!isset($_SESSION['username'])) {
             </a>
         </div> -->
 
-    <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center w-100"
       style="background-color: #F4F3EF; padding: 0">
-
-      <div class="d-flex align-items-center justify-content-between h-100 p-2">
-        <a href="home.php" class="logo d-flex align-items-center justify-content-center">
-          <span class="d-none d-lg-block fs-3">ACI-BT</span>
-        </a>
-      </div>
-
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-
-      <div class="title h-100 pl-5 w-100 d-flex align-items-center justify-content-between"
-        style="padding-left: 20px; padding-top: 8px;">
-        <h4 class="text-dark fs-3">Automated Credential Issuance for Barangay Tiniguiban</h4>
-      </div>
-
-    </header><!-- End Header -->
+      <?php include 'includes/header.php' ?>
+    </header>
 
     <?php
     // Include your PHP code here
-    include 'db.php';
+    //include 'db.php';
+    include 'queries_reports.php';
     ?>
     <script>
       // Use PHP variables in JavaScript
@@ -109,6 +96,43 @@ if (!isset($_SESSION['username'])) {
       const Sales_Lot_Ownership = <?php echo $count_lot_ownership; ?>;
       const Sales_Transfer_of_Residency = <?php echo $count_transfer_of_residency; ?>;
 
+      const sum = <?php echo $sum; ?>;
+      document.addEventListener('DOMContentLoaded', function () {
+      
+      // Calculate the clearance percentage
+      const Sales_Clearance_Percent = (Sales_Clearance / sum) * 100;
+      const Sales_Business_Permit_New_Percent = (Sales_Business_Permit_New / sum) * 100;
+      const Sales_Business_Permit_Renew_Percent = (Sales_Business_Permit_Renew / sum) * 100;
+      const Sales_Certificate_of_Employability_Percent = (Sales_Certificate_of_Employability / sum) * 100;
+      const Sales_Certificate_of_Income_Percent = (Sales_Certificate_of_Income / sum) * 100;
+      const Sales_Cohabitation_Percent = (Sales_Cohabitation / sum) * 100;
+      const Sales_Complaint_Certificate_Percent = (Sales_Complaint_Certificate / sum) * 100;
+      const Sales_Death_Certificate_Percent = (Sales_Death_Certificate / sum) * 100;
+      const Sales_First_Time_Job_Seeker_Percent = (Sales_First_Time_Job_Seeker / sum) * 100;
+      const Sales_Indigency_Percent = (Sales_Indigency / sum) * 100;
+      const Sales_Indigency_AICS_Percent = (Sales_Indigency_AICS / sum) * 100;
+      const Sales_Lot_Ownership_Percent = (Sales_Lot_Ownership / sum) * 100;
+      const Sales_Transfer_of_Residency_Percent = (Sales_Transfer_of_Residency / sum) * 100;
+
+      // Set the clearance percentage value into the span
+      document.getElementById('clearance_percent').innerHTML = Sales_Clearance_Percent.toFixed(2) + '%';
+      document.getElementById('business_permit_new_percent').innerHTML = Sales_Business_Permit_New_Percent.toFixed(2) + '%';
+      document.getElementById('business_permit_renew_percent').innerHTML = Sales_Business_Permit_Renew_Percent.toFixed(2) + '%';
+      document.getElementById('income_percent').innerHTML = Sales_Certificate_of_Income_Percent.toFixed(2) + '%';
+      document.getElementById('cohabitation_percent').innerHTML = Sales_Cohabitation_Percent.toFixed(2) + '%';
+      document.getElementById('coe_percent').innerHTML = Sales_Certificate_of_Employability_Percent.toFixed(2) + '%';
+      document.getElementById('indigency_percent').innerHTML = Sales_Indigency_Percent.toFixed(2) + '%';
+      document.getElementById('indigency_aics_percent').innerHTML = Sales_Indigency_AICS_Percent.toFixed(2) + '%';
+      document.getElementById('complaint_percent').innerHTML = Sales_Complaint_Certificate_Percent.toFixed(2) + '%';
+      document.getElementById('death_percent').innerHTML = Sales_Death_Certificate_Percent.toFixed(2) + '%';
+      document.getElementById('ftjs_percent').innerHTML = Sales_First_Time_Job_Seeker_Percent.toFixed(2) + '%';
+      document.getElementById('lot_percent').innerHTML = Sales_Lot_Ownership_Percent.toFixed(2) + '%';
+      document.getElementById('transfer_percent').innerHTML = Sales_Transfer_of_Residency_Percent.toFixed(2) + '%';
+    })
+      
+      
+
+
       // Function to redirect to view_transactions page with document type parameter
       function moreInfo(docType, docId) {
         window.location.href = 'more_info.php?docType=' + encodeURIComponent(docType) + '&docId=' + encodeURIComponent(docId);
@@ -116,71 +140,21 @@ if (!isset($_SESSION['username'])) {
 
     </script>
 
-
-    <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar" style="background-color: #174793; padding: 0;">
-
-      <div class="barangay-logo h-50 w-100" style="background-color: #729ED9; margin-bottom: 2px;">
-        <div class="barangay-logo h-100 d-flex align-items-center justify-content-center">
-          <a href="home.php">
-            <img src="assets/img/cap-log.png" height="250" alt="">
-          </a>
-        </div>
-      </div>
-
-      <ul class="sidebar-nav" id="sidebar-nav" style="padding: 15px;">
-        <li class="nav-item">
-          <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
-            <i class="bi bi-grid text-light fs-5"></i>
-            <span class="fs-5">Dashboard</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-
-        <li class="nav-item">
-          <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#"
-            style="background-color: #174793;">
-            <i class="bi bi-diagram-3 fs-5"></i><span class="fs-5">Officials</span><i
-              class="bi bi-chevron-down ms-auto fs-5"></i>
-          </a>
-          <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="officials.php">
-                <i class="bi bi-person-check-fill text-light fs-5" style="font-size: 12px;"></i><span
-                  class="text-light fs-5">Barangay Officials</span>
-              </a>
-            </li>
-            <li>
-              <a href="sk.php">
-                <i class="bi bi-person-badge text-light fs-5" style="font-size: 12px;"></i><span
-                  class="text-light fs-5">SK Officials</span>
-              </a>
-            </li>
-            <li>
-              <a href="staffs.php">
-                <i class="bi bi-people-fill text-light fs-5" style="font-size: 12px;"></i><span
-                  class="text-light fs-5">Barangay Staffs</span>
-              </a>
-            </li>
-          </ul>
-        </li><!-- End Components Nav -->
-
-        <li class="nav-item">
-          <a class="nav-link collapsed text-light" href="about.php" style="background-color: #174793;">
-            <i class="bi bi-question-circle fs-5"></i>
-            <span class="fs-5">About</span>
-          </a>
-        </li><!-- End F.A.Q Page Nav -->
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
-            <i class="bi bi-power text-dark fs-5"></i>
-            <span class="fs-5">Logout</span>
-          </a>
-        </li>
-      </ul>
+      <?php include 'includes/sidebar.php' ?>
     </aside>
 
-
     <section class="section dashboard">
+    <div class="d-flex pb-2">
+        <a href="home.php" class="d-flex">
+          <div class="icon">
+            <i class="bi-caret-left-square fs-2 p-2 text-primary"></i>
+          </div>
+          <div class="back d-flex text-primary align-items-center fs-3">
+            Back
+          </div>
+        </a>
+      </div>
       <div class="row">
         <div id="carouselExampleFade" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -219,7 +193,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color: rgba(255, 0, 0, 1)">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color: rgba(255, 0, 0, 1)">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -231,12 +206,26 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_clearance; ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">12%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="clearance_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
                         </div>
                       </div>
+                      <script>
+                        // Wait for the page to load before running the script
+                        document.addEventListener('DOMContentLoaded', function () {
+                          // Use PHP variables in JavaScript
+                          const Sales_Clearance = <?php echo $count_clearance; ?>;
+                          const sum = <?php echo $sum; ?>;
+                          
+                          // Calculate the clearance percentage
+                          const Sales_Clearance_Percent = (Sales_Clearance / sum) * 100;
+
+                          // Set the clearance percentage value into the span
+                          document.getElementById('clearance_percent').innerHTML = Sales_Clearance_Percent.toFixed(2) + '%';
+                        });
+                      </script>
 
                     </div>
                   </div><!-- End Sales Card -->
@@ -269,7 +258,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color: rgba(54, 162, 235, 1)">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color: rgba(54, 162, 235, 1)">
                               stroke-linejoin="round" class="feather feather-file-text" >
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
@@ -282,7 +272,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_business_permit_new ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">8%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="business_permit_new_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -324,7 +314,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color: rgba(255, 206, 86, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color: rgba(255, 206, 86, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -336,8 +327,8 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_business_permit_renew ?>
                             </h6>
-                            <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                              class="text-muted small pt-2 ps-1">decrease</span>
+                            <span class="text-success small pt-1 fw-bold" id="business_permit_renew_percent">%</span> <span
+                              class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
                         </div>
@@ -387,7 +378,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(153, 102, 255, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(153, 102, 255, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -399,7 +391,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_certificate_of_income ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">12%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="income_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -438,7 +430,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(255, 165, 0, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(255, 165, 0, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -450,7 +443,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_cohabitation; ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">8%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="cohabitation_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -494,7 +487,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(75, 192, 192, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(75, 192, 192, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -506,8 +500,8 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_certificate_of_employability ?>
                             </h6>
-                            <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                              class="text-muted small pt-2 ps-1">decrease</span>
+                            <span class="text-success small pt-1 fw-bold" id="coe_percent">%</span> <span
+                              class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
                         </div>
@@ -553,14 +547,15 @@ if (!isset($_SESSION['username'])) {
                       <div class="card-body">
 
                         <h5 class="card-title">
-                  CERTIFICATE OF INDIGENCY
+                          CERTIFICATE OF INDIGENCY
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(77, 0, 77, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(77, 0, 77, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -572,7 +567,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_indigency; ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">12%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="indigency_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -611,7 +606,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(16, 16, 16, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(16, 16, 16, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -623,7 +619,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_indigency_aics; ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">8%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="indigency_aics_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -660,14 +656,15 @@ if (!isset($_SESSION['username'])) {
                       <div class="card-body">
 
                         <h5 class="card-title">
-                         COMPLAINT CERTIFICATE
+                          COMPLAINT CERTIFICATE
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(0, 51, 102, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(0, 51, 102, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -679,8 +676,8 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_complaint_certificate; ?>
                             </h6>
-                            <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                              class="text-muted small pt-2 ps-1">decrease</span>
+                            <span class="text-success small pt-1 fw-bold" id="complaint_percent">%</span> <span
+                              class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
                         </div>
@@ -726,14 +723,15 @@ if (!isset($_SESSION['username'])) {
                       <div class="card-body">
 
                         <h5 class="card-title">
-                         DEATH CERTIFICATE
+                          DEATH CERTIFICATE
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(0, 128, 0, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(0, 128, 0, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -745,7 +743,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_death_certificate; ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">12%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="death_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -784,7 +782,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(153, 0, 0, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(153, 0, 0, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -796,7 +795,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_first_time_job_seeker; ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">8%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="ftjs_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -833,14 +832,15 @@ if (!isset($_SESSION['username'])) {
                       <div class="card-body">
 
                         <h5 class="card-title">
-                         LOT OWNERSHIP
+                          LOT OWNERSHIP
                         </h5>
 
                         <div class="d-flex align-items-center">
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(128, 0, 0, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(128, 0, 0, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -852,8 +852,8 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_lot_ownership; ?>
                             </h6>
-                            <span class="text-danger small pt-1 fw-bold">12%</span> <span
-                              class="text-muted small pt-2 ps-1">decrease</span>
+                            <span class="text-success small pt-1 fw-bold" id="lot_percent">%</span> <span
+                              class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
                         </div>
@@ -906,7 +906,8 @@ if (!isset($_SESSION['username'])) {
                           <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"
                               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                              stroke-linejoin="round" class="feather feather-file-text" style="color:rgba(153, 153, 0, 1);">
+                              stroke-linejoin="round" class="feather feather-file-text"
+                              style="color:rgba(153, 153, 0, 1);">
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -918,7 +919,7 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_transfer_of_residency; ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold">12%</span> <span
+                            <span class="text-success small pt-1 fw-bold" id="transfer_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
@@ -994,19 +995,19 @@ if (!isset($_SESSION['username'])) {
                       'rgba(153, 153, 0, 1)' // Transfer of Residency
                     ],
                     borderWidth: 1,
-                    data: [       
+                    data: [
                       Sales_Clearance,
                       Sales_Business_Permit_New,
-                      Sales_Business_Permit_Renew, 
-                      Sales_Certificate_of_Income, 
+                      Sales_Business_Permit_Renew,
+                      Sales_Certificate_of_Income,
                       Sales_Cohabitation,
                       Sales_Certificate_of_Employability,
                       Sales_Indigency,
-                      Sales_Indigency_AICS, 
-                      Sales_Complaint_Certificate, 
-                      Sales_Death_Certificate, 
-                      Sales_First_Time_Job_Seeker, 
-                      Sales_Lot_Ownership, 
+                      Sales_Indigency_AICS,
+                      Sales_Complaint_Certificate,
+                      Sales_Death_Certificate,
+                      Sales_First_Time_Job_Seeker,
+                      Sales_Lot_Ownership,
                       Sales_Transfer_of_Residency]
                   }]
                 };

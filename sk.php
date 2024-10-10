@@ -56,84 +56,13 @@
 
 <body style="background-color: #F4F3EF;">
 
-    <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center w-100"
         style="background-color: #F4F3EF; padding: 0">
+        <?php include 'includes/header.php' ?>
+    </header>
 
-        <div class="d-flex align-items-center justify-content-between h-100 p-2">
-            <a href="home.php" class="logo d-flex align-items-center justify-content-center">
-                <span class="d-none d-lg-block fs-3">ACI-BT</span>
-            </a>
-        </div>
-
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-
-        <div class="title h-100 pl-5 w-100 d-flex align-items-center justify-content-between"
-            style="padding-left: 20px; padding-top: 8px;">
-            <h4 class="text-dark fs-3">Automated Credential Issuance for Barangay Tiniguiban</h4>
-        </div>
-    </header><!-- End Header -->
-
-    <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar" style="background-color: #174793; padding: 0;">
-
-        <div class="barangay-logo h-50 w-100" style="background-color: #729ED9; margin-bottom: 2px;">
-            <div class="barangay-logo h-100 d-flex align-items-center justify-content-center">
-                <a href="home.php">
-                    <img src="assets/img/cap-log.png" height="250" alt="">
-                </a>
-            </div>
-        </div>
-
-        <ul class="sidebar-nav" id="sidebar-nav" style="padding: 15px;">
-            <li class="nav-item">
-                <a class="nav-link text-light" href="home.php" style="background-color: #174793;">
-                    <i class="bi bi-grid text-light fs-5"></i>
-                    <span class="fs-5">Dashboard</span>
-                </a>
-            </li><!-- End Dashboard Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed text-light" data-bs-target="#components-nav" data-bs-toggle="collapse"
-                    href="#" style="background-color: #174793;">
-                    <i class="bi bi-diagram-3 fs-5"></i><span class="fs-5">Officials</span><i
-                        class="bi bi-chevron-down ms-auto fs-5"></i>
-                </a>
-                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="officials.php">
-                            <i class="bi bi-person-check-fill text-light fs-5" style="font-size: 12px;"></i><span
-                                class="text-light fs-5">Barangay Officials</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="sk.php">
-                            <i class="bi bi-person-badge text-light fs-5" style="font-size: 12px;"></i><span
-                                class="text-light fs-5">SK Officials</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="staffs.php">
-                            <i class="bi bi-people-fill text-light fs-5" style="font-size: 12px;"></i><span
-                                class="text-light fs-5">Barangay Staffs</span>
-                        </a>
-                    </li>
-                </ul>
-            </li><!-- End Components Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed text-light" href="about.php" style="background-color: #174793;">
-                    <i class="bi bi-question-circle fs-5"></i>
-                    <span class="fs-5">About</span>
-                </a>
-            </li><!-- End F.A.Q Page Nav -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="index.php" style="background-color: #F4F3EF;">
-                    <i class="bi bi-power text-dark fs-5"></i>
-                    <span class="fs-5">Logout</span>
-                </a>
-            </li>
-        </ul>
+        <?php include 'includes/sidebar.php' ?>
     </aside>
 
     <main id="main" class="main">
@@ -152,7 +81,7 @@
                                     <div class="d-flex align-items-center justify-content-center mb-2">
                                         <div class="border border-white d-flex align-items-center justify-content-center rounded-circle overflow-hidden"
                                             style="width: 125px; height: 125px;">
-                                            <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt=""
+                                            <img src="assets/img/SK-COUNCIL/AYUNTING.jpg" alt=""
                                                 class="w-100 h-100">
                                         </div>
                                     </div>
@@ -174,7 +103,7 @@
                         <div class="col-sm-6 col-lg-4">
                             <div class="card hover-img">
                                 <div class="card-body p-4 text-center border-bottom">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
+                                    <img src="assets/img/SK-COUNCIL/DUMARAN.jpg" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
                                     <h6 class="text-primary fs-5">ZYRA ASHLEE DUMARAN</h6>
                                     <span class="text-dark fs-5">SK Kagawad</span>
@@ -187,7 +116,7 @@
                         <div class="col-sm-6 col-lg-4">
                             <div class="card hover-img">
                                 <div class="card-body p-4 text-center border-bottom">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""
+                                    <img src="assets/img/SK-COUNCIL/GALICIA.jpg" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
                                     <h6 class="text-primary fs-5">MILKY MAE GALICIA</h6>
                                     <span class="text-dark fs-5">SK Kagawad</span>
@@ -200,7 +129,7 @@
                         <div class="col-sm-6 col-lg-4">
                             <div class="card hover-img">
                                 <div class="card-body p-4 text-center border-bottom">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt=""
+                                    <img src="assets/img/SK-COUNCIL/PEREZ.jpg" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
                                     <h6 class="text-primary fs-5">JERICHO PEREZ</h6>
                                     <span class="text-dark fs-5">SK Kagawad</span>
@@ -213,7 +142,7 @@
                         <div class="col-sm-6 col-lg-4">
                             <div class="card hover-img">
                                 <div class="card-body p-4 text-center border-bottom">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt=""
+                                    <img src="assets/img/SK-COUNCIL/QUINTERO.jpg" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
                                     <h6 class="text-primary fs-5">TRISHA MAE QUINTERO</h6>
                                     <span class="text-dark fs-5">SK Kagawad</span>
@@ -226,7 +155,7 @@
                         <div class="col-sm-6 col-lg-4">
                             <div class="card hover-img">
                                 <div class="card-body p-4 text-center border-bottom">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt=""
+                                    <img src="assets/img/SK-COUNCIL/BASANES.jpg" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
                                     <h6 class="text-primary fs-5">PAMELA BASANES</h6>
                                     <span class="text-dark fs-5">SK Kagawad</span>
@@ -239,7 +168,7 @@
                         <div class="col-sm-6 col-lg-4">
                             <div class="card hover-img">
                                 <div class="card-body p-4 text-center border-bottom">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt=""
+                                    <img src="assets/img/SK-COUNCIL/CARLOS.jpg" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
                                     <h6 class="text-primary fs-5">SYMON CARLOS</h6>
                                     <span class="text-dark fs-5">SK Kagawad</span>
@@ -252,7 +181,7 @@
                         <div class="col-sm-6 col-lg-4">
                             <div class="card hover-img">
                                 <div class="card-body p-4 text-center border-bottom">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""
+                                    <img src="assets/img/SK-COUNCIL/BAGONA.jpg" alt=""
                                         class="rounded-circle mb-3" width="80" height="80">
                                     <h6 class="text-primary fs-5">TRICIA MAE BAGONA</h6>
                                     <span class="text-dark fs-5"> SK Kagawad</span>
