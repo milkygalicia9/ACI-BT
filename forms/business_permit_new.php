@@ -1,10 +1,10 @@
-<form action="#" method="post" id="form">
-
+<!-- Business Permit Form -->
+<form action="#" method="post" id="BPermitNewForm">
     <label for="businessName">Business name/ Trade Activity:</label>
-    <input type="text" name="businessName" class="form-control" name="business_name" placeholder="Ex: Star Oil"><br>
+    <input type="text" name="businessName" class="form-control" placeholder="Ex: Star Oil" required><br>
 
-    <label for="">Purok:</label><br>
-    <select name="purok" id="purok" onchange="update()" class="form-control">
+    <label for="purok">Purok:</label><br>
+    <select name="purok" id="purok" onchange="update()" class="form-control" required>
         <option value="">--Select Purok--</option>
         <option value="Centro">Centro</option>
         <option value="Hurawan">Huwaran</option>
@@ -18,17 +18,18 @@
     </select>
     <br>
 
-    <label for="">Manager / Operator</label>
-    <input type="text" class="form-control" name="manager_operator" placeholder="Ex. Juan Dela Cruz"><br>
+    <label for="manager_operator">Manager / Operator:</label>
+    <input type="text" class="form-control" name="manager_operator" placeholder="Ex. Juan Dela Cruz" required><br>
 
-    <label for="">Address(Manager / Operator)</label>
-    <input type="text" class="form-control" name="manager_operator_address" placeholder="Ex. 144 PSU Rd">
+    <label for="manager_operator_address">Address (Manager / Operator):</label>
+    <input type="text" class="form-control" name="manager_operator_address" placeholder="Ex. 144 PSU Rd" required><br>
     <hr>
 
-    <div class="print" style="text-align: right;">
-        <button type="button" class="btn btn-primary w-25" data-bs-toggle="modal"
-            data-bs-target="#businessPermitNew">Print</button>
-        <div class="modal fade" id="businessPermitNew" tabindex="-1" style="display: none;" aria-hidden="true">
+    <div class="BPermitNewprint" style="text-align: right;">
+        <button type="button" class="btn btn-primary w-25" id="BPermitNewprintBtn">Print</button>
+
+        <!-- Business Permit Modal -->
+        <div class="modal fade" id="businessPermitModal" tabindex="-1" style="display: none;" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content text-center">
                     <div class="modal-header">
@@ -38,13 +39,28 @@
                         <h2 style="font-weight: bold;">Confirm if all the data is correct?</h2>
                     </div>
                     <div class="modal-footer d-flex justify-content-around">
-                        <button class="w-25 btn btn-primary" name="business_permit_new" onclick="printIframe()"
-                            type="submit">Yes</button>
+                        <button class="w-25 btn btn-primary" name="business_permit_new" onclick="printIframe()" type="submit">Yes</button>
                         <button type="button" class="w-25 btn btn-danger" data-bs-dismiss="modal">No</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </form>
+
+<script>
+    // Event listener for Business Permit print button
+    document.getElementById("BPermitNewprintBtn").addEventListener("click", function () {
+        let form = document.getElementById("BPermitNewForm");  // Correct form ID
+
+        // Validate the form
+        if (form.checkValidity()) {
+            // If the form is valid, show the Business Permit modal
+            let businessPermitModal = new bootstrap.Modal(document.getElementById("businessPermitModal"));
+            businessPermitModal.show();
+        } else {
+            // If the form is not valid, show the built-in validation messages
+            form.reportValidity();
+        }
+    });
+</script>
