@@ -7,7 +7,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 //Include database connection file
-include ("db.php");
+include("db.php");
 
 // Check if form is submitted
 if (isset($_POST["barangay_clearance"])) {
@@ -509,66 +509,68 @@ if (isset($_POST["transfer_of_residency"])) {
   $conn->close();
 }
 
-// if (isset($_POST["certificate_of_income"])) {
-//   // Sanitize and assign form data to variables
-//   $first_name = $conn->real_escape_string($_POST["first_name"]);
-//   $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
-//   $last_name = $conn->real_escape_string($_POST["last_name"]);
-//   $suffix = $conn->real_escape_string($_POST["suffix"]);
-//   $purok = $conn->real_escape_string($_POST["purok"]);
-//   $amount = $conn->real_escape_string($_POST["amount"]);
-//   //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
-//   //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_name"]);
+if (isset($_POST["certificate_of_income"])) {
+  // Sanitize and assign form data to variables
+  $first_name = $conn->real_escape_string($_POST["first_name"]);
+  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+  $last_name = $conn->real_escape_string($_POST["last_name"]);
+  $suffix = $conn->real_escape_string($_POST["suffix"]);
+  $purok = $conn->real_escape_string($_POST["purok"]);
+  $income_num = $conn->real_escape_string($_POST["income_num"]); // Changed from amount
+  $income_words = $conn->real_escape_string($_POST["income_words"]); // Added new field
 
-//   // Define SQL query using prepared statements for the business permit
-//   $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-//   $fullname = ucwords($fullname);
-//   $address = $purok;
-//   $issued_date = date('Y-m-d');
-//   $stmt = $conn->prepare("INSERT INTO certificate_of_income (fullname, address, issued_date) VALUES (?, ?, ?)");
-//   $stmt->bind_param('sss', $fullname, $address, $issued_date);
+  //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
+  //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_name"]);
 
-//   // Execute the business permit insertion query
-//   if ($stmt->execute()) {
-//     echo "New certificate of employability record inserted successfully";
+  // Define SQL query using prepared statements for the business permit
+  $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+  $fullname = ucwords($fullname);
+  $address = $purok;
+  $issued_date = date('Y-m-d');
+  $stmt = $conn->prepare("INSERT INTO certificate_of_income (fullname, address, income_num, income_words, issued_date) VALUES (?, ?, ?, ?, ?)");
+  $stmt->bind_param('ssiss', $fullname, $address, $income_num, $income_words, $issued_date);
 
-//     // Fetch admin ID
-//     $sql = "SELECT id FROM admin WHERE username = ?";
-//     $admin_stmt = $conn->prepare($sql);
-//     $admin_stmt->bind_param('s', $_SESSION['username']);
-//     $admin_stmt->execute();
-//     $admin_result = $admin_stmt->get_result();
+  // Execute the business permit insertion query
+  if ($stmt->execute()) {
+    echo "New certificate of employability record inserted successfully";
 
-//     // Check if the admin user was found
-//     if ($admin_result->num_rows > 0) {
-//       $row = mysqli_fetch_assoc($admin_result);
-//       $admin_id = $row['id'];
+    // Fetch admin ID
+    $sql = "SELECT id FROM admin WHERE username = ?";
+    $admin_stmt = $conn->prepare($sql);
+    $admin_stmt->bind_param('s', $_SESSION['username']);
+    $admin_stmt->execute();
+    $admin_result = $admin_stmt->get_result();
 
-//       // Insert a transaction record into the `transactions` table
-//       $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
-//       $trans_stmt->bind_param('is', $admin_id, $fullname);
+    // Check if the admin user was found
+    if ($admin_result->num_rows > 0) {
+      $row = mysqli_fetch_assoc($admin_result);
+      $admin_id = $row['id'];
 
-//       // Execute the transaction query
-//       if ($trans_stmt->execute()) {
-//         echo "Transaction record inserted successfully";
-//       } else {
-//         echo "Error: " . $trans_stmt->error;
-//       }
+      // Insert a transaction record into the `transactions` table
+      $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 2, ?,(SELECT COUNT(*) FROM business_permit_renew), NOW())");
+      $trans_stmt->bind_param('is', $admin_id, $fullname);
 
-//       $trans_stmt->close();
-//     } else {
-//       echo "Error: Admin user not found.";
-//     }
+      // Execute the transaction query
+      if ($trans_stmt->execute()) {
+        echo "Transaction record inserted successfully";
+      } else {
+        echo "Error: " . $trans_stmt->error;
+      }
 
-//     $admin_stmt->close();
-//   } else {
-//     echo "Error: " . $stmt->error;
-//   }
+      $trans_stmt->close();
+    } else {
+      echo "Error: Admin user not found.";
+    }
 
-// Close database connection
-//   $stmt->close();
-//   $conn->close();
-// }
+    $admin_stmt->close();
+  } else {
+    echo "Error: " . $stmt->error;
+  }
+
+  // Close database connection
+  $stmt->close();
+  $conn->close();
+}
 
 
 // if (isset($_POST["death_certificate"])) {
@@ -1136,6 +1138,7 @@ if (isset($_POST["transfer_of_residency"])) {
                     <input type="text" class="form-control" name="last_name" placeholder="Ex. J"><br>
 
 
+
                     <label for="">Suffix:</label>
                     <!-- <input type="text" class="form-control" name="suffix" placeholder=""><br> -->
                     <select class=" text-left" style="width: 8%;" name="suffix" id="suffixs">
@@ -1160,13 +1163,13 @@ if (isset($_POST["transfer_of_residency"])) {
                       <option value="Uha">UHA</option>
                     </select>
                     <br>
-                    <label for="">Amount (In Numeric Form)</label>
-                    <input type="number" name="amount" class="form-control" maxlength="10"><br>
-                    <span name="amountinwords" id="amountinwords" style="display:none;"></span>
-
+                    <!-- Update your form field labels and inputs -->
+                    <label for="amount">Amount (In Numeric Form)</label>
+                    <input type="number" id="amount" name="income_num" class="form-control" maxlength="10">
+                    <input type="text" id="amountinwords" name="income_words" value="">
 
                     <!-- <label for="">Issued Date:</label>
-                  <input type="date" class="form-control"> -->
+                    <input type="date" class="form-control"> -->
 
                     <label for="">Duty Officer Full Name:</label>
                     <input type="text" class="form-control">
@@ -1821,6 +1824,77 @@ if (isset($_POST["transfer_of_residency"])) {
   </script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/main2.js"></script>
+  <script>// Function to convert number to words
+    function numberToWords(num) {
+      const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine'];
+      const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+      const teens = ['Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen'];
+
+      function convertLessThanThousand(n) {
+        if (n === 0) return '';
+
+        let result = '';
+
+        if (n >= 100) {
+          result += ones[Math.floor(n / 100)] + ' Hundred ';
+          n %= 100;
+        }
+
+        if (n >= 20) {
+          result += tens[Math.floor(n / 10)] + ' ';
+          n %= 10;
+        } else if (n >= 10) {
+          result += teens[n - 10] + ' ';
+          return result;
+        }
+
+        if (n > 0) {
+          result += ones[n] + ' ';
+        }
+
+        return result;
+      }
+
+      if (num === 0) return 'Zero';
+
+      let result = '';
+      let billion = Math.floor(num / 1000000000);
+      let million = Math.floor((num % 1000000000) / 1000000);
+      let thousand = Math.floor((num % 1000000) / 1000);
+      let remainder = num % 1000;
+
+      if (billion) result += convertLessThanThousand(billion) + 'Billion ';
+      if (million) result += convertLessThanThousand(million) + 'Million ';
+      if (thousand) result += convertLessThanThousand(thousand) + 'Thousand ';
+      if (remainder) result += convertLessThanThousand(remainder);
+
+      return result.trim() + ' Pesos Only';
+    }
+
+    // Function to handle amount input
+    document.addEventListener('DOMContentLoaded', function () {
+      const amountInput = document.getElementById('amount');
+      const amountInWordsInput = document.getElementById('amountinwords');
+
+      amountInput.addEventListener('input', function (e) {
+        // Remove any non-numeric characters
+        let value = this.value.replace(/[^\d]/g, '');
+
+        if (value) {
+          // Convert to number
+          const numValue = parseInt(value);
+
+          // Update amount in words
+          amountInWordsInput.value = numberToWords(numValue);
+
+          // Store original number value
+          this.value = value;
+        } else {
+          amountInWordsInput.value = '';
+        }
+      });
+    });
+  </script>
   <script>
     // Select all input elements of type "text"
     const today = new Date();
