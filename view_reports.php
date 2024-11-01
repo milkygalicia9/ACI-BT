@@ -978,7 +978,7 @@ if (!isset($_SESSION['username'])) {
               <script>
                 // Data for the bar chart
                 const chartData = {
-                  labels: ['Barangay Clearance', 'Business Permit (New)', 'Business Permit (Renew)', 'Certificate of Employability', 'Certificate of Income', 'Certificate of Cohabitation', 'Complaint Certificate', 'Death Certificate', 'First Time Job Seeker', 'Certificate of Indigency', 'Certificate of Indigency (AICS)', 'Lot Ownership', 'Transfer of Residency'],
+                  labels: ['Barangay Clearance', 'Business Permit (New)', 'Business Permit (Renew)', 'Certificate of Income', 'Certificate of Cohabitation', 'Certificate of Employability', 'Certificate of Indigency', 'Certificate of Indidency (AICS)', 'Complaint Certificate', 'Death Certificate', 'First Time Job Seeker', 'Lot Ownership', 'Transfer of Residency'],
                   datasets: [{
                     label: 'Number of Issued Certificates',
                     backgroundColor: [
