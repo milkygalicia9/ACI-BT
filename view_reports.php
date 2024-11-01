@@ -953,9 +953,25 @@ if (!isset($_SESSION['username'])) {
         <div class="container col-md-12">
           <div class="card-body pb-0">
             <h5 class="card-title">Bar Chart <span>| Reports</span></h5>
+            <select id="monthFilter" onchange="updateChart()">
+              <option value="1">January</option>
+              <option value="2">February</option>
+              <option value="3">March</option>
+              <option value="4">April</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">December</option>
+            </select>
+
             <div class="col-lg">
               <canvas id="myChart" style="width: 800px; height: 240px;"></canvas>
               <button onclick="printChartData()">Print Reports</button>
+
 
               <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
               <script>
@@ -1057,6 +1073,22 @@ if (!isset($_SESSION['username'])) {
                   printWindow.document.close();
                   printWindow.print();
                 }
+              </script>
+
+              <script>
+                function updateChart() {
+                  const month = document.getElementById('monthFilter').value;
+
+                  fetch(`getChartData.php?month=${month}`)
+                    .then(response => response.json())
+                    .then(data => {
+                      // Update chart data
+                      myChart.data.datasets[0].data = Object.values(data);  // Set the new values
+                      myChart.update();
+                    })
+                    .catch(error => console.error('Error fetching chart data:', error));
+                }
+
               </script>
             </div>
           </div>
