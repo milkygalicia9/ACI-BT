@@ -13,12 +13,12 @@ include("db.php");
 if (isset($_POST["barangay_clearance"])) {
   // Sanitize and assign form data to variables
   $first_name = $conn->real_escape_string($_POST["first_name"]);
-  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+  $middle_name = $conn->real_escape_string($_POST["middle_initial"]);
   $last_name = $conn->real_escape_string($_POST["last_name"]);
   $suffix = $conn->real_escape_string($_POST["suffix"]);
   $purok = $conn->real_escape_string($_POST["purok"]);
   $birthplace = $conn->real_escape_string($_POST["birthplace"]);
-  $birthdate = $conn->real_escape_string($_POST["birthday"]);
+  $birthdate = $conn->real_escape_string($_POST["birthdate"]);
   $civil_status = $conn->real_escape_string($_POST["civil_status"]);
   $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
   //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
@@ -26,12 +26,11 @@ if (isset($_POST["barangay_clearance"])) {
   //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_full_name"]);
 
   // Define SQL query using prepared statements
-  $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-  $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-  $fullname = ucwords($fullname);
+  $stmt = $conn->prepare("INSERT INTO barangay_clearance (first_name, middle_name, last_name, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
   $issued_date = date('Y-m-d');
+  $fullname = $first_name . ' ' . $middle_name . ' ' . $last_name . ' ' . $suffix;
   $duty_officer_name = $_SESSION['username'];
-  $stmt->bind_param('sssssssss', $fullname, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
+  $stmt->bind_param('sssssssssss', $first_name, $middle_name, $last_name, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
 
   // Execute SQL query
   if ($stmt->execute()) {
@@ -71,7 +70,7 @@ if (isset($_POST["barangay_clearance"])) {
 
   // Close database connection
   $stmt->close();
-  $conn->close();
+  // $conn->close();
 }
 
 if (isset($_POST["business_permit_new"])) {
@@ -720,21 +719,22 @@ if ($doc_name == 'barangay_clearance') {
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $barangay_clearance_fullname = $row['fullname'];
+        $barangay_clearance_first_name = $row['first_name'];
+        $barangay_clearance_middle_name = $row['middle_name'];
+        $barangay_clearance_last_name = $row['last_name'];
         $barangay_clearance_address = $row['address'];
         $barangay_clearance_birthplace = $row['birthplace'];
         $barangay_clearance_birthdate = $row['birthdate'];
         $barangay_clearance_civil_status = $row['civil_status'];
         $barangay_clearance_period_of_residency = $row['period_of_residency'];
         $barangay_clearance_purpose = $row['purpose'];
-        echo $barangay_clearance_fullname;
+        echo $barangay_clearance_first_name;
     } else {
         echo "No record found.";
     }
 
     $stmt->close();
 }
-
 
 ?>
 
@@ -957,7 +957,7 @@ if ($doc_name == 'barangay_clearance') {
               <!-- General Form Elements -->
               <label for="certificateType"> Select Certificate</label><br>
               <div class="col-md-6">
-                <?php $selectedType = $doc_name; ?>
+                <?php $selectedType = $doc_name ?? ''; ?>
                 <select class="  p-2 text-left" id="certificateType" onchange="toggleFields()" style="cursor: pointer;">
                   <option value="">--select certificates--</option>
                   <option value="barangay_clearance" <?= $selectedType == "barangay_clearance" ? 'selected ' : '' ?>>Barangay Clearance</option>
@@ -982,13 +982,13 @@ if ($doc_name == 'barangay_clearance') {
                   <form action="#" method="post" id="form">
 
                     <label for="">First Name:</label>
-                    <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan" value="<?php $barangay_clearance_fullname ?>"><br>
+                    <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan" value="<?php echo $barangay_clearance_first_name ?? ''; ?>"><br>
 
                     <label for="">Middle Initial:</label>
-                    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
+                    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J" value="<?php echo $barangay_clearance_middle_name ?? ''; ?>"><br>
 
                     <label for="">Last Name:</label>
-                    <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
+                    <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz" value="<?php echo $barangay_clearance_last_name ?? ''; ?>"><br>
 
 
                     <label for="">Suffix:</label>
@@ -1018,10 +1018,10 @@ if ($doc_name == 'barangay_clearance') {
 
                     <label for="">Birthplace:</label>
                     <input type="text" class="form-control" name="birthplace"
-                      placeholder="Ex. Puerto Princesa City"><br>
+                      placeholder="Ex. Puerto Princesa City" value="<?php echo $barangay_clearance_birthplace ?>"><br>
 
                     <label for="">Birthday:</label>
-                    <input type="date" class="form-control" name="bday" id="bday">
+                    <input type="date" class="form-control" name="birthdate" id="birthdate" value="<?php echo $barangay_clearance_birthdate ?? ''; ?>">
                     <br>
                     <label for="">Civil Status:</label>
                     <select class="form-control" onchange="update()" name="civil_status" id="stats">
@@ -1032,12 +1032,12 @@ if ($doc_name == 'barangay_clearance') {
                     <br>
                     <label for="">Period of Residency:</label>
                     <input type="number" min="0" class="form-control" name="residency_period"
-                      placeholder="Ex. 3 years"><br>
+                      placeholder="Ex. 3 years" value="<?php echo $barangay_clearance_period_of_residency ?>"><br>
 
                     <label for="">Purpose:</label>
                     <!-- <input type="text" class="form-control" name="purpose"> -->
                     <input type="text" name="purpose" class="form-control" id="" cols="30" rows="10"
-                      placeholder="Ex. Employment"></input><br>
+                      placeholder="Ex. Employment" value="<?php echo $barangay_clearance_purpose ?>"></input><br>
 
                     <!-- <label for="">Duty Officer Full Name:</label>
                   <input type="textarea" class="form-control" name="duty_officer_full_name" placeholder="Ex. Franz Miguel"> -->

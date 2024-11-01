@@ -105,7 +105,9 @@ if (!isset($_SESSION['username'])) {
                                             echo "<thead>";
                                             echo "<tr>";
                                             // echo "<th>ID</th>";
-                                            echo "<th>Full Name</th>";
+                                            echo "<th>First Name</th>";
+                                            echo "<th>Middle Name</th>";
+                                            echo "<th>Last Name</th>";
                                             echo "<th>Address</th>";
                                             echo "<th>Birthplace</th>";
                                             echo "<th>Birthdate</th>";
@@ -118,7 +120,9 @@ if (!isset($_SESSION['username'])) {
                                             echo "<tbody>";
                                             echo "<tr>";
                                             // echo "<td>" . $row["id"] . "</td>";
-                                            echo "<td>" . $row["fullname"] . "</td>";
+                                            echo "<td>" . $row["first_name"] . "</td>";
+                                            echo "<td>" . $row["middle_name"] . "</td>";
+                                            echo "<td>" . $row["last_name"] . "</td>";
                                             echo "<td>" . $row["address"] . "</td>";
                                             echo "<td>" . $row["birthplace"] . "</td>";
                                             echo "<td>" . $row["birthdate"] . "</td>";

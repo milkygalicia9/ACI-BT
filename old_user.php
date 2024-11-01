@@ -111,12 +111,33 @@ if (!isset($_SESSION['username'])) {
 
                   $sql = "SELECT t.id, a.username AS transact_by, dt.doc_name, 
                     CASE 
-                      WHEN dt.id = 1 THEN bc.fullname
+                      WHEN dt.id = 1 THEN bc.first_name
                       WHEN dt.id = 2 THEN bp.manager
                       WHEN dt.id = 3 THEN bpr.manager
                       WHEN dt.id = 4 THEN coe.fullname
                       ELSE 'Unknown' 
-                    END AS fullname, 
+                    END AS first_name, 
+                    CASE 
+                      WHEN dt.id = 1 THEN bc.middle_name
+                      WHEN dt.id = 2 THEN bp.manager
+                      WHEN dt.id = 3 THEN bpr.manager
+                      WHEN dt.id = 4 THEN coe.fullname
+                      ELSE 'Unknown' 
+                    END AS middle_name,
+                    CASE 
+                      WHEN dt.id = 1 THEN bc.last_name
+                      WHEN dt.id = 2 THEN bp.manager
+                      WHEN dt.id = 3 THEN bpr.manager
+                      WHEN dt.id = 4 THEN coe.fullname
+                      ELSE 'Unknown' 
+                    END AS last_name, 
+                    CASE
+                      WHEN dt.id = 1 THEN concat(bc.first_name, ' ', bc.middle_name, ' ', bc.last_name)
+                      WHEN dt.id = 2 THEN bp.manager
+                      WHEN dt.id = 3 THEN bpr.manager
+                      WHEN dt.id = 4 THEN coe.fullname
+                      ELSE 'Unknown'
+                    END AS full_name,
                     t.client_trans_id, t.created_at
                     FROM transactions t
                     INNER JOIN admin a ON t.transact_by = a.id
@@ -134,7 +155,7 @@ if (!isset($_SESSION['username'])) {
                       // echo "<td>" . $row["id"] . "</td>";
                     //   echo "<td>" . $row["transact_by"] . "</td>";
                       echo "<td>" . $row["doc_name"] . "</td>";
-                      echo "<td>" . $row["fullname"] . "</td>";
+                      echo "<td>" . $row["full_name"] . "</td>";
                     //   echo "<td>" . $row["client_trans_id"] . "</td>";
                     //   echo "<td>" . $row["created_at"] . "</td>";
                       echo "<td><a href=" . "gen_docs_mrcxng.php?client_trans_id=" . $row["client_trans_id"] . "&doc_name=" . str_replace(" ", "_", $row["doc_name"]) . "><button type=" . "submit" . ">SELECT</button></a></td>";

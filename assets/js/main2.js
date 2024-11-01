@@ -211,6 +211,7 @@ window.onload = setIssuedDate;
 
 }
 
+toggleFields();
 
 
 function select(){

@@ -26,7 +26,7 @@ if (isset($_POST["barangay_clearance"])) {
   //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_full_name"]);
 
   // Define SQL query using prepared statements
-  $stmt = $conn->prepare("INSERT INTO barangay_clearance (fullname, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+  $stmt = $conn->prepare("INSERT INTO barangay_clearance (first_name, middle_name, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
   $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
   $fullname = ucwords($fullname);
   $issued_date = date('Y-m-d');
