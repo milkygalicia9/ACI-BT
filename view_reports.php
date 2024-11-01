@@ -954,6 +954,7 @@ if (!isset($_SESSION['username'])) {
           <div class="card-body pb-0">
             <h5 class="card-title">Bar Chart <span>| Reports</span></h5>
             <select id="monthFilter" onchange="updateChart()">
+              <option value="all">All</option>
               <option value="1">January</option>
               <option value="2">February</option>
               <option value="3">March</option>
@@ -1079,15 +1080,40 @@ if (!isset($_SESSION['username'])) {
                 function updateChart() {
                   const month = document.getElementById('monthFilter').value;
 
-                  fetch(`getChartData.php?month=${month}`)
+                  let url = `getChartData.php?month=${month}`;
+
+                  fetch(url)
                     .then(response => response.json())
                     .then(data => {
-                      // Update chart data
-                      myChart.data.datasets[0].data = Object.values(data);  // Set the new values
+                      // Check if the month is 'all'
+                      if (month === 'all') {
+                        // Reset the chart data to default state
+                        myChart.data.datasets[0].data = [
+                          0,  // Default count for Barangay Clearance
+                          0,  // Default count for Business Permit (New)
+                          0,  // Default count for Business Permit (Renew)
+                          0,  // Default count for Certificate of Employability
+                          0,  // Default count for Certificate of Income
+                          0,  // Default count for Cohabitation
+                          0,  // Default count for Complaint Certificate
+                          0,  // Default count for Indigency
+                          0,  // Default count for Indigency AICS
+                          0,  // Default count for Lot Ownership
+                          0,  // Default count for Transfer of Residency
+                          0,
+                          0,
+                        ];
+                        // Update the chart with new data
+                        myChart.update();
+                      }
+
+                      // Update chart data with the fetched values
+                      myChart.data.datasets[0].data = Object.values(data);
                       myChart.update();
                     })
                     .catch(error => console.error('Error fetching chart data:', error));
                 }
+
 
               </script>
             </div>
