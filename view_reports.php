@@ -953,6 +953,13 @@ if (!isset($_SESSION['username'])) {
         <div class="container col-md-12">
           <div class="card-body pb-0">
             <h5 class="card-title">Bar Chart <span>| Reports</span></h5>
+
+            <select id="yearFilter" onchange="updateChart()">
+              <option value="2024">2024</option>
+              <option value="2025">2025</option>
+              <option value="2026">2026</option>
+            </select>
+
             <select id="monthFilter" onchange="updateChart()">
               <option value="all">All</option>
               <option value="1">January</option>
@@ -1079,41 +1086,41 @@ if (!isset($_SESSION['username'])) {
               <script>
                 function updateChart() {
                   const month = document.getElementById('monthFilter').value;
+                  const year = document.getElementById('yearFilter').value;
 
-                  let url = `getChartData.php?month=${month}`;
+                  // Construct the URL with both month and year parameters
+                  let url = `getChartData.php?month=${month}&year=${year}`;
 
                   fetch(url)
                     .then(response => response.json())
                     .then(data => {
-                      // Check if the month is 'all'
+                      // If 'month' is 'all', reset the chart data to default values
                       if (month === 'all') {
-                        // Reset the chart data to default state
                         myChart.data.datasets[0].data = [
-                          0,  // Default count for Barangay Clearance
-                          0,  // Default count for Business Permit (New)
-                          0,  // Default count for Business Permit (Renew)
-                          0,  // Default count for Certificate of Employability
-                          0,  // Default count for Certificate of Income
-                          0,  // Default count for Cohabitation
-                          0,  // Default count for Complaint Certificate
-                          0,  // Default count for Indigency
-                          0,  // Default count for Indigency AICS
-                          0,  // Default count for Lot Ownership
-                          0,  // Default count for Transfer of Residency
-                          0,
-                          0,
+                          data["Barangay Clearance"],
+                          data["Business Permit New"],
+                          data["Business Permit Renew"],
+                          data["Certificate of Income"],
+                          data["Cohabitation"],
+                          data["Certificate of Employability"],
+                          data["Indigency"],
+                          data["Indigency AICS"],
+                          data["Complaint Certificate"],
+                          data["Death Certificate"],
+                          data["First Time Job Seeker"],
+                          data["Lot Ownership"],
+                          data["Transfer of Residency"]
                         ];
-                        // Update the chart with new data
-                        myChart.update();
+                      } else {
+                        // Update chart data with the fetched values from the specific month/year
+                        myChart.data.datasets[0].data = Object.values(data);
                       }
 
-                      // Update chart data with the fetched values
-                      myChart.data.datasets[0].data = Object.values(data);
+                      // Update the chart with new data
                       myChart.update();
                     })
                     .catch(error => console.error('Error fetching chart data:', error));
                 }
-
 
               </script>
             </div>
