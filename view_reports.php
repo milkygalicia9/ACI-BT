@@ -98,39 +98,39 @@ if (!isset($_SESSION['username'])) {
 
       const sum = <?php echo $sum; ?>;
       document.addEventListener('DOMContentLoaded', function () {
-      
-      // Calculate the clearance percentage
-      const Sales_Clearance_Percent = (Sales_Clearance / sum) * 100;
-      const Sales_Business_Permit_New_Percent = (Sales_Business_Permit_New / sum) * 100;
-      const Sales_Business_Permit_Renew_Percent = (Sales_Business_Permit_Renew / sum) * 100;
-      const Sales_Certificate_of_Employability_Percent = (Sales_Certificate_of_Employability / sum) * 100;
-      const Sales_Certificate_of_Income_Percent = (Sales_Certificate_of_Income / sum) * 100;
-      const Sales_Cohabitation_Percent = (Sales_Cohabitation / sum) * 100;
-      const Sales_Complaint_Certificate_Percent = (Sales_Complaint_Certificate / sum) * 100;
-      const Sales_Death_Certificate_Percent = (Sales_Death_Certificate / sum) * 100;
-      const Sales_First_Time_Job_Seeker_Percent = (Sales_First_Time_Job_Seeker / sum) * 100;
-      const Sales_Indigency_Percent = (Sales_Indigency / sum) * 100;
-      const Sales_Indigency_AICS_Percent = (Sales_Indigency_AICS / sum) * 100;
-      const Sales_Lot_Ownership_Percent = (Sales_Lot_Ownership / sum) * 100;
-      const Sales_Transfer_of_Residency_Percent = (Sales_Transfer_of_Residency / sum) * 100;
 
-      // Set the clearance percentage value into the span
-      document.getElementById('clearance_percent').innerHTML = Sales_Clearance_Percent.toFixed(2) + '%';
-      document.getElementById('business_permit_new_percent').innerHTML = Sales_Business_Permit_New_Percent.toFixed(2) + '%';
-      document.getElementById('business_permit_renew_percent').innerHTML = Sales_Business_Permit_Renew_Percent.toFixed(2) + '%';
-      document.getElementById('income_percent').innerHTML = Sales_Certificate_of_Income_Percent.toFixed(2) + '%';
-      document.getElementById('cohabitation_percent').innerHTML = Sales_Cohabitation_Percent.toFixed(2) + '%';
-      document.getElementById('coe_percent').innerHTML = Sales_Certificate_of_Employability_Percent.toFixed(2) + '%';
-      document.getElementById('indigency_percent').innerHTML = Sales_Indigency_Percent.toFixed(2) + '%';
-      document.getElementById('indigency_aics_percent').innerHTML = Sales_Indigency_AICS_Percent.toFixed(2) + '%';
-      document.getElementById('complaint_percent').innerHTML = Sales_Complaint_Certificate_Percent.toFixed(2) + '%';
-      document.getElementById('death_percent').innerHTML = Sales_Death_Certificate_Percent.toFixed(2) + '%';
-      document.getElementById('ftjs_percent').innerHTML = Sales_First_Time_Job_Seeker_Percent.toFixed(2) + '%';
-      document.getElementById('lot_percent').innerHTML = Sales_Lot_Ownership_Percent.toFixed(2) + '%';
-      document.getElementById('transfer_percent').innerHTML = Sales_Transfer_of_Residency_Percent.toFixed(2) + '%';
-    })
-      
-      
+        // Calculate the clearance percentage
+        const Sales_Clearance_Percent = (Sales_Clearance / sum) * 100;
+        const Sales_Business_Permit_New_Percent = (Sales_Business_Permit_New / sum) * 100;
+        const Sales_Business_Permit_Renew_Percent = (Sales_Business_Permit_Renew / sum) * 100;
+        const Sales_Certificate_of_Employability_Percent = (Sales_Certificate_of_Employability / sum) * 100;
+        const Sales_Certificate_of_Income_Percent = (Sales_Certificate_of_Income / sum) * 100;
+        const Sales_Cohabitation_Percent = (Sales_Cohabitation / sum) * 100;
+        const Sales_Complaint_Certificate_Percent = (Sales_Complaint_Certificate / sum) * 100;
+        const Sales_Death_Certificate_Percent = (Sales_Death_Certificate / sum) * 100;
+        const Sales_First_Time_Job_Seeker_Percent = (Sales_First_Time_Job_Seeker / sum) * 100;
+        const Sales_Indigency_Percent = (Sales_Indigency / sum) * 100;
+        const Sales_Indigency_AICS_Percent = (Sales_Indigency_AICS / sum) * 100;
+        const Sales_Lot_Ownership_Percent = (Sales_Lot_Ownership / sum) * 100;
+        const Sales_Transfer_of_Residency_Percent = (Sales_Transfer_of_Residency / sum) * 100;
+
+        // Set the clearance percentage value into the span
+        document.getElementById('clearance_percent').innerHTML = Sales_Clearance_Percent.toFixed(2) + '%';
+        document.getElementById('business_permit_new_percent').innerHTML = Sales_Business_Permit_New_Percent.toFixed(2) + '%';
+        document.getElementById('business_permit_renew_percent').innerHTML = Sales_Business_Permit_Renew_Percent.toFixed(2) + '%';
+        document.getElementById('income_percent').innerHTML = Sales_Certificate_of_Income_Percent.toFixed(2) + '%';
+        document.getElementById('cohabitation_percent').innerHTML = Sales_Cohabitation_Percent.toFixed(2) + '%';
+        document.getElementById('coe_percent').innerHTML = Sales_Certificate_of_Employability_Percent.toFixed(2) + '%';
+        document.getElementById('indigency_percent').innerHTML = Sales_Indigency_Percent.toFixed(2) + '%';
+        document.getElementById('indigency_aics_percent').innerHTML = Sales_Indigency_AICS_Percent.toFixed(2) + '%';
+        document.getElementById('complaint_percent').innerHTML = Sales_Complaint_Certificate_Percent.toFixed(2) + '%';
+        document.getElementById('death_percent').innerHTML = Sales_Death_Certificate_Percent.toFixed(2) + '%';
+        document.getElementById('ftjs_percent').innerHTML = Sales_First_Time_Job_Seeker_Percent.toFixed(2) + '%';
+        document.getElementById('lot_percent').innerHTML = Sales_Lot_Ownership_Percent.toFixed(2) + '%';
+        document.getElementById('transfer_percent').innerHTML = Sales_Transfer_of_Residency_Percent.toFixed(2) + '%';
+      })
+
+
 
 
       // Function to redirect to view_transactions page with document type parameter
@@ -145,7 +145,7 @@ if (!isset($_SESSION['username'])) {
     </aside>
 
     <section class="section dashboard">
-    <div class="d-flex pb-2">
+      <div class="d-flex pb-2">
         <a href="home.php" class="d-flex">
           <div class="icon">
             <i class="bi-caret-left-square fs-2 p-2 text-primary"></i>
@@ -218,7 +218,7 @@ if (!isset($_SESSION['username'])) {
                           // Use PHP variables in JavaScript
                           const Sales_Clearance = <?php echo $count_clearance; ?>;
                           const sum = <?php echo $sum; ?>;
-                          
+
                           // Calculate the clearance percentage
                           const Sales_Clearance_Percent = (Sales_Clearance / sum) * 100;
 
@@ -272,8 +272,8 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_business_permit_new ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold" id="business_permit_new_percent">%</span> <span
-                              class="text-muted small pt-2 ps-1">increase</span>
+                            <span class="text-success small pt-1 fw-bold" id="business_permit_new_percent">%</span>
+                            <span class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
                         </div>
@@ -327,8 +327,8 @@ if (!isset($_SESSION['username'])) {
                             <h6>
                               <?php echo $count_business_permit_renew ?>
                             </h6>
-                            <span class="text-success small pt-1 fw-bold" id="business_permit_renew_percent">%</span> <span
-                              class="text-muted small pt-2 ps-1">increase</span>
+                            <span class="text-success small pt-1 fw-bold" id="business_permit_renew_percent">%</span>
+                            <span class="text-muted small pt-2 ps-1">increase</span>
 
                           </div>
                         </div>
@@ -951,11 +951,11 @@ if (!isset($_SESSION['username'])) {
 
 
         <div class="container col-md-12">
-
           <div class="card-body pb-0">
             <h5 class="card-title">Bar Chart <span>| Reports</span></h5>
             <div class="col-lg">
               <canvas id="myChart" style="width: 800px; height: 240px;"></canvas>
+              <button onclick="printChartData()">Print Reports</button>
 
               <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
               <script>
@@ -965,34 +965,34 @@ if (!isset($_SESSION['username'])) {
                   datasets: [{
                     label: 'Number of Issued Certificates',
                     backgroundColor: [
-                      'rgba(255, 25, 25, 0.2)', // Barangay Clearance
-                      'rgba(54, 162, 235, 0.2)', // Business Permit (New)
-                      'rgba(255, 206, 86, 0.2)', // Business Permit (Renew)
-                      'rgba(75, 192, 192, 0.2)', // Certificate of Employability
-                      'rgba(153, 102, 255, 0.2)', // Certificate of Income
-                      'rgba(255, 165, 0, 0.2)', // Cohabitation
-                      'rgba(0, 51, 102, 0.2)', // Complaint Certificate
-                      'rgba(0, 128, 0, 0.2)', // Death Certificate
-                      'rgba(153, 0, 0, 0.2)', // First Time Job Seeker
-                      'rgba(77, 0, 77, 0.2)', // Indigency
-                      'rgba(16, 16, 16, 0.2)', // Indigency (AICS)                                                                         
-                      'rgba(128, 0, 0, 0.2)', // Lot Ownership
-                      'rgba(153, 153, 0, 0.2)' // Transfer of Residency
+                      'rgba(255, 25, 25, 0.2)',
+                      'rgba(54, 162, 235, 0.2)',
+                      'rgba(255, 206, 86, 0.2)',
+                      'rgba(75, 192, 192, 0.2)',
+                      'rgba(153, 102, 255, 0.2)',
+                      'rgba(255, 165, 0, 0.2)',
+                      'rgba(0, 51, 102, 0.2)',
+                      'rgba(0, 128, 0, 0.2)',
+                      'rgba(153, 0, 0, 0.2)',
+                      'rgba(77, 0, 77, 0.2)',
+                      'rgba(16, 16, 16, 0.2)',
+                      'rgba(128, 0, 0, 0.2)',
+                      'rgba(153, 153, 0, 0.2)'
                     ],
                     borderColor: [
-                      'rgba(255, 0, 0, 1)', // Barangay Clearance
-                      'rgba(54, 162, 235, 1)', // Business Permit (New)
-                      'rgba(255, 206, 86, 1)', // Business Permit (Renew)                                                
-                      'rgba(75, 192, 192, 1)', // Certificate of Employability
-                      'rgba(153, 102, 255, 1)', // Certificate of Income
-                      'rgba(255, 165, 0, 1)', // Cohabitation                         
-                      'rgba(0, 51, 102, 1)', // Complaint Certificate
-                      'rgba(0, 128, 0, 1)', // Death Certificate
-                      'rgba(153, 0, 0, 1)', // First Time Job Seeker
-                      'rgba(77, 0, 77, 1)', // Indigency
-                      'rgba(16, 16, 16, 1)', // Indigency (AICS)                                               
-                      'rgba(128, 0, 0, 1)', // Lot Ownership
-                      'rgba(153, 153, 0, 1)' // Transfer of Residency
+                      'rgba(255, 0, 0, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 206, 86, 1)',
+                      'rgba(75, 192, 192, 1)',
+                      'rgba(153, 102, 255, 1)',
+                      'rgba(255, 165, 0, 1)',
+                      'rgba(0, 51, 102, 1)',
+                      'rgba(0, 128, 0, 1)',
+                      'rgba(153, 0, 0, 1)',
+                      'rgba(77, 0, 77, 1)',
+                      'rgba(16, 16, 16, 1)',
+                      'rgba(128, 0, 0, 1)',
+                      'rgba(153, 153, 0, 1)'
                     ],
                     borderWidth: 1,
                     data: [
@@ -1012,7 +1012,6 @@ if (!isset($_SESSION['username'])) {
                   }]
                 };
 
-                // Configuration options
                 const chartConfig = {
                   type: 'bar',
                   data: chartData,
@@ -1025,33 +1024,46 @@ if (!isset($_SESSION['username'])) {
                   }
                 };
 
-                // Function to update chart dimensions based on window size
-                function updateChartDimensions(chart) {
-                  var chartCanvas = chart.canvas;
-                  var parent = chartCanvas.parentNode;
-                  var containerWidth = parent.offsetWidth;
-                  var containerHeight = parent.offsetHeight;
-
-                  chartCanvas.style.width = containerWidth + 'px';
-                  chartCanvas.style.height = containerHeight + 'px';
-                  chart.resize(); // Resize the chart
-                }
-
-                // Render the bar chart
                 const myChart = new Chart(document.getElementById('myChart'), chartConfig);
 
-                // Update chart dimensions when the window is resized
-                window.addEventListener('resize', function () {
-                  updateChartDimensions(myChart);
-                });
+                // Print function to open a new window with both table and chart
+                function printChartData() {
+                  const chartCanvas = document.getElementById('myChart');
+                  const chartImageURL = chartCanvas.toDataURL("image/png");
 
-                // Initial call to update chart dimensions
-                updateChartDimensions(myChart);
+                  // Generate the table content with chart data
+                  const chartLabels = chartData.labels;
+                  const chartValues = chartData.datasets[0].data;
+                  let content = '<html><head><title>Print Reports</title></head><body>';
+                  content += '<h2>Certificate Reports</h2>';
+                  content += '<h3>Table of Issued Certificates</h3>';
+                  content += '<table border="1" style="width: 100%; text-align: left;"><thead><tr><th>Certificate Type</th><th>Number Issued</th></tr></thead><tbody>';
+
+                  // Populate table rows
+                  chartLabels.forEach((label, index) => {
+                    content += `<tr><td>${label}</td><td>${chartValues[index]}</td></tr>`;
+                  });
+                  content += '</tbody></table>';
+
+                  // Add the chart image to the print window content
+                  content += '<h3>Bar Chart</h3>';
+                  content += `<img src="${chartImageURL}" style="width: 100%; height: auto;">`;
+
+                  content += '</body></html>';
+
+                  // Open a new window for printing and render the content
+                  const printWindow = window.open('', '_blank');
+                  printWindow.document.write(content);
+                  printWindow.document.close();
+                  printWindow.print();
+                }
               </script>
             </div>
-
           </div>
-        </div><!-- End News & Updates -->
+        </div>
+
+
+        <!-- End News & Updates -->
 
       </div><!-- End Right side columns -->
 
