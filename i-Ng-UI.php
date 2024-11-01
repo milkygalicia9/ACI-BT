@@ -124,7 +124,7 @@ if (!isset($_SESSION['username'])) {
 
         <section class="section dashboard">
             <div class="col-md-12 d-flex align-items-center justify-content-around p-3 pb-5 mb-5">
-                <form action="gen_docs.php" class="row">
+                <form action="old_user.php" class="row">
                     <div class="col-md-12"> <button class="card">
                             <div class="card-document p-2">
                                 <h6 class="card-title fw-semibold fs-2">Oldies</h6>
@@ -141,7 +141,7 @@ if (!isset($_SESSION['username'])) {
                     </div>
                 </form>
                 
-                <form action="view_reports.php">
+                <form action="gen_docs.php">
                     <div class="col-md-12"> <button class="card">
                             <div class="card-document p-2">
                                 <h6 class="card-title fw-semibold fs-2">New Shits</h6>
