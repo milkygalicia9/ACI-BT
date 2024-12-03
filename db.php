@@ -7,7 +7,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "root";
-$database = "acibt_db";
+$database = "acibt_new";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $database);

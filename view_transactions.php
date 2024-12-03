@@ -109,10 +109,10 @@ if (!isset($_SESSION['username'])) {
 
                   $sql = "SELECT t.id, a.username AS transact_by, dt.doc_name, 
                     CASE 
-                      WHEN dt.id = 1 THEN bc.fullname
-                      WHEN dt.id = 2 THEN bp.manager
-                      WHEN dt.id = 3 THEN bpr.manager
-                      WHEN dt.id = 4 THEN coe.fullname
+                      WHEN dt.id = 1 THEN CONCAT(bc.firstname, ' ', bc.middlename, ' ', bc.lastname)
+                      -- WHEN dt.id = 2 THEN bp.manager
+                      -- WHEN dt.id = 3 THEN bpr.manager
+                      -- WHEN dt.id = 4 THEN coe.fullname
                       ELSE 'Unknown' 
                     END AS fullname, 
                     t.client_trans_id, t.created_at

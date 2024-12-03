@@ -13,12 +13,12 @@ include("db.php");
 if (isset($_POST["barangay_clearance"])) {
   // Sanitize and assign form data to variables
   $first_name = $conn->real_escape_string($_POST["first_name"]);
-  $middle_initial = $conn->real_escape_string($_POST["middle_initial"]);
+  $middle_name = $conn->real_escape_string($_POST["middle_name"]);
   $last_name = $conn->real_escape_string($_POST["last_name"]);
   $suffix = $conn->real_escape_string($_POST["suffix"]);
   $purok = $conn->real_escape_string($_POST["purok"]);
   $birthplace = $conn->real_escape_string($_POST["birthplace"]);
-  $birthdate = $conn->real_escape_string($_POST["birthday"]);
+  $birthdate = $conn->real_escape_string($_POST["bday"]);
   $civil_status = $conn->real_escape_string($_POST["civil_status"]);
   $period_of_residency = $conn->real_escape_string($_POST["residency_period"]);
   //$issued_date = $conn->real_escape_string($_POST["issued_date"]);
@@ -26,12 +26,12 @@ if (isset($_POST["barangay_clearance"])) {
   //$duty_officer_name = $conn->real_escape_string($_POST["duty_officer_full_name"]);
 
   // Define SQL query using prepared statements
-  $stmt = $conn->prepare("INSERT INTO barangay_clearance (first_name, middle_name, address, birthplace, birthdate, civil_status, period_of_residency, issued_date, purpose, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-  $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
-  $fullname = ucwords($fullname);
+  $stmt = $conn->prepare("INSERT INTO barangay_clearance (first_name, middle_name, last_name, address, birthplace, birthdate, civil_status, period_of_residency, purpose, issued_date, duty_officer_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+  // $fullname = $first_name . ' ' . $middle_initial . ' ' . $last_name . ' ' . $suffix;
+  // $fullname = ucwords($fullname);
   $issued_date = date('Y-m-d');
   $duty_officer_name = $_SESSION['username'];
-  $stmt->bind_param('sssssssss', $fullname, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $issued_date, $purpose, $duty_officer_name);
+  $stmt->bind_param('sssssssssss', $first_name, $middle_name, $last_name, $purok, $birthplace, $birthdate, $civil_status, $period_of_residency, $purpose, $issued_date, $duty_officer_name);
 
   // Execute SQL query
   if ($stmt->execute()) {
@@ -952,8 +952,8 @@ if (isset($_POST["certificate_of_income"])) {
                     <label for="">First Name:</label>
                     <input type="text" class="form-control" name="first_name" placeholder="Ex. Juan"><br>
 
-                    <label for="">Middle Initial:</label>
-                    <input type="text" class="form-control" name="middle_initial" placeholder="Ex. J"><br>
+                    <label for="">Middle Name:</label>
+                    <input type="text" class="form-control" name="middle_name" placeholder="Ex. J"><br>
 
                     <label for="">Last Name:</label>
                     <input type="text" class="form-control" name="last_name" placeholder="Ex. Dela Cruz"><br>
