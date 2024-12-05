@@ -7,6 +7,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "root";
+// $password = "Alabastro_8";
 $database = "aci_bt";
 
 // Create connection
