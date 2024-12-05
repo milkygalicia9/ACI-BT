@@ -47,7 +47,7 @@ if (isset($_POST["barangay_clearance"])) {
     if ($admin_result->num_rows > 0) {
       $row = mysqli_fetch_assoc($admin_result);
       $admin_id = $row['id'];
-
+      $fullname = ($first_name ?? '') . ' ' . ($middle_name ?? '') . ' ' . ($last_name ?? '');
       // Modify SQL query to use COUNT function correctly
       $trans_stmt = $conn->prepare("INSERT INTO transactions (transact_by, doc_id, fullname, client_trans_id, created_at) VALUES (?, 1, ?,(SELECT COUNT(*) FROM barangay_clearance), NOW())");
       $trans_stmt->bind_param('is', $admin_id, $fullname);
