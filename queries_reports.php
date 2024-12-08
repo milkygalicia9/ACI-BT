@@ -2,28 +2,17 @@
 // Include your PHP code here
 include 'db.php';
 
-// SQL query to count the number of records in the 'cohabitation' table
-$sql_cohabitation = "SELECT COUNT(*) AS count FROM cohabitation";
-$result_cohabitation = $conn->query($sql_cohabitation);
-
-// Fetch the count of records from the result
-if ($result_cohabitation->num_rows > 0) {
-    $row_cohabitation = $result_cohabitation->fetch_assoc();
-    $count_cohabitation = $row_cohabitation['count'];
-} else {
-    $count_cohabitation = 0;
-}
 
 // SQL query to count the number of records in the 'barangay_clearance' table
-$sql_clearance = "SELECT COUNT(*) AS count FROM barangay_clearance";
-$result_clearance = $conn->query($sql_clearance);
+$sql_branagay_clearance = "SELECT COUNT(*) AS count FROM barangay_clearance";
+$result_baranagay_clearance = $conn->query($sql_barangay_clearance);
 
 // Fetch the count of records from the result
-if ($result_clearance->num_rows > 0) {
-    $row_clearance = $result_clearance->fetch_assoc();
-    $count_clearance = $row_clearance['count'];
+if ($result_baranagay_clearance->num_rows > 0) {
+    $row_barangay_clearance = $result_baranagay_clearance->fetch_assoc();
+    $count_barangay_clearance = $row_barangay_clearance['count'];
 } else {
-    $count_clearance = 0;
+    $count_barangay_clearance = 0;
 }
 
 // SQL query to count the number of records in the 'business_permit_new' table
@@ -50,6 +39,20 @@ if ($result_business_permit_renew->num_rows > 0) {
     $count_business_permit_renew = 0;
 }
 
+
+// SQL query to count the number of records in the 'certificate_of_cohabitation' table
+$sql_certificate_of_cohabitation = "SELECT COUNT(*) AS count FROM certificate_of_cohabitation";
+$result_certificate_of_cohabitation = $conn->query($sql_certificate_of_cohabitation);
+
+// Fetch the count of records from the result
+if ($result_certificate_of_cohabitation->num_rows > 0) {
+    $row_certificate_of_cohabitation = $result_certificate_of_cohabitation->fetch_assoc();
+    $count_certificate_of_cohabitation = $row_certificate_of_cohabitation['count'];
+} else {
+    $count_certificate_of_cohabitation = 0;
+}
+
+
 // SQL query to count the number of records in the 'certificate_of_employability' table
 $sql_certificate_of_employability = "SELECT COUNT(*) AS count FROM certificate_of_employability";
 $result_certificate_of_employability = $conn->query($sql_certificate_of_employability);
@@ -73,6 +76,32 @@ if ($result_certificate_of_income->num_rows > 0) {
 } else {
     $count_certificate_of_income = 0;
 }
+
+
+// SQL query to count the number of records in the 'certificate_of_indigency' table
+$sql_certificate_of_indigency = "SELECT COUNT(*) AS count FROM certificate_of_indigency";
+$result_certificate_of_indigency = $conn->query($sql_certificate_of_indigency);
+
+// Fetch the count of records from the result
+if ($result_certificate_of_indigency->num_rows > 0) {
+    $row_certificate_of_indigency = $result_certificate_of_indigency->fetch_assoc();
+    $count_certificate_of_indigency = $row_certificate_of_indigency['count'];
+} else {
+    $count_certificate_of_indigency = 0;
+}
+
+// SQL query to count the number of records in the 'certificate_of_indigency_aics' table
+$sql_certificate_of_indigency_aics = "SELECT COUNT(*) AS count FROM certificate_of_indigency_aics";
+$result_certificate_of_indigency_aics = $conn->query($sql_certificate_of_indigency_aics);
+
+// Fetch the count of records from the result
+if ($result_certificate_of_indigency_aics->num_rows > 0) {
+    $row_certificate_of_indigency_aics = $result_certificate_of_indigency_aics->fetch_assoc();
+    $count_certificate_of_indigency_aics = $row_certificate_of_indigency_aics['count'];
+} else {
+    $count_certificate_of_indigency_aics = 0;
+}
+
 
 // SQL query to count the number of records in the 'complaint_certificate' table
 $sql_complaint_certificate = "SELECT COUNT(*) AS count FROM complaint_certificate";
@@ -110,29 +139,6 @@ if ($result_first_time_job_seeker->num_rows > 0) {
     $count_first_time_job_seeker = 0;
 }
 
-// SQL query to count the number of records in the 'indigency' table
-$sql_indigency = "SELECT COUNT(*) AS count FROM indigency";
-$result_indigency = $conn->query($sql_indigency);
-
-// Fetch the count of records from the result
-if ($result_indigency->num_rows > 0) {
-    $row_indigency = $result_indigency->fetch_assoc();
-    $count_indigency = $row_indigency['count'];
-} else {
-    $count_indigency = 0;
-}
-
-// SQL query to count the number of records in the 'indigency_aics' table
-$sql_indigency_aics = "SELECT COUNT(*) AS count FROM indigency_aics";
-$result_indigency_aics = $conn->query($sql_indigency_aics);
-
-// Fetch the count of records from the result
-if ($result_indigency_aics->num_rows > 0) {
-    $row_indigency_aics = $result_indigency_aics->fetch_assoc();
-    $count_indigency_aics = $row_indigency_aics['count'];
-} else {
-    $count_indigency_aics = 0;
-}
 
 // SQL query to count the number of records in the 'lot_ownership' table
 $sql_lot_ownership = "SELECT COUNT(*) AS count FROM lot_ownership";
