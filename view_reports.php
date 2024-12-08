@@ -82,37 +82,37 @@ if (!isset($_SESSION['username'])) {
     ?>
     <script>
       // Use PHP variables in JavaScript
-      const Sales_Clearance = <?php echo $count_clearance; ?>;
-      const Sales_Business_Permit_New = <?php echo $count_business_permit_new ?>;
-      const Sales_Business_Permit_Renew = <?php echo $count_business_permit_renew ?>;
-      const Sales_Certificate_of_Employability = <?php echo $count_certificate_of_employability ?>;
-      const Sales_Certificate_of_Income = <?php echo $count_certificate_of_income ?>;
-      const Sales_Cohabitation = <?php echo $count_cohabitation; ?>;
-      const Sales_Complaint_Certificate = <?php echo $count_complaint_certificate; ?>;
-      const Sales_Death_Certificate = <?php echo $count_death_certificate; ?>;
-      const Sales_First_Time_Job_Seeker = <?php echo $count_first_time_job_seeker; ?>;
-      const Sales_Indigency = <?php echo $count_indigency; ?>;
-      const Sales_Indigency_AICS = <?php echo $count_indigency_aics; ?>;
-      const Sales_Lot_Ownership = <?php echo $count_lot_ownership; ?>;
-      const Sales_Transfer_of_Residency = <?php echo $count_transfer_of_residency; ?>;
+      const barangay_clearance = <?php echo $count_barangay_clearance; ?>;
+      const business_permit_new = <?php echo $count_business_permit_new ?>;
+      const business_permit_renew = <?php echo $count_business_permit_renew ?>;
+      const certificate_of_employability = <?php echo $count_certificate_of_employability ?>;
+      const certificate_of_income = <?php echo $count_certificate_of_income ?>;
+      const certificate_of_cohabitation = <?php echo $count_certificate_of_cohabitation; ?>;
+      const complaint_certificate = <?php echo $count_complaint_certificate; ?>;
+      const death_certificate = <?php echo $count_death_certificate; ?>;
+      const first_time_job_seeker = <?php echo $count_first_time_job_seeker; ?>;
+      const certificate_of_indigency = <?php echo $count_certificate_of_indigency; ?>;
+      const certificate_of_indigency_aics = <?php echo $count_certificate_of_indigency_aics; ?>;
+      const lot_ownership = <?php echo $count_lot_ownership; ?>;
+      const transfer_of_residency = <?php echo $count_transfer_of_residency; ?>;
 
       const sum = <?php echo $sum; ?>;
       document.addEventListener('DOMContentLoaded', function () {
 
         // Calculate the clearance percentage
-        const Sales_Clearance_Percent = (Sales_Clearance / sum) * 100;
-        const Sales_Business_Permit_New_Percent = (Sales_Business_Permit_New / sum) * 100;
-        const Sales_Business_Permit_Renew_Percent = (Sales_Business_Permit_Renew / sum) * 100;
-        const Sales_Certificate_of_Employability_Percent = (Sales_Certificate_of_Employability / sum) * 100;
-        const Sales_Certificate_of_Income_Percent = (Sales_Certificate_of_Income / sum) * 100;
-        const Sales_Cohabitation_Percent = (Sales_Cohabitation / sum) * 100;
-        const Sales_Complaint_Certificate_Percent = (Sales_Complaint_Certificate / sum) * 100;
-        const Sales_Death_Certificate_Percent = (Sales_Death_Certificate / sum) * 100;
-        const Sales_First_Time_Job_Seeker_Percent = (Sales_First_Time_Job_Seeker / sum) * 100;
-        const Sales_Indigency_Percent = (Sales_Indigency / sum) * 100;
-        const Sales_Indigency_AICS_Percent = (Sales_Indigency_AICS / sum) * 100;
-        const Sales_Lot_Ownership_Percent = (Sales_Lot_Ownership / sum) * 100;
-        const Sales_Transfer_of_Residency_Percent = (Sales_Transfer_of_Residency / sum) * 100;
+        const barangay_clearance_Percent = (Sales_Clearance / sum) * 100;
+        const business_permit_new_Percent = (Sales_Business_Permit_New / sum) * 100;
+        const business_permit_renew_Percent = (Sales_Business_Permit_Renew / sum) * 100;
+        const certificate_of_employability_Percent = (Sales_Certificate_of_Employability / sum) * 100;
+        const certificate_of_income_Percent = (Sales_Certificate_of_Income / sum) * 100;
+        const certificate_of_cohabitation_Percent = (Sales_Cohabitation / sum) * 100;
+        const complaint_certificate_Percent = (Sales_Complaint_Certificate / sum) * 100;
+        const death_certificate_Percent = (Sales_Death_Certificate / sum) * 100;
+        const First_Time_Job_Seeker_Percent = (Sales_First_Time_Job_Seeker / sum) * 100;
+        const Indigency_Percent = (Sales_Indigency / sum) * 100;
+        const Indigency_AICS_Percent = (Sales_Indigency_AICS / sum) * 100;
+        const Lot_Ownership_Percent = (Sales_Lot_Ownership / sum) * 100;
+        const Transfer_of_Residency_Percent = (Sales_Transfer_of_Residency / sum) * 100;
 
         // Set the clearance percentage value into the span
         document.getElementById('clearance_percent').innerHTML = Sales_Clearance_Percent.toFixed(2) + '%';

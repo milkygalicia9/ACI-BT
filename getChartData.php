@@ -4,8 +4,8 @@ header('Content-Type: application/json');
 
 $servername = "localhost";
 $username = "root";
-$password = "root";
-//$password = "Alabastro_8";
+//$password = "root";
+$password = "Alabastro_8";
 $dbname = "aci_bt";
 
 // Check if the month and year parameters are provided
