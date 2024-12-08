@@ -204,7 +204,7 @@ if (!isset($_SESSION['username'])) {
                           </div>
                           <div class="ps-3">
                             <h6>
-                              <?php echo $count_clearance; ?>
+                              <?php echo $count_barangay_clearance; ?>
                             </h6>
                             <span class="text-success small pt-1 fw-bold" id="clearance_percent">%</span> <span
                               class="text-muted small pt-2 ps-1">increase</span>
@@ -216,7 +216,7 @@ if (!isset($_SESSION['username'])) {
                         // Wait for the page to load before running the script
                         document.addEventListener('DOMContentLoaded', function () {
                           // Use PHP variables in JavaScript
-                          const Sales_Clearance = <?php echo $count_clearance; ?>;
+                          const Sales_Clearance = <?php echo $$count_barangay_clearance; ?>;
                           const sum = <?php echo $sum; ?>;
 
                           // Calculate the clearance percentage
